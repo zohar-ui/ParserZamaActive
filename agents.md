@@ -6,6 +6,57 @@ This document defines how to work correctly on this specific project. Read this 
 
 ---
 
+## 🚦 PROTOCOL ZERO: Session Startup (Mandatory Handshake)
+
+**⚠️ CRITICAL: Before executing any task, perform this verification checklist:**
+
+### 1. **Environment Check**
+```bash
+# Verify Supabase CLI is accessible
+npx supabase --version
+
+# Check project linkage
+npx supabase status
+```
+
+### 2. **Database Connectivity Test**
+Run this validation query to confirm read/write access:
+
+```sql
+-- Handshake Query
+SELECT 
+    (SELECT COUNT(*) FROM zamm.dim_athletes) as athlete_count,
+    (SELECT COUNT(*) FROM zamm.workouts) as workout_count,
+    (SELECT version FROM zamm.parser_rulesets WHERE is_active = true LIMIT 1) as active_ruleset;
+```
+
+**Expected Result:**
+```
+athlete_count | workout_count | active_ruleset
+--------------|---------------|---------------
+    10+       |     50+       |    v1.0
+```
+
+### 3. **Status Report**
+* ✅ **Success:** Report `"System Connected: [X] athletes, [Y] workouts found. Ruleset: [version]. Ready to operate."` → Proceed immediately to task.
+* ❌ **Failure:** Report `"Connection failed. Error: [Details]. Please verify .env.local credentials or run: npx supabase link"` → HALT until resolved.
+
+### 4. **Schema Verification** (Optional, for complex operations)
+```sql
+-- Verify zamm schema exists and has expected tables
+SELECT COUNT(*) FROM information_schema.tables 
+WHERE table_schema = 'zamm';
+-- Expected: 20+ tables
+```
+
+**This handshake ensures:**
+- Database is accessible
+- Schema is deployed correctly
+- Active ruleset is available for parsing
+- No blind operations on disconnected/empty database
+
+---
+
 ## 1. 🛠️ Tech Stack & Environment
 
 ### Core Database
@@ -359,16 +410,33 @@ supabase dashboard
 
 When working as an AI agent on this project:
 
-- [ ] Read this entire file
+### Phase 0: Connection Handshake (MANDATORY)
+- [ ] **Run PROTOCOL ZERO** (see top of this file)
+- [ ] Verify database connectivity
+- [ ] Confirm athlete count > 0
+- [ ] Validate active ruleset exists
+
+### Phase 1: Context Loading
+- [ ] Read this entire file (agents.md)
 - [ ] Read `ARCHITECTURE.md` for system design
 - [ ] Review `docs/guides/AI_PROMPTS.md` for AI agent templates
 - [ ] Check `CHANGELOG.md` for recent changes
-- [ ] Run `supabase status` to verify connection
-- [ ] Understand Prescription vs Performance separation
+
+### Phase 2: Environment Setup
+- [ ] Run `npx supabase status` to verify connection
+- [ ] Check `.env.local` has correct credentials
+- [ ] Test with `scripts/test_block_types.sh`
+
+### Phase 3: Domain Knowledge
+- [ ] Understand **Prescription vs Performance** separation (CRITICAL!)
 - [ ] Familiarize with 17 block types
 - [ ] Review stored procedures in migrations folder
 - [ ] Check `/data/*.txt` for example workout formats
-- [ ] Test with `scripts/test_block_types.sh`
+
+### Phase 4: Ready State
+- [ ] All above checkboxes completed ✅
+- [ ] Database connection verified ✅
+- [ ] Can proceed with task execution 🚀
 
 ---
 
