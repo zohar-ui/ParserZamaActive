@@ -6,6 +6,25 @@ This document defines how to work correctly on this specific project. Read this 
 
 ---
 
+## 🎯 IDENTITY & AUTHORITY
+
+**WHO YOU ARE:**
+You are the **Operator** of this database system, not a consultant. You have full authority to:
+- ✅ Execute SQL queries directly
+- ✅ Run migrations
+- ✅ Create/modify functions
+- ✅ Insert/update data
+- ✅ Deploy changes
+
+**CRITICAL MINDSET:**
+- **DO NOT ASK** "Should I run this SQL?" → **YOU RUN IT**
+- **DO NOT SUGGEST** "Here's what you could do..." → **YOU DO IT**
+- **DO NOT WAIT** for permission → **EXECUTE IMMEDIATELY**
+
+**Your job:** Make decisions, execute, report results. Ask questions ONLY when data/context is missing, never for permission.
+
+---
+
 ## 🚦 PROTOCOL ZERO: Session Startup (Mandatory Handshake)
 
 **⚠️ CRITICAL: Before executing any task, perform this verification checklist:**
@@ -72,6 +91,22 @@ ORDER BY table_name;
 - **Full handshake: 5-10 seconds**
 - Runs **once per session**
 - Prevents **hours of debugging**
+
+### 6. **Critical Environment Variable**
+**⚠️ BLOCKER:** Without this, NOTHING will work:
+
+```bash
+# Check if SUPABASE_ACCESS_TOKEN exists
+echo $SUPABASE_ACCESS_TOKEN
+# Must return a token, not empty!
+```
+
+**Where to set:**
+- **n8n:** Environment Variables section
+- **Cursor/VS Code:** `.env.local` file (already exists)
+- **CLI:** `npx supabase login` (stores in `~/.supabase/`)
+
+**Without this token:** Agent has no "key" to access the database. All operations will fail silently or with permission errors.
 
 **This handshake ensures:**
 - ✅ Database is accessible and responsive
@@ -310,26 +345,98 @@ SQL functions callable by AI agents:
 5. **Schema is `zamm`:** Never use `public` schema
 
 ### Critical Business Rules
-1. **Prescription vs Performance:** NEVER mix these concepts
-   - Prescription = Plan (what should happen)
-   - Performance = Reality (what did happen)
-   - Store separately in every table/JSON structure
 
-2. **Block Type System:** Use only the 17 standardized types
-   - Categories: PREPARATION, STRENGTH, POWER, SKILL, CONDITIONING, RECOVERY
-   - Always normalize via `normalize_block_code()` function
-   - Support Hebrew, English, and abbreviations
+#### 🔴 RULE #1: Exercise Name Normalization (DATA INTEGRITY)
+**THE MOST CRITICAL RULE FOR DATA QUALITY**
 
-3. **Data Quality:** All data goes through validation
-   - Stage 1: Ingestion (imports table)
-   - Stage 2: Parsing (parse_drafts table)
-   - Stage 3: Validation (validation_reports table)
-   - Stage 4: Commit (workout_* tables)
+```sql
+-- ✅ ALWAYS do this:
+SELECT zamm.check_exercise_exists('bench');
+-- Returns: canonical exercise_key
 
-4. **Atomic Commits:** Use stored procedures for multi-table inserts
-   - `commit_full_workout_v3` is current version
-   - Never insert into workout tables directly
-   - All-or-nothing transaction semantics
+-- ❌ NEVER do this:
+INSERT INTO workout_items (exercise_name) VALUES ('bench press');
+-- Will create data inconsistency!
+```
+
+**Why Critical:**
+- Without normalization: "Bench", "Bench Press", "BP" = 3 different exercises
+- Analytics & progress tracking will be **broken**
+- Years of data become **unusable**
+
+**The Law:**
+1. ALWAYS use `check_exercise_exists()` first
+2. ALWAYS use `exercise_key` from `exercise_catalog`
+3. NEVER accept free-text exercise names
+
+#### 🔴 RULE #2: Atomic Commits via Stored Procedures
+**NEVER manually INSERT into workout tables**
+
+```sql
+-- ✅ CORRECT:
+SELECT zamm.commit_full_workout_v3(
+    import_id, draft_id, ruleset_id, athlete_id, normalized_json
+);
+
+-- ❌ WRONG:
+INSERT INTO zamm.workouts ...
+INSERT INTO zamm.workout_sessions ...
+INSERT INTO zamm.workout_blocks ...
+-- This WILL break data integrity!
+```
+
+**Why Critical:**
+- 4 related tables must be inserted in **exact order**
+- Prescription/Performance separation is complex
+
+#### 🚨 CRITICAL (Will Destroy Data)
+❌ **NEVER:**
+1. Accept free-text exercise names without normalization
+2. INSERT directly into workout tables (use stored procedure)
+3. Mix prescription and performance in same field
+4. Skip `check_exercise_exists()` validation
+
+#### ⚠️ IMPORTANT (Will Cause Bugs)
+❌ **DON'T:**
+- Create tables in `public` schema
+- Edit existing migration files
+- Hardcode athlete/exercise IDs
+- Use non-standard block types
+- Skip validation stage
+
+#### ✅ BEST PRACTICES
+ ✅ CORRECT:
+{
+  "prescription": { "target_sets": 3, "target_reps": 5 },
+  "performed": { "actual_sets": 3, "actual_reps": [5, 5, 4] }
+}
+
+// ❌ WRONG:
+{
+  "sets": 3,  // Which one? Plan or reality?
+  "reps": 5   // Ambiguous!
+}
+```
+
+**Why Critical:**
+- Core architectural principle
+- Enables progress tracking and program adherence analysis
+- Mixed data = impossible to analyze
+
+**The Law:** Every workout entity has BOTH fields. If you see only one, something is wrong.
+
+#### 🟡 RULE #4: Block Type System
+Use only the 17 standardized types:
+- Categories: PREPARATION, STRENGTH, POWER, SKILL, CONDITIONING, RECOVERY
+- Always normalize via `normalize_block_code()` function
+- Support Hebrew, English, and abbreviations
+
+#### 🟡 RULE #5: Data Pipeline Stages
+All data goes through validation:
+- Stage 1: Ingestion (imports table)
+- Stage 2: Parsing (parse_drafts table)
+- Stage 3: Validation (validation_reports table)
+- Stage 4: Commit (workout_* tables)
 
 ### Known Limitations
 * **No Real-time Validation:** Validation happens after parsing
