@@ -1,0 +1,48 @@
+# Development
+.DS_Store
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Dependencies
+node_modules/
+.pnpm-debug.log
+
+# TypeScript
+*.tsbuildinfo
+types/database.ts
+
+# IDE
+.idea/
+*.iml
+
+# OS
+Thumbs.db

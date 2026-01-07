@@ -29,8 +29,25 @@ supabase db reset
 
 ## Documentation
 
-- 📊 [Database Readiness Report](./DB_READINESS_REPORT.md) - מצב מוכנות המסד נתונים (**85/100**)
-- 📁 [Schema Migration](./supabase/migrations/) - היסטוריית שינויי סכמה
+### Core Documents
+- 🏗️ [Architecture Overview](./ARCHITECTURE.md) - System design and patterns
+- 📊 [Database Readiness](./DB_READINESS_REPORT.md) - מצב מוכנות המסד נתונים (85/100)
+- 📋 [Changelog](./CHANGELOG.md) - Version history and updates
+
+### Guides
+- 🚀 [n8n Integration](./docs/guides/N8N_INTEGRATION_GUIDE.md) - Complete workflow setup
+- 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
+
+### Reference
+- 📚 [Block Types Reference](./docs/reference/BLOCK_TYPES_REFERENCE.md) - 17 block types catalog
+- 📖 [Block Type System](./docs/reference/BLOCK_TYPE_SYSTEM_SUMMARY.md) - System overview
+
+### API & Testing
+- 🧪 [Test Queries](./docs/api/QUICK_TEST_QUERIES.sql) - Sample SQL queries
+- 📁 [Schema Migrations](./supabase/migrations/) - Database version history
+
+### Archive
+- 📦 [Historical Docs](./docs/archive/) - Implementation milestones
 
 ## Architecture Highlights
 
@@ -45,46 +62,77 @@ supabase db reset
 - **Prescription (תכנון):** מה אמור להתבצע ("3x5 @ 100kg")
 - **Performance (ביצוע):** מה קרה בפועל ("הצלחתי רק 4 חזרות בסט אחרון")
 
-## Database Structure
+## Project Structure
 
-### 🏗️ Core Tables
 ```
-workouts
-  └─ workout_sessions
-       └─ workout_blocks (prescription + performed JSONs)
-            └─ workout_items (prescription_data + performed_data)
-                 └─ item_set_results (actual results per set)
+ParserZamaActive/
+├── 📄 Core Documentation
+│   ├── README.md                    # This file - project overview
+│   ├── ARCHITECTURE.md              # System design and patterns
+│   ├── CHANGELOG.md                 # Version history (v1.0.0)
+│   ├── DB_READINESS_REPORT.md       # Status assessment (85/100)
+│   └── LICENSE                      # MIT license
+│
+├── 📚 docs/                         # All documentation
+│   ├── INDEX.md                     # Documentation navigation guide
+│   │
+│   ├── guides/                      # Implementation guides
+│   │   ├── N8N_INTEGRATION_GUIDE.md # Complete n8n setup (572 lines)
+│   │   └── AI_PROMPTS.md            # AI agent templates (335 lines)
+│   │
+│   ├── reference/                   # Technical reference
+│   │   ├── BLOCK_TYPES_REFERENCE.md # 17 block types catalog
+│   │   └── BLOCK_TYPE_SYSTEM_SUMMARY.md # System overview
+│   │
+│   ├── api/                         # SQL & API documentation
+│   │   └── QUICK_TEST_QUERIES.sql   # Test queries
+│   │
+│   └── archive/                     # Historical records
+│       ├── IMPLEMENTATION_COMPLETE.md
+│       ├── PRIORITY1_COMPLETE.md
+│       ├── DB_ARCHITECTURE_REVIEW.md
+│       └── COMMIT_WORKOUT_V3_UPDATE.md
+│
+├── 💾 data/                         # Sample workout logs
+│   ├── README.md                    # Data overview
+│   └── *.txt                        # 10 workout log files (~640KB)
+│
+├── 🔧 scripts/                      # Utility scripts
+│   ├── README.md                    # Scripts documentation
+│   └── test_block_types.sh          # Block type system tests
+│
+└── 🗄️ supabase/                     # Database configuration
+    ├── config.toml                  # Supabase config
+    └── migrations/                  # 6 schema migrations
+        ├── 20260104112029_remote_schema.sql
+        ├── 20260104120000_create_ai_tools.sql
+        ├── 20260104120100_create_validation_functions.sql
+        ├── 20260104120200_commit_full_workout_v3.sql
+        ├── 20260104130000_priority1_exercise_catalog_indexes.sql
+        └── 20260104140000_block_type_system.sql
 ```
 
-### 📊 Infrastructure Tables
-- `dim_athletes` - פרטי אתלטים (גובה, משקל, גיל)
-- `parser_rulesets` - חוקי המרת יחידות ומבנה
-- `equipment_catalog` + `equipment_aliases` - ניהול ציוד
+**Total:** 35 files across 10 directories
 
-### 🔄 Staging Tables
-- `imports` - טקסט גולמי מקורי
-- `parse_drafts` - טיוטות ניתוח (JSON)
-- `validation_reports` - דוחות שגיאות
-- `draft_edits` - מעקב אחרי תיקונים ידניים
+## Database Overview
 
-### 📈 Results Tables
-- `item_set_results` - תוצאות ברמת הסט (reps, load, RPE, RIR)
-- `workout_block_results` - תוצאות ברמת הבלוק (זמן, calories, HR)
-- `interval_segments` - תוצאות אינטרוואלים (work/rest splits)
-
-## Stored Procedures
-
-### `commit_full_workout_v2()`
-מקבל JSON מנורמל ומפרק אותו לטבלאות רלציוניות:
-```sql
-SELECT zamm.commit_full_workout_v2(
-  p_import_id := '...',
-  p_draft_id := '...',
-  p_ruleset_id := '...',
-  p_athlete_id := '...',
-  p_normalized_json := '{"sessions": [...]}'::jsonb
-);
+### Hierarchical Structure
 ```
+workouts → workout_sessions → workout_blocks → workout_items → item_set_results
+```
+
+### Key Tables
+- **Infrastructure**: `dim_athletes`, `parser_rulesets`, `equipment_catalog`, `exercise_catalog`, `block_type_catalog`
+- **Staging**: `imports`, `parse_drafts`, `validation_reports`, `draft_edits`
+- **Core**: `workouts`, `workout_sessions`, `workout_blocks`, `workout_items`
+- **Results**: `item_set_results`, `workout_block_results`, `interval_segments`
+
+**For detailed schema:** See [ARCHITECTURE.md](./ARCHITECTURE.md) and [DB_READINESS_REPORT.md](./DB_READINESS_REPORT.md)
+
+### Stored Procedures
+- `commit_full_workout_v3()` - Convert normalized JSON to relational data (current)
+- 5 AI Tools: `check_athlete_exists()`, `check_equipment_exists()`, `get_active_ruleset()`, etc.
+- 5 Validation Functions: `validate_workout_draft()`, `check_prescription_performance_consistency()`, etc.
 
 ## Example Parsing Flow
 
@@ -121,59 +169,56 @@ item_set_results (3 rows):
   - set 3: reps=4, load_kg=100, notes="hard"
 ```
 
-## Implementation Status
+## Project Status
 
-### ✅ Phase 1: Database Polish - **COMPLETE**
-- ✅ All tables and stored procedures ready
-- ✅ Schema optimized for prescription/performance separation
-- ✅ Performance indexes in place
+**Version:** 1.0.0  
+**Overall Readiness:** 85/100 ✅
 
-### ✅ Phase 2: AI Agent Configuration - **COMPLETE**
-- ✅ 5 SQL Tools created and deployed
-- ✅ System Prompts written and documented
-- ✅ Structured Output Schema defined
+### Implementation Complete ✅
+- ✅ Database schema with 20+ tables
+- ✅ 6 migrations deployed to Supabase
+- ✅ 5 AI SQL tools for agent integration
+- ✅ 5 validation functions
+- ✅ 3 stored procedure versions (v3 current)
+- ✅ 17 standardized block types with 60+ aliases
+- ✅ Exercise catalog with 14 seed exercises
+- ✅ Comprehensive documentation
 
-### ✅ Phase 3: Validation Logic - **COMPLETE**
-- ✅ 5 Validation functions created
-- ✅ Consistency checks implemented
-- ✅ Auto-reporting to validation_reports
+### Ready for Integration
+- 📚 n8n workflow guide complete
+- 🤖 AI prompts templates ready
+- 🧪 Test queries available
+- 📊 Sample workout logs (10 files)
 
-### 🟡 Phase 4: n8n Integration - **READY TO START**
-- 📚 Complete integration guide available
-- 🧪 Test queries ready
-- ⏳ Waiting for n8n workflow setup
+### Next Steps
+1. Set up n8n workflow using [integration guide](./docs/guides/N8N_INTEGRATION_GUIDE.md)
+2. Configure AI agents with [prompt templates](./docs/guides/AI_PROMPTS.md)
+3. Test parsing with sample data from `data/` folder
+4. Monitor validation reports and iterate
 
-## Quick Links
+## Quick Start
 
-- 🚀 **[Start Here: Implementation Complete](./docs/IMPLEMENTATION_COMPLETE.md)** - Summary of everything built
-- 📊 **[DB Readiness Report](./DB_READINESS_REPORT.md)** - Database assessment (85/100)
-- 📚 **[n8n Integration Guide](./docs/N8N_INTEGRATION_GUIDE.md)** - Step-by-step n8n setup
-- 🤖 **[AI Prompts](./docs/AI_PROMPTS.md)** - Ready-to-use prompt templates
-- 🧪 **[Quick Test Queries](./docs/QUICK_TEST_QUERIES.sql)** - Verify functions work
+### 1. Check Database Connection
+```bash
+supabase status
+```
 
-## What's Ready
+### 2. Review Key Documents
+- Start with [Architecture Overview](./ARCHITECTURE.md) to understand the system
+- Check [DB Readiness](./DB_READINESS_REPORT.md) for current status (85/100)
+- Follow [n8n Integration Guide](./docs/guides/N8N_INTEGRATION_GUIDE.md) for setup
 
-### SQL Functions Deployed ✅
+### 3. Test SQL Functions
+```bash
+# Run test queries
+psql -h db.dtzcamerxuonoeujrgsu.supabase.co -U postgres -d postgres -f docs/api/QUICK_TEST_QUERIES.sql
+```
 
-**AI Tools (5):**
-- `check_athlete_exists(name)` - Find athlete by name
-- `check_equipment_exists(name)` - Validate equipment
-- `get_active_ruleset()` - Get parser rules
-- `get_athlete_context(id)` - Full athlete context
-- `normalize_block_type(type)` - Validate block types
-
-**Validation Functions (5):**
-- `validate_workout_draft()` - Comprehensive validation
-- `check_prescription_performance_consistency()` - Compare plan vs actual
-- `validate_and_save_report()` - Auto-save validation
-- `get_draft_validation_status()` - Quick status
-- `validate_pending_drafts()` - Batch validation
-
-### Documentation Complete ✅
-
-All prompts, guides, and examples are ready in the `docs/` folder.
+### 4. Review Sample Data
+Check `data/` folder for 10 real workout log examples.
 
 ---
 
-**Built with:** Supabase, n8n, PostgreSQL, AI Agents  
-**License:** MIT
+**Technology Stack:** Supabase (PostgreSQL), n8n, AI Agents (OpenAI/Claude/Gemini)  
+**License:** MIT  
+**Project ID:** dtzcamerxuonoeujrgsu
