@@ -2,19 +2,25 @@
 
 ## [1.1.0] - January 7, 2026
 
-### Optimizations
+### Documentation
 
-#### ✅ Search Path Enhancement (Migration: 20260107120000)
-- **Added `SET search_path = zamm, public`** to all SQL functions
-- **Code Readability:** Removed need for `zamm.` prefix in function bodies
-- **Functions Updated:**
-  - `check_athlete_exists()` - Now uses `dim_athletes` instead of `zamm.dim_athletes`
-  - `check_equipment_exists()` - Cleaner table references
-  - `get_active_ruleset()` - Simplified queries
-  - `get_athlete_context()` - More readable joins
-  - `normalize_block_type()` - Streamlined logic
-  - `commit_full_workout_v3()` - All 5 table inserts now cleaner
-- **Impact:** Easier maintenance, better code readability, no functional changes
+#### ✅ agents.md - Source of Truth for AI Agents
+- **Created comprehensive AI agent guide** (494 lines)
+- **PROTOCOL ZERO:** Mandatory startup handshake for database connectivity
+- **Identity & Authority:** AI agents as Operators with full execution authority
+- **Critical Business Rules:**
+  - Rule #1: Exercise name normalization via `check_exercise_exists()`
+  - Rule #2: Atomic commits via `commit_full_workout_v3()` stored procedure
+  - Rule #3: Prescription vs Performance separation
+- **Complete architecture reference**, coding standards, and quick reference guide
+- **Purpose:** Single source of truth for all AI agents working on project
+
+#### ⚠️ Schema Synchronization (CANCELLED)
+- **Discovered table naming mismatch** between local migrations and remote database
+- **Migration 20260107120000 DELETED** (used incorrect table names: `dim_athletes`, `workouts`)
+- **agents.md UPDATED** with correct table names from remote: `lib_athletes`, `workout_main`, `lib_parser_rulesets`, etc.
+- **Migration history repaired:** 37 extra migrations marked as reverted
+- **Status:** Ready for clean data entry once schema fully synchronized
 
 ---
 

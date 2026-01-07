@@ -44,9 +44,9 @@ Run this validation query to confirm read/write access:
 ```sql
 -- Handshake Query
 SELECT 
-    (SELECT COUNT(*) FROM zamm.dim_athletes) as athlete_count,
-    (SELECT COUNT(*) FROM zamm.workouts) as workout_count,
-    (SELECT version FROM zamm.parser_rulesets WHERE is_active = true LIMIT 1) as active_ruleset;
+    (SELECT COUNT(*) FROM zamm.lib_athletes) as athlete_count,
+    (SELECT COUNT(*) FROM zamm.workout_main) as workout_count,
+    (SELECT version FROM zamm.lib_parser_rulesets WHERE is_active = true LIMIT 1) as active_ruleset;
 ```
 
 **Expected Result:**
@@ -68,9 +68,9 @@ SELECT
 FROM information_schema.columns
 WHERE table_schema = 'zamm' 
   AND table_name IN (
-    'dim_athletes', 'workouts', 'workout_sessions', 'workout_blocks', 
-    'workout_items', 'item_set_results', 'parser_rulesets',
-    'exercise_catalog', 'equipment_catalog', 'block_type_catalog'
+    'lib_athletes', 'workout_main', 'workout_sessions', 'workout_blocks', 
+    'workout_items', 'item_set_results', 'lib_parser_rulesets',
+    'lib_exercise_catalog', 'lib_equipment_catalog', 'lib_block_types'
   )
 GROUP BY table_name
 ORDER BY table_name;
@@ -267,7 +267,7 @@ Master Catalog (canonical keys) ←→ Aliases Table (multiple names)
 
 #### 4. **Hierarchical Workout Structure**
 ```
-workouts (header)
+workout_main (header)
   └─ workout_sessions (AM/PM)
       └─ workout_blocks (A, B, C)
           └─ workout_items (exercises)
@@ -288,7 +288,7 @@ SQL functions callable by AI agents:
 
 ### SQL Style
 * **Function Names:** `lowercase_with_underscores`
-* **Schema Prefix:** Always use `zamm.` prefix (e.g., `zamm.workouts`)
+* **Schema Prefix:** Always use `zamm.` prefix (e.g., `zamm.workout_main`)
 * **Comments:** Use banner comments for major sections
   ```sql
   -- ============================================
@@ -300,7 +300,7 @@ SQL functions callable by AI agents:
 * **Language:** PL/pgSQL for complex logic, plain SQL for simple queries
 
 ### Naming Conventions
-* **Tables:** `lowercase_plural` (e.g., `workouts`, `workout_blocks`)
+* **Tables:** `lowercase_plural` (e.g., `workout_main`, `workout_blocks`)
 * **Columns:** `lowercase_with_underscores` (e.g., `workout_id`, `block_code`)
 * **Primary Keys:** `{table_singular}_id` (e.g., `workout_id`, `block_id`)
 * **Foreign Keys:** Match referenced column name exactly
@@ -501,9 +501,9 @@ supabase dashboard
 4. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Current commit function
 
 ### Key Database Tables
-* **Infrastructure:** `dim_athletes`, `parser_rulesets`, `equipment_catalog`, `exercise_catalog`
+* **Infrastructure:** `lib_athletes`, `lib_parser_rulesets`, `lib_equipment_catalog`, `lib_exercise_catalog`
 * **Staging:** `imports`, `parse_drafts`, `validation_reports`
-* **Workout Core:** `workouts`, `workout_sessions`, `workout_blocks`, `workout_items`
+* **Workout Core:** `workout_main`, `workout_sessions`, `workout_blocks`, `workout_items`
 * **Results:** `item_set_results`, `workout_block_results`, `interval_segments`
 
 ### 17 Block Types (Memorize These)
