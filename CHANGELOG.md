@@ -2,6 +2,19 @@
 
 ## [1.1.0] - January 7, 2026
 
+### Fixes
+
+#### ✅ Table Reference Corrections (Migration: 20260107140000)
+- **Fixed SQL functions** to use correct table names
+- **Updated References:**
+  - `dim_athletes` → `lib_athletes` in all functions
+  - `workouts` → `workout_main` in get_athlete_context()
+- **Functions Fixed:**
+  - `calculate_load_from_bodyweight()` - Now queries lib_athletes
+  - `check_athlete_exists()` - Updated to lib_athletes
+  - `get_athlete_context()` - Fixed workout_main reference
+- **Impact:** Functions now work correctly with current schema
+
 ### Documentation
 
 #### ✅ agents.md - Source of Truth for AI Agents
@@ -15,12 +28,13 @@
 - **Complete architecture reference**, coding standards, and quick reference guide
 - **Purpose:** Single source of truth for all AI agents working on project
 
-#### ⚠️ Schema Synchronization (CANCELLED)
-- **Discovered table naming mismatch** between local migrations and remote database
-- **Migration 20260107120000 DELETED** (used incorrect table names: `dim_athletes`, `workouts`)
-- **agents.md UPDATED** with correct table names from remote: `lib_athletes`, `workout_main`, `lib_parser_rulesets`, etc.
+#### ⚠️ Schema Synchronization
+- **Discovered table naming mismatch** between function code and actual tables
+- **Schema dumped successfully** using `supabase db dump` (bypassed Docker issue)
+- **Migration 20260107120000 CANCELLED** (used incorrect table names)
+- **agents.md UPDATED** with correct table names: `lib_athletes`, `workout_main`, `lib_parser_rulesets`, etc.
 - **Migration history repaired:** 37 extra migrations marked as reverted
-- **Status:** Ready for clean data entry once schema fully synchronized
+- **Status:** Schema synchronized, ready for clean data entry
 
 ---
 
