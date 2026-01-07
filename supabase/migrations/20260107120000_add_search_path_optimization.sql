@@ -228,8 +228,11 @@ $$;
 
 -- ============================================
 -- Update commit_full_workout_v3 (Updated)
+-- DROP first to avoid parameter name conflict
 -- ============================================
-CREATE OR REPLACE FUNCTION zamm.commit_full_workout_v3(
+DROP FUNCTION IF EXISTS zamm.commit_full_workout_v3(UUID, UUID, UUID, UUID, JSONB);
+
+CREATE FUNCTION zamm.commit_full_workout_v3(
     p_import_id UUID,
     p_draft_id UUID,
     p_ruleset_id UUID,
