@@ -37,23 +37,52 @@ athlete_count | workout_count | active_ruleset
     10+       |     50+       |    v1.0
 ```
 
-### 3. **Status Report**
-* ✅ **Success:** Report `"System Connected: [X] athletes, [Y] workouts found. Ruleset: [version]. Ready to operate."` → Proceed immediately to task.
-* ❌ **Failure:** Report `"Connection failed. Error: [Details]. Please verify .env.local credentials or run: npx supabase link"` → HALT until resolved.
+### 3. **Schema Awareness Check** (Critical!)
+Load current table structures to ensure SQL accuracy:
 
-### 4. **Schema Verification** (Optional, for complex operations)
 ```sql
--- Verify zamm schema exists and has expected tables
-SELECT COUNT(*) FROM information_schema.tables 
-WHERE table_schema = 'zamm';
--- Expected: 20+ tables
+-- Get critical table structures
+SELECT 
+    table_name,
+    COUNT(*) as column_count,
+    string_agg(column_name || ':' || data_type, ', ' ORDER BY ordinal_position) as columns
+FROM information_schema.columns
+WHERE table_schema = 'zamm' 
+  AND table_name IN (
+    'dim_athletes', 'workouts', 'workout_sessions', 'workout_blocks', 
+    'workout_items', 'item_set_results', 'parser_rulesets',
+    'exercise_catalog', 'equipment_catalog', 'block_type_catalog'
+  )
+GROUP BY table_name
+ORDER BY table_name;
 ```
 
+**What to verify:**
+- ✅ All 10 critical tables exist
+- ✅ Column counts match expectations
+- ✅ No unexpected schema changes
+
+**Store this output mentally** - you'll need it for writing correct SQL!
+
+### 4. **Status Report**
+* ✅ **Success:** Report `"System Connected: [X] athletes, [Y] workouts found. Ruleset: [version]. Schema: [table_count] tables verified. Ready to operate."` → Proceed immediately to task.
+* ❌ **Failure:** Report `"Connection failed. Error: [Details]. Please verify .env.local credentials or run: npx supabase link"` → HALT until resolved.
+
+### 5. **Total Time Budget**
+- **Full handshake: 5-10 seconds**
+- Runs **once per session**
+- Prevents **hours of debugging**
+
 **This handshake ensures:**
-- Database is accessible
-- Schema is deployed correctly
-- Active ruleset is available for parsing
-- No blind operations on disconnected/empty database
+- ✅ Database is accessible and responsive
+- ✅ Schema is deployed correctly with expected tables
+- ✅ Active ruleset is available for parsing
+- ✅ **Agent knows exact table structures** (columns, types)
+- ✅ No blind operations on disconnected/empty database
+- ✅ No SQL errors from outdated schema assumptions
+
+**Why Schema Awareness Matters:**
+If a migration added/removed columns, the agent must know about it before writing SQL. This 3-second check prevents syntax errors and failed queries.
 
 ---
 
