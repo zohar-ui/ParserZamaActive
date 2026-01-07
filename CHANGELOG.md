@@ -1,5 +1,120 @@
 # Changelog - ZAMM Workout Parser
 
+## [1.2.0] - January 7, 2026
+
+### 🎯 Major Feature: Production Validation System
+
+#### ✅ Comprehensive Validation Functions (Migration: 20260107150000)
+**Created 6 production-ready SQL functions** to enforce data quality in Stage 3 (Validation):
+
+**Individual Validation Functions:**
+1. **`validate_parsed_structure()`** - Basic JSON structure validation
+   - Checks: workout_date, athlete_id, sessions existence and format
+   - Date validation: YYYY-MM-DD format, not in future, not before 2015
+   - Athlete_id: UUID format + exists in lib_athletes table
+   - Returns: errors/warnings with field-level details
+
+2. **`validate_block_codes()`** - Block and session structure validation
+   - Validates 17 standard block codes (WU, STR, METCON, etc.)
+   - Session_code validation (AM, PM, SINGLE)
+   - Checks: block_label, prescription, performed fields existence
+   - Returns: location-specific errors (Session X, Block Y)
+
+3. **`validate_data_values()`** - Numeric value range validation
+   - **Loads:** 0-500kg (error if > 500, warning if > 300)
+   - **Reps:** 1-200 (error if > 200, warning if > 50)
+   - **Sets:** 1-10 (warning if > 8)
+   - **Times:** 1-7200 seconds (error if > 3 hours)
+   - **RPE:** 1-10 (supports 0.5 increments)
+   - **RIR:** 0-10
+   - Validates both prescription and performed values
+
+4. **`validate_catalog_references()`** - Exercise and equipment validation
+   - Checks exercise_name exists in lib_exercise_catalog or lib_exercise_aliases
+   - Checks equipment_key exists in lib_equipment_catalog or lib_equipment_aliases
+   - Returns: catalog lookup failures with exercise/equipment name
+
+5. **`validate_prescription_performance_separation()`** - Critical business rule
+   - **Prevents mixing of prescription/performance data** (core architecture principle)
+   - Detects forbidden keys in wrong context:
+     - Prescription cannot have: actual_sets, reps_performed, did_complete
+     - Performed cannot have: target_sets, target_reps, target_load
+   - Returns: separation violations with specific key names
+
+**Master Function:**
+6. **`validate_parsed_workout(draft_id, parsed_json)`** - All-in-one validation
+   - Runs all 5 validation checks sequentially
+   - Returns comprehensive report:
+     - `validation_status`: 'pass', 'warning', or 'fail'
+     - `total_checks`, `errors`, `warnings`, `info` counts
+     - `report`: Full JSONB with categorized issues
+   - Designed for Stage 3 workflow integration
+
+**Key Benefits:**
+- ✅ **Automated quality control** before commit
+- ✅ **Prevents invalid data** from entering production tables
+- ✅ **Detailed error reports** with exact field locations
+- ✅ **3-tier severity system**: error (blocks commit), warning (review), info (FYI)
+- ✅ **Production-ready** with comprehensive error handling
+
+#### ✅ Workflow Integration Documentation
+**Created:** `docs/guides/VALIDATION_WORKFLOW_EXAMPLES.sql` (7 scenarios)
+
+**Scenario 1:** Validate draft before commit (manual)
+**Scenario 2:** Batch validation of all pending drafts
+**Scenario 3:** Safe commit workflow (only commit if validated)
+**Scenario 4:** Query validation reports (analytics)
+**Scenario 5:** Individual validation checks (debugging)
+**Scenario 6:** `v_draft_validation_status` view (dashboard-ready)
+**Scenario 7:** `auto_validate_and_commit()` function (automation)
+
+**Automated Workflow Function:**
+```sql
+auto_validate_and_commit(draft_id UUID)
+-- Returns: success (boolean), workout_id (UUID), message (text)
+-- Usage: SELECT * FROM zamm.auto_validate_and_commit('draft-uuid');
+```
+
+**Integration Points:**
+- Plugs directly into existing Stage 3 (after parsing, before commit)
+- Logs results to `log_validation_reports` table
+- Compatible with n8n automation workflows
+- View for dashboard: `v_draft_validation_status`
+
+### 📚 Documentation
+
+#### ✅ PARSER_WORKFLOW.md (600+ lines)
+**Created:** Complete parser workflow documentation
+- 4-stage pipeline breakdown (Ingestion → Parsing → Validation → Commit)
+- 18 tables involved in parser workflow
+- 5 AI tools available (check_athlete_exists, normalize_block_type, etc.)
+- End-to-end example (raw text → JSON → relational tables)
+- Error handling guide
+- Best practices for AI agents and developers
+
+#### ✅ PARSER_AUDIT_CHECKLIST.md (900+ lines)
+**Created:** Comprehensive validation checklist
+- 4 audit phases: Structure → Data → Consistency → Business Logic
+- Detailed checklists by block type (STR, METCON, INTV, SS)
+- Data validation rules:
+  - Loads: 0-500kg
+  - Reps: 1-100
+  - RPE: 1-10 (with 0.5 increments)
+  - Times: 1-7200 seconds
+- 3 severity levels: ERROR (blocks commit), WARNING (review), INFO (FYI)
+- SQL validation script templates
+- JSON validation report format
+- Manual review workflow
+
+#### ✅ VALIDATION_WORKFLOW_EXAMPLES.sql (300+ lines)
+**Created:** Practical SQL examples for validation integration
+- 7 complete workflow scenarios
+- Copy-paste ready code
+- Production deployment patterns
+- n8n integration examples
+
+---
+
 ## [1.1.0] - January 7, 2026
 
 ### Fixes

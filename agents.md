@@ -69,7 +69,7 @@ FROM information_schema.columns
 WHERE table_schema = 'zamm' 
   AND table_name IN (
     'lib_athletes', 'workout_main', 'workout_sessions', 'workout_blocks', 
-    'workout_items', 'item_set_results', 'lib_parser_rulesets',
+    'workout_items', 'workout_item_set_results', 'lib_parser_rulesets',
     'lib_exercise_catalog', 'lib_equipment_catalog', 'lib_block_types'
   )
 GROUP BY table_name
@@ -77,7 +77,7 @@ ORDER BY table_name;
 ```
 
 **What to verify:**
-- ✅ All 10 critical tables exist
+- ✅ All 10 critical tables exist (schema has 32 total)
 - ✅ Column counts match expectations
 - ✅ No unexpected schema changes
 
@@ -155,11 +155,12 @@ If a migration added/removed columns, the agent must know about it before writin
 # Check connection status
 supabase status
 
-# Pull latest schema from remote
+# Pull latest schema from remote (if Docker fails, use dump instead)
 supabase db pull
+# Workaround: supabase db dump --schema zamm -f supabase/schema_snapshot.sql
 
 # Push local migrations to remote
-supabase db push
+subase db push
 
 # Reset local database (if running locally)
 supabase db reset
@@ -271,7 +272,7 @@ workout_main (header)
   └─ workout_sessions (AM/PM)
       └─ workout_blocks (A, B, C)
           └─ workout_items (exercises)
-              └─ item_set_results (individual sets)
+              └─ workout_item_set_results (individual sets)
 ```
 
 #### 5. **AI Tools Pattern**
@@ -300,7 +301,7 @@ SQL functions callable by AI agents:
 * **Language:** PL/pgSQL for complex logic, plain SQL for simple queries
 
 ### Naming Conventions
-* **Tables:** `lowercase_plural` (e.g., `workout_main`, `workout_blocks`)
+* **Tables:** `lowercase_with_underscores` (e.g., `workout_main`, `workout_blocks`, `lib_athletes`)
 * **Columns:** `lowercase_with_underscores` (e.g., `workout_id`, `block_code`)
 * **Primary Keys:** `{table_singular}_id` (e.g., `workout_id`, `block_id`)
 * **Foreign Keys:** Match referenced column name exactly
@@ -500,11 +501,14 @@ supabase dashboard
 3. `docs/reference/BLOCK_TYPES_REFERENCE.md` - Block types catalog
 4. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Current commit function
 
-### Key Database Tables
-* **Infrastructure:** `lib_athletes`, `lib_parser_rulesets`, `lib_equipment_catalog`, `lib_exercise_catalog`
-* **Staging:** `imports`, `parse_drafts`, `validation_reports`
-* **Workout Core:** `workout_main`, `workout_sessions`, `workout_blocks`, `workout_items`
-* **Results:** `item_set_results`, `workout_block_results`, `interval_segments`
+### Key Database Tables (32 total in zamm schema)
+* **Infrastructure:** `lib_athletes`, `lib_parser_rulesets`, `lib_coaches`
+* **Catalogs:** `lib_exercise_catalog`, `lib_equipment_catalog`, `lib_block_types` (+ aliases)
+* **Staging:** `stg_imports`, `stg_parse_drafts`, `stg_draft_edits`
+* **Validation:** `log_validation_reports`
+* **Workout Core:** `workout_main`, `workout_sessions`, `workout_blocks`, `workout_items`, `workout_item_set_results`
+* **Results:** `res_blocks`, `res_intervals`, `res_item_sets`
+* **Events:** `evt_athlete_personal_records`
 
 ### 17 Block Types (Memorize These)
 **PREPARATION:** WU, ACT, MOB  
@@ -518,19 +522,20 @@ supabase dashboard
 
 ## 7. 🎯 Project Status
 
-**Version:** 1.0.0  
-**Status:** Database structure complete (85/100)  
-**Date:** January 2026  
-**Next Phase:** Frontend development and real-time validation
+**Version:** 1.1.0  
+**Status:** Database structure complete, schema synchronized (90/100)  
+**Date:** January 7, 2026  
+**Next Phase:** Data cleanup and production data entry
 
 ### What's Working
-✅ Complete database schema  
+✅ Complete database schema (32 tables in zamm)  
 ✅ AI tools (5 functions)  
 ✅ Validation functions (5 functions)  
 ✅ Block type system (17 types, 60+ aliases)  
 ✅ Exercise catalog (14 seed exercises)  
 ✅ Atomic workout commit procedure  
-✅ Comprehensive documentation
+✅ Comprehensive documentation  
+✅ Schema synchronized (lib_* naming)
 
 ### What's Missing
 ⏳ Frontend UI  
