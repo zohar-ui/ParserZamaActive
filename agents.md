@@ -235,7 +235,9 @@ git push origin main
         ├── 20260104120100_create_validation_functions.sql
         ├── 20260104120200_commit_full_workout_v3.sql
         ├── 20260104130000_priority1_exercise_catalog_indexes.sql
-        └── 20260104140000_block_type_system.sql
+        ├── 20260104140000_block_type_system.sql
+        ├── 20260107140000_fix_table_references.sql
+        └── 20260107150000_comprehensive_validation_functions.sql
 ```
 
 ### Key Architectural Patterns
@@ -282,6 +284,16 @@ SQL functions callable by AI agents:
 - `get_active_ruleset()` - Parser rules
 - `get_athlete_context(id)` - Full context
 - `normalize_block_type(type)` - Type normalization
+
+#### 6. **Validation System (Stage 3)**
+Production validation functions for parsed JSON:
+- `validate_parsed_structure()` - Basic JSON structure
+- `validate_block_codes()` - 17 standard block codes
+- `validate_data_values()` - Numeric range validation
+- `validate_catalog_references()` - Exercise/equipment lookup
+- `validate_prescription_performance_separation()` - Critical separation rule
+- `validate_parsed_workout()` - Master function (runs all checks)
+- `auto_validate_and_commit()` - Automated workflow
 
 ---
 
@@ -498,8 +510,12 @@ supabase dashboard
 ### Most Important Files
 1. `ARCHITECTURE.md` - Understand system design
 2. `docs/guides/AI_PROMPTS.md` - Agent prompt templates
-3. `docs/reference/BLOCK_TYPES_REFERENCE.md` - Block types catalog
-4. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Current commit function
+3. `docs/guides/PARSER_WORKFLOW.md` - Complete parser workflow (4 stages)
+4. `docs/guides/PARSER_AUDIT_CHECKLIST.md` - Validation checklist
+5. `docs/VALIDATION_SYSTEM_SUMMARY.md` - Validation system quick reference
+6. `docs/reference/BLOCK_TYPES_REFERENCE.md` - Block types catalog
+7. `supabase/migrations/20260107150000_comprehensive_validation_functions.sql` - Validation functions
+8. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Commit function
 
 ### Key Database Tables (32 total in zamm schema)
 * **Infrastructure:** `lib_athletes`, `lib_parser_rulesets`, `lib_coaches`
@@ -522,24 +538,27 @@ supabase dashboard
 
 ## 7. 🎯 Project Status
 
-**Version:** 1.1.0  
-**Status:** Database structure complete, schema synchronized (90/100)  
+**Version:** 1.2.0  
+**Status:** Production validation system deployed (95/100)  
 **Date:** January 7, 2026  
 **Next Phase:** Data cleanup and production data entry
 
 ### What's Working
 ✅ Complete database schema (32 tables in zamm)  
 ✅ AI tools (5 functions)  
-✅ Validation functions (5 functions)  
+✅ **Production validation system (6 functions)** 🆕  
+✅ **Automated workflow (auto_validate_and_commit)** 🆕  
+✅ **Stage 3 validation integrated** 🆕  
 ✅ Block type system (17 types, 60+ aliases)  
 ✅ Exercise catalog (14 seed exercises)  
 ✅ Atomic workout commit procedure  
-✅ Comprehensive documentation  
-✅ Schema synchronized (lib_* naming)
+✅ Comprehensive documentation (600+ lines parser workflow, 900+ lines audit checklist)  
+✅ Schema synchronized (lib_* naming)  
+✅ View for validation status dashboard
 
 ### What's Missing
-⏳ Frontend UI  
-⏳ Real-time validation during parsing  
+⏳ Frontend UI (review page for validation results)  
+⏳ Batch data cleanup before production entry  
 ⏳ Video links for exercises  
 ⏳ Multi-language support beyond Hebrew/English  
 ⏳ Analytics views and dashboards  
