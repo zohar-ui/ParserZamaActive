@@ -1,5 +1,23 @@
 # Changelog - ZAMM Workout Parser
 
+## [1.1.0] - January 7, 2026
+
+### Optimizations
+
+#### ✅ Search Path Enhancement (Migration: 20260107120000)
+- **Added `SET search_path = zamm, public`** to all SQL functions
+- **Code Readability:** Removed need for `zamm.` prefix in function bodies
+- **Functions Updated:**
+  - `check_athlete_exists()` - Now uses `dim_athletes` instead of `zamm.dim_athletes`
+  - `check_equipment_exists()` - Cleaner table references
+  - `get_active_ruleset()` - Simplified queries
+  - `get_athlete_context()` - More readable joins
+  - `normalize_block_type()` - Streamlined logic
+  - `commit_full_workout_v3()` - All 5 table inserts now cleaner
+- **Impact:** Easier maintenance, better code readability, no functional changes
+
+---
+
 ## [1.0.0] - January 4-7, 2026
 
 ### Major Features Implemented
