@@ -1,0 +1,121 @@
+#!/bin/bash
+# ============================================
+# Claude AI Session Aliases
+# ============================================
+# Purpose: Quick context loading for different workflows
+# Usage: Source this file or add to .bashrc/.zshrc
+#
+# Installation:
+# echo 'source ~/.claude_aliases' >> ~/.bashrc  # or ~/.zshrc
+# source ~/.bashrc
+
+# ============================================
+# Admin Session - Full Context
+# ============================================
+# Loads: agents.md, DB status, TODO tasks
+alias cld-admin='claude "🚀 ADMIN SESSION INIT:
+1. Read agents.md (full context)
+2. Run PROTOCOL ZERO handshake
+3. Check database connectivity
+4. List active tasks from TODO.md
+5. Report system status"'
+
+# ============================================
+# Developer Session - Code Focus
+# ============================================
+# Loads: Architecture, migrations, no DB queries
+alias cld-dev='claude "💻 DEV SESSION INIT:
+1. Read ARCHITECTURE.md
+2. Review supabase/migrations/ structure
+3. Focus on code patterns and SQL functions
+4. Ready for implementation work"'
+
+# ============================================
+# Validator Session - Data Quality
+# ============================================
+# Loads: Validation system, test workflows
+alias cld-validate='claude "🔍 VALIDATION SESSION INIT:
+1. Read VALIDATION_SYSTEM_SUMMARY.md
+2. Review validation functions
+3. Check log_validation_reports
+4. Ready to test and debug validation"'
+
+# ============================================
+# Quick Tasks
+# ============================================
+
+# Check database health
+alias cld-db-status='claude "Quick task: Run PROTOCOL ZERO and report table counts"'
+
+# Update documentation
+alias cld-docs='claude "Review and update all .md files for accuracy with current schema"'
+
+# Run tests
+alias cld-test='claude "Execute all test scripts in /scripts/ and report results"'
+
+# Schema sync
+alias cld-schema='claude "Compare DB schema with agents.md and update if needed"'
+
+# ============================================
+# Power User Combos
+# ============================================
+
+# Full system check
+alias cld-healthcheck='claude "Full system health check:
+1. PROTOCOL ZERO
+2. Check all table counts
+3. Review validation reports
+4. Check for pending drafts
+5. Report any issues"'
+
+# Prepare for production
+alias cld-prod-ready='claude "Production readiness check:
+1. Verify data cleanup
+2. Test validation functions
+3. Check catalog completeness
+4. Generate readiness report"'
+
+# ============================================
+# Helper Functions
+# ============================================
+
+# Quick DB query via psql
+function cld-query() {
+    if [ -z "$1" ]; then
+        echo "Usage: cld-query 'SELECT * FROM zamm.lib_athletes LIMIT 5;'"
+        return 1
+    fi
+    PGPASSWORD="4vdO7rUINWkz061R" psql \
+        -h db.dtzcamerxuonoeujrgsu.supabase.co \
+        -U postgres \
+        -d postgres \
+        --pset=pager=off \
+        -c "$1"
+}
+
+# List all tables
+function cld-tables() {
+    cld-query "SELECT table_name FROM information_schema.tables WHERE table_schema = 'zamm' ORDER BY table_name;"
+}
+
+# Count all rows
+function cld-counts() {
+    echo "Running table counts..."
+    PGPASSWORD="4vdO7rUINWkz061R" psql \
+        -h db.dtzcamerxuonoeujrgsu.supabase.co \
+        -U postgres \
+        -d postgres \
+        --pset=pager=off \
+        -f scripts/check_all_tables_v2.sql
+}
+
+echo "✅ Claude AI aliases loaded!"
+echo "Available commands:"
+echo "  cld-admin        - Full admin session"
+echo "  cld-dev          - Developer session"
+echo "  cld-validate     - Validation session"
+echo "  cld-db-status    - Quick DB check"
+echo "  cld-healthcheck  - Full system check"
+echo "  cld-query 'SQL'  - Run SQL query"
+echo "  cld-tables       - List all tables"
+echo "  cld-counts       - Count all table rows"

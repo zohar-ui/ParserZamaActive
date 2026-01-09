@@ -1,0 +1,132 @@
+{
+  "workout_date": "2025-11-09",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 T1",
+  "status": "completed",
+  "warmup_objective": "Foundation & Control",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds: 10 PVC Thoracic Rotation, 8/8 Scapular CARs (8 forward / 8 backward), 8/8 DB Supine Serratus Punch (light 4-5kg)",
+            "rest": "30s between exercises"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "רק שאני אזכור גם איך התחלנו…."
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "B",
+          "prescription": {
+            "description": "3x20/20sec Isometric ER to wall (90°), 3x10/10 Banded Scapular Pulldown",
+            "rest": "30s between exercises"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "Landmine Press Half Kneeling: 3x8/8",
+            "target_sets": 3,
+            "target_reps": 8,
+            "target_rpe": "5.5-6",
+            "tempo": "3-0-2",
+            "rest": "1:30"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "כתף ימין (!?) כואבת בסט הראשון 5/10. יד ימין הסתדר. כתפיים בסדר. כאב ביד אחורית כתף שמאל בזמן הורדה. ואל דאגה, בסט השלישי הבנתי שאני לא סופר ותיקנתי. מוט ריק"
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "Dumbbell Romanian Deadlift: 3x8",
+            "target_sets": 3,
+            "target_reps": 8,
+            "target_rpe": "5.5-6",
+            "rest": "1:30"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "10 ק"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "E",
+          "prescription": {
+            "description": "One arm chest supported row: 3x10",
+            "target_sets": 3,
+            "target_reps": 10,
+            "target_rpe": 6,
+            "rest": "1:30"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "10 ק"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "Tall Kneeling Cable Pallof Press: 3x10/10",
+            "rest": "1:00"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "7.5 תנועה מוזרההה"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "G",
+          "prescription": {
+            "description": "DB Suitcase Carry: 3x20m/20m",
+            "rest": "1:00",
+            "notes": "start with left hand"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "התחלתי מ 12 ועברתי ל 18 בסט האחרון"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "H",
+          "prescription": {
+            "description": "Prone Low Trap Raise: 2x12",
+            "rest": "1:00",
+            "notes": "נא למצוא את המרחב בין הכתפיים שלא מייצר כאב"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "נתפס לי כמו שאתה רואה מתחת לשכמה שמאל תוך כדי הסט הראשון"
+          }
+        },
+        {
+          "block_code": "SS",
+          "block_label": "I",
+          "prescription": {
+            "description": "Bike/Row: 10 min"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "workout_date": "2025-08-24",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 A",
+  "status": "completed",
+  "notes": "Deadlift focus day with accessory work",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "10 min row @ 21 spm damper 5-7, Core work: Dead Bug, Side Plank, Curl-Up, Hip Hinge Drill"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "נזכרתי למה סיפרתי לך על דני, כי הוא אומר לעבוד בחתירה על 125 חיכוך"
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "B",
+          "prescription": {
+            "description": "2 Rounds: Band Lateral Walk, Banded Pulldown, Plank",
+            "target_rounds": 2,
+            "rest": "20-30 s between exercises"
+          },
+          "performed": {
+            "completed": true,
+            "rounds": 2
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "BB Dead Lift - Warm-up + Working sets",
+            "target_sets": 4,
+            "target_reps": 5,
+            "target_load": 100,
+            "load_unit": "kg",
+            "progression_notes": "Set 3-4 at 102.5 kg if RPE 7",
+            "rest": "2-3 min"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "סטים ראשונים היו מוזרים קצת, עליתי ל105 כי אין משקולות של 1.25, איבדתי פוקוס והרגשתי גב",
+            "warmup_sets": [
+              {"reps": 5, "load": 20, "load_unit": "kg"},
+              {"reps": 5, "load": 60, "load_unit": "kg"},
+              {"reps": 3, "load": 80, "load_unit": "kg"},
+              {"reps": 3, "load": 90, "load_unit": "kg"}
+            ],
+            "sets": [
+              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
+              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
+              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
+              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Barbell Deadlift",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 5,
+                "target_load": 100,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
+                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
+                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
+                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "D",
+          "prescription": {
+            "description": "BB Pause Deadlift: 85 kg × 5 × 3",
+            "target_sets": 3,
+            "target_reps": 5,
+            "target_load": 85,
+            "load_unit": "kg",
+            "rest": "1:30-2:00 min",
+            "notes": "Pause 2 s below knee"
+          },
+          "performed": {
+            "completed": true,
+            "sets": [
+              {"reps": 5, "load": 85, "load_unit": "kg"},
+              {"reps": 5, "load": 85, "load_unit": "kg"},
+              {"reps": 5, "load": 85, "load_unit": "kg"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Barbell Pause Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 5,
+                "target_load": 85,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 5, "load": 85, "load_unit": "kg"},
+                  {"reps": 5, "load": 85, "load_unit": "kg"},
+                  {"reps": 5, "load": 85, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "E",
+          "prescription": {
+            "description": "BB RDL: 80 kg × 8 × 3",
+            "target_sets": 3,
+            "target_reps": 8,
+            "target_load": 80,
+            "load_unit": "kg",
+            "tempo": "3-1-1 (3 s down, 1 s pause, controlled up)",
+            "rest": "90 s"
+          },
+          "performed": {
+            "completed": false,
+            "notes": "התחלתי להתעייף, איבדתי אחיזה בבטן, הרגשתי גב ועצרתי אחרי סט 6. כאב כפות ידיים",
+            "sets": [
+              {"reps": 8, "load": 80, "load_unit": "kg"},
+              {"reps": 8, "load": 80, "load_unit": "kg"},
+              {"reps": 8, "load": 80, "load_unit": "kg"},
+              {"reps": 8, "load": 80, "load_unit": "kg"},
+              {"reps": 8, "load": 80, "load_unit": "kg"},
+              {"reps": 8, "load": 80, "load_unit": "kg"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Barbell RDL",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 8,
+                "target_load": 80,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 8, "load": 80, "load_unit": "kg"},
+                  {"reps": 8, "load": 80, "load_unit": "kg"},
+                  {"reps": 8, "load": 80, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "DB Bulgarian Split Squat: 3×8/leg @ RPE 7",
+            "target_sets": 3,
+            "target_reps": 8,
+            "target_load": 17.5,
+            "load_unit": "kg",
+            "target_rpe": 7,
+            "rest": "60-90 s per leg"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "סט ראשון 17.5, קשה להתאזן, הורדתי ל15",
+            "sets": [
+              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "left"},
+              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "right"},
+              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
+              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"},
+              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
+              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "DB Bulgarian Split Squat",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 8,
+                "target_load": 17.5,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 8, "load": 15, "load_unit": "kg"},
+                  {"reps": 8, "load": 15, "load_unit": "kg"},
+                  {"reps": 8, "load": 15, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "G",
+          "prescription": {
+            "description": "Side Plank: 3×30-40 s/side"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "היה קשה אחרי כל האימון"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "H",
+          "prescription": {
+            "description": "DB Single Arm Suitcase Carry: 4×30-35 m/side",
+            "target_sets": 4,
+            "target_distance": 30,
+            "distance_unit": "m",
+            "target_load": 27.5,
+            "load_unit": "kg"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "נורא כאב בידיים, גם באחיזה וגם העור"
+          }
+        }
+      ]
+    }
+  ]
+}

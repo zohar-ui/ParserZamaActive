@@ -1,0 +1,209 @@
+{
+  "workout_date": "2025-08-17",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Lower Body Focus",
+  "status": "completed",
+  "notes": "Lower body strength with For Time conditioning chipper",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min treadmill jog, 2 rounds: Air Squats (tempo 3s down), Glute Bridges, Plank"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "B",
+          "prescription": {
+            "description": "Dumbbell Goblet Squat: 5×12 @ 14kg",
+            "target_sets": 5,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Dumbbell Goblet Squat",
+              "prescription": {
+                "target_sets": 5,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg",
+                "tempo": "3-1-1"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "BSS: 4×10/leg @ 2×14kg DBs",
+            "target_sets": 4,
+            "target_reps": 10,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "2-1-1"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Bulgarian Split Squat",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 10,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "Dumbbell Romanian Deadlift: 4×12 @ 2×14kg",
+            "target_sets": 4,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Dumbbell Romanian Deadlift",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "METCON",
+          "block_label": "E",
+          "block_type": "For Time",
+          "prescription": {
+            "description": "For Time: 50 DB Reverse Walking Lunges, 40 Burpees, 30 DB Deadlifts, 20 Push-ups, 400m Run",
+            "target_load": 14,
+            "load_unit": "kg"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "DB Reverse Walking Lunges",
+              "prescription": {
+                "target_reps": 50,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "reps": 50,
+                "load": 14,
+                "load_unit": "kg"
+              }
+            },
+            {
+              "exercise_name": "Burpees",
+              "prescription": {
+                "target_reps": 40
+              },
+              "performed": {
+                "reps": 40
+              }
+            },
+            {
+              "exercise_name": "DB Deadlifts",
+              "prescription": {
+                "target_reps": 30,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "reps": 30,
+                "load": 14,
+                "load_unit": "kg"
+              }
+            },
+            {
+              "exercise_name": "Push-ups",
+              "prescription": {
+                "target_reps": 20
+              },
+              "performed": {
+                "reps": 20
+              }
+            },
+            {
+              "exercise_name": "Run",
+              "prescription": {
+                "target_distance": 400,
+                "distance_unit": "m"
+              },
+              "performed": {
+                "distance": 400,
+                "distance_unit": "m"
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "CD",
+          "block_label": "F",
+          "prescription": {
+            "description": "Plank Hold: 3×1:00 with breathing control"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

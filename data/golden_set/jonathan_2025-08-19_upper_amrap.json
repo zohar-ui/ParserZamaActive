@@ -1,0 +1,201 @@
+{
+  "workout_date": "2025-08-19",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Upper Body Focus (Press + Pull)",
+  "status": "completed",
+  "notes": "Press and pull workout with AMRAP conditioning",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min treadmill jog, 2 rounds: push-ups, reverse flys, side planks"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "B",
+          "prescription": {
+            "description": "Single Arm DB Bench: 5×10/side @ 14kg",
+            "target_sets": 5,
+            "target_reps": 10,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true,
+            "sets": [
+              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
+              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
+              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
+              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
+              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Single Arm DB Bench Press",
+              "prescription": {
+                "target_sets": 5,
+                "target_reps": 10,
+                "target_load": 14,
+                "load_unit": "kg",
+                "tempo": "3-1-1"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"},
+                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "Single Arm DB Row: 4×12/side @ 14kg",
+            "target_sets": 4,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Single Arm DB Row",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "DB Z-Press: 4×12 @ 2×14kg",
+            "target_sets": 4,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "2-1-1"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "Difficult with 14kg, did with 10kg. Difficult to be straight"
+          },
+          "items": [
+            {
+              "exercise_name": "DB Z-Press",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 10, "load_unit": "kg"},
+                  {"reps": 12, "load": 10, "load_unit": "kg"},
+                  {"reps": 12, "load": 10, "load_unit": "kg"},
+                  {"reps": 12, "load": 10, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "METCON",
+          "block_label": "E",
+          "block_type": "AMRAP",
+          "prescription": {
+            "description": "As Many Rounds As Possible in 12 min: 10 DB Thrusters, 12 Burpees, 200m Run",
+            "time_cap": 12,
+            "time_cap_unit": "min",
+            "target_load": 14,
+            "load_unit": "kg"
+          },
+          "performed": {
+            "completed": true,
+            "rounds": 3,
+            "time": 12,
+            "time_unit": "min",
+            "notes": "Did with 10kg"
+          },
+          "items": [
+            {
+              "exercise_name": "DB Thrusters",
+              "prescription": {
+                "target_reps": 10,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "reps": 10,
+                "load": 10,
+                "load_unit": "kg"
+              }
+            },
+            {
+              "exercise_name": "Burpees",
+              "prescription": {
+                "target_reps": 12
+              },
+              "performed": {
+                "reps": 12
+              }
+            },
+            {
+              "exercise_name": "Run",
+              "prescription": {
+                "target_distance": 200,
+                "distance_unit": "m"
+              },
+              "performed": {
+                "distance": 200,
+                "distance_unit": "m"
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "CD",
+          "block_label": "F",
+          "prescription": {
+            "description": "Side Plank with Rotation: 3×10/side (light weight)"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

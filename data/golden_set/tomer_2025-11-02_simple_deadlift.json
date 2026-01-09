@@ -1,0 +1,143 @@
+{
+  "workout_date": "2025-11-02",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 T1 - Deadlift Technique",
+  "status": "completed",
+  "notes": "Simple deadlift-focused workout with technique emphasis",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "MOB",
+          "block_label": "A",
+          "prescription": {
+            "description": "Rolling and Release: Foam roll calves, Lacrosse ball plantar/hips, Quad smash"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "האם אפשר לעשות את הquad smash עם רולר?"
+          }
+        },
+        {
+          "block_code": "WU",
+          "block_label": "B",
+          "prescription": {
+            "description": "5 Min Row easy @ 18-20 spm, 2x PVC Hinge, Wall Ankle Drills, Hamstring Floss, Groiner, Squat to Stand"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "בwall ankle לא מצא פוזיציה נכונה, בsquat to stand התקשיתי לשמור עקב על רצפה, בחתירה אחרי 2 דקות הגעתי למומנטום נכון"
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "C",
+          "prescription": {
+            "description": "2x30s Glute Bridge, 2x8 McGill Curl Up, 2x5/5 Hip Airplane, 2x12 Cable Pulldown"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "cable: 27.5 kg"
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "DB Romanian Deadlift: 3×6 @ RPE 6",
+            "target_sets": 3,
+            "target_reps": 6,
+            "target_rpe": 6,
+            "rest": "1.5 min"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "DB Romanian Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 6,
+                "target_rpe": 6
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 6, "rpe": 6},
+                  {"reps": 6, "rpe": 6},
+                  {"reps": 6, "rpe": 6}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "E",
+          "prescription": {
+            "description": "BB Elevated Deadlift from rack: 3×5 @ RPE 6-7",
+            "target_sets": 3,
+            "target_reps": 5,
+            "target_rpe": "6-7",
+            "rest": "1.5 min",
+            "notes": "Warmup: empty bar x8, light x5, moderate x3"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "הרגשתי שחישבתי פה לא נכון את המשקלים, הורדתי חלק בסוף"
+          },
+          "items": [
+            {
+              "exercise_name": "BB Elevated Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 5,
+                "target_rpe": "6-7"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 5, "rpe": 7},
+                  {"reps": 5, "rpe": 6},
+                  {"reps": 5, "rpe": 6}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "Standing Cable Pallof Press: 3×10/10",
+            "target_sets": 3,
+            "target_reps": 10,
+            "rest": "45 sec",
+            "notes": "per side"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "האם הכוונה למשוך יד יד? להיכן? מרכז מסה?"
+          }
+        },
+        {
+          "block_code": "SKILL",
+          "block_label": "G",
+          "prescription": {
+            "description": "C2 Row: 6×200m @ 20-22 spm + 4 min pick drill",
+            "target_sets": 6,
+            "target_distance": 200,
+            "distance_unit": "m",
+            "target_spm": 21,
+            "rest": "60 s",
+            "notes": "Practice technique"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

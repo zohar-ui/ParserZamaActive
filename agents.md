@@ -6,6 +6,76 @@ This document defines how to work correctly on this specific project. Read this 
 
 ---
 
+## 🤖 AI AGENT ROLES & DIVISION OF LABOR
+
+### The Protocol: Know Your Role
+
+This project uses **two complementary AI tools**. Understanding their roles prevents inefficiency:
+
+#### GitHub Copilot (The Micro / "The Fast Coder")
+**Location:** Inside VS Code editor  
+**Role:** Code writing and completion within open files  
+**Permissions:** Read/write files, suggest code  
+**Cannot:** Execute terminal commands, run migrations, manage git
+
+**Use Copilot when:**
+- ✅ Writing SQL functions (auto-complete BEGIN...END)
+- ✅ Adding documentation comments to existing code
+- ✅ Refactoring variables/functions within a file
+- ✅ Generating TypeScript types from schemas
+- ✅ Writing test queries in open SQL file
+
+**Rule of thumb:** File open in front of you? → **Use Copilot**
+
+---
+
+#### Claude Code CLI (The Macro / "The Operator")
+**Location:** Terminal  
+**Role:** Autonomous execution agent  
+**Permissions:** Run commands, read/write files, execute SQL, manage system  
+**Cannot:** Edit files interactively like an IDE
+
+**Use Claude Code when:**
+- ✅ "Run the TODO.md tasks and report results"
+- ✅ "Check all table counts and identify issues"
+- ✅ "Execute migration and fix any errors"
+- ✅ "Explain the entire project architecture"
+- ✅ "Commit changes and push to git"
+- ✅ Multi-file operations (create migration + update docs + run tests)
+
+**Rule of thumb:** Need to execute commands or work across files? → **Use Claude Code**
+
+---
+
+### The Context Bridge: agents.md
+
+Both tools need project memory. **This file (agents.md) IS that memory.**
+
+**Problem:** Agents don't automatically remember previous sessions.  
+**Solution:** Load this file at session start.
+
+#### For Claude Code (Mandatory Init):
+```bash
+# ALWAYS run this first when starting Claude Code:
+claude "Read agents.md and DB_READINESS_REPORT.md to restore context. Then run PROTOCOL ZERO handshake."
+```
+
+This "loads" the project into Claude's memory:
+- Schema structure (27 tables)
+- Business rules (prescription vs performance)
+- Critical workflows (validation, commits)
+- Common pitfalls to avoid
+
+#### For GitHub Copilot:
+Create `.github/copilot-instructions.md` with:
+```
+You are an expert SQL agent working on ParserZamaActive.
+Your source of truth is agents.md.
+Before answering complex queries, read agents.md to understand architecture and rules.
+```
+
+---
+
 ## 🎯 IDENTITY & AUTHORITY
 
 **WHO YOU ARE:**
@@ -57,29 +127,51 @@ athlete_count | workout_count | active_ruleset
 ```
 
 ### 3. **Schema Awareness Check** (Critical!)
+**⚠️ RULE: NEVER assume table/column names. ALWAYS verify first!**
+
+#### Method 1: Use verification script (recommended)
+```bash
+# List all tables
+./scripts/verify_schema.sh
+
+# Check specific table structure
+./scripts/verify_schema.sh workout_main
+```
+
+#### Method 2: SQL query
 Load current table structures to ensure SQL accuracy:
 
 ```sql
--- Get critical table structures
+-- Get ALL table names in zamm schema
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'zamm' 
+ORDER BY table_name;
+
+-- Get structure of specific table
 SELECT 
-    table_name,
-    COUNT(*) as column_count,
-    string_agg(column_name || ':' || data_type, ', ' ORDER BY ordinal_position) as columns
+    column_name,
+    data_type,
+    is_nullable,
+    column_default
 FROM information_schema.columns
 WHERE table_schema = 'zamm' 
-  AND table_name IN (
-    'lib_athletes', 'workout_main', 'workout_sessions', 'workout_blocks', 
-    'workout_items', 'workout_item_set_results', 'lib_parser_rulesets',
-    'lib_exercise_catalog', 'lib_equipment_catalog', 'lib_block_types'
-  )
-GROUP BY table_name
-ORDER BY table_name;
+  AND table_name = 'workout_main'
+ORDER BY ordinal_position;
 ```
 
 **What to verify:**
-- ✅ All 10 critical tables exist (schema has 32 total)
-- ✅ Column counts match expectations
-- ✅ No unexpected schema changes
+- ✅ Table exists in zamm schema
+- ✅ Column names match exactly (case-sensitive!)
+- ✅ Data types are correct
+- ✅ No assumptions about plural/singular names
+- ✅ Check for prefixes: `lib_`, `stg_`, `log_`, `res_`, etc.
+
+**Common mistakes to avoid:**
+- ❌ Assuming `lib_athletes` when it's actually `dim_athletes`
+- ❌ Assuming `workout_items` without checking schema
+- ❌ Using outdated names from documentation
+- ❌ Guessing plural/singular forms
 
 **Store this output mentally** - you'll need it for writing correct SQL!
 
@@ -102,9 +194,9 @@ echo $SUPABASE_ACCESS_TOKEN
 ```
 
 **Where to set:**
-- **n8n:** Environment Variables section
 - **Cursor/VS Code:** `.env.local` file (already exists)
 - **CLI:** `npx supabase login` (stores in `~/.supabase/`)
+- **Scripts:** Can be exported in shell or stored in `.env`
 
 **Without this token:** Agent has no "key" to access the database. All operations will fail silently or with permission errors.
 
@@ -132,7 +224,7 @@ If a migration added/removed columns, the agent must know about it before writin
 ### Language & Frameworks
 * **Primary Language:** SQL (PostgreSQL/PL/pgSQL)
 * **Version Control:** Git/GitHub
-* **AI Integration:** n8n workflows (OpenAI/Claude/Gemini)
+* **AI Integration:** Direct API calls (OpenAI/Claude/Gemini)
 * **Scripting:** Bash shell scripts
 
 ### Key Components

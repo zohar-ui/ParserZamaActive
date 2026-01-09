@@ -1,0 +1,63 @@
+{
+  "workout_date": "2025-09-07",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 T1 - Test Workout",
+  "notes": "Manual golden set example",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min Walk / light Jog"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "B",
+          "prescription": {
+            "description": "3x5 Back Squat @ 100kg"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "Felt strong today"
+          },
+          "items": [
+            {
+              "exercise_name": "Back Squat",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 5,
+                "target_load": 100,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 5, "load": 100, "rpe": 7},
+                  {"reps": 5, "load": 100, "rpe": 7},
+                  {"reps": 5, "load": 100, "rpe": 7}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "CD",
+          "block_label": "C",
+          "prescription": {
+            "description": "10 min stretch"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

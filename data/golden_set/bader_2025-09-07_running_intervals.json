@@ -1,0 +1,141 @@
+{
+  "workout_date": "2025-09-07",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 T1",
+  "status": "completed",
+  "notes": "Running workout with warm-up, rehab, intervals, test, and cool-down",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min Walk / light Jog, 2 Rounds: ankle circles, hip openers, calf rocks, cat cow"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "אין מגבוליות"
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "B",
+          "prescription": {
+            "description": "Rehab Activations: calf raises, toe walks, glute bridge, dead bug"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Single-leg calf raises",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 12,
+                "tempo": "2 sec up / 3 sec down",
+                "notes": "per leg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "notes": "left"},
+                  {"reps": 12, "notes": "right"}
+                ]
+              }
+            },
+            {
+              "exercise_name": "Toe walks",
+              "prescription": {
+                "target_sets": 2,
+                "target_distance": 15,
+                "distance_unit": "m",
+                "notes": "light pressure on forefoot"
+              },
+              "performed": {
+                "sets": [
+                  {"distance": 15, "distance_unit": "m"},
+                  {"distance": 15, "distance_unit": "m"}
+                ]
+              }
+            },
+            {
+              "exercise_name": "Glute bridge hold",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration": 30,
+                "duration_unit": "sec",
+                "notes": "squeeze glutes, keep ribs down"
+              },
+              "performed": {
+                "sets": [
+                  {"duration": 30, "duration_unit": "sec"},
+                  {"duration": 30, "duration_unit": "sec"}
+                ]
+              }
+            },
+            {
+              "exercise_name": "Dead bug",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 8,
+                "notes": "per side, focus on lumbar control"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 8, "notes": "left"},
+                  {"reps": 8, "notes": "right"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "INTV",
+          "block_label": "C",
+          "prescription": {
+            "description": "5 x (400m easy run + 100m Walk)",
+            "target_rounds": 5,
+            "pace": "6:20 to 6:40 per km",
+            "breathing_cue": "3 steps inhale + 4 steps exhale",
+            "target_rpe": "4-5"
+          },
+          "performed": {
+            "completed": true,
+            "rounds": 5,
+            "notes": "הריצה הייתה בקצב טוב, אין כאבים ברגלים, בעיה בנשימה כבדה בסיבוב השלישי התאזנה קצת"
+          }
+        },
+        {
+          "block_code": "SKILL",
+          "block_label": "D",
+          "prescription": {
+            "description": "Weekly 1 km: Run 1 km continuous at easy steady pace",
+            "target_distance": 1,
+            "distance_unit": "km",
+            "notes": "Surface: outdoors or treadmill 1%, No sprint finish"
+          },
+          "performed": {
+            "completed": true,
+            "distance": 1,
+            "distance_unit": "km",
+            "notes": "Record time and perceived effort"
+          }
+        },
+        {
+          "block_code": "CD",
+          "block_label": "E",
+          "prescription": {
+            "description": "Slow walk 5 min, stretch calves/hamstrings/hip flexors 2 min each"
+          },
+          "performed": {
+            "completed": true,
+            "duration": 11,
+            "duration_unit": "min"
+          }
+        }
+      ]
+    }
+  ]
+}

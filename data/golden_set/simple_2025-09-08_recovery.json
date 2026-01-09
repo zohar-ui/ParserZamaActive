@@ -1,0 +1,42 @@
+{
+  "workout_date": "2025-09-08",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "REST DAY - Active Recovery",
+  "status": "completed",
+  "notes": "Short simple workout - active recovery",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "MOB",
+          "block_label": "A",
+          "prescription": {
+            "description": "15 min mobility and stretching"
+          },
+          "performed": {
+            "completed": true,
+            "duration": 15,
+            "duration_unit": "min"
+          }
+        },
+        {
+          "block_code": "SS",
+          "block_label": "B",
+          "prescription": {
+            "description": "20 min easy walk or bike",
+            "target_duration": 20,
+            "duration_unit": "min"
+          },
+          "performed": {
+            "completed": true,
+            "duration": 20,
+            "duration_unit": "min",
+            "notes": "Light walk outdoor"
+          }
+        }
+      ]
+    }
+  ]
+}

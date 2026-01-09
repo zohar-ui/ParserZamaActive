@@ -1,0 +1,83 @@
+{
+  "workout_date": "2025-06-21",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Workout",
+  "status": "completed",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "3 min light row to raise HR, then 8x30 sec On / 30 sec Off @ 20-22 SPM, build power slightly each rep"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "MOB",
+          "block_label": "B",
+          "prescription": {
+            "description": "3 rounds: 10 Frog Stretch (dynamic), 10 Hip Airplanes, 10 Cat-Cow"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "SKILL",
+          "block_label": "C",
+          "prescription": {
+            "description": "5 Rounds: 10 Arms, 10 Arms+Body, 10 Arms+Body+Half-Slide, 10 powerful strokes @ Rate 24, focus on leg drive & calm recovery, rest 60 sec",
+            "notes": "easy - its a skill not a workout - focus on being better!"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "INTV",
+          "block_label": "D",
+          "prescription": {
+            "description": "Row 1,000 m - single effort. Target rate 24-26 SPM. Open the first 200 m controlled, accelerate into sustainable pace",
+            "target_distance": 1000,
+            "distance_unit": "m",
+            "target_spm": "24-26",
+            "notes": "Record: Total time, Avg Split/500 m, Avg SPM, Overall RPE, any pain/fatigue notes"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "INTV",
+          "block_label": "E",
+          "prescription": {
+            "description": "3 min recovery, then 3x500 m",
+            "target_sets": 3,
+            "target_distance": 500,
+            "distance_unit": "m",
+            "rest": "1:30"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "3 rounds: 12 V-Ups, 15 Superman Raises, 20 KB Russian Twists (light), 30 Hollow Rocks, rest as needed"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

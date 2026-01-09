@@ -44,7 +44,7 @@ BEGIN
     ELSIF parsed_json->>'athlete_id' !~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
         RETURN QUERY SELECT FALSE, 'error', 'athlete_id', 'Invalid UUID format';
     ELSIF NOT EXISTS (
-        SELECT 1 FROM zamm.lib_athletes WHERE athlete_natural_id = (parsed_json->>'athlete_id')::UUID
+        SELECT 1 FROM zamm.lib_athletes WHERE athlete_id = (parsed_json->>'athlete_id')::UUID
     ) THEN
         RETURN QUERY SELECT FALSE, 'error', 'athlete_id', 'Athlete ID not found in lib_athletes table';
     END IF;

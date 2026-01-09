@@ -1,0 +1,107 @@
+{
+  "workout_date": "2025-06-01",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Workout",
+  "status": "completed",
+  "notes": "Warm-up, mobility, activations, and 20 min AMRAP",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "3 Rounds: 50 Single unders, 20 Air squat, 10 Push ups, 3-5 Pull ups, 400m run"
+          },
+          "performed": {
+            "completed": true,
+            "duration": 14.67,
+            "duration_unit": "min",
+            "notes": "14:40 - סיבוב ראשון היה יחסית מאתגר אחרי הרבה זמן שלא זזתי, הסיבובים השניים היו נוחים יותר"
+          }
+        },
+        {
+          "block_code": "MOB",
+          "block_label": "B",
+          "prescription": {
+            "description": "Mobility: Lower Back Foam roll, ITB Foam Roll, Posterior Shoulder Lacross Ball smash"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "C",
+          "prescription": {
+            "description": "Activations: Band Pull over Hold 3x20sec, 1 Leg Double Ktb Step up 3x5/5"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "METCON",
+          "block_label": "D",
+          "format": "AMRAP",
+          "prescription": {
+            "description": "20 min AMRAP: 30 Cal Row, 15 S2O 45/30KG, 400m run, 10 Burpee Over the bar, 35 DU",
+            "time_cap": 20,
+            "time_cap_unit": "min"
+          },
+          "performed": {
+            "completed": true,
+            "rounds": 2,
+            "notes": "עשיתי 2 סבבים מלאים ולא נשאר בסיבוב השלישי לעשות ריצה אז עשיתי 6 ברפיז",
+            "partial_round": {
+              "burpees": 6
+            }
+          },
+          "items": [
+            {
+              "exercise_name": "Row",
+              "prescription": {
+                "target_calories": 30
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Shoulder to Overhead",
+              "prescription": {
+                "target_reps": 15,
+                "target_load": 45,
+                "load_unit": "kg",
+                "notes": "45/30KG (male/female)"
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Run",
+              "prescription": {
+                "target_distance": 400,
+                "distance_unit": "m"
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Burpee Over the bar",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Double Unders",
+              "prescription": {
+                "target_reps": 35
+              },
+              "performed": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

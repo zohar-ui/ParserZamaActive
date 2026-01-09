@@ -1,0 +1,233 @@
+{
+  "workout_date": "2025-09-14",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Posterior Chain Rebuild",
+  "status": "completed",
+  "notes": "Complex mixed workout - Rebuild posterior chain strength and trunk control without provoking symptoms",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "2 min 90/90 Breathing, T-Spine Books, Hip Switch, Ankle work, Dead Bug, 4 min easy row"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "B",
+          "prescription": {
+            "description": "DL Block Pull (below knee): 4×5 @ 55 kg",
+            "target_sets": 4,
+            "target_reps": 5,
+            "target_load": 55,
+            "load_unit": "kg",
+            "target_rpe": "5-6",
+            "tempo": "3-1-1",
+            "rest": "2:00",
+            "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension"
+          },
+          "performed": {
+            "completed": true,
+            "warmup_sets": [
+              {"reps": 5, "load": 30, "load_unit": "kg"},
+              {"reps": 5, "load": 40, "load_unit": "kg"},
+              {"reps": 3, "load": 50, "load_unit": "kg"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Deadlift Block Pull",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 5,
+                "target_load": 55,
+                "load_unit": "kg",
+                "tempo": "3-1-1"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
+                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
+                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5},
+                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "C",
+          "prescription": {
+            "description": "DB Romanian Deadlift: 3×8 @ 2×12 kg",
+            "target_sets": 3,
+            "target_reps": 8,
+            "target_load": 12,
+            "load_unit": "kg",
+            "target_rpe": 6,
+            "tempo": "2-1-2",
+            "rest": "1:30",
+            "notes": "Stop before lumbar flexion, long hamstrings"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "DB Romanian Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 8,
+                "target_load": 12,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
+                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
+                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "D",
+          "prescription": {
+            "description": "BB Hip Thrust: 3×10 @ 40 kg",
+            "target_sets": 3,
+            "target_reps": 10,
+            "target_load": 40,
+            "load_unit": "kg",
+            "target_rpe": "6-7",
+            "tempo": "2-0-2",
+            "rest": "1:30",
+            "notes": "Chin tucked, ribs down, push through heels"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "BB Hip Thrust",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 10,
+                "target_load": 40,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7},
+                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 6},
+                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "E",
+          "prescription": {
+            "description": "One arm chest supported row: 3×12/12 @ 16 kg",
+            "target_sets": 3,
+            "target_reps": 12,
+            "target_load": 16,
+            "load_unit": "kg",
+            "target_rpe": 6,
+            "rest": "60-90s",
+            "notes": "Elbow to hip"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "נראה לי המשקל היה קצת מוגזם כי היה לי מאאאאוד קשה"
+          },
+          "items": [
+            {
+              "exercise_name": "One Arm Chest Supported Row",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 12,
+                "target_load": 16,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 16, "load_unit": "kg"},
+                  {"reps": 12, "load": 16, "load_unit": "kg"},
+                  {"reps": 12, "load": 16, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "Band Pallof Press: 3×10/10 (2s hold at full extension)",
+            "target_sets": 3,
+            "target_reps": 10,
+            "rest": "60s",
+            "notes": "no trunk rotation"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "G",
+          "prescription": {
+            "description": "Suitcase Carry: 3×30/30m @ 18-20 kg",
+            "target_sets": 3,
+            "target_distance": 30,
+            "distance_unit": "m",
+            "target_load": 19,
+            "load_unit": "kg",
+            "target_rpe": 6,
+            "rest": "60-90s",
+            "notes": "Tall posture, shorten if ankle unstable"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "SS",
+          "block_label": "H",
+          "prescription": {
+            "description": "10 min row @ 20-22 spm",
+            "target_duration": 10,
+            "duration_unit": "min",
+            "target_spm": 21
+          },
+          "performed": {
+            "completed": true,
+            "duration": 10,
+            "duration_unit": "min"
+          }
+        },
+        {
+          "block_code": "CD",
+          "block_label": "I",
+          "prescription": {
+            "description": "Left ankle rehab: Alphabet, Eversion/Inversion, Eccentric Calf Raise, Toe/Heel Walk"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

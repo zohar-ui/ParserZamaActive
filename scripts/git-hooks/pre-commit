@@ -1,0 +1,24 @@
+#!/bin/bash
+# ============================================
+# Git Pre-Commit Hook
+# ============================================
+# Purpose: Auto-update agents.md before every commit
+# Installation: 
+#   cp scripts/git-hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+
+echo "🔍 Running pre-commit checks..."
+
+# Check if agents.md is being committed
+if git diff --cached --name-only | grep -q "supabase/migrations"; then
+    echo "📊 Detected migration changes, updating schema reference..."
+    
+    # Run schema update
+    ./scripts/update_agents_md.sh
+    
+    echo "⚠️  Please review schema changes in agents.md and re-add if needed"
+    echo "   Run: git add agents.md"
+fi
+
+echo "✅ Pre-commit checks complete"
+exit 0

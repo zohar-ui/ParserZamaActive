@@ -1,0 +1,131 @@
+{
+  "workout_date": "2025-07-06",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1",
+  "status": "completed",
+  "notes": "Full workout with foam roll, warm-up, squats, conditioning, core, cooldown",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "MOB",
+          "block_label": "A",
+          "prescription": {
+            "description": "Foam Roll: Calves 60s/side, Glutes 60s/side, T-Spine sausage roll 60s"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "WU",
+          "block_label": "B",
+          "prescription": {
+            "description": "3 rounds: Row 200m, 6/6 Cossack Squat, 8 Mini-Band Glute Bridge, 10 Banded Good Morning, 5 Inchworm, 10 Dead Bugs"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "Back Squat: 2x3 @ 40-60%, 1x5 @ 65%, 5x5 @ 75% (T=2-1-X), Rest 120s. Then 3 Rounds: DB Reverse Lunge, DB Suitcase Deadlift"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "Set 1 - @40% = 40kg, 60% = 60kg. Set 2 - @65% = 65kg. Set 3 - @75% = 75kg"
+          },
+          "items": [
+            {
+              "exercise_name": "Back Squat",
+              "prescription": {
+                "target_sets": 5,
+                "target_reps": 5,
+                "target_percentage": 75,
+                "tempo": "2-1-X"
+              },
+              "performed": {
+                "warmup_sets": [
+                  {"reps": 3, "load": 40, "load_unit": "kg", "percentage": 40},
+                  {"reps": 3, "load": 60, "load_unit": "kg", "percentage": 60},
+                  {"reps": 5, "load": 65, "load_unit": "kg", "percentage": 65}
+                ],
+                "sets": [
+                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
+                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
+                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
+                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
+                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "METCON",
+          "block_label": "D",
+          "format": "EMOM",
+          "prescription": {
+            "description": "EMOM 8 min: 6 Burpee Over Bar, 6 Wall Ball 7kg",
+            "time_cap": 8,
+            "time_cap_unit": "min",
+            "goal": "under 35 sec"
+          },
+          "performed": {
+            "completed": true,
+            "rounds": 8,
+            "notes": "כל הסבבים מתחת ל35, הרוב 32-33. כל הברפיז קפיצה ב2 רגליים"
+          },
+          "items": [
+            {
+              "exercise_name": "Burpee Over Bar",
+              "prescription": {
+                "target_reps": 6
+              },
+              "performed": {
+                "reps": 6
+              }
+            },
+            {
+              "exercise_name": "Wall Ball",
+              "prescription": {
+                "target_reps": 6,
+                "target_load": 7,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "reps": 6,
+                "load": 7,
+                "load_unit": "kg"
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "E",
+          "prescription": {
+            "description": "Core: 3x12 Frog Reverse Hyper"
+          },
+          "performed": {
+            "completed": true
+          }
+        },
+        {
+          "block_code": "CD",
+          "block_label": "F",
+          "prescription": {
+            "description": "Cooldown: 3x Couch Stretch 60s/side"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

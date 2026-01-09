@@ -1,0 +1,139 @@
+{
+  "workout_date": "2025-11-02",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "W1 T1",
+  "status": "completed",
+  "notes": "Deadlift focus with technique work and rowing intervals",
+  "warmup_objective": "Neutral spine, brace 360 degrees, hinge from hips and stand tall",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "MOB",
+          "block_label": "A",
+          "prescription": {
+            "description": "Rolling and Release: 1x40s/side Foam roll calves, 1x30s/side Lacrosse ball plantar and hips, 1x30s Quad smash"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "האם אפשר לעשות את הquad smash עם רולר?"
+          }
+        },
+        {
+          "block_code": "WU",
+          "block_label": "B",
+          "prescription": {
+            "description": "5 Min C2 Row easy SPM 18-20, 2x10 PVC Dowel Hinge, 2x10/10 Wall Ankle Dorsiflexion, 1x10/10 Hamstring Floss, 1x8/8 BW Groiner with Reach, 1x8 BW Squat to Stand"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "wall ankle לא מצאתי פוזיציה נכונה, עומס על קרסול. בsquat to stand התקשיתי לשמור על הערב על הרצפה. בחתירה אחרי 2 דקות נכנסתי למומנטום"
+          }
+        },
+        {
+          "block_code": "ACT",
+          "block_label": "C",
+          "prescription": {
+            "description": "2x30s BW Glute Bridge hold (Rest 30s), 2x8 BW McGill Curl Up (Rest 45s), 2x5/5 BW Supported Hip Airplane (Rest 45s), 2x12 Cable Straight Arm Pulldown light (Rest 45s)"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "במacgill כמה שניות למעלה? בcable שמתי 27.5"
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "DB Romanian Deadlift: 3x6 RPE 6",
+            "target_sets": 3,
+            "target_reps": 6,
+            "target_rpe": 6,
+            "rest": "1.5 min"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "DB Romanian Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 6,
+                "target_rpe": 6
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 6, "rpe": 6},
+                  {"reps": 6, "rpe": 6},
+                  {"reps": 6, "rpe": 6}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "E",
+          "prescription": {
+            "description": "BB Elevated Deadlift from rack: 1x8 Empty bar, 1x5 Light, 1x3 Moderate. Then 3x5 RPE 6-7",
+            "target_sets": 3,
+            "target_reps": 5,
+            "target_rpe": "6-7",
+            "rest": "1.5 min"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "הרגשתי שחישבתי פה לא נכון את המשקלים, הורדתי חלק בסוף"
+          },
+          "items": [
+            {
+              "exercise_name": "BB Elevated Deadlift",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 5,
+                "target_rpe": "6-7"
+              },
+              "performed": {
+                "warmup_sets": [
+                  {"reps": 8, "notes": "empty bar technique"},
+                  {"reps": 5, "notes": "light"},
+                  {"reps": 3, "notes": "moderate"}
+                ],
+                "sets": [
+                  {"reps": 5, "rpe": 6},
+                  {"reps": 5, "rpe": 6},
+                  {"reps": 5, "rpe": 7}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "Standing Cable Pallof Press: 3x10/10",
+            "rest": "45 sec"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "האם הכוונה ב10/10 היא למשוך יד יד? להיכן? מרכז מסה? להוסיף התמגדות?"
+          }
+        },
+        {
+          "block_code": "SKILL",
+          "block_label": "G",
+          "prescription": {
+            "description": "C2 ROW: 6x200m SPM 20-22 (Rest 60s). Practice Technique. 4 MIN C2 Row pick drill"
+          },
+          "performed": {
+            "completed": true
+          }
+        }
+      ]
+    }
+  ]
+}

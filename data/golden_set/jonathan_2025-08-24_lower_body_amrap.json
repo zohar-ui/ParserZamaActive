@@ -1,0 +1,211 @@
+{
+  "workout_date": "2025-08-24",
+  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "title": "Lower Body Focus",
+  "status": "completed",
+  "notes": "Lower body strength with AMRAP conditioning",
+  "sessions": [
+    {
+      "session_code": "AM",
+      "session_time": "AM",
+      "blocks": [
+        {
+          "block_code": "WU",
+          "block_label": "A",
+          "prescription": {
+            "description": "5 min treadmill jog, 2 rounds: Air Squats (tempo 3s down), Glute Bridges, Plank"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "I started with 30 min walk at 5km/h and gradient 10"
+          }
+        },
+        {
+          "block_code": "STR",
+          "block_label": "B",
+          "prescription": {
+            "description": "Dumbbell Goblet Squat: 5×12 @ 14kg",
+            "target_sets": 5,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "I do all with 12.5 kilos",
+            "sets": [
+              {"reps": 12, "load": 12.5, "load_unit": "kg"},
+              {"reps": 12, "load": 12.5, "load_unit": "kg"},
+              {"reps": 12, "load": 12.5, "load_unit": "kg"},
+              {"reps": 12, "load": 12.5, "load_unit": "kg"},
+              {"reps": 12, "load": 12.5, "load_unit": "kg"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Dumbbell Goblet Squat",
+              "prescription": {
+                "target_sets": 5,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 12, "load": 12.5, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "C",
+          "prescription": {
+            "description": "BSS (Bulgarian Split Squat): 4×10/leg @ 2×14kg DBs",
+            "target_sets": 4,
+            "target_reps": 10,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "2-1-1"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "I do 2x 10 / legs with 12.5 kilos. I have a little pain in my leg",
+            "sets": [
+              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "left"},
+              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "right"},
+              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "left"},
+              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "right"}
+            ]
+          },
+          "items": [
+            {
+              "exercise_name": "Bulgarian Split Squat",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 10,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
+                  {"reps": 10, "load": 12.5, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "STR",
+          "block_label": "D",
+          "prescription": {
+            "description": "Dumbbell Romanian Deadlift: 4×12 @ 2×14kg",
+            "target_sets": 4,
+            "target_reps": 12,
+            "target_load": 14,
+            "load_unit": "kg",
+            "tempo": "3-1-1"
+          },
+          "performed": {
+            "completed": true
+          },
+          "items": [
+            {
+              "exercise_name": "Dumbbell Romanian Deadlift",
+              "prescription": {
+                "target_sets": 4,
+                "target_reps": 12,
+                "target_load": 14,
+                "load_unit": "kg"
+              },
+              "performed": {
+                "sets": [
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"},
+                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "METCON",
+          "block_label": "E",
+          "format": "AMRAP",
+          "prescription": {
+            "description": "15 min AMRAP: 8/8 DB Sumo DL High Pull (14-16kg), 10 Burpees over DBs, 200m Run",
+            "time_cap": 15,
+            "time_cap_unit": "min"
+          },
+          "performed": {
+            "completed": true,
+            "duration": 10,
+            "duration_unit": "min",
+            "rounds": 2,
+            "notes": "I do 10 min, 2 rounds in global of all"
+          },
+          "items": [
+            {
+              "exercise_name": "DB Sumo Deadlift High Pull",
+              "prescription": {
+                "target_reps": 8,
+                "target_load": 15,
+                "load_unit": "kg",
+                "notes": "per arm"
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Burpees over DBs",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {}
+            },
+            {
+              "exercise_name": "Run",
+              "prescription": {
+                "target_distance": 200,
+                "distance_unit": "m",
+                "notes": "treadmill"
+              },
+              "performed": {}
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "F",
+          "prescription": {
+            "description": "Glute Bridge March: 3×20 alternating reps"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "I do 3x14"
+          }
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "G",
+          "prescription": {
+            "description": "Hollow hold: 3×40s"
+          },
+          "performed": {
+            "completed": true,
+            "notes": "I do 3x30 seconds"
+          }
+        }
+      ]
+    }
+  ]
+}
