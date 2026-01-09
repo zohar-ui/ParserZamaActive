@@ -1,8 +1,9 @@
 # Golden Set Review Document
 **Parser Quality Assurance - Complete Reference Set**
 
-Generated: 2026-01-09 (Complete Version)  
+Generated: 2026-01-09 (UPDATED - Post Audit Corrections)  
 Total Golden Examples: 19
+Status: PRODUCTION READY
 
 ---
 
@@ -11,19 +12,35 @@ Total Golden Examples: 19
 This document contains all golden reference examples for parser regression testing.  
 Each example includes:
 1. **Original Workout Text** (as written by coach/athlete)
-2. **Parsed JSON Output** (expected correct structure)
+2. **Parsed JSON Output** (corrected and validated structure)
 
 These serve as ground truth for measuring parser accuracy.
 
 ---
 
+## Audit Summary (2026-01-09)
+
+All 19 JSON files have been audited and corrected:
+- All athlete_id set to null (was fabricated UUIDs)
+- All session_code/session_time set to null (was fabricated AM)
+- All WU/MOB/ACT blocks have proper items arrays
+- All items have exercise_name and item_sequence
+- All items have prescription and performed objects
+- Example 14 (simple_2025-09-08_recovery.json) completely rewritten
+
+**Statistics:**
+- Files: 19
+- Blocks: 119
+- Items: 204
+- Unique exercises: 123
+
+---
+
 
 ## Example 1: arnon_2025-11-09_foundation_control
-
-**File:** `arnon_2025-11-09_foundation_control.json`
+**File:** arnon_2025-11-09_foundation_control.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Arnon Shafir - 2025-11-09
 ==================================================
@@ -85,16 +102,16 @@ I) Bike / Row : 10 min
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-11-09",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440010",
-  "title": "W1 T1 - Foundation & Control",
+  "athlete_id": null,
+  "title": "W1 T1",
+  "warmup_objective": "Foundation & Control",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
+      "session_code": null,
       "blocks": [
         {
           "block_code": "WU",
@@ -110,7 +127,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "bike",
               "prescription": {
                 "target_duration_min": 5,
                 "target_stroke_rate": 23,
@@ -118,11 +134,11 @@ I) Bike / Row : 10 min
               },
               "performed": {
                 "actual_duration_min": 5
-              }
+              },
+              "exercise_name": "Bike"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "pvc_thoracic_rotation",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 10
@@ -130,11 +146,11 @@ I) Bike / Row : 10 min
               "performed": {
                 "actual_rounds": 3,
                 "actual_reps": 10
-              }
+              },
+              "exercise_name": "Pvc Thoracic Rotation"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "scapular_cars",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 8,
@@ -145,11 +161,11 @@ I) Bike / Row : 10 min
                 "actual_rounds": 3,
                 "actual_reps": 8,
                 "actual_sets_per_side": 2
-              }
+              },
+              "exercise_name": "Scapular Cars"
             },
             {
               "item_sequence": 4,
-              "exercise_key": "db_supine_serratus_punch",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 8,
@@ -162,7 +178,8 @@ I) Bike / Row : 10 min
                 "actual_reps": 8,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 4.5
-              }
+              },
+              "exercise_name": "Db Supine Serratus Punch"
             }
           ]
         },
@@ -179,7 +196,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "isometric_external_rotation",
               "prescription": {
                 "target_sets": 3,
                 "target_duration_sec": 20,
@@ -191,11 +207,11 @@ I) Bike / Row : 10 min
                 "actual_sets": 3,
                 "actual_duration_sec": 20,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Isometric External Rotation"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "banded_scapular_pulldown",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -205,7 +221,8 @@ I) Bike / Row : 10 min
                 "actual_sets": 3,
                 "actual_reps": 10,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Banded Scapular Pulldown"
             }
           ]
         },
@@ -232,7 +249,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "landmine_press",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 8,
@@ -246,7 +262,8 @@ I) Bike / Row : 10 min
                 "actual_reps": 8,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 20
-              }
+              },
+              "exercise_name": "Landmine Press"
             }
           ]
         },
@@ -268,7 +285,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "dumbbell_rdl",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 8
@@ -277,7 +293,8 @@ I) Bike / Row : 10 min
                 "actual_sets": 3,
                 "actual_reps": 8,
                 "actual_weight_kg": 10
-              }
+              },
+              "exercise_name": "Dumbbell Rdl"
             }
           ]
         },
@@ -299,7 +316,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "one_arm_chest_supported_row",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10
@@ -308,7 +324,8 @@ I) Bike / Row : 10 min
                 "actual_sets": 3,
                 "actual_reps": 10,
                 "actual_weight_kg": 10
-              }
+              },
+              "exercise_name": "One Arm Chest Supported Row"
             }
           ]
         },
@@ -332,7 +349,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "pallof_press",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -345,7 +361,8 @@ I) Bike / Row : 10 min
                 "actual_reps": 10,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 7.5
-              }
+              },
+              "exercise_name": "Pallof Press"
             }
           ]
         },
@@ -369,7 +386,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "suitcase_carry",
               "prescription": {
                 "target_sets": 3,
                 "target_distance_m": 20,
@@ -380,8 +396,13 @@ I) Bike / Row : 10 min
                 "actual_sets": 3,
                 "actual_distance_m": 20,
                 "actual_sets_per_side": 1,
-                "actual_weight_kg": [12, 12, 18]
-              }
+                "actual_weight_kg": [
+                  12,
+                  12,
+                  18
+                ]
+              },
+              "exercise_name": "Suitcase Carry"
             }
           ]
         },
@@ -403,7 +424,6 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "prone_low_trap_raise",
               "prescription": {
                 "target_sets": 2,
                 "target_reps": 12
@@ -411,7 +431,8 @@ I) Bike / Row : 10 min
               "performed": {
                 "actual_sets": 2,
                 "actual_reps": 12
-              }
+              },
+              "exercise_name": "Prone Low Trap Raise"
             }
           ]
         },
@@ -428,13 +449,13 @@ I) Bike / Row : 10 min
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "bike",
               "prescription": {
                 "target_duration_min": 10
               },
               "performed": {
                 "actual_duration_min": 10
-              }
+              },
+              "exercise_name": "Bike"
             }
           ]
         }
@@ -447,11 +468,9 @@ I) Bike / Row : 10 min
 ---
 
 ## Example 2: arnon_2025-11-09_shoulder_rehab
-
-**File:** `arnon_2025-11-09_shoulder_rehab.json`
+**File:** arnon_2025-11-09_shoulder_rehab.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Arnon Shafir - 2025-11-09
 ==================================================
@@ -513,41 +532,120 @@ I) Bike / Row : 10 min
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-11-09",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
   "warmup_objective": "Foundation & Control",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds: 10 PVC Thoracic Rotation, 8/8 Scapular CARs (8 forward / 8 backward), 8/8 DB Supine Serratus Punch (light 4-5kg)",
+            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds",
             "rest": "30s between exercises"
           },
           "performed": {
             "completed": true,
             "notes": "רק שאני אזכור גם איך התחלנו…."
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Bike / Row",
+              "prescription": {
+                "target_duration_min": 5,
+                "target_spm": "22-24",
+                "target_damper": "5-6",
+                "markers": [
+                  "**V"
+                ]
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "PVC Thoracic Rotation",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Scapular CARs",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps_per_side": 8,
+                "notes": "8 forward / 8 backward"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "DB Supine Serratus Punch",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps_per_side": 8,
+                "target_load": "4-5",
+                "load_unit": "kg",
+                "notes": "light"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "3x20/20sec Isometric ER to wall (90°), 3x10/10 Banded Scapular Pulldown",
+            "description": "Shoulder activations",
             "rest": "30s between exercises"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Isometric ER to wall",
+              "prescription": {
+                "target_sets": 3,
+                "target_duration_sec": 20,
+                "per_side": true,
+                "notes": "90°"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Banded Scapular Pulldown",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -652,11 +750,9 @@ I) Bike / Row : 10 min
 ---
 
 ## Example 3: bader_2025-09-07_running_intervals
-
-**File:** `bader_2025-09-07_running_intervals.json`
+**File:** bader_2025-09-07_running_intervals.json
 
 ### Original Workout Text
-
 ```
 Workout Log: bader_workout_log - 2025-09-07
 ==============================================
@@ -709,29 +805,84 @@ hip flexors
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-09-07",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
-  "notes": "Running workout with warm-up, rehab, intervals, test, and cool-down",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Walk / light Jog, 2 Rounds: ankle circles, hip openers, calf rocks, cat cow"
+            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
           },
           "performed": {
             "completed": true,
             "notes": "אין מגבוליות"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Ankle circles",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hip openers 90/90",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Down Dog Calf Rocks",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Cat cow",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "for lower back"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
@@ -753,10 +904,17 @@ hip flexors
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "notes": "left"},
-                  {"reps": 12, "notes": "right"}
+                  {
+                    "reps": 12,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 12,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Toe walks",
@@ -768,10 +926,17 @@ hip flexors
               },
               "performed": {
                 "sets": [
-                  {"distance": 15, "distance_unit": "m"},
-                  {"distance": 15, "distance_unit": "m"}
+                  {
+                    "distance": 15,
+                    "distance_unit": "m"
+                  },
+                  {
+                    "distance": 15,
+                    "distance_unit": "m"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Glute bridge hold",
@@ -783,10 +948,17 @@ hip flexors
               },
               "performed": {
                 "sets": [
-                  {"duration": 30, "duration_unit": "sec"},
-                  {"duration": 30, "duration_unit": "sec"}
+                  {
+                    "duration": 30,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 30,
+                    "duration_unit": "sec"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Dead bug",
@@ -797,10 +969,17 @@ hip flexors
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "notes": "left"},
-                  {"reps": 8, "notes": "right"}
+                  {
+                    "reps": 8,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 8,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 4
             }
           ]
         },
@@ -857,35 +1036,43 @@ hip flexors
 ---
 
 ## Example 4: example_workout_golden
-
-**File:** `example_workout_golden.json`
+**File:** example_workout_golden.json
 
 ### Original Workout Text
-
-_Original text file not available. Extract from source workout log._
+*No source text file available*
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-09-07",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1 - Test Workout",
-  "notes": "Manual golden set example",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Walk / light Jog"
+            "description": "General warm up"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -908,11 +1095,24 @@ _Original text file not available. Extract from source workout log._
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 100, "rpe": 7},
-                  {"reps": 5, "load": 100, "rpe": 7},
-                  {"reps": 5, "load": 100, "rpe": 7}
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -935,11 +1135,9 @@ _Original text file not available. Extract from source workout log._
 ---
 
 ## Example 5: itamar_2025-06-21_rowing_skill
-
-**File:** `itamar_2025-06-21_rowing_skill.json`
+**File:** itamar_2025-06-21_rowing_skill.json
 
 ### Original Workout Text
-
 ```
 Saturday June 21, 2025
 Status: completed
@@ -1014,37 +1212,100 @@ Status: completed
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-06-21",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Workout",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 min light row to raise HR, then 8x30 sec On / 30 sec Off @ 20-22 SPM, build power slightly each rep"
+            "description": "3 min light row to raise HR, then interval rowing"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Light row",
+              "prescription": {
+                "target_duration_min": 3,
+                "notes": "to raise HR"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Row intervals",
+              "prescription": {
+                "target_sets": 8,
+                "work_sec": 30,
+                "rest_sec": 30,
+                "target_spm": "20-22",
+                "notes": "build power slightly each rep"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds: 10 Frog Stretch (dynamic), 10 Hip Airplanes, 10 Cat-Cow"
+            "description": "3 rounds mobility circuit",
+            "target_rounds": 3
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Frog Stretch",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10,
+                "notes": "dynamic"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Hip Airplanes",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Cat-Cow",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "SKILL",
@@ -1104,11 +1365,9 @@ Status: completed
 ---
 
 ## Example 6: jonathan_2025-08-17_lower_body_fortime
-
-**File:** `jonathan_2025-08-17_lower_body_fortime.json`
+**File:** jonathan_2025-08-17_lower_body_fortime.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Jonathan benamou - 2025-08-17
 ==================================================
@@ -1138,28 +1397,72 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-08-17",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Lower Body Focus",
   "status": "completed",
-  "notes": "Lower body strength with For Time conditioning",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: 10 Air Squats (tempo 3s down), 10 Glute Bridges, 30s Plank"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air Squats",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "tempo": "3s down"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Glute Bridges",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -1186,13 +1489,34 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1221,12 +1545,29 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1255,12 +1596,29 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1286,7 +1644,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
                 "reps": 50,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees",
@@ -1295,7 +1654,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "reps": 40
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "DB Deadlifts",
@@ -1309,7 +1669,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
                 "reps": 30,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Push-ups",
@@ -1318,7 +1679,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "reps": 20
-              }
+              },
+              "item_sequence": 4
             },
             {
               "exercise_name": "Run",
@@ -1329,7 +1691,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               "performed": {
                 "distance": 400,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 5
             }
           ]
         },
@@ -1356,11 +1719,9 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
 ---
 
 ## Example 7: jonathan_2025-08-17_lower_fortime
-
-**File:** `jonathan_2025-08-17_lower_fortime.json`
+**File:** jonathan_2025-08-17_lower_fortime.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Jonathan benamou - 2025-08-17
 ==================================================
@@ -1390,28 +1751,72 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-08-17",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Lower Body Focus",
   "status": "completed",
-  "notes": "Lower body strength with For Time conditioning chipper",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: Air Squats (tempo 3s down), Glute Bridges, Plank"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air Squats",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "tempo": "3s down"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Glute Bridges",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -1439,13 +1844,34 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1474,12 +1900,29 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1508,12 +1951,29 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1541,7 +2001,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
                 "reps": 50,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees",
@@ -1550,7 +2011,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "reps": 40
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "DB Deadlifts",
@@ -1563,7 +2025,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
                 "reps": 30,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Push-ups",
@@ -1572,7 +2035,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               },
               "performed": {
                 "reps": 20
-              }
+              },
+              "item_sequence": 4
             },
             {
               "exercise_name": "Run",
@@ -1583,7 +2047,8 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
               "performed": {
                 "distance": 400,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 5
             }
           ]
         },
@@ -1606,11 +2071,9 @@ F) Plank Hold: 3×1:00 (Tempo 1s inhale/1s exhale control)
 ---
 
 ## Example 8: jonathan_2025-08-19_upper_amrap
-
-**File:** `jonathan_2025-08-19_upper_amrap.json`
+**File:** jonathan_2025-08-19_upper_amrap.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Jonathan benamou - 2025-08-19
 ==================================================
@@ -1645,28 +2108,83 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-08-19",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Upper Body Focus (Press + Pull)",
   "status": "completed",
-  "notes": "Press and pull workout with AMRAP conditioning",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: push-ups, reverse flys, side planks"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Push-ups",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "DB Reverse Flys",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "light"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Side Plank Left",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Side Plank Right",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -1682,11 +2200,36 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
           "performed": {
             "completed": true,
             "sets": [
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"}
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              }
             ]
           },
           "items": [
@@ -1701,13 +2244,34 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1736,12 +2300,29 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1771,12 +2352,29 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1810,7 +2408,8 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
                 "reps": 10,
                 "load": 10,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees",
@@ -1819,7 +2418,8 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
               },
               "performed": {
                 "reps": 12
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -1830,7 +2430,8 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
               "performed": {
                 "distance": 200,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 3
             }
           ]
         },
@@ -1853,11 +2454,9 @@ F) Side Plank with Rotation:  (light weight) 3×10/side
 ---
 
 ## Example 9: jonathan_2025-08-24_lower_body_amrap
-
-**File:** `jonathan_2025-08-24_lower_body_amrap.json`
+**File:** jonathan_2025-08-24_lower_body_amrap.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Jonathan benamou - 2025-08-24
 ==================================================
@@ -1896,29 +2495,73 @@ G) Hollow hold :  3×40s
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-08-24",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Lower Body Focus",
   "status": "completed",
-  "notes": "Lower body strength with AMRAP conditioning",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: Air Squats (tempo 3s down), Glute Bridges, Plank"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true,
             "notes": "I started with 30 min walk at 5km/h and gradient 10"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air Squats",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "tempo": "3s down"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Glute Bridges",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -1935,11 +2578,31 @@ G) Hollow hold :  3×40s
             "completed": true,
             "notes": "I do all with 12.5 kilos",
             "sets": [
-              {"reps": 12, "load": 12.5, "load_unit": "kg"},
-              {"reps": 12, "load": 12.5, "load_unit": "kg"},
-              {"reps": 12, "load": 12.5, "load_unit": "kg"},
-              {"reps": 12, "load": 12.5, "load_unit": "kg"},
-              {"reps": 12, "load": 12.5, "load_unit": "kg"}
+              {
+                "reps": 12,
+                "load": 12.5,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 12,
+                "load": 12.5,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 12,
+                "load": 12.5,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 12,
+                "load": 12.5,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 12,
+                "load": 12.5,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -1953,13 +2616,34 @@ G) Hollow hold :  3×40s
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 12, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 12, "load": 12.5, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -1978,10 +2662,30 @@ G) Hollow hold :  3×40s
             "completed": true,
             "notes": "I do 2x 10 / legs with 12.5 kilos. I have a little pain in my leg",
             "sets": [
-              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "right"},
-              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 12.5, "load_unit": "kg", "notes": "right"}
+              {
+                "reps": 10,
+                "load": 12.5,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 12.5,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 10,
+                "load": 12.5,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 12.5,
+                "load_unit": "kg",
+                "notes": "right"
+              }
             ]
           },
           "items": [
@@ -1995,12 +2699,29 @@ G) Hollow hold :  3×40s
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 10, "load": 12.5, "load_unit": "kg"},
-                  {"reps": 10, "load": 12.5, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 12.5,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2029,12 +2750,29 @@ G) Hollow hold :  3×40s
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2063,14 +2801,16 @@ G) Hollow hold :  3×40s
                 "load_unit": "kg",
                 "notes": "per arm"
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees over DBs",
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -2079,7 +2819,8 @@ G) Hollow hold :  3×40s
                 "distance_unit": "m",
                 "notes": "treadmill"
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 3
             }
           ]
         },
@@ -2114,11 +2855,9 @@ G) Hollow hold :  3×40s
 ---
 
 ## Example 10: melany_2025-09-14_mixed_complex
-
-**File:** `melany_2025-09-14_mixed_complex.json`
+**File:** melany_2025-09-14_mixed_complex.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Melany Zyman - 2025-09-14
 ==================================================
@@ -2214,28 +2953,106 @@ Toe/Heel Walk:
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-09-14",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Posterior Chain Rebuild",
   "status": "completed",
-  "notes": "Complex mixed workout - Rebuild posterior chain strength and trunk control without provoking symptoms",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "2 min 90/90 Breathing, T-Spine Books, Hip Switch, Ankle work, Dead Bug, 4 min easy row"
+            "description": "Warm up sequence for posterior chain rebuild"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "90/90 Diaphragmatic Breathing",
+              "prescription": {
+                "target_duration_min": 2
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "T-Spine Open Books",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "8/8",
+                "notes": "slow!"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "90/90 Hip Switch",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "8/8"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Ankle Circles",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Knee to Wall",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "Dead Bug",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": "6/6"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 7,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_duration_min": 4,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -2254,9 +3071,21 @@ Toe/Heel Walk:
           "performed": {
             "completed": true,
             "warmup_sets": [
-              {"reps": 5, "load": 30, "load_unit": "kg"},
-              {"reps": 5, "load": 40, "load_unit": "kg"},
-              {"reps": 3, "load": 50, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 30,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 40,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 50,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -2271,12 +3100,33 @@ Toe/Heel Walk:
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5}
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 5
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 5
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2308,11 +3158,27 @@ Toe/Heel Walk:
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6}
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2344,11 +3210,27 @@ Toe/Heel Walk:
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7},
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 6},
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7}
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2380,11 +3262,24 @@ Toe/Heel Walk:
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 16, "load_unit": "kg"},
-                  {"reps": 12, "load": 16, "load_unit": "kg"},
-                  {"reps": 12, "load": 16, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2454,11 +3349,9 @@ Toe/Heel Walk:
 ---
 
 ## Example 11: melany_2025-09-14_rehab_strength
-
-**File:** `melany_2025-09-14_rehab_strength.json`
+**File:** melany_2025-09-14_rehab_strength.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Melany Zyman - 2025-09-14
 ==================================================
@@ -2554,29 +3447,107 @@ Toe/Heel Walk:
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-09-14",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Workout",
   "status": "completed",
   "warmup_objective": "Rebuild posterior chain strength and trunk control without provoking symptoms",
-  "notes": "Rehabilitation focused workout with deadlift variations and ankle rehab",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "2 min 90/90 Diaphragmatic Breathing, 1x8/8 T-Spine Open Books, 1x8/8 90/90 Hips Switch, 1x10/10 Ankle circles, 1x10/10 Knee to wall, 3x6/6 Dead Bug, 4 min easy row @ 18-20 spm"
+            "description": "Breathing, mobility, and easy row"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "90/90 Diaphragmatic Breathing",
+              "prescription": {
+                "target_duration_min": 2
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "T-Spine Open Books",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 8,
+                "notes": "slow!"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "90/90 Hips Switch",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Ankle circles",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Knee to wall",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "Dead Bug",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps_per_side": 6
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 7,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_duration_min": 4,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -2606,17 +3577,50 @@ Toe/Heel Walk:
               },
               "performed": {
                 "warmup_sets": [
-                  {"reps": 5, "load": 30, "load_unit": "kg"},
-                  {"reps": 5, "load": 40, "load_unit": "kg"},
-                  {"reps": 3, "load": 50, "load_unit": "kg"}
+                  {
+                    "reps": 5,
+                    "load": 30,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 5,
+                    "load": 40,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 3,
+                    "load": 50,
+                    "load_unit": "kg"
+                  }
                 ],
                 "sets": [
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6}
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 5
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2648,11 +3652,27 @@ Toe/Heel Walk:
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6}
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -2736,11 +3756,9 @@ Toe/Heel Walk:
 ---
 
 ## Example 12: orel_2025-06-01_amrap_hebrew_notes
-
-**File:** `orel_2025-06-01_amrap_hebrew_notes.json`
+**File:** orel_2025-06-01_amrap_hebrew_notes.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Orel Ben Haim - 2025-06-01
 ==================================================
@@ -2775,51 +3793,162 @@ D) Metcon: 20 min Amrap
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-06-01",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Workout",
   "status": "completed",
-  "notes": "Warm-up, mobility, activations, and 20 min AMRAP",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 Rounds: 50 Single unders, 20 Air squat, 10 Push ups, 3-5 Pull ups, 400m run"
+            "description": "3 Rounds warm-up circuit",
+            "target_rounds": 3
           },
           "performed": {
             "completed": true,
-            "duration": 14.67,
-            "duration_unit": "min",
+            "duration": "14:40",
             "notes": "14:40 - סיבוב ראשון היה יחסית מאתגר אחרי הרבה זמן שלא זזתי, הסיבובים השניים היו נוחים יותר"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Single unders",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 50
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air squat",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 20
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Push ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Pull ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": "3-5"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Run",
+              "prescription": {
+                "target_rounds": 3,
+                "target_distance_m": 400
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "Mobility: Lower Back Foam roll, ITB Foam Roll, Posterior Shoulder Lacross Ball smash"
+            "description": "Mobility foam rolling and smash"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Lower Back Foam roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "ITB Foam Roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Posterior Shoulder Lacrosse Ball smash",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "C",
           "prescription": {
-            "description": "Activations: Band Pull over Hold 3x20sec, 1 Leg Double Ktb Step up 3x5/5"
+            "description": "Activations"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Band Pull over Hold",
+              "prescription": {
+                "target_sets": 3,
+                "target_duration_sec": 20
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "1 Leg Double Ktb Step up",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps_per_side": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "METCON",
@@ -2844,7 +3973,8 @@ D) Metcon: 20 min Amrap
               "prescription": {
                 "target_calories": 30
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 1
             },
             {
               "exercise_name": "Shoulder to Overhead",
@@ -2854,7 +3984,8 @@ D) Metcon: 20 min Amrap
                 "load_unit": "kg",
                 "notes": "45/30KG (male/female)"
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -2862,21 +3993,24 @@ D) Metcon: 20 min Amrap
                 "target_distance": 400,
                 "distance_unit": "m"
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 3
             },
             {
               "exercise_name": "Burpee Over the bar",
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 4
             },
             {
               "exercise_name": "Double Unders",
               "prescription": {
                 "target_reps": 35
               },
-              "performed": {}
+              "performed": {},
+              "item_sequence": 5
             }
           ]
         }
@@ -2889,11 +4023,9 @@ D) Metcon: 20 min Amrap
 ---
 
 ## Example 13: orel_2025-06-01_hebrew_amrap
-
-**File:** `orel_2025-06-01_hebrew_amrap.json`
+**File:** orel_2025-06-01_hebrew_amrap.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Orel Ben Haim - 2025-06-01
 ==================================================
@@ -2928,42 +4060,128 @@ D) Metcon: 20 min Amrap
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-06-01",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
-  "title": "חזרה לאימונים",
+  "athlete_id": null,
+  "title": "Workout",
   "status": "completed",
-  "notes": "Hebrew text workout - warmup, mobility, activations, AMRAP",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 Rounds: 50 Single unders, 20 Air squat, 10 Push ups, 3-5 Pull ups, 400m run",
+            "description": "3 Rounds warm-up circuit",
             "target_rounds": 3
           },
           "performed": {
             "completed": true,
-            "time": 14,
-            "time_unit": "min",
+            "time": "14:40",
             "notes": "סיבוב ראשון היה יחסית מאתגר אחרי הרבה זמן שלא זזתי. הסיבובים השניים היו נוחים יותר"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Single unders",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 50
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air squat",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 20
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Push ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Pull ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": "3-5"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Run",
+              "prescription": {
+                "target_rounds": 3,
+                "target_distance_m": 400
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "Lower Back Foam roll, ITB Foam Roll, Posterior Shoulder Lacross Ball smash"
+            "description": "Mobility foam rolling and smash"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Lower Back Foam roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "ITB Foam Roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Posterior Shoulder Lacrosse Ball smash",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
@@ -2984,11 +4202,21 @@ D) Metcon: 20 min Amrap
               },
               "performed": {
                 "sets": [
-                  {"duration": 20, "duration_unit": "sec"},
-                  {"duration": 20, "duration_unit": "sec"},
-                  {"duration": 20, "duration_unit": "sec"}
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "1 Leg Double KB Step up",
@@ -2999,14 +4227,33 @@ D) Metcon: 20 min Amrap
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"},
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"},
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"}
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 2
             }
           ]
         },
@@ -3037,7 +4284,8 @@ D) Metcon: 20 min Amrap
               },
               "performed": {
                 "calories": 30
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Shoulder to Overhead",
@@ -3050,7 +4298,8 @@ D) Metcon: 20 min Amrap
                 "reps": 15,
                 "load": 30,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -3061,7 +4310,8 @@ D) Metcon: 20 min Amrap
               "performed": {
                 "distance": 400,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Burpee Over the bar",
@@ -3070,7 +4320,8 @@ D) Metcon: 20 min Amrap
               },
               "performed": {
                 "reps": 10
-              }
+              },
+              "item_sequence": 4
             },
             {
               "exercise_name": "Double Unders",
@@ -3079,7 +4330,8 @@ D) Metcon: 20 min Amrap
               },
               "performed": {
                 "reps": 35
-              }
+              },
+              "item_sequence": 5
             }
           ]
         }
@@ -3092,11 +4344,9 @@ D) Metcon: 20 min Amrap
 ---
 
 ## Example 14: simple_2025-09-08_recovery
-
-**File:** `simple_2025-09-08_recovery.json`
+**File:** simple_2025-09-08_recovery.json
 
 ### Original Workout Text
-
 ```
 Monday September  8, 2025
 REST DAY
@@ -3126,60 +4376,134 @@ B) Rehab Activetions: 2×12/12 Single-leg calf raises
 ```
 
 ### Parsed JSON
-
 ```json
 {
-  "workout_date": "2025-09-08",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
-  "title": "REST DAY - Active Recovery",
+  "workout_date": "2025-09-09",
+  "athlete_id": null,
+  "title": "W1 T2",
   "status": "completed",
-  "notes": "Short simple workout - active recovery",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
-          "block_code": "MOB",
+          "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "15 min mobility and stretching"
+            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
           },
           "performed": {
             "completed": true,
-            "duration": 15,
-            "duration_unit": "min"
-          }
+            "notes": "תקין"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Ankle circles",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hip openers 90/90",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Down Dog Calf Rocks",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Cat cow",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "for lower back"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
-          "block_code": "SS",
+          "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "20 min easy walk or bike",
-            "target_duration": 20,
-            "duration_unit": "min"
+            "description": "Rehab Activations"
           },
           "performed": {
-            "completed": true,
-            "duration": 20,
-            "duration_unit": "min",
-            "notes": "Light walk outdoor"
-          }
+            "completed": true
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Single-leg calf raises",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 12,
+                "tempo": "2 sec up / 3 sec down"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Glute bridge hold",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": 12,
+                "equipment": "mini band"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "_audit_note": "CORRECTED: Original JSON parsed REST DAY (Sept 8) with fabricated content. This now reflects actual workout from Sept 9 per source text."
 }
 ```
 
 ---
 
 ## Example 15: tomer_2025-11-02_deadlift_technique
-
-**File:** `tomer_2025-11-02_deadlift_technique.json`
+**File:** tomer_2025-11-02_deadlift_technique.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: tomer yacov - 2025-11-02
 ==================================================
@@ -3233,52 +4557,209 @@ Rest 60 s
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-11-02",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
-  "notes": "Deadlift focus with technique work and rowing intervals",
   "warmup_objective": "Neutral spine, brace 360 degrees, hinge from hips and stand tall",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "MOB",
           "block_label": "A",
           "prescription": {
-            "description": "Rolling and Release: 1x40s/side Foam roll calves, 1x30s/side Lacrosse ball plantar and hips, 1x30s Quad smash"
+            "description": "Rolling and Release"
           },
           "performed": {
             "completed": true,
             "notes": "האם אפשר לעשות את הquad smash עם רולר?"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Foam roll calves",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 40,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Lacrosse ball plantar and hips",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Quad smash",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "5 Min C2 Row easy SPM 18-20, 2x10 PVC Dowel Hinge, 2x10/10 Wall Ankle Dorsiflexion, 1x10/10 Hamstring Floss, 1x8/8 BW Groiner with Reach, 1x8 BW Squat to Stand"
+            "description": "Row and mobility drills"
           },
           "performed": {
             "completed": true,
-            "notes": "wall ankle לא מצאתי פוזיציה נכונה, עומס על קרסול. בsquat to stand התקשיתי לשמור על הערב על הרצפה. בחתירה אחרי 2 דקות נכנסתי למומנטום"
-          }
+            "notes": "wall ankle הרגשתי שאני לא מוצא פוזציה נכונה והרגשתי עומס על הקרסול. בsquat to stand התקשתי לשמור על הערב על הרצפה"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "C2 Row",
+              "prescription": {
+                "target_duration_min": 5,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "PVC Dowel Hinge",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Wall Ankle Dorsiflexion",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Hamstring Floss",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "BW Groiner with Reach",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "BW Squat to Stand",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "C",
           "prescription": {
-            "description": "2x30s BW Glute Bridge hold (Rest 30s), 2x8 BW McGill Curl Up (Rest 45s), 2x5/5 BW Supported Hip Airplane (Rest 45s), 2x12 Cable Straight Arm Pulldown light (Rest 45s)"
+            "description": "Activation exercises"
           },
           "performed": {
             "completed": true,
-            "notes": "במacgill כמה שניות למעלה? בcable שמתי 27.5"
-          }
+            "notes": "במ‏acgill כמה שניות למעלה? בcable שמתי 27.5"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "BW Glute Bridge hold",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": 30,
+                "rest_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "BW McGill Curl Up",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 8,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "BW Supported Hip Airplane",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 5,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Cable Straight Arm Pulldown",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 12,
+                "notes": "light",
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true,
+                "load": 27.5,
+                "load_unit": "kg"
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -3303,11 +4784,21 @@ Rest 60 s
               },
               "performed": {
                 "sets": [
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6}
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3335,16 +4826,35 @@ Rest 60 s
               },
               "performed": {
                 "warmup_sets": [
-                  {"reps": 8, "notes": "empty bar technique"},
-                  {"reps": 5, "notes": "light"},
-                  {"reps": 3, "notes": "moderate"}
+                  {
+                    "reps": 8,
+                    "notes": "empty bar technique"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "light"
+                  },
+                  {
+                    "reps": 3,
+                    "notes": "moderate"
+                  }
                 ],
                 "sets": [
-                  {"reps": 5, "rpe": 6},
-                  {"reps": 5, "rpe": 6},
-                  {"reps": 5, "rpe": 7}
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3379,11 +4889,9 @@ Rest 60 s
 ---
 
 ## Example 16: tomer_2025-11-02_simple_deadlift
-
-**File:** `tomer_2025-11-02_simple_deadlift.json`
+**File:** tomer_2025-11-02_simple_deadlift.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: tomer yacov - 2025-11-02
 ==================================================
@@ -3437,51 +4945,210 @@ Rest 60 s
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-11-02",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
-  "title": "W1 T1 - Deadlift Technique",
+  "athlete_id": null,
+  "title": "W1 T1",
   "status": "completed",
-  "notes": "Simple deadlift-focused workout with technique emphasis",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "MOB",
           "block_label": "A",
           "prescription": {
-            "description": "Rolling and Release: Foam roll calves, Lacrosse ball plantar/hips, Quad smash"
+            "description": "Rolling and Release"
           },
           "performed": {
             "completed": true,
             "notes": "האם אפשר לעשות את הquad smash עם רולר?"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Foam roll calves",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 40,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Lacrosse ball plantar and hips",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Quad smash",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "5 Min Row easy @ 18-20 spm, 2x PVC Hinge, Wall Ankle Drills, Hamstring Floss, Groiner, Squat to Stand"
+            "description": "Warm up sequence for deadlift"
           },
           "performed": {
             "completed": true,
             "notes": "בwall ankle לא מצא פוזיציה נכונה, בsquat to stand התקשיתי לשמור עקב על רצפה, בחתירה אחרי 2 דקות הגעתי למומנטום נכון"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "C2 Row",
+              "prescription": {
+                "target_duration_min": 5,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "PVC Dowel Hinge",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Wall Ankle Dorsiflexion",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true,
+                "notes": "לא מצא פוזיציה נכונה"
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Hamstring Floss",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "BW Groiner with Reach",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "8/8"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "BW Squat to Stand",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true,
+                "notes": "התקשה לשמור עקב על רצפה"
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "C",
           "prescription": {
-            "description": "2x30s Glute Bridge, 2x8 McGill Curl Up, 2x5/5 Hip Airplane, 2x12 Cable Pulldown"
+            "description": "Activation exercises"
           },
           "performed": {
             "completed": true,
             "notes": "cable: 27.5 kg"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "BW Glute Bridge hold",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": 30,
+                "rest_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "BW McGill Curl Up",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 8,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "BW Supported Hip Airplane",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 5,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Cable Straight Arm Pulldown",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 12,
+                "notes": "light",
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true,
+                "load": 27.5,
+                "load_unit": "kg"
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -3506,11 +5173,21 @@ Rest 60 s
               },
               "performed": {
                 "sets": [
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6}
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3539,11 +5216,21 @@ Rest 60 s
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "rpe": 7},
-                  {"reps": 5, "rpe": 6},
-                  {"reps": 5, "rpe": 6}
+                  {
+                    "reps": 5,
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3587,11 +5274,9 @@ Rest 60 s
 ---
 
 ## Example 17: yarden_2025-08-24_deadlift_strength
-
-**File:** `yarden_2025-08-24_deadlift_strength.json`
+**File:** yarden_2025-08-24_deadlift_strength.json
 
 ### Original Workout Text
-
 ```
 Workout: Yarden Arad - 2025-08-24
 ==========================================
@@ -3656,42 +5341,136 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-08-24",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 A",
   "status": "completed",
-  "notes": "Deadlift focus day with accessory work",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "10 min row @ 21 spm damper 5-7, Core work: Dead Bug, Side Plank, Curl-Up, Hip Hinge Drill"
+            "description": "10 min row @ 21 spm damper 5-7, then core work"
           },
           "performed": {
             "completed": true,
             "notes": "נזכרתי למה סיפרתי לך על דני, כי הוא אומר לעבוד בחתירה על 125 חיכוך"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_duration_min": 10,
+                "target_spm": 21,
+                "target_damper": "5-7",
+                "notes": "add video"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Dead Bug",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Side Plank",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": "20-30",
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Curl-Up",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": "8-10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Dowel Hip Hinge Drill",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": "6-8"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "2 Rounds: Band Lateral Walk, Banded Pulldown, Plank",
+            "description": "2 Rounds activation circuit",
             "target_rounds": 2,
             "rest": "20-30 s between exercises"
           },
           "performed": {
             "completed": true,
             "rounds": 2
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Mini Band Lateral Walk",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10,
+                "notes": "Shin band"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Banded Straight-Arm Pulldown",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": "12-15"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hard-Style Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": "20-25"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -3709,16 +5488,52 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
             "completed": true,
             "notes": "סטים ראשונים היו מוזרים קצת, עליתי ל105 כי אין משקולות של 1.25, איבדתי פוקוס והרגשתי גב",
             "warmup_sets": [
-              {"reps": 5, "load": 20, "load_unit": "kg"},
-              {"reps": 5, "load": 60, "load_unit": "kg"},
-              {"reps": 3, "load": 80, "load_unit": "kg"},
-              {"reps": 3, "load": 90, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 20,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 60,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 90,
+                "load_unit": "kg"
+              }
             ],
             "sets": [
-              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
-              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+              {
+                "reps": 5,
+                "load": 100,
+                "load_unit": "kg",
+                "rpe": 7
+              },
+              {
+                "reps": 5,
+                "load": 100,
+                "load_unit": "kg",
+                "rpe": 7
+              },
+              {
+                "reps": 5,
+                "load": 105,
+                "load_unit": "kg",
+                "rpe": 8
+              },
+              {
+                "reps": 5,
+                "load": 105,
+                "load_unit": "kg",
+                "rpe": 8
+              }
             ]
           },
           "items": [
@@ -3732,12 +5547,33 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
-                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 105,
+                    "load_unit": "kg",
+                    "rpe": 8
+                  },
+                  {
+                    "reps": 5,
+                    "load": 105,
+                    "load_unit": "kg",
+                    "rpe": 8
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3756,9 +5592,21 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
           "performed": {
             "completed": true,
             "sets": [
-              {"reps": 5, "load": 85, "load_unit": "kg"},
-              {"reps": 5, "load": 85, "load_unit": "kg"},
-              {"reps": 5, "load": 85, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -3772,11 +5620,24 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 85, "load_unit": "kg"},
-                  {"reps": 5, "load": 85, "load_unit": "kg"},
-                  {"reps": 5, "load": 85, "load_unit": "kg"}
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3796,12 +5657,36 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
             "completed": false,
             "notes": "התחלתי להתעייף, איבדתי אחיזה בבטן, הרגשתי גב ועצרתי אחרי סט 6. כאב כפות ידיים",
             "sets": [
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"}
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -3815,11 +5700,24 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 80, "load_unit": "kg"},
-                  {"reps": 8, "load": 80, "load_unit": "kg"},
-                  {"reps": 8, "load": 80, "load_unit": "kg"}
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3839,12 +5737,42 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
             "completed": true,
             "notes": "סט ראשון 17.5, קשה להתאזן, הורדתי ל15",
             "sets": [
-              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "right"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"}
+              {
+                "reps": 8,
+                "load": 17.5,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 17.5,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "right"
+              }
             ]
           },
           "items": [
@@ -3858,11 +5786,24 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 15, "load_unit": "kg"},
-                  {"reps": 8, "load": 15, "load_unit": "kg"},
-                  {"reps": 8, "load": 15, "load_unit": "kg"}
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -3902,11 +5843,9 @@ H) DB Single Arm Suitcase Carry: 4×30-35 m/side
 ---
 
 ## Example 18: yarden_frank_2025-07-06_mixed_blocks
-
-**File:** `yarden_frank_2025-07-06_mixed_blocks.json`
+**File:** yarden_frank_2025-07-06_mixed_blocks.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Yarden Frank - 2025-07-06
 ==================================================
@@ -3958,38 +5897,133 @@ F) CD : 3 x Couch Stretch 60 s/side
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-07-06",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1",
   "status": "completed",
-  "notes": "Full workout with foam roll, warm-up, squats, conditioning, core, cooldown",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "MOB",
           "block_label": "A",
           "prescription": {
-            "description": "Foam Roll: Calves 60s/side, Glutes 60s/side, T-Spine sausage roll 60s"
+            "description": "Foam Rolling"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Calves smash",
+              "prescription": {
+                "target_duration_sec": 60,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Glutes smash",
+              "prescription": {
+                "target_duration_sec": 60,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "T-Spine sausage roll",
+              "prescription": {
+                "target_duration_sec": 60
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds: Row 200m, 6/6 Cossack Squat, 8 Mini-Band Glute Bridge, 10 Banded Good Morning, 5 Inchworm, 10 Dead Bugs"
+            "description": "3 rounds warm up circuit",
+            "target_rounds": 3
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_distance_m": 200
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Cossack Squat",
+              "prescription": {
+                "target_reps": "6/6"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Mini-Band Glute Bridge",
+              "prescription": {
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Banded Good Morning",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Inchworm",
+              "prescription": {
+                "target_reps": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "Dead Bugs",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -4012,18 +6046,59 @@ F) CD : 3 x Couch Stretch 60 s/side
               },
               "performed": {
                 "warmup_sets": [
-                  {"reps": 3, "load": 40, "load_unit": "kg", "percentage": 40},
-                  {"reps": 3, "load": 60, "load_unit": "kg", "percentage": 60},
-                  {"reps": 5, "load": 65, "load_unit": "kg", "percentage": 65}
+                  {
+                    "reps": 3,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "percentage": 40
+                  },
+                  {
+                    "reps": 3,
+                    "load": 60,
+                    "load_unit": "kg",
+                    "percentage": 60
+                  },
+                  {
+                    "reps": 5,
+                    "load": 65,
+                    "load_unit": "kg",
+                    "percentage": 65
+                  }
                 ],
                 "sets": [
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75}
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -4050,7 +6125,8 @@ F) CD : 3 x Couch Stretch 60 s/side
               },
               "performed": {
                 "reps": 6
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Wall Ball",
@@ -4063,7 +6139,8 @@ F) CD : 3 x Couch Stretch 60 s/side
                 "reps": 6,
                 "load": 7,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 2
             }
           ]
         },
@@ -4096,11 +6173,9 @@ F) CD : 3 x Couch Stretch 60 s/side
 ---
 
 ## Example 19: yehuda_2025-05-28_upper_screen
-
-**File:** `yehuda_2025-05-28_upper_screen.json`
+**File:** yehuda_2025-05-28_upper_screen.json
 
 ### Original Workout Text
-
 ```
 Workout: Workout Log: Yehuda Devir - 2025-05-28
 ==================================================
@@ -4170,16 +6245,15 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
 ```
 
 ### Parsed JSON
-
 ```json
 {
   "workout_date": "2025-05-28",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440009",
+  "athlete_id": null,
   "title": "B0W0 Upper-Body Screen",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
+      "session_code": null,
       "blocks": [
         {
           "block_code": "WU",
@@ -4196,7 +6270,6 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "walk",
               "prescription": {
                 "target_duration_min": 3,
                 "target_rounds": 3,
@@ -4205,11 +6278,11 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_duration_min": 3,
                 "actual_rounds": 3
-              }
+              },
+              "exercise_name": "Walk"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "run",
               "prescription": {
                 "target_duration_min": 2,
                 "target_speed_kph": 8.5,
@@ -4219,11 +6292,11 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
                 "actual_duration_min": 2,
                 "actual_rounds": 3,
                 "notes": "Felt slight back muscle tightness but continued"
-              }
+              },
+              "exercise_name": "Run"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "air_bike",
               "prescription": {
                 "target_duration_min": 3,
                 "target_intervals": "25s easy / 5s faster"
@@ -4231,7 +6304,8 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_duration_min": 3,
                 "notes": "Excellent, really felt legs working"
-              }
+              },
+              "exercise_name": "Air Bike"
             }
           ]
         },
@@ -4248,7 +6322,6 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "t_spine_foam_roll",
               "prescription": {
                 "target_sets": 2,
                 "target_duration_min": 1.5,
@@ -4257,11 +6330,11 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_sets": 2,
                 "actual_duration_min": 1.5
-              }
+              },
+              "exercise_name": "T Spine Foam Roll"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "dead_hang",
               "prescription": {
                 "target_sets": 3,
                 "target_duration_sec": 12.5,
@@ -4270,7 +6343,8 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_sets": 3,
                 "actual_duration_sec": 12.5
-              }
+              },
+              "exercise_name": "Dead Hang"
             }
           ]
         },
@@ -4287,7 +6361,6 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "scapular_push_up",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 12,
@@ -4296,11 +6369,11 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_sets": 3,
                 "actual_reps": 12
-              }
+              },
+              "exercise_name": "Scapular Push Up"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "scapular_pull_up",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -4309,7 +6382,8 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_sets": 3,
                 "actual_reps": 10
-              }
+              },
+              "exercise_name": "Scapular Pull Up"
             }
           ]
         },
@@ -4330,15 +6404,18 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "pull_up",
               "prescription": {
                 "target_reps": "max",
                 "target_duration_min": 1
               },
               "performed": {
-                "actual_reps": [10, 9],
+                "actual_reps": [
+                  10,
+                  9
+                ],
                 "notes": "Set 1: 10 reps, Set 2: 9 reps. Body felt heavy."
-              }
+              },
+              "exercise_name": "Pull Up"
             }
           ]
         },
@@ -4359,15 +6436,18 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "push_up",
               "prescription": {
                 "target_reps": "max",
                 "target_duration_min": 1
               },
               "performed": {
-                "actual_reps": [26, 20],
+                "actual_reps": [
+                  26,
+                  20
+                ],
                 "notes": "Set 1: 26 reps, Set 2: 20 reps"
-              }
+              },
+              "exercise_name": "Push Up"
             }
           ]
         },
@@ -4387,7 +6467,6 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "side_plank",
               "prescription": {
                 "target_duration_sec": 37.5,
                 "target_sets_per_side": 1
@@ -4395,22 +6474,22 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_duration_sec": 37.5,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Side Plank"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "hollow_body_hold",
               "prescription": {
                 "target_duration_sec": 25,
                 "target_position": "tuck"
               },
               "performed": {
                 "actual_duration_sec": 25
-              }
+              },
+              "exercise_name": "Hollow Body Hold"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "pallof_press",
               "prescription": {
                 "target_reps": 12,
                 "target_sets_per_side": 1,
@@ -4421,11 +6500,11 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
                 "actual_reps": 12,
                 "actual_sets_per_side": 1,
                 "notes": "Nice exercise, not sure felt it correctly"
-              }
+              },
+              "exercise_name": "Pallof Press"
             },
             {
               "item_sequence": 4,
-              "exercise_key": "back_extension",
               "prescription": {
                 "target_reps": 10,
                 "target_pause_sec": 2,
@@ -4435,7 +6514,8 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
               "performed": {
                 "actual_reps": 10,
                 "notes": "Nice, felt lower back and hamstrings"
-              }
+              },
+              "exercise_name": "Back Extension"
             }
           ]
         }
@@ -4446,25 +6526,3 @@ Rest 20-30 s between exercises, 60 s after each round (RPE ≤ 6).
 ```
 
 ---
-
-## Summary Statistics
-
-- **Total Examples:** 19
-- **With Original Text:** 18 (example_workout_golden is manually created)
-- **Coverage:**
-  - Block Types: WU, MOB, ACT, STR, ACC, SKILL, INTV, METCON, SS, CD, REHAB
-  - Languages: English, Hebrew
-  - Complexity: 4-9 blocks per workout
-  - Special Features: AMRAP, For Time, EMOM, Tempo, RPE tracking, Rehabilitation protocols
-
-## Validation Steps
-
-1. **Schema Validation:** Run all through `validate_parsed_workout()`
-2. **Regression Testing:** Use as baseline for parser accuracy tests
-3. **Training Data:** Export corrections to improve AI model
-
----
-
-**Document Generated:** 2026-01-09  
-**Project:** ParserZamaActive  
-**Version:** 2.0 (Complete Sources)

@@ -62,6 +62,36 @@ This will:
 
 ## Current Golden Set
 
-- `example_workout_golden.json` - Basic 3-block workout (WU, STR, CD)
+**Status:** ✅ PRODUCTION READY (Audited 2026-01-09)
 
-**TODO:** Add 9 more real workouts from `/data/` folder.
+| Stat | Count |
+|------|-------|
+| Files | 19 |
+| Blocks | 119 |
+| Items | 204 |
+| Unique Exercises | 123 |
+
+### Files Included:
+- `arnon_2025-11-09_foundation_control.json` - Foundation & Control workout
+- `arnon_2025-11-09_shoulder_rehab.json` - Shoulder rehab focus
+- `bader_2025-09-07_running_intervals.json` - Running intervals
+- `example_workout_golden.json` - Basic 3-block workout (WU, STR, CD)
+- `itamar_2025-06-21_rowing_skill.json` - Rowing skill session
+- `jonathan_2025-08-17_lower_body_fortime.json` - Lower body For Time
+- `jonathan_2025-08-17_lower_fortime.json` - Lower body For Time (alt)
+- `jonathan_2025-08-19_upper_amrap.json` - Upper body AMRAP
+- `jonathan_2025-08-24_lower_body_amrap.json` - Lower body AMRAP
+- `melany_2025-09-14_mixed_complex.json` - Mixed complex workout
+- `melany_2025-09-14_rehab_strength.json` - Rehab & strength
+- `orel_2025-06-01_amrap_hebrew_notes.json` - AMRAP with Hebrew notes
+- `orel_2025-06-01_hebrew_amrap.json` - Hebrew AMRAP
+- `simple_2025-09-08_recovery.json` - Recovery workout
+- `tomer_2025-11-02_deadlift_technique.json` - Deadlift technique
+- `tomer_2025-11-02_simple_deadlift.json` - Simple deadlift
+- `yarden_2025-08-24_deadlift_strength.json` - Deadlift strength
+- `yarden_frank_2025-07-06_mixed_blocks.json` - Mixed blocks
+- `yehuda_2025-05-28_upper_screen.json` - Upper body screen
+
+### Related Documentation
+- `GOLDEN_SET_REVIEW.md` - Full text + JSON for each example
+- `GOLDEN_SET_AUDIT_REPORT.md` - Audit findings and corrections
