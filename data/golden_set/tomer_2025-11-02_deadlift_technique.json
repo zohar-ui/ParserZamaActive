@@ -1,47 +1,205 @@
 {
   "workout_date": "2025-11-02",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
-  "notes": "Deadlift focus with technique work and rowing intervals",
   "warmup_objective": "Neutral spine, brace 360 degrees, hinge from hips and stand tall",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "MOB",
           "block_label": "A",
           "prescription": {
-            "description": "Rolling and Release: 1x40s/side Foam roll calves, 1x30s/side Lacrosse ball plantar and hips, 1x30s Quad smash"
+            "description": "Rolling and Release"
           },
           "performed": {
             "completed": true,
             "notes": "האם אפשר לעשות את הquad smash עם רולר?"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Foam roll calves",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 40,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Lacrosse ball plantar and hips",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Quad smash",
+              "prescription": {
+                "target_sets": 1,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "5 Min C2 Row easy SPM 18-20, 2x10 PVC Dowel Hinge, 2x10/10 Wall Ankle Dorsiflexion, 1x10/10 Hamstring Floss, 1x8/8 BW Groiner with Reach, 1x8 BW Squat to Stand"
+            "description": "Row and mobility drills"
           },
           "performed": {
             "completed": true,
-            "notes": "wall ankle לא מצאתי פוזיציה נכונה, עומס על קרסול. בsquat to stand התקשיתי לשמור על הערב על הרצפה. בחתירה אחרי 2 דקות נכנסתי למומנטום"
-          }
+            "notes": "wall ankle הרגשתי שאני לא מוצא פוזציה נכונה והרגשתי עומס על הקרסול. בsquat to stand התקשתי לשמור על הערב על הרצפה"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "C2 Row",
+              "prescription": {
+                "target_duration_min": 5,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "PVC Dowel Hinge",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Wall Ankle Dorsiflexion",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Hamstring Floss",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "BW Groiner with Reach",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps_per_side": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "BW Squat to Stand",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "C",
           "prescription": {
-            "description": "2x30s BW Glute Bridge hold (Rest 30s), 2x8 BW McGill Curl Up (Rest 45s), 2x5/5 BW Supported Hip Airplane (Rest 45s), 2x12 Cable Straight Arm Pulldown light (Rest 45s)"
+            "description": "Activation exercises"
           },
           "performed": {
             "completed": true,
-            "notes": "במacgill כמה שניות למעלה? בcable שמתי 27.5"
-          }
+            "notes": "במ‏acgill כמה שניות למעלה? בcable שמתי 27.5"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "BW Glute Bridge hold",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": 30,
+                "rest_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "BW McGill Curl Up",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 8,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "BW Supported Hip Airplane",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 5,
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Cable Straight Arm Pulldown",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": 12,
+                "notes": "light",
+                "rest_sec": 45
+              },
+              "performed": {
+                "completed": true,
+                "load": 27.5,
+                "load_unit": "kg"
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -66,11 +224,21 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6},
-                  {"reps": 6, "rpe": 6}
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 6,
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -98,16 +266,35 @@
               },
               "performed": {
                 "warmup_sets": [
-                  {"reps": 8, "notes": "empty bar technique"},
-                  {"reps": 5, "notes": "light"},
-                  {"reps": 3, "notes": "moderate"}
+                  {
+                    "reps": 8,
+                    "notes": "empty bar technique"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "light"
+                  },
+                  {
+                    "reps": 3,
+                    "notes": "moderate"
+                  }
                 ],
                 "sets": [
-                  {"reps": 5, "rpe": 6},
-                  {"reps": 5, "rpe": 6},
-                  {"reps": 5, "rpe": 7}
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },

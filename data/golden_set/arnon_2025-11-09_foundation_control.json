@@ -1,11 +1,12 @@
 {
   "workout_date": "2025-11-09",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440010",
-  "title": "W1 T1 - Foundation & Control",
+  "athlete_id": null,
+  "title": "W1 T1",
+  "warmup_objective": "Foundation & Control",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
+      "session_code": null,
       "blocks": [
         {
           "block_code": "WU",
@@ -21,7 +22,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "bike",
               "prescription": {
                 "target_duration_min": 5,
                 "target_stroke_rate": 23,
@@ -29,11 +29,11 @@
               },
               "performed": {
                 "actual_duration_min": 5
-              }
+              },
+              "exercise_name": "Bike"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "pvc_thoracic_rotation",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 10
@@ -41,11 +41,11 @@
               "performed": {
                 "actual_rounds": 3,
                 "actual_reps": 10
-              }
+              },
+              "exercise_name": "Pvc Thoracic Rotation"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "scapular_cars",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 8,
@@ -56,11 +56,11 @@
                 "actual_rounds": 3,
                 "actual_reps": 8,
                 "actual_sets_per_side": 2
-              }
+              },
+              "exercise_name": "Scapular Cars"
             },
             {
               "item_sequence": 4,
-              "exercise_key": "db_supine_serratus_punch",
               "prescription": {
                 "target_rounds": 3,
                 "target_reps": 8,
@@ -73,7 +73,8 @@
                 "actual_reps": 8,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 4.5
-              }
+              },
+              "exercise_name": "Db Supine Serratus Punch"
             }
           ]
         },
@@ -90,7 +91,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "isometric_external_rotation",
               "prescription": {
                 "target_sets": 3,
                 "target_duration_sec": 20,
@@ -102,11 +102,11 @@
                 "actual_sets": 3,
                 "actual_duration_sec": 20,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Isometric External Rotation"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "banded_scapular_pulldown",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -116,7 +116,8 @@
                 "actual_sets": 3,
                 "actual_reps": 10,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Banded Scapular Pulldown"
             }
           ]
         },
@@ -143,7 +144,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "landmine_press",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 8,
@@ -157,7 +157,8 @@
                 "actual_reps": 8,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 20
-              }
+              },
+              "exercise_name": "Landmine Press"
             }
           ]
         },
@@ -179,7 +180,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "dumbbell_rdl",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 8
@@ -188,7 +188,8 @@
                 "actual_sets": 3,
                 "actual_reps": 8,
                 "actual_weight_kg": 10
-              }
+              },
+              "exercise_name": "Dumbbell Rdl"
             }
           ]
         },
@@ -210,7 +211,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "one_arm_chest_supported_row",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10
@@ -219,7 +219,8 @@
                 "actual_sets": 3,
                 "actual_reps": 10,
                 "actual_weight_kg": 10
-              }
+              },
+              "exercise_name": "One Arm Chest Supported Row"
             }
           ]
         },
@@ -243,7 +244,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "pallof_press",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -256,7 +256,8 @@
                 "actual_reps": 10,
                 "actual_sets_per_side": 1,
                 "actual_weight_kg": 7.5
-              }
+              },
+              "exercise_name": "Pallof Press"
             }
           ]
         },
@@ -280,7 +281,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "suitcase_carry",
               "prescription": {
                 "target_sets": 3,
                 "target_distance_m": 20,
@@ -291,8 +291,13 @@
                 "actual_sets": 3,
                 "actual_distance_m": 20,
                 "actual_sets_per_side": 1,
-                "actual_weight_kg": [12, 12, 18]
-              }
+                "actual_weight_kg": [
+                  12,
+                  12,
+                  18
+                ]
+              },
+              "exercise_name": "Suitcase Carry"
             }
           ]
         },
@@ -314,7 +319,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "prone_low_trap_raise",
               "prescription": {
                 "target_sets": 2,
                 "target_reps": 12
@@ -322,7 +326,8 @@
               "performed": {
                 "actual_sets": 2,
                 "actual_reps": 12
-              }
+              },
+              "exercise_name": "Prone Low Trap Raise"
             }
           ]
         },
@@ -339,13 +344,13 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "bike",
               "prescription": {
                 "target_duration_min": 10
               },
               "performed": {
                 "actual_duration_min": 10
-              }
+              },
+              "exercise_name": "Bike"
             }
           ]
         }

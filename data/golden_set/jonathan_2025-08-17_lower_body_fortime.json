@@ -1,23 +1,68 @@
 {
   "workout_date": "2025-08-17",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Lower Body Focus",
   "status": "completed",
-  "notes": "Lower body strength with For Time conditioning",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: 10 Air Squats (tempo 3s down), 10 Glute Bridges, 30s Plank"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air Squats",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "tempo": "3s down"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Glute Bridges",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -44,13 +89,34 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -79,12 +145,29 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -113,12 +196,29 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -144,7 +244,8 @@
                 "reps": 50,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees",
@@ -153,7 +254,8 @@
               },
               "performed": {
                 "reps": 40
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "DB Deadlifts",
@@ -167,7 +269,8 @@
                 "reps": 30,
                 "load": 14,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Push-ups",
@@ -176,7 +279,8 @@
               },
               "performed": {
                 "reps": 20
-              }
+              },
+              "item_sequence": 4
             },
             {
               "exercise_name": "Run",
@@ -187,7 +291,8 @@
               "performed": {
                 "distance": 400,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 5
             }
           ]
         },

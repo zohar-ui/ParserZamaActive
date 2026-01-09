@@ -1,36 +1,94 @@
 {
   "workout_date": "2025-11-09",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
   "warmup_objective": "Foundation & Control",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds: 10 PVC Thoracic Rotation, 8/8 Scapular CARs (8 forward / 8 backward), 8/8 DB Supine Serratus Punch (light 4-5kg)",
+            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds",
             "rest": "30s between exercises"
           },
           "performed": {
             "completed": true,
             "notes": "רק שאני אזכור גם איך התחלנו…."
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Bike / Row",
+              "prescription": {
+                "target_duration_min": 5,
+                "target_spm": "22-24",
+                "target_damper": "5-6",
+                "markers": ["**V"]
+              },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "PVC Thoracic Rotation",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Scapular CARs",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps_per_side": 8,
+                "notes": "8 forward / 8 backward"
+              },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "DB Supine Serratus Punch",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps_per_side": 8,
+                "target_load": "4-5",
+                "load_unit": "kg",
+                "notes": "light"
+              },
+              "performed": { "completed": true }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "3x20/20sec Isometric ER to wall (90°), 3x10/10 Banded Scapular Pulldown",
+            "description": "Shoulder activations",
             "rest": "30s between exercises"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Isometric ER to wall",
+              "prescription": { "target_sets": 3, "target_duration_sec": 20, "per_side": true, "notes": "90°" },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Banded Scapular Pulldown",
+              "prescription": { "target_sets": 3, "target_reps_per_side": 10 },
+              "performed": { "completed": true }
+            }
+          ]
         },
         {
           "block_code": "STR",

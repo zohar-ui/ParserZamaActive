@@ -1,37 +1,124 @@
 {
   "workout_date": "2025-06-01",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
-  "title": "חזרה לאימונים",
+  "athlete_id": null,
+  "title": "Workout",
   "status": "completed",
-  "notes": "Hebrew text workout - warmup, mobility, activations, AMRAP",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 Rounds: 50 Single unders, 20 Air squat, 10 Push ups, 3-5 Pull ups, 400m run",
+            "description": "3 Rounds warm-up circuit",
             "target_rounds": 3
           },
           "performed": {
             "completed": true,
-            "time": 14,
-            "time_unit": "min",
+            "time": "14:40",
             "notes": "סיבוב ראשון היה יחסית מאתגר אחרי הרבה זמן שלא זזתי. הסיבובים השניים היו נוחים יותר"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Single unders",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 50
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Air squat",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 20
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Push ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Pull ups",
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": "3-5"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Run",
+              "prescription": {
+                "target_rounds": 3,
+                "target_distance_m": 400
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "Lower Back Foam roll, ITB Foam Roll, Posterior Shoulder Lacross Ball smash"
+            "description": "Mobility foam rolling and smash"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Lower Back Foam roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "ITB Foam Roll",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Posterior Shoulder Lacrosse Ball smash",
+              "prescription": {
+                "notes": "per source text"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
@@ -52,11 +139,21 @@
               },
               "performed": {
                 "sets": [
-                  {"duration": 20, "duration_unit": "sec"},
-                  {"duration": 20, "duration_unit": "sec"},
-                  {"duration": 20, "duration_unit": "sec"}
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 20,
+                    "duration_unit": "sec"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "1 Leg Double KB Step up",
@@ -67,14 +164,33 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"},
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"},
-                  {"reps": 5, "notes": "left"},
-                  {"reps": 5, "notes": "right"}
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 5,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 2
             }
           ]
         },
@@ -105,7 +221,8 @@
               },
               "performed": {
                 "calories": 30
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Shoulder to Overhead",
@@ -118,7 +235,8 @@
                 "reps": 15,
                 "load": 30,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -129,7 +247,8 @@
               "performed": {
                 "distance": 400,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Burpee Over the bar",
@@ -138,7 +257,8 @@
               },
               "performed": {
                 "reps": 10
-              }
+              },
+              "item_sequence": 4
             },
             {
               "exercise_name": "Double Unders",
@@ -147,7 +267,8 @@
               },
               "performed": {
                 "reps": 35
-              }
+              },
+              "item_sequence": 5
             }
           ]
         }

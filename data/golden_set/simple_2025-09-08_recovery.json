@@ -1,42 +1,82 @@
 {
-  "workout_date": "2025-09-08",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
-  "title": "REST DAY - Active Recovery",
+  "workout_date": "2025-09-09",
+  "athlete_id": null,
+  "title": "W1 T2",
   "status": "completed",
-  "notes": "Short simple workout - active recovery",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
-          "block_code": "MOB",
+          "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "15 min mobility and stretching"
+            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
           },
           "performed": {
             "completed": true,
-            "duration": 15,
-            "duration_unit": "min"
-          }
+            "notes": "תקין"
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": { "target_duration_min": 5 },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Ankle circles",
+              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hip openers 90/90",
+              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Down Dog Calf Rocks",
+              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Cat cow",
+              "prescription": { "target_rounds": 2, "target_reps": 10, "notes": "for lower back" },
+              "performed": { "completed": true }
+            }
+          ]
         },
         {
-          "block_code": "SS",
+          "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "20 min easy walk or bike",
-            "target_duration": 20,
-            "duration_unit": "min"
+            "description": "Rehab Activations"
           },
           "performed": {
-            "completed": true,
-            "duration": 20,
-            "duration_unit": "min",
-            "notes": "Light walk outdoor"
-          }
+            "completed": true
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Single-leg calf raises",
+              "prescription": { "target_sets": 2, "target_reps_per_side": 12, "tempo": "2 sec up / 3 sec down" },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Glute bridge hold",
+              "prescription": { "target_sets": 2, "target_duration_sec": 12, "equipment": "mini band" },
+              "performed": { "completed": true }
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "_audit_note": "CORRECTED: Original JSON parsed REST DAY (Sept 8) with fabricated content. This now reflects actual workout from Sept 9 per source text."
 }

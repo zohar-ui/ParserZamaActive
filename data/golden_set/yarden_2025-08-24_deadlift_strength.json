@@ -1,37 +1,132 @@
 {
   "workout_date": "2025-08-24",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 A",
   "status": "completed",
-  "notes": "Deadlift focus day with accessory work",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "10 min row @ 21 spm damper 5-7, Core work: Dead Bug, Side Plank, Curl-Up, Hip Hinge Drill"
+            "description": "10 min row @ 21 spm damper 5-7, then core work"
           },
           "performed": {
             "completed": true,
             "notes": "נזכרתי למה סיפרתי לך על דני, כי הוא אומר לעבוד בחתירה על 125 חיכוך"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_duration_min": 10,
+                "target_spm": 21,
+                "target_damper": "5-7",
+                "notes": "add video"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Dead Bug",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Side Plank",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": "20-30",
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Curl-Up",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": "8-10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Dowel Hip Hinge Drill",
+              "prescription": {
+                "target_sets": 2,
+                "target_reps": "6-8"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
           "block_label": "B",
           "prescription": {
-            "description": "2 Rounds: Band Lateral Walk, Banded Pulldown, Plank",
+            "description": "2 Rounds activation circuit",
             "target_rounds": 2,
             "rest": "20-30 s between exercises"
           },
           "performed": {
             "completed": true,
             "rounds": 2
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Mini Band Lateral Walk",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10,
+                "notes": "Shin band"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Banded Straight-Arm Pulldown",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": "12-15"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hard-Style Plank",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": "20-25"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -49,16 +144,52 @@
             "completed": true,
             "notes": "סטים ראשונים היו מוזרים קצת, עליתי ל105 כי אין משקולות של 1.25, איבדתי פוקוס והרגשתי גב",
             "warmup_sets": [
-              {"reps": 5, "load": 20, "load_unit": "kg"},
-              {"reps": 5, "load": 60, "load_unit": "kg"},
-              {"reps": 3, "load": 80, "load_unit": "kg"},
-              {"reps": 3, "load": 90, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 20,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 60,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 90,
+                "load_unit": "kg"
+              }
             ],
             "sets": [
-              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-              {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
-              {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+              {
+                "reps": 5,
+                "load": 100,
+                "load_unit": "kg",
+                "rpe": 7
+              },
+              {
+                "reps": 5,
+                "load": 100,
+                "load_unit": "kg",
+                "rpe": 7
+              },
+              {
+                "reps": 5,
+                "load": 105,
+                "load_unit": "kg",
+                "rpe": 8
+              },
+              {
+                "reps": 5,
+                "load": 105,
+                "load_unit": "kg",
+                "rpe": 8
+              }
             ]
           },
           "items": [
@@ -72,12 +203,33 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-                  {"reps": 5, "load": 100, "load_unit": "kg", "rpe": 7},
-                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8},
-                  {"reps": 5, "load": 105, "load_unit": "kg", "rpe": 8}
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 105,
+                    "load_unit": "kg",
+                    "rpe": 8
+                  },
+                  {
+                    "reps": 5,
+                    "load": 105,
+                    "load_unit": "kg",
+                    "rpe": 8
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -96,9 +248,21 @@
           "performed": {
             "completed": true,
             "sets": [
-              {"reps": 5, "load": 85, "load_unit": "kg"},
-              {"reps": 5, "load": 85, "load_unit": "kg"},
-              {"reps": 5, "load": 85, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 85,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -112,11 +276,24 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 85, "load_unit": "kg"},
-                  {"reps": 5, "load": 85, "load_unit": "kg"},
-                  {"reps": 5, "load": 85, "load_unit": "kg"}
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 5,
+                    "load": 85,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -136,12 +313,36 @@
             "completed": false,
             "notes": "התחלתי להתעייף, איבדתי אחיזה בבטן, הרגשתי גב ועצרתי אחרי סט 6. כאב כפות ידיים",
             "sets": [
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"},
-              {"reps": 8, "load": 80, "load_unit": "kg"}
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 8,
+                "load": 80,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -155,11 +356,24 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 80, "load_unit": "kg"},
-                  {"reps": 8, "load": 80, "load_unit": "kg"},
-                  {"reps": 8, "load": 80, "load_unit": "kg"}
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 80,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -179,12 +393,42 @@
             "completed": true,
             "notes": "סט ראשון 17.5, קשה להתאזן, הורדתי ל15",
             "sets": [
-              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 17.5, "load_unit": "kg", "notes": "right"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "left"},
-              {"reps": 8, "load": 15, "load_unit": "kg", "notes": "right"}
+              {
+                "reps": 8,
+                "load": 17.5,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 17.5,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 8,
+                "load": 15,
+                "load_unit": "kg",
+                "notes": "right"
+              }
             ]
           },
           "items": [
@@ -198,11 +442,24 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 15, "load_unit": "kg"},
-                  {"reps": 8, "load": 15, "load_unit": "kg"},
-                  {"reps": 8, "load": 15, "load_unit": "kg"}
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 8,
+                    "load": 15,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },

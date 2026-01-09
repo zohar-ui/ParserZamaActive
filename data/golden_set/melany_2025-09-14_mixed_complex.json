@@ -1,23 +1,102 @@
 {
   "workout_date": "2025-09-14",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Posterior Chain Rebuild",
   "status": "completed",
-  "notes": "Complex mixed workout - Rebuild posterior chain strength and trunk control without provoking symptoms",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "2 min 90/90 Breathing, T-Spine Books, Hip Switch, Ankle work, Dead Bug, 4 min easy row"
+            "description": "Warm up sequence for posterior chain rebuild"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "90/90 Diaphragmatic Breathing",
+              "prescription": {
+                "target_duration_min": 2
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "T-Spine Open Books",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "8/8",
+                "notes": "slow!"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "90/90 Hip Switch",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "8/8"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Ankle Circles",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Knee to Wall",
+              "prescription": {
+                "target_sets": 1,
+                "target_reps": "10/10"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "Dead Bug",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": "6/6"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 7,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_duration_min": 4,
+                "target_spm": "18-20",
+                "notes": "easy"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -36,9 +115,21 @@
           "performed": {
             "completed": true,
             "warmup_sets": [
-              {"reps": 5, "load": 30, "load_unit": "kg"},
-              {"reps": 5, "load": 40, "load_unit": "kg"},
-              {"reps": 3, "load": 50, "load_unit": "kg"}
+              {
+                "reps": 5,
+                "load": 30,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 5,
+                "load": 40,
+                "load_unit": "kg"
+              },
+              {
+                "reps": 3,
+                "load": 50,
+                "load_unit": "kg"
+              }
             ]
           },
           "items": [
@@ -53,12 +144,33 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 6},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5},
-                  {"reps": 5, "load": 55, "load_unit": "kg", "rpe": 5}
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 5
+                  },
+                  {
+                    "reps": 5,
+                    "load": 55,
+                    "load_unit": "kg",
+                    "rpe": 5
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -90,11 +202,27 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6},
-                  {"reps": 8, "load": 12, "load_unit": "kg", "rpe": 6}
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 8,
+                    "load": 12,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -126,11 +254,27 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7},
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 6},
-                  {"reps": 10, "load": 40, "load_unit": "kg", "rpe": 7}
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 6
+                  },
+                  {
+                    "reps": 10,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -162,11 +306,24 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 16, "load_unit": "kg"},
-                  {"reps": 12, "load": 16, "load_unit": "kg"},
-                  {"reps": 12, "load": 16, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 16,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },

@@ -1,23 +1,79 @@
 {
   "workout_date": "2025-08-19",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Upper Body Focus (Press + Pull)",
   "status": "completed",
-  "notes": "Press and pull workout with AMRAP conditioning",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min treadmill jog, 2 rounds: push-ups, reverse flys, side planks"
+            "description": "5 min treadmill jog, then 2 rounds of activation"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Treadmill jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Push-ups",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "DB Reverse Flys",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "light"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Side Plank Left",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Side Plank Right",
+              "prescription": {
+                "target_rounds": 2,
+                "target_duration_sec": 30
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -33,11 +89,36 @@
           "performed": {
             "completed": true,
             "sets": [
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "right"},
-              {"reps": 10, "load": 14, "load_unit": "kg", "notes": "left"}
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "right"
+              },
+              {
+                "reps": 10,
+                "load": 14,
+                "load_unit": "kg",
+                "notes": "left"
+              }
             ]
           },
           "items": [
@@ -52,13 +133,34 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"},
-                  {"reps": 10, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 10,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -87,12 +189,29 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"},
-                  {"reps": 12, "load": 14, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 14,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -122,12 +241,29 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"},
-                  {"reps": 12, "load": 10, "load_unit": "kg"}
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  },
+                  {
+                    "reps": 12,
+                    "load": 10,
+                    "load_unit": "kg"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -161,7 +297,8 @@
                 "reps": 10,
                 "load": 10,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Burpees",
@@ -170,7 +307,8 @@
               },
               "performed": {
                 "reps": 12
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Run",
@@ -181,7 +319,8 @@
               "performed": {
                 "distance": 200,
                 "distance_unit": "m"
-              }
+              },
+              "item_sequence": 3
             }
           ]
         },

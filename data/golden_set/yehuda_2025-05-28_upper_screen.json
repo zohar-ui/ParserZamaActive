@@ -1,11 +1,11 @@
 {
   "workout_date": "2025-05-28",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440009",
+  "athlete_id": null,
   "title": "B0W0 Upper-Body Screen",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
+      "session_code": null,
       "blocks": [
         {
           "block_code": "WU",
@@ -22,7 +22,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "walk",
               "prescription": {
                 "target_duration_min": 3,
                 "target_rounds": 3,
@@ -31,11 +30,11 @@
               "performed": {
                 "actual_duration_min": 3,
                 "actual_rounds": 3
-              }
+              },
+              "exercise_name": "Walk"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "run",
               "prescription": {
                 "target_duration_min": 2,
                 "target_speed_kph": 8.5,
@@ -45,11 +44,11 @@
                 "actual_duration_min": 2,
                 "actual_rounds": 3,
                 "notes": "Felt slight back muscle tightness but continued"
-              }
+              },
+              "exercise_name": "Run"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "air_bike",
               "prescription": {
                 "target_duration_min": 3,
                 "target_intervals": "25s easy / 5s faster"
@@ -57,7 +56,8 @@
               "performed": {
                 "actual_duration_min": 3,
                 "notes": "Excellent, really felt legs working"
-              }
+              },
+              "exercise_name": "Air Bike"
             }
           ]
         },
@@ -74,7 +74,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "t_spine_foam_roll",
               "prescription": {
                 "target_sets": 2,
                 "target_duration_min": 1.5,
@@ -83,11 +82,11 @@
               "performed": {
                 "actual_sets": 2,
                 "actual_duration_min": 1.5
-              }
+              },
+              "exercise_name": "T Spine Foam Roll"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "dead_hang",
               "prescription": {
                 "target_sets": 3,
                 "target_duration_sec": 12.5,
@@ -96,7 +95,8 @@
               "performed": {
                 "actual_sets": 3,
                 "actual_duration_sec": 12.5
-              }
+              },
+              "exercise_name": "Dead Hang"
             }
           ]
         },
@@ -113,7 +113,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "scapular_push_up",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 12,
@@ -122,11 +121,11 @@
               "performed": {
                 "actual_sets": 3,
                 "actual_reps": 12
-              }
+              },
+              "exercise_name": "Scapular Push Up"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "scapular_pull_up",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 10,
@@ -135,7 +134,8 @@
               "performed": {
                 "actual_sets": 3,
                 "actual_reps": 10
-              }
+              },
+              "exercise_name": "Scapular Pull Up"
             }
           ]
         },
@@ -156,15 +156,18 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "pull_up",
               "prescription": {
                 "target_reps": "max",
                 "target_duration_min": 1
               },
               "performed": {
-                "actual_reps": [10, 9],
+                "actual_reps": [
+                  10,
+                  9
+                ],
                 "notes": "Set 1: 10 reps, Set 2: 9 reps. Body felt heavy."
-              }
+              },
+              "exercise_name": "Pull Up"
             }
           ]
         },
@@ -185,15 +188,18 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "push_up",
               "prescription": {
                 "target_reps": "max",
                 "target_duration_min": 1
               },
               "performed": {
-                "actual_reps": [26, 20],
+                "actual_reps": [
+                  26,
+                  20
+                ],
                 "notes": "Set 1: 26 reps, Set 2: 20 reps"
-              }
+              },
+              "exercise_name": "Push Up"
             }
           ]
         },
@@ -213,7 +219,6 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_key": "side_plank",
               "prescription": {
                 "target_duration_sec": 37.5,
                 "target_sets_per_side": 1
@@ -221,22 +226,22 @@
               "performed": {
                 "actual_duration_sec": 37.5,
                 "actual_sets_per_side": 1
-              }
+              },
+              "exercise_name": "Side Plank"
             },
             {
               "item_sequence": 2,
-              "exercise_key": "hollow_body_hold",
               "prescription": {
                 "target_duration_sec": 25,
                 "target_position": "tuck"
               },
               "performed": {
                 "actual_duration_sec": 25
-              }
+              },
+              "exercise_name": "Hollow Body Hold"
             },
             {
               "item_sequence": 3,
-              "exercise_key": "pallof_press",
               "prescription": {
                 "target_reps": 12,
                 "target_sets_per_side": 1,
@@ -247,11 +252,11 @@
                 "actual_reps": 12,
                 "actual_sets_per_side": 1,
                 "notes": "Nice exercise, not sure felt it correctly"
-              }
+              },
+              "exercise_name": "Pallof Press"
             },
             {
               "item_sequence": 4,
-              "exercise_key": "back_extension",
               "prescription": {
                 "target_reps": 10,
                 "target_pause_sec": 2,
@@ -261,7 +266,8 @@
               "performed": {
                 "actual_reps": 10,
                 "notes": "Nice, felt lower back and hamstrings"
-              }
+              },
+              "exercise_name": "Back Extension"
             }
           ]
         }

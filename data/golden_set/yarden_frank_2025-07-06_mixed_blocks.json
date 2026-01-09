@@ -1,33 +1,129 @@
 {
   "workout_date": "2025-07-06",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1",
   "status": "completed",
-  "notes": "Full workout with foam roll, warm-up, squats, conditioning, core, cooldown",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "MOB",
           "block_label": "A",
           "prescription": {
-            "description": "Foam Roll: Calves 60s/side, Glutes 60s/side, T-Spine sausage roll 60s"
+            "description": "Foam Rolling"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Calves smash",
+              "prescription": {
+                "target_duration_sec": 60,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Glutes smash",
+              "prescription": {
+                "target_duration_sec": 60,
+                "per_side": true
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "T-Spine sausage roll",
+              "prescription": {
+                "target_duration_sec": 60
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds: Row 200m, 6/6 Cossack Squat, 8 Mini-Band Glute Bridge, 10 Banded Good Morning, 5 Inchworm, 10 Dead Bugs"
+            "description": "3 rounds warm up circuit",
+            "target_rounds": 3
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Row",
+              "prescription": {
+                "target_distance_m": 200
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Cossack Squat",
+              "prescription": {
+                "target_reps": "6/6"
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Mini-Band Glute Bridge",
+              "prescription": {
+                "target_reps": 8
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Banded Good Morning",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Inchworm",
+              "prescription": {
+                "target_reps": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 6,
+              "exercise_name": "Dead Bugs",
+              "prescription": {
+                "target_reps": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -50,18 +146,59 @@
               },
               "performed": {
                 "warmup_sets": [
-                  {"reps": 3, "load": 40, "load_unit": "kg", "percentage": 40},
-                  {"reps": 3, "load": 60, "load_unit": "kg", "percentage": 60},
-                  {"reps": 5, "load": 65, "load_unit": "kg", "percentage": 65}
+                  {
+                    "reps": 3,
+                    "load": 40,
+                    "load_unit": "kg",
+                    "percentage": 40
+                  },
+                  {
+                    "reps": 3,
+                    "load": 60,
+                    "load_unit": "kg",
+                    "percentage": 60
+                  },
+                  {
+                    "reps": 5,
+                    "load": 65,
+                    "load_unit": "kg",
+                    "percentage": 65
+                  }
                 ],
                 "sets": [
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75},
-                  {"reps": 5, "load": 75, "load_unit": "kg", "percentage": 75}
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  },
+                  {
+                    "reps": 5,
+                    "load": 75,
+                    "load_unit": "kg",
+                    "percentage": 75
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },
@@ -88,7 +225,8 @@
               },
               "performed": {
                 "reps": 6
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Wall Ball",
@@ -101,7 +239,8 @@
                 "reps": 6,
                 "load": 7,
                 "load_unit": "kg"
-              }
+              },
+              "item_sequence": 2
             }
           ]
         },

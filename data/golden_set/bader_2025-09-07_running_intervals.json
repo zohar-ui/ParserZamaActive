@@ -1,24 +1,80 @@
 {
   "workout_date": "2025-09-07",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1",
   "status": "completed",
-  "notes": "Running workout with warm-up, rehab, intervals, test, and cool-down",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Walk / light Jog, 2 Rounds: ankle circles, hip openers, calf rocks, cat cow"
+            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
           },
           "performed": {
             "completed": true,
             "notes": "אין מגבוליות"
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Ankle circles",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Hip openers 90/90",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 4,
+              "exercise_name": "Down Dog Calf Rocks",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": {
+                "completed": true
+              }
+            },
+            {
+              "item_sequence": 5,
+              "exercise_name": "Cat cow",
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "for lower back"
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "ACT",
@@ -40,10 +96,17 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 12, "notes": "left"},
-                  {"reps": 12, "notes": "right"}
+                  {
+                    "reps": 12,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 12,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             },
             {
               "exercise_name": "Toe walks",
@@ -55,10 +118,17 @@
               },
               "performed": {
                 "sets": [
-                  {"distance": 15, "distance_unit": "m"},
-                  {"distance": 15, "distance_unit": "m"}
+                  {
+                    "distance": 15,
+                    "distance_unit": "m"
+                  },
+                  {
+                    "distance": 15,
+                    "distance_unit": "m"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 2
             },
             {
               "exercise_name": "Glute bridge hold",
@@ -70,10 +140,17 @@
               },
               "performed": {
                 "sets": [
-                  {"duration": 30, "duration_unit": "sec"},
-                  {"duration": 30, "duration_unit": "sec"}
+                  {
+                    "duration": 30,
+                    "duration_unit": "sec"
+                  },
+                  {
+                    "duration": 30,
+                    "duration_unit": "sec"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 3
             },
             {
               "exercise_name": "Dead bug",
@@ -84,10 +161,17 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 8, "notes": "left"},
-                  {"reps": 8, "notes": "right"}
+                  {
+                    "reps": 8,
+                    "notes": "left"
+                  },
+                  {
+                    "reps": 8,
+                    "notes": "right"
+                  }
                 ]
-              }
+              },
+              "item_sequence": 4
             }
           ]
         },

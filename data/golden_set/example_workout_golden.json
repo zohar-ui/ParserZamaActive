@@ -1,22 +1,33 @@
 {
   "workout_date": "2025-09-07",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "W1 T1 - Test Workout",
-  "notes": "Manual golden set example",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "5 min Walk / light Jog"
+            "description": "General warm up"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Walk / light Jog",
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": {
+                "completed": true
+              }
+            }
+          ]
         },
         {
           "block_code": "STR",
@@ -39,11 +50,24 @@
               },
               "performed": {
                 "sets": [
-                  {"reps": 5, "load": 100, "rpe": 7},
-                  {"reps": 5, "load": 100, "rpe": 7},
-                  {"reps": 5, "load": 100, "rpe": 7}
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  },
+                  {
+                    "reps": 5,
+                    "load": 100,
+                    "rpe": 7
+                  }
                 ]
-              }
+              },
+              "item_sequence": 1
             }
           ]
         },

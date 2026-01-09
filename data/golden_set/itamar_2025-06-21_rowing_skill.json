@@ -1,32 +1,73 @@
 {
   "workout_date": "2025-06-21",
-  "athlete_id": "550e8400-e29b-41d4-a716-446655440001",
+  "athlete_id": null,
   "title": "Workout",
   "status": "completed",
   "sessions": [
     {
-      "session_code": "AM",
-      "session_time": "AM",
+      "session_code": null,
+      "session_time": null,
       "blocks": [
         {
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 min light row to raise HR, then 8x30 sec On / 30 sec Off @ 20-22 SPM, build power slightly each rep"
+            "description": "3 min light row to raise HR, then interval rowing"
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Light row",
+              "prescription": { "target_duration_min": 3, "notes": "to raise HR" },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Row intervals",
+              "prescription": { 
+                "target_sets": 8, 
+                "work_sec": 30, 
+                "rest_sec": 30, 
+                "target_spm": "20-22",
+                "notes": "build power slightly each rep"
+              },
+              "performed": { "completed": true }
+            }
+          ]
         },
         {
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds: 10 Frog Stretch (dynamic), 10 Hip Airplanes, 10 Cat-Cow"
+            "description": "3 rounds mobility circuit",
+            "target_rounds": 3
           },
           "performed": {
             "completed": true
-          }
+          },
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Frog Stretch",
+              "prescription": { "target_rounds": 3, "target_reps": 10, "notes": "dynamic" },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Hip Airplanes",
+              "prescription": { "target_rounds": 3, "target_reps": 10 },
+              "performed": { "completed": true }
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Cat-Cow",
+              "prescription": { "target_rounds": 3, "target_reps": 10 },
+              "performed": { "completed": true }
+            }
+          ]
         },
         {
           "block_code": "SKILL",
