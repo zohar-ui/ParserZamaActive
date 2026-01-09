@@ -35,7 +35,6 @@ supabase db reset
 - 📋 [Changelog](./CHANGELOG.md) - Version history and updates
 
 ### Guides
-- 🚀 [n8n Integration](./docs/guides/N8N_INTEGRATION_GUIDE.md) - Complete workflow setup
 - 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
 
 ### Reference
@@ -77,7 +76,6 @@ ParserZamaActive/
 │   ├── INDEX.md                     # Documentation navigation guide
 │   │
 │   ├── guides/                      # Implementation guides
-│   │   ├── N8N_INTEGRATION_GUIDE.md # Complete n8n setup (572 lines)
 │   │   └── AI_PROMPTS.md            # AI agent templates (335 lines)
 │   │
 │   ├── reference/                   # Technical reference
@@ -185,16 +183,14 @@ item_set_results (3 rows):
 - ✅ Comprehensive documentation
 
 ### Ready for Integration
-- 📚 n8n workflow guide complete
 - 🤖 AI prompts templates ready
 - 🧪 Test queries available
 - 📊 Sample workout logs (10 files)
 
 ### Next Steps
-1. Set up n8n workflow using [integration guide](./docs/guides/N8N_INTEGRATION_GUIDE.md)
-2. Configure AI agents with [prompt templates](./docs/guides/AI_PROMPTS.md)
-3. Test parsing with sample data from `data/` folder
-4. Monitor validation reports and iterate
+1. Configure AI agents with [prompt templates](./docs/guides/AI_PROMPTS.md)
+2. Test parsing with sample data from `data/` folder
+3. Monitor validation reports and iterate
 
 ## Quick Start
 
@@ -206,7 +202,7 @@ supabase status
 ### 2. Review Key Documents
 - Start with [Architecture Overview](./ARCHITECTURE.md) to understand the system
 - Check [DB Readiness](./DB_READINESS_REPORT.md) for current status (85/100)
-- Follow [n8n Integration Guide](./docs/guides/N8N_INTEGRATION_GUIDE.md) for setup
+- Use [AI Prompts](./docs/guides/AI_PROMPTS.md) for agent configuration
 
 ### 3. Test SQL Functions
 ```bash
@@ -219,6 +215,6 @@ Check `data/` folder for 10 real workout log examples.
 
 ---
 
-**Technology Stack:** Supabase (PostgreSQL), n8n, AI Agents (OpenAI/Claude/Gemini)  
+**Technology Stack:** Supabase (PostgreSQL), AI Agents (OpenAI/Claude/Gemini)  
 **License:** MIT  
 **Project ID:** dtzcamerxuonoeujrgsu

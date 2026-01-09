@@ -641,7 +641,6 @@ Solution:
 ## 🔗 Related Documentation
 
 - [AI_PROMPTS.md](./AI_PROMPTS.md) - AI agent system prompts
-- [N8N_INTEGRATION_GUIDE.md](./N8N_INTEGRATION_GUIDE.md) - n8n workflow setup
 - [BLOCK_TYPES_REFERENCE.md](../reference/BLOCK_TYPES_REFERENCE.md) - 17 block types catalog
 - [ARCHITECTURE.md](../../ARCHITECTURE.md) - Full system architecture
 - [agents.md](../../agents.md) - AI agent operational guide

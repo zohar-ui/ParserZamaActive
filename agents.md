@@ -303,7 +303,6 @@ git push origin main
 ├── 📚 docs/                   # All documentation
 │   ├── INDEX.md               # Documentation navigation
 │   ├── guides/                # Implementation guides
-│   │   ├── N8N_INTEGRATION_GUIDE.md  # Complete n8n setup (572 lines)
 │   │   └── AI_PROMPTS.md             # AI agent templates (335 lines)
 │   ├── reference/             # Technical reference
 │   │   ├── BLOCK_TYPES_REFERENCE.md  # 17 block types catalog

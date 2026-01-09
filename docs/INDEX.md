@@ -17,11 +17,6 @@ Welcome to the ZAMM Workout Parser documentation. Start here to navigate all ava
 - **[DB_READINESS_REPORT.md](../DB_READINESS_REPORT.md)** - Current status assessment (85/100)
 
 ### Implementation Guides
-- **[n8n Integration Guide](./guides/N8N_INTEGRATION_GUIDE.md)** (572 lines)
-  - Complete n8n workflow setup
-  - Step-by-step AI agent configuration
-  - Structured output schemas
-  
 - **[AI Prompts](./guides/AI_PROMPTS.md)** (335 lines)
   - Main parser agent prompt
   - Validation agent prompt
@@ -93,7 +88,6 @@ Welcome to the ZAMM Workout Parser documentation. Start here to navigate all ava
 │   ├── INDEX.md                 # This file
 │   │
 │   ├── guides/                  # Implementation guides
-│   │   ├── N8N_INTEGRATION_GUIDE.md
 │   │   └── AI_PROMPTS.md
 │   │
 │   ├── reference/               # Technical reference
@@ -140,7 +134,6 @@ Welcome to the ZAMM Workout Parser documentation. Start here to navigate all ava
 - Migration: `20260104130000_priority1_exercise_catalog_indexes.sql`
 
 ### AI Integration
-- [N8N_INTEGRATION_GUIDE.md](./guides/N8N_INTEGRATION_GUIDE.md) - Complete setup
 - [AI_PROMPTS.md](./guides/AI_PROMPTS.md) - Prompt templates
 - Migration: `20260104120000_create_ai_tools.sql` - 5 SQL functions
 
@@ -164,9 +157,6 @@ Welcome to the ZAMM Workout Parser documentation. Start here to navigate all ava
 - **Sample Data**: 10 workout log files
 
 ## 🎯 Common Tasks
-
-### Setting Up n8n Workflow
-→ [N8N_INTEGRATION_GUIDE.md](./guides/N8N_INTEGRATION_GUIDE.md)
 
 ### Understanding Block Types
 → [BLOCK_TYPES_REFERENCE.md](./reference/BLOCK_TYPES_REFERENCE.md)

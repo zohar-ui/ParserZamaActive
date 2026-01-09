@@ -128,12 +128,12 @@ WHERE is_active = true;
 - [ ] הוספת index על `athlete_id`, `workout_date` (לביצועים)
 
 ### Phase 2: AI Agent Configuration (2-3 hours)
-- [ ] הגדרת SQL Tools ב-n8n
+- [ ] הגדרת SQL Tools ל-AI Agent
 - [ ] System Prompt עבור הפרדת תכנון/ביצוע
 - [ ] Structured Output Schema שמכיל `target` ו-`actual`
 
 ### Phase 3: Validation Logic (1-2 hours)
-- [ ] Cross-checker נוד ב-n8n
+- [ ] Cross-checker לוגיקה
 - [ ] לוגיקת consistency checks
 - [ ] דיווח ל-`validation_reports`
 
@@ -161,7 +161,7 @@ WHERE is_active = true;
 
 **Bottom Line:**
 המסד נתונים שלך **מוכן מאוד** לארכיטקטורת ה-AI-SQL Agent! 
-רוב העבודה היא בצד ה-n8n (Prompts, Tools, Workflow) ולא בצד ה-DB.
+רוב העבודה היא בצד ה-AI Agent (פרומפטים, כלים, Workflow) ולא בצד ה-DB.
 
 ---
 
@@ -203,5 +203,4 @@ WHERE is_active = true;
 ## 🔗 קישורים שימושיים
 
 - [Supabase Dashboard](https://supabase.com/dashboard/project/dtzcamerxuonoeujrgsu)
-- [n8n Documentation](https://docs.n8n.io/)
-- [SQL Tools בn8n](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.postgres/)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)

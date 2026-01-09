@@ -39,7 +39,7 @@
 SELECT * FROM zamm.auto_validate_and_commit('draft-uuid');
 ```
 
-**מוכן ל:** n8n, Python scripts, API calls
+**מוכן ל:** Python scripts, API calls, אוטומציה
 
 ---
 
@@ -177,11 +177,11 @@ Parse Draft → validate_parsed_workout() →
   IF fail → block + alert
 ```
 
-#### **עם n8n:**
+#### **עם אוטומציה:**
 ```
-Node 1: AI Parse
-Node 2: Call auto_validate_and_commit()
-Node 3: IF success → Success notification
+Step 1: AI Parse
+Step 2: Call auto_validate_and_commit()
+Step 3: IF success → Success notification
         ELSE → Error alert
 ```
 
@@ -259,20 +259,17 @@ else:
 
 ---
 
-## 🚀 **מה הלאה (מחר, 8 ינואר)**
+## 🚀 **מה הלאה**
 
-### **בוקר:**
+### **שלב 1:**
 1. ניקוי נתונים (30 דקות)
 2. בדיקת validation עם workout אמיתי (45 דקות)
-3. שילוב n8n (1 שעה)
-
-### **אחר צהריים:**
-4. הרחבת exercise catalog (2 שעות)
+3. הרחבת exercise catalog (2 שעות)
 
 ### **מטרה:**
 ✅ Database נקי  
 ✅ 1 workout אמיתי committed בהצלחה  
-✅ n8n workflow עובד
+✅ Validation system עובד
 
 ---
 

@@ -100,7 +100,7 @@ SELECT zamm.commit_full_workout_v3(...);
 
 ---
 
-### תרחיש 2: אוטומציה מלאה (n8n)
+### תרחיש 2: אוטומציה מלאה
 
 ```sql
 -- קריאה אחת עושה הכל:
@@ -214,12 +214,12 @@ Stage 3: Validation ← ✨ כאן הפונקציות החדשות
 Stage 4: Commit (commit_full_workout_v3)
 ```
 
-### עם n8n:
+### זרימת עבודה אוטומטית:
 
-**Node 1:** Parse workout (AI agent)  
-**Node 2:** ✨ **Call validate_parsed_workout** (SQL)  
-**Node 3:** IF validation_status = 'fail' → Send alert  
-**Node 4:** ELSE → Call commit_full_workout_v3  
+**שלב 1:** Parse workout (AI agent)  
+**שלב 2:** ✨ **Call validate_parsed_workout** (SQL)  
+**שלב 3:** IF validation_status = 'fail' → Send alert  
+**שלב 4:** ELSE → Call commit_full_workout_v3  
 
 ---
 

@@ -1,5 +1,7 @@
 # ✅ Priority 1 Implementation - Complete
 
+> **⚠️ ARCHIVED DOCUMENT:** This document contains historical references to n8n integration which is no longer active. The exercise catalog system is still valid.
+
 ## What Was Deployed
 
 ### 🎯 Critical Gap Fixed: Exercise Normalization

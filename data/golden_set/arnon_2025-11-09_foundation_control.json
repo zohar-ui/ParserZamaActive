@@ -24,13 +24,13 @@
               "item_sequence": 1,
               "prescription": {
                 "target_duration_min": 5,
-                "target_stroke_rate": 23,
-                "target_damper": 5.5
+                "target_stroke_rate": "22-24",
+                "target_damper": "5-6"
               },
               "performed": {
                 "actual_duration_min": 5
               },
-              "exercise_name": "Bike"
+              "exercise_name": "Bike / Row"
             },
             {
               "item_sequence": 2,

@@ -78,7 +78,6 @@ auto_validate_and_commit(draft_id UUID)
 **Integration Points:**
 - Plugs directly into existing Stage 3 (after parsing, before commit)
 - Logs results to `log_validation_reports` table
-- Compatible with n8n automation workflows
 - View for dashboard: `v_draft_validation_status`
 
 ### 📚 Documentation
@@ -91,8 +90,6 @@ auto_validate_and_commit(draft_id UUID)
 - End-to-end example (raw text → JSON → relational tables)
 - Error handling guide
 - Best practices for AI agents and developers
-
-#### ✅ PARSER_AUDIT_CHECKLIST.md (900+ lines)
 **Created:** Comprehensive validation checklist
 - 4 audit phases: Structure → Data → Consistency → Business Logic
 - Detailed checklists by block type (STR, METCON, INTV, SS)
@@ -203,7 +200,6 @@ Five data quality checks:
 - `LICENSE` - Project license
 
 #### Guides (docs/guides/)
-- `N8N_INTEGRATION_GUIDE.md` - Complete n8n workflow setup (572 lines)
 - `AI_PROMPTS.md` - AI agent prompt templates (335 lines)
 
 #### Reference (docs/reference/)

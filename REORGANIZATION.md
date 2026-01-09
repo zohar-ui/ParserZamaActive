@@ -23,7 +23,6 @@ Organized documentation into logical categories:
 ### Files Reorganized
 | Original Location | New Location | Type |
 |------------------|--------------|------|
-| `docs/N8N_INTEGRATION_GUIDE.md` | `docs/guides/N8N_INTEGRATION_GUIDE.md` | Guide |
 | `docs/AI_PROMPTS.md` | `docs/guides/AI_PROMPTS.md` | Guide |
 | `docs/BLOCK_TYPES_REFERENCE.md` | `docs/reference/BLOCK_TYPES_REFERENCE.md` | Reference |
 | `docs/BLOCK_TYPE_SYSTEM_SUMMARY.md` | `docs/reference/BLOCK_TYPE_SYSTEM_SUMMARY.md` | Reference |
@@ -61,9 +60,6 @@ Organized documentation into logical categories:
 
 All content was moved, not modified. If you have bookmarks to old paths, update them:
 
-**Old:** `docs/N8N_INTEGRATION_GUIDE.md`  
-**New:** `docs/guides/N8N_INTEGRATION_GUIDE.md`
-
 **Old:** `docs/BLOCK_TYPES_REFERENCE.md`  
 **New:** `docs/reference/BLOCK_TYPES_REFERENCE.md`
 
@@ -88,7 +84,6 @@ All content was moved, not modified. If you have bookmarks to old paths, update 
 2. Update any external links to documentation
 3. Update CI/CD if it references old paths
 4. Consider adding more utility scripts to `scripts/`
-5. Update n8n workflows if they reference old paths
 
 ## Commit Message Template
 

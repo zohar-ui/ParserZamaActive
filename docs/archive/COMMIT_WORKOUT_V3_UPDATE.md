@@ -1,5 +1,7 @@
 # ✨ commit_full_workout_v3 - Enhanced Update
 
+> **⚠️ ARCHIVED DOCUMENT:** This document contains historical references to n8n integration which is no longer active. The stored procedure is still valid.
+
 ## What Changed?
 
 עדכנתי את ה-stored procedure ל-**version 3** שמטפלת הרבה יותר טוב בהפרדה בין prescription ל-performance!

@@ -286,7 +286,7 @@ ORDER BY draft_created_at DESC;
 -- SCENARIO 7: Automated workflow trigger (example)
 -- ============================================================================
 
--- This function can be called by n8n or other automation
+-- This function can be called by external automation or API
 CREATE OR REPLACE FUNCTION zamm.auto_validate_and_commit(p_draft_id UUID)
 RETURNS TABLE (
     success BOOLEAN,

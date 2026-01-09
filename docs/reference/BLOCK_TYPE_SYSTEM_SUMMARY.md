@@ -225,7 +225,7 @@ METCON, INTV, SS, HYROX, CD, STRETCH, BREATH
 
 ## 🚀 Next Steps
 
-1. **Update n8n AI Agent** - Add normalize_block_code() as Tool #7
+1. **Update AI Agent** - Add normalize_block_code() as Tool #7
 2. **Update AI Prompts** - Include block_code + ui_hint in output schema
 3. **Frontend Implementation** - Build UI components based on ui_hints
 4. **Test with Real Data** - Parse actual workouts using new system

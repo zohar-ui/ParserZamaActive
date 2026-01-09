@@ -60,7 +60,7 @@ echo ""
 # TODO: Implement actual parser testing
 # This would:
 # 1. Load each .txt file
-# 2. Call parser (via SQL function or n8n)
+# 2. Call parser (via SQL function or API)
 # 3. Compare output to golden JSON
 # 4. Calculate accuracy score
 

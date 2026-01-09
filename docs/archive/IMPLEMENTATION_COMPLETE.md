@@ -1,5 +1,7 @@
 # 🎉 Implementation Complete!
 
+> **⚠️ ARCHIVED DOCUMENT:** This document contains historical references to n8n integration which is no longer active. The database and SQL tools are still valid.
+
 ## סיכום מה נבנה
 
 ### ✅ 1. SQL Tools (5 Functions)

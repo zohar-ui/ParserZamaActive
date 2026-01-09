@@ -123,7 +123,7 @@ Each block type includes:
 
 - **Database**: Supabase (PostgreSQL)
 - **Schema**: `zamm`
-- **AI Integration**: n8n workflows with OpenAI/Claude/Gemini
+- **AI Integration**: OpenAI/Claude/Gemini via SQL functions
 - **Project ID**: `dtzcamerxuonoeujrgsu`
 
 ## Design Patterns
