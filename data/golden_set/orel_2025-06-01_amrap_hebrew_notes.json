@@ -53,7 +53,8 @@
               "exercise_name": "Pull ups",
               "prescription": {
                 "target_rounds": 3,
-                "target_reps": "3-5"
+                "target_reps_min": 3,
+                "target_reps_max": 5
               },
               "performed": null
             },

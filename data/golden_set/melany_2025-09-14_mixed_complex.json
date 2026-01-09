@@ -75,8 +75,9 @@
               "exercise_name": "Row",
               "prescription": {
                 "target_duration_min": 4,
-                "target_spm": "18-20",
-                "notes": "easy"
+                "notes": "easy",
+                "target_spm_min": 18,
+                "target_spm_max": 20
               },
               "performed": null
             }
@@ -91,10 +92,11 @@
             "target_reps": 5,
             "target_load": 55,
             "load_unit": "kg",
-            "target_rpe": "5-6",
             "tempo": "3-1-1",
             "rest": "2:00",
-            "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension"
+            "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension",
+            "target_rpe_min": 5,
+            "target_rpe_max": 6
           },
           "performed": null,
           "items": [
@@ -150,10 +152,11 @@
             "target_reps": 10,
             "target_load": 40,
             "load_unit": "kg",
-            "target_rpe": "6-7",
             "tempo": "2-0-2",
             "rest": "1:30",
-            "notes": "Chin tucked, ribs down, push through heels"
+            "notes": "Chin tucked, ribs down, push through heels",
+            "target_rpe_min": 6,
+            "target_rpe_max": 7
           },
           "performed": null,
           "items": [

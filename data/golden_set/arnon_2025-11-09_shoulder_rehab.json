@@ -26,11 +26,13 @@
               "exercise_name": "Bike / Row",
               "prescription": {
                 "target_duration_min": 5,
-                "target_spm": "22-24",
-                "target_damper": "5-6",
                 "markers": [
                   "**V"
-                ]
+                ],
+                "target_spm_min": 22,
+                "target_spm_max": 24,
+                "target_damper_min": 5,
+                "target_damper_max": 6
               },
               "performed": null
             },
@@ -59,9 +61,10 @@
               "prescription": {
                 "target_rounds": 3,
                 "target_reps_per_side": 8,
-                "target_load": "4-5",
                 "load_unit": "kg",
-                "notes": "light"
+                "notes": "light",
+                "target_load_min": 4,
+                "target_load_max": 5
               },
               "performed": null
             }
@@ -105,9 +108,10 @@
             "description": "Landmine Press Half Kneeling: 3x8/8",
             "target_sets": 3,
             "target_reps": 8,
-            "target_rpe": "5.5-6",
             "tempo": "3-0-2",
-            "rest": "1:30"
+            "rest": "1:30",
+            "target_rpe_min": 5.5,
+            "target_rpe_max": 6
           },
           "performed": {
             "completed": true,
@@ -121,8 +125,9 @@
             "description": "Dumbbell Romanian Deadlift: 3x8",
             "target_sets": 3,
             "target_reps": 8,
-            "target_rpe": "5.5-6",
-            "rest": "1:30"
+            "rest": "1:30",
+            "target_rpe_min": 5.5,
+            "target_rpe_max": 6
           },
           "performed": {
             "completed": true,

@@ -22,8 +22,10 @@
               "item_sequence": 1,
               "prescription": {
                 "target_duration_min": 5,
-                "target_stroke_rate": "22-24",
-                "target_damper": "5-6"
+                "target_stroke_rate_min": 22,
+                "target_stroke_rate_max": 24,
+                "target_damper_min": 5,
+                "target_damper_max": 6
               },
               "performed": null,
               "exercise_name": "Bike / Row"
@@ -54,12 +56,11 @@
                 "target_rounds": 3,
                 "target_reps": 8,
                 "target_sets_per_side": 1,
-                "target_weight_kg": 4.5,
+                "target_weight_kg_min": 4,
+                "target_weight_kg_max": 5,
                 "notes": "Light 4-5kg"
               },
-              "performed": {
-                "actual_weight_kg": 4.5
-              },
+              "performed": null,
               "exercise_name": "Db Supine Serratus Punch"
             }
           ]
@@ -105,7 +106,8 @@
             "target_sets": 3,
             "target_reps": 8,
             "target_sets_per_side": 1,
-            "target_rpe": 5.75,
+            "target_rpe_min": 5.5,
+            "target_rpe_max": 6,
             "target_rest_min": 1.5,
             "target_tempo": "3-0-2-0",
             "notes": "3 sec down, 2 sec up"
@@ -142,7 +144,8 @@
           "prescription": {
             "target_sets": 3,
             "target_reps": 8,
-            "target_rpe": 5.75,
+            "target_rpe_min": 5.5,
+            "target_rpe_max": 6,
             "target_rest_min": 1.5
           },
           "performed": {

@@ -127,7 +127,8 @@
             "target_rounds": 5,
             "pace": "6:20 to 6:40 per km",
             "breathing_cue": "3 steps inhale + 4 steps exhale",
-            "target_rpe": "4-5"
+            "target_rpe_min": 4,
+            "target_rpe_max": 5
           },
           "performed": {
             "completed": true,

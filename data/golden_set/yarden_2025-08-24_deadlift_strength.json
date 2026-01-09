@@ -25,8 +25,9 @@
               "prescription": {
                 "target_duration_min": 10,
                 "target_spm": 21,
-                "target_damper": "5-7",
-                "notes": "add video"
+                "notes": "add video",
+                "target_damper_min": 5,
+                "target_damper_max": 7
               },
               "performed": null
             },
@@ -54,7 +55,8 @@
               "exercise_name": "Curl-Up",
               "prescription": {
                 "target_sets": 2,
-                "target_reps": "8-10"
+                "target_reps_min": 8,
+                "target_reps_max": 10
               },
               "performed": null
             },
@@ -63,7 +65,8 @@
               "exercise_name": "Dowel Hip Hinge Drill",
               "prescription": {
                 "target_sets": 2,
-                "target_reps": "6-8"
+                "target_reps_min": 6,
+                "target_reps_max": 8
               },
               "performed": null
             }
@@ -94,7 +97,8 @@
               "exercise_name": "Banded Straight-Arm Pulldown",
               "prescription": {
                 "target_rounds": 2,
-                "target_reps": "12-15"
+                "target_reps_min": 12,
+                "target_reps_max": 15
               },
               "performed": null
             },

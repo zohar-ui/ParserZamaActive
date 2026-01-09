@@ -546,6 +546,19 @@ Title = בדיוק מה שכתוב
 לא: "W1 T1 - Foundation & Control" (הרחבה אסורה)
 ```
 
+### 6. כלל הטווחים (חדש!) ⚠️
+```
+טווח מספרים = תמיד min/max, לא string ולא ממוצע!
+
+"4-5kg"     → target_weight_kg_min: 4, target_weight_kg_max: 5
+"RPE 5.5-6" → target_rpe_min: 5.5, target_rpe_max: 6  
+"22-24 spm" → target_spm_min: 22, target_spm_max: 24
+
+❌ שגוי: target_weight_kg: "4-5"  (string)
+❌ שגוי: target_weight_kg: 4.5    (ממוצע)
+❌ שגוי: target_rpe: 5.75         (ממוצע של 5.5-6)
+```
+
 ---
 
 ## 📊 דפוסי טקסט נפוצים
@@ -604,7 +617,25 @@ Input:  "**Rest 30 sec btw exercise"
 Output: { rest_between_exercises_sec: 30 }
 ```
 
-### דפוס 8: Hebrew Performance Note
+### דפוס 8: Ranges (טווחים) ⚠️ חשוב!
+```
+❌ שגוי:
+Input:  "@ 22-24 spm"
+Output: { target_spm: "22-24" }     // string - שגוי!
+Output: { target_spm: 23 }          // ממוצע - שגוי!
+
+✅ נכון:
+Input:  "@ 22-24 spm"
+Output: { target_spm_min: 22, target_spm_max: 24 }
+
+Input:  "light 4-5kg"
+Output: { target_weight_kg_min: 4, target_weight_kg_max: 5 }
+
+Input:  "@ D 5-6"  (damper)
+Output: { target_damper_min: 5, target_damper_max: 6 }
+```
+
+### דפוס 9: Hebrew Performance Note
 ```
 Input:  "כתף ימין כואבת בסט הראשון 5/10"
 Output: performed.notes: "כתף ימין כואבת בסט הראשון 5/10"

@@ -32,8 +32,9 @@
                 "target_sets": 8,
                 "work_sec": 30,
                 "rest_sec": 30,
-                "target_spm": "20-22",
-                "notes": "build power slightly each rep"
+                "notes": "build power slightly each rep",
+                "target_spm_min": 20,
+                "target_spm_max": 22
               },
               "performed": null
             }
@@ -94,8 +95,9 @@
             "description": "Row 1,000 m - single effort. Target rate 24-26 SPM. Open the first 200 m controlled, accelerate into sustainable pace",
             "target_distance": 1000,
             "distance_unit": "m",
-            "target_spm": "24-26",
-            "notes": "Record: Total time, Avg Split/500 m, Avg SPM, Overall RPE, any pain/fatigue notes"
+            "notes": "Record: Total time, Avg Split/500 m, Avg SPM, Overall RPE, any pain/fatigue notes",
+            "target_spm_min": 24,
+            "target_spm_max": 26
           },
           "performed": null
         },

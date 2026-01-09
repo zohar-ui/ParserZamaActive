@@ -66,8 +66,9 @@
               "exercise_name": "C2 Row",
               "prescription": {
                 "target_duration_min": 5,
-                "target_spm": "18-20",
-                "notes": "easy"
+                "notes": "easy",
+                "target_spm_min": 18,
+                "target_spm_max": 20
               },
               "performed": null
             },
@@ -206,9 +207,10 @@
             "description": "BB Elevated Deadlift from rack: 3×5 @ RPE 6-7",
             "target_sets": 3,
             "target_reps": 5,
-            "target_rpe": "6-7",
             "rest": "1.5 min",
-            "notes": "Warmup: empty bar x8, light x5, moderate x3"
+            "notes": "Warmup: empty bar x8, light x5, moderate x3",
+            "target_rpe_min": 6,
+            "target_rpe_max": 7
           },
           "performed": {
             "completed": true,
@@ -220,7 +222,8 @@
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 5,
-                "target_rpe": "6-7"
+                "target_rpe_min": 6,
+                "target_rpe_max": 7
               },
               "performed": null,
               "item_sequence": 1
