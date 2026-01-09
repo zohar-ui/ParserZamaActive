@@ -50,7 +50,9 @@
               "exercise_name": "Scapular CARs",
               "prescription": {
                 "target_rounds": 3,
-                "target_reps_per_side": 8,
+                "target_reps": 16,
+                "target_reps_forward": 8,
+                "target_reps_backward": 8,
                 "notes": "8 forward / 8 backward"
               },
               "performed": null

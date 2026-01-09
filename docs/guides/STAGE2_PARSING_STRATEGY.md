@@ -569,13 +569,25 @@ Input:  "Back Squat: 3x5 @ 100kg"
 Output: { target_sets: 3, target_reps: 5, target_load_kg: 100 }
 ```
 
-### דפוס 2: Sets × Reps/Side
+### דפוס 2: Sets × Reps/Side (ימין/שמאל)
 ```
-Input:  "8/8 Scapular CARs"
-Output: { target_reps: 8, target_reps_per_side: true }
+Input:  "8/8 Lateral Raises"
+Output: { target_reps: 16, target_reps_per_side: 8 }
 
 Input:  "3x10/10 Banded Pulldown"
-Output: { target_sets: 3, target_reps: 10, target_sets_per_side: true }
+Output: { target_sets: 3, target_reps: 20, target_reps_per_side: 10 }
+```
+
+### דפוס 2.5: Reps Forward/Backward (קדימה/אחורה)
+```
+Input:  "8/8 Scapular CARs (8 forward / 8 backward)"
+Output: { 
+    target_reps: 16,
+    target_reps_forward: 8, 
+    target_reps_backward: 8 
+}
+
+⚠️ שים לב: סה"כ חזרות = forward + backward
 ```
 
 ### דפוס 3: Duration

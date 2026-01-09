@@ -43,8 +43,9 @@
               "item_sequence": 3,
               "prescription": {
                 "target_rounds": 3,
-                "target_reps": 8,
-                "target_sets_per_side": 2,
+                "target_reps": 16,
+                "target_reps_forward": 8,
+                "target_reps_backward": 8,
                 "notes": "8 forward / 8 backward"
               },
               "performed": null,
