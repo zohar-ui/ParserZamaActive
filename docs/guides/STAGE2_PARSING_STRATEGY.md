@@ -563,6 +563,28 @@ Title = בדיוק מה שכתוב
 
 ## 📊 דפוסי טקסט נפוצים
 
+### דפוס 0: Exercise Options (אופציות תרגיל) ⚠️ חשוב!
+```
+כאשר יש "/" בשם תרגיל עם אפשרות בחירה:
+
+Input:  "5 min Bike / Row @ 22-24 spm @ D 5-6"
+Output: {
+  "exercise_options": ["Bike", "Row"],
+  "prescription": { "target_duration_min": 5 },
+  "prescription_if_row": {
+    "target_spm_min": 22, "target_spm_max": 24,
+    "target_damper_min": 5, "target_damper_max": 6
+  }
+}
+
+Input:  "Walk / light Jog"
+Output: { "exercise_options": ["Walk", "Light Jog"] }
+
+⚠️ שים לב:
+- stroke_rate, damper, spm = רלוונטי רק ל-Row!
+- לא כל "/" זה אופציה: "90/90" זה שם תרגיל, לא אופציה
+```
+
 ### דפוס 1: Sets × Reps
 ```
 Input:  "Back Squat: 3x5 @ 100kg"

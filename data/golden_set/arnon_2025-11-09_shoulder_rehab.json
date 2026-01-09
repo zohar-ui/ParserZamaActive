@@ -23,12 +23,14 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Bike / Row",
+              "exercise_options": ["Bike", "Row"],
               "prescription": {
                 "target_duration_min": 5,
                 "markers": [
                   "**V"
-                ],
+                ]
+              },
+              "prescription_if_row": {
                 "target_spm_min": 22,
                 "target_spm_max": 24,
                 "target_damper_min": 5,

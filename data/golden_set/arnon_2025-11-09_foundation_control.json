@@ -20,15 +20,17 @@
           "items": [
             {
               "item_sequence": 1,
+              "exercise_options": ["Bike", "Row"],
               "prescription": {
-                "target_duration_min": 5,
+                "target_duration_min": 5
+              },
+              "prescription_if_row": {
                 "target_stroke_rate_min": 22,
                 "target_stroke_rate_max": 24,
                 "target_damper_min": 5,
                 "target_damper_max": 6
               },
-              "performed": null,
-              "exercise_name": "Bike / Row"
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -294,7 +296,7 @@
         {
           "block_code": "CD",
           "block_label": "I",
-          "block_title": "Bike / Row",
+          "block_title": "Cool Down",
           "prescription": {
             "target_duration_min": 10
           },
@@ -302,11 +304,11 @@
           "items": [
             {
               "item_sequence": 1,
+              "exercise_options": ["Bike", "Row"],
               "prescription": {
                 "target_duration_min": 10
               },
-              "performed": null,
-              "exercise_name": "Bike"
+              "performed": null
             }
           ]
         }

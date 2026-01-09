@@ -17,7 +17,7 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Walk / light Jog",
+              "exercise_options": ["Walk", "Light Jog"],
               "prescription": {
                 "target_duration_min": 5
               },
