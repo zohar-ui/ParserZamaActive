@@ -14,9 +14,7 @@
           "prescription": {
             "description": "Warm up sequence for posterior chain rebuild"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -24,9 +22,7 @@
               "prescription": {
                 "target_duration_min": 2
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -36,9 +32,7 @@
                 "target_reps": "8/8",
                 "notes": "slow!"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -47,9 +41,7 @@
                 "target_sets": 1,
                 "target_reps": "8/8"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -58,9 +50,7 @@
                 "target_sets": 1,
                 "target_reps": "10/10"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -69,9 +59,7 @@
                 "target_sets": 1,
                 "target_reps": "10/10"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 6,
@@ -80,9 +68,7 @@
                 "target_sets": 3,
                 "target_reps": "6/6"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 7,
@@ -92,9 +78,7 @@
                 "target_spm": "18-20",
                 "notes": "easy"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -112,26 +96,7 @@
             "rest": "2:00",
             "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension"
           },
-          "performed": {
-            "completed": true,
-            "warmup_sets": [
-              {
-                "reps": 5,
-                "load": 30,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 5,
-                "load": 40,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 3,
-                "load": 50,
-                "load_unit": "kg"
-              }
-            ]
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Deadlift Block Pull",
@@ -142,34 +107,7 @@
                 "load_unit": "kg",
                 "tempo": "3-1-1"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 5
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 5
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -188,9 +126,7 @@
             "rest": "1:30",
             "notes": "Stop before lumbar flexion, long hamstrings"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Romanian Deadlift",
@@ -200,28 +136,7 @@
                 "target_load": 12,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -240,9 +155,7 @@
             "rest": "1:30",
             "notes": "Chin tucked, ribs down, push through heels"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "BB Hip Thrust",
@@ -252,28 +165,7 @@
                 "target_load": 40,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 10,
-                    "load": 40,
-                    "load_unit": "kg",
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 10,
-                    "load": 40,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 10,
-                    "load": 40,
-                    "load_unit": "kg",
-                    "rpe": 7
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -304,25 +196,7 @@
                 "target_load": 16,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "load": 16,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 16,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 16,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -337,9 +211,7 @@
             "rest": "60s",
             "notes": "no trunk rotation"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "ACC",
@@ -355,9 +227,7 @@
             "rest": "60-90s",
             "notes": "Tall posture, shorten if ankle unstable"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "SS",
@@ -368,11 +238,7 @@
             "duration_unit": "min",
             "target_spm": 21
           },
-          "performed": {
-            "completed": true,
-            "duration": 10,
-            "duration_unit": "min"
-          }
+          "performed": null
         },
         {
           "block_code": "CD",
@@ -380,9 +246,7 @@
           "prescription": {
             "description": "Left ankle rehab: Alphabet, Eversion/Inversion, Eccentric Calf Raise, Toe/Heel Walk"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

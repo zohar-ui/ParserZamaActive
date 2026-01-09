@@ -14,10 +14,7 @@
           "prescription": {
             "description": "5 min treadmill jog, then 2 rounds of activation"
           },
-          "performed": {
-            "completed": true,
-            "notes": "I started with 30 min walk at 5km/h and gradient 10"
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -25,9 +22,7 @@
               "prescription": {
                 "target_duration_min": 5
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -37,9 +32,7 @@
                 "target_reps": 10,
                 "tempo": "3s down"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -48,9 +41,7 @@
                 "target_rounds": 2,
                 "target_reps": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -59,9 +50,7 @@
                 "target_rounds": 2,
                 "target_duration_sec": 30
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -76,37 +65,7 @@
             "load_unit": "kg",
             "tempo": "3-1-1"
           },
-          "performed": {
-            "completed": true,
-            "notes": "I do all with 12.5 kilos",
-            "sets": [
-              {
-                "reps": 12,
-                "load": 12.5,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 12,
-                "load": 12.5,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 12,
-                "load": 12.5,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 12,
-                "load": 12.5,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 12,
-                "load": 12.5,
-                "load_unit": "kg"
-              }
-            ]
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Dumbbell Goblet Squat",
@@ -116,35 +75,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -160,36 +91,7 @@
             "load_unit": "kg",
             "tempo": "2-1-1"
           },
-          "performed": {
-            "completed": true,
-            "notes": "I do 2x 10 / legs with 12.5 kilos. I have a little pain in my leg",
-            "sets": [
-              {
-                "reps": 10,
-                "load": 12.5,
-                "load_unit": "kg",
-                "notes": "left"
-              },
-              {
-                "reps": 10,
-                "load": 12.5,
-                "load_unit": "kg",
-                "notes": "right"
-              },
-              {
-                "reps": 10,
-                "load": 12.5,
-                "load_unit": "kg",
-                "notes": "left"
-              },
-              {
-                "reps": 10,
-                "load": 12.5,
-                "load_unit": "kg",
-                "notes": "right"
-              }
-            ]
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Bulgarian Split Squat",
@@ -199,30 +101,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 10,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 12.5,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -238,9 +117,7 @@
             "load_unit": "kg",
             "tempo": "3-1-1"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Dumbbell Romanian Deadlift",
@@ -250,30 +127,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -287,13 +141,7 @@
             "time_cap": 15,
             "time_cap_unit": "min"
           },
-          "performed": {
-            "completed": true,
-            "duration": 10,
-            "duration_unit": "min",
-            "rounds": 2,
-            "notes": "I do 10 min, 2 rounds in global of all"
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Sumo Deadlift High Pull",
@@ -303,7 +151,7 @@
                 "load_unit": "kg",
                 "notes": "per arm"
               },
-              "performed": {},
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -311,7 +159,7 @@
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {},
+              "performed": null,
               "item_sequence": 2
             },
             {
@@ -321,7 +169,7 @@
                 "distance_unit": "m",
                 "notes": "treadmill"
               },
-              "performed": {},
+              "performed": null,
               "item_sequence": 3
             }
           ]
@@ -332,10 +180,7 @@
           "prescription": {
             "description": "Glute Bridge March: 3×20 alternating reps"
           },
-          "performed": {
-            "completed": true,
-            "notes": "I do 3x14"
-          }
+          "performed": null
         },
         {
           "block_code": "ACC",
@@ -343,10 +188,7 @@
           "prescription": {
             "description": "Hollow hold: 3×40s"
           },
-          "performed": {
-            "completed": true,
-            "notes": "I do 3x30 seconds"
-          }
+          "performed": null
         }
       ]
     }

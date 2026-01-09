@@ -16,9 +16,7 @@
             "target_sets": 1,
             "notes": "5 min cardio + 3 rounds quality movements"
           },
-          "performed": {
-            "actual_sets": 1
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -27,9 +25,7 @@
                 "target_stroke_rate": "22-24",
                 "target_damper": "5-6"
               },
-              "performed": {
-                "actual_duration_min": 5
-              },
+              "performed": null,
               "exercise_name": "Bike / Row"
             },
             {
@@ -38,10 +34,7 @@
                 "target_rounds": 3,
                 "target_reps": 10
               },
-              "performed": {
-                "actual_rounds": 3,
-                "actual_reps": 10
-              },
+              "performed": null,
               "exercise_name": "Pvc Thoracic Rotation"
             },
             {
@@ -52,11 +45,7 @@
                 "target_sets_per_side": 2,
                 "notes": "8 forward / 8 backward"
               },
-              "performed": {
-                "actual_rounds": 3,
-                "actual_reps": 8,
-                "actual_sets_per_side": 2
-              },
+              "performed": null,
               "exercise_name": "Scapular Cars"
             },
             {
@@ -69,9 +58,6 @@
                 "notes": "Light 4-5kg"
               },
               "performed": {
-                "actual_rounds": 3,
-                "actual_reps": 8,
-                "actual_sets_per_side": 1,
                 "actual_weight_kg": 4.5
               },
               "exercise_name": "Db Supine Serratus Punch"
@@ -85,9 +71,7 @@
           "prescription": {
             "target_rest_sec": 30
           },
-          "performed": {
-            "actual_sets": 1
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -98,11 +82,7 @@
                 "equipment": "wall",
                 "notes": "90 degree angle"
               },
-              "performed": {
-                "actual_sets": 3,
-                "actual_duration_sec": 20,
-                "actual_sets_per_side": 1
-              },
+              "performed": null,
               "exercise_name": "Isometric External Rotation"
             },
             {
@@ -112,11 +92,7 @@
                 "target_reps": 10,
                 "target_sets_per_side": 1
               },
-              "performed": {
-                "actual_sets": 3,
-                "actual_reps": 10,
-                "actual_sets_per_side": 1
-              },
+              "performed": null,
               "exercise_name": "Banded Scapular Pulldown"
             }
           ]
@@ -153,9 +129,6 @@
                 "position": "half_kneeling"
               },
               "performed": {
-                "actual_sets": 3,
-                "actual_reps": 8,
-                "actual_sets_per_side": 1,
                 "actual_weight_kg": 20
               },
               "exercise_name": "Landmine Press"
@@ -173,8 +146,6 @@
             "target_rest_min": 1.5
           },
           "performed": {
-            "actual_sets": 3,
-            "actual_reps": 8,
             "actual_weight_kg": 10
           },
           "items": [
@@ -185,8 +156,6 @@
                 "target_reps": 8
               },
               "performed": {
-                "actual_sets": 3,
-                "actual_reps": 8,
                 "actual_weight_kg": 10
               },
               "exercise_name": "Dumbbell Rdl"
@@ -204,8 +173,6 @@
             "target_rest_min": 1.5
           },
           "performed": {
-            "actual_sets": 3,
-            "actual_reps": 10,
             "actual_weight_kg": 10
           },
           "items": [
@@ -216,8 +183,6 @@
                 "target_reps": 10
               },
               "performed": {
-                "actual_sets": 3,
-                "actual_reps": 10,
                 "actual_weight_kg": 10
               },
               "exercise_name": "One Arm Chest Supported Row"
@@ -252,9 +217,6 @@
                 "position": "tall_kneeling"
               },
               "performed": {
-                "actual_sets": 3,
-                "actual_reps": 10,
-                "actual_sets_per_side": 1,
                 "actual_weight_kg": 7.5
               },
               "exercise_name": "Pallof Press"
@@ -288,9 +250,6 @@
                 "equipment": "dumbbell"
               },
               "performed": {
-                "actual_sets": 3,
-                "actual_distance_m": 20,
-                "actual_sets_per_side": 1,
                 "actual_weight_kg": [
                   12,
                   12,
@@ -323,10 +282,7 @@
                 "target_sets": 2,
                 "target_reps": 12
               },
-              "performed": {
-                "actual_sets": 2,
-                "actual_reps": 12
-              },
+              "performed": null,
               "exercise_name": "Prone Low Trap Raise"
             }
           ]
@@ -338,18 +294,14 @@
           "prescription": {
             "target_duration_min": 10
           },
-          "performed": {
-            "actual_duration_min": 10
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
               "prescription": {
                 "target_duration_min": 10
               },
-              "performed": {
-                "actual_duration_min": 10
-              },
+              "performed": null,
               "exercise_name": "Bike"
             }
           ]

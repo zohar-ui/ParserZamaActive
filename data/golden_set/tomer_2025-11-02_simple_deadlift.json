@@ -27,9 +27,7 @@
                 "target_duration_sec": 40,
                 "per_side": true
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -39,9 +37,7 @@
                 "target_duration_sec": 30,
                 "per_side": true
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -50,9 +46,7 @@
                 "target_sets": 1,
                 "target_duration_sec": 30
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -75,9 +69,7 @@
                 "target_spm": "18-20",
                 "notes": "easy"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -86,9 +78,7 @@
                 "target_sets": 2,
                 "target_reps": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -109,9 +99,7 @@
                 "target_sets": 1,
                 "target_reps": "10/10"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -120,9 +108,7 @@
                 "target_sets": 1,
                 "target_reps": "8/8"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 6,
@@ -144,10 +130,7 @@
           "prescription": {
             "description": "Activation exercises"
           },
-          "performed": {
-            "completed": true,
-            "notes": "cable: 27.5 kg"
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -157,9 +140,7 @@
                 "target_duration_sec": 30,
                 "rest_sec": 30
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -169,9 +150,7 @@
                 "target_reps": 8,
                 "rest_sec": 45
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -181,9 +160,7 @@
                 "target_reps_per_side": 5,
                 "rest_sec": 45
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -194,11 +171,7 @@
                 "notes": "light",
                 "rest_sec": 45
               },
-              "performed": {
-                "completed": true,
-                "load": 27.5,
-                "load_unit": "kg"
-              }
+              "performed": null
             }
           ]
         },
@@ -212,9 +185,7 @@
             "target_rpe": 6,
             "rest": "1.5 min"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Romanian Deadlift",
@@ -223,22 +194,7 @@
                 "target_reps": 6,
                 "target_rpe": 6
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 6,
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 6,
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 6,
-                    "rpe": 6
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -266,22 +222,7 @@
                 "target_reps": 5,
                 "target_rpe": "6-7"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 5,
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 5,
-                    "rpe": 6
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -313,9 +254,7 @@
             "rest": "60 s",
             "notes": "Practice technique"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

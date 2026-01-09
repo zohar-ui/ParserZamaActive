@@ -22,32 +22,47 @@
             {
               "item_sequence": 1,
               "exercise_name": "Walk / light Jog",
-              "prescription": { "target_duration_min": 5 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_duration_min": 5
+              },
+              "performed": null
             },
             {
               "item_sequence": 2,
               "exercise_name": "Ankle circles",
-              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": null
             },
             {
               "item_sequence": 3,
               "exercise_name": "Hip openers 90/90",
-              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": null
             },
             {
               "item_sequence": 4,
               "exercise_name": "Down Dog Calf Rocks",
-              "prescription": { "target_rounds": 2, "target_reps_per_side": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps_per_side": 10
+              },
+              "performed": null
             },
             {
               "item_sequence": 5,
               "exercise_name": "Cat cow",
-              "prescription": { "target_rounds": 2, "target_reps": 10, "notes": "for lower back" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 2,
+                "target_reps": 10,
+                "notes": "for lower back"
+              },
+              "performed": null
             }
           ]
         },
@@ -57,21 +72,27 @@
           "prescription": {
             "description": "Rehab Activations"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
               "exercise_name": "Single-leg calf raises",
-              "prescription": { "target_sets": 2, "target_reps_per_side": 12, "tempo": "2 sec up / 3 sec down" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_sets": 2,
+                "target_reps_per_side": 12,
+                "tempo": "2 sec up / 3 sec down"
+              },
+              "performed": null
             },
             {
               "item_sequence": 2,
               "exercise_name": "Glute bridge hold",
-              "prescription": { "target_sets": 2, "target_duration_sec": 12, "equipment": "mini band" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_sets": 2,
+                "target_duration_sec": 12,
+                "equipment": "mini band"
+              },
+              "performed": null
             }
           ]
         }

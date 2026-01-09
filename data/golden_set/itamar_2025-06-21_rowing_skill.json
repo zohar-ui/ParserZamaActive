@@ -14,27 +14,28 @@
           "prescription": {
             "description": "3 min light row to raise HR, then interval rowing"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
               "exercise_name": "Light row",
-              "prescription": { "target_duration_min": 3, "notes": "to raise HR" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_duration_min": 3,
+                "notes": "to raise HR"
+              },
+              "performed": null
             },
             {
               "item_sequence": 2,
               "exercise_name": "Row intervals",
-              "prescription": { 
-                "target_sets": 8, 
-                "work_sec": 30, 
-                "rest_sec": 30, 
+              "prescription": {
+                "target_sets": 8,
+                "work_sec": 30,
+                "rest_sec": 30,
                 "target_spm": "20-22",
                 "notes": "build power slightly each rep"
               },
-              "performed": { "completed": true }
+              "performed": null
             }
           ]
         },
@@ -45,27 +46,35 @@
             "description": "3 rounds mobility circuit",
             "target_rounds": 3
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
               "exercise_name": "Frog Stretch",
-              "prescription": { "target_rounds": 3, "target_reps": 10, "notes": "dynamic" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10,
+                "notes": "dynamic"
+              },
+              "performed": null
             },
             {
               "item_sequence": 2,
               "exercise_name": "Hip Airplanes",
-              "prescription": { "target_rounds": 3, "target_reps": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": null
             },
             {
               "item_sequence": 3,
               "exercise_name": "Cat-Cow",
-              "prescription": { "target_rounds": 3, "target_reps": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_rounds": 3,
+                "target_reps": 10
+              },
+              "performed": null
             }
           ]
         },
@@ -76,9 +85,7 @@
             "description": "5 Rounds: 10 Arms, 10 Arms+Body, 10 Arms+Body+Half-Slide, 10 powerful strokes @ Rate 24, focus on leg drive & calm recovery, rest 60 sec",
             "notes": "easy - its a skill not a workout - focus on being better!"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "INTV",
@@ -90,9 +97,7 @@
             "target_spm": "24-26",
             "notes": "Record: Total time, Avg Split/500 m, Avg SPM, Overall RPE, any pain/fatigue notes"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "INTV",
@@ -104,9 +109,7 @@
             "distance_unit": "m",
             "rest": "1:30"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "ACC",
@@ -114,9 +117,7 @@
           "prescription": {
             "description": "3 rounds: 12 V-Ups, 15 Superman Raises, 20 KB Russian Twists (light), 30 Hollow Rocks, rest as needed"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

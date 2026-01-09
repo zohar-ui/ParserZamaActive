@@ -28,9 +28,7 @@
                 "target_damper": "5-7",
                 "notes": "add video"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -39,9 +37,7 @@
                 "target_sets": 2,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -51,9 +47,7 @@
                 "target_duration_sec": "20-30",
                 "per_side": true
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -62,9 +56,7 @@
                 "target_sets": 2,
                 "target_reps": "8-10"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -73,9 +65,7 @@
                 "target_sets": 2,
                 "target_reps": "6-8"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -87,10 +77,7 @@
             "target_rounds": 2,
             "rest": "20-30 s between exercises"
           },
-          "performed": {
-            "completed": true,
-            "rounds": 2
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -100,9 +87,7 @@
                 "target_reps_per_side": 10,
                 "notes": "Shin band"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -111,9 +96,7 @@
                 "target_rounds": 2,
                 "target_reps": "12-15"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -122,9 +105,7 @@
                 "target_rounds": 2,
                 "target_duration_sec": "20-25"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -201,34 +182,7 @@
                 "target_load": 100,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 100,
-                    "load_unit": "kg",
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 5,
-                    "load": 100,
-                    "load_unit": "kg",
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 5,
-                    "load": 105,
-                    "load_unit": "kg",
-                    "rpe": 8
-                  },
-                  {
-                    "reps": 5,
-                    "load": 105,
-                    "load_unit": "kg",
-                    "rpe": 8
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -245,26 +199,7 @@
             "rest": "1:30-2:00 min",
             "notes": "Pause 2 s below knee"
           },
-          "performed": {
-            "completed": true,
-            "sets": [
-              {
-                "reps": 5,
-                "load": 85,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 5,
-                "load": 85,
-                "load_unit": "kg"
-              },
-              {
-                "reps": 5,
-                "load": 85,
-                "load_unit": "kg"
-              }
-            ]
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Barbell Pause Deadlift",
@@ -274,25 +209,7 @@
                 "target_load": 85,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 85,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 5,
-                    "load": 85,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 5,
-                    "load": 85,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -354,25 +271,7 @@
                 "target_load": 80,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 8,
-                    "load": 80,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 8,
-                    "load": 80,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 8,
-                    "load": 80,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -440,25 +339,7 @@
                 "target_load": 17.5,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 8,
-                    "load": 15,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 8,
-                    "load": 15,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 8,
-                    "load": 15,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]

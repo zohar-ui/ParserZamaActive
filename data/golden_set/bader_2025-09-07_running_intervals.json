@@ -25,9 +25,7 @@
               "prescription": {
                 "target_duration_min": 5
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -36,9 +34,7 @@
                 "target_rounds": 2,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -47,9 +43,7 @@
                 "target_rounds": 2,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -58,9 +52,7 @@
                 "target_rounds": 2,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -70,9 +62,7 @@
                 "target_reps": 10,
                 "notes": "for lower back"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -82,9 +72,7 @@
           "prescription": {
             "description": "Rehab Activations: calf raises, toe walks, glute bridge, dead bug"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Single-leg calf raises",
@@ -94,18 +82,7 @@
                 "tempo": "2 sec up / 3 sec down",
                 "notes": "per leg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "notes": "left"
-                  },
-                  {
-                    "reps": 12,
-                    "notes": "right"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -116,18 +93,7 @@
                 "distance_unit": "m",
                 "notes": "light pressure on forefoot"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "distance": 15,
-                    "distance_unit": "m"
-                  },
-                  {
-                    "distance": 15,
-                    "distance_unit": "m"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 2
             },
             {
@@ -138,18 +104,7 @@
                 "duration_unit": "sec",
                 "notes": "squeeze glutes, keep ribs down"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "duration": 30,
-                    "duration_unit": "sec"
-                  },
-                  {
-                    "duration": 30,
-                    "duration_unit": "sec"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 3
             },
             {
@@ -159,18 +114,7 @@
                 "target_reps": 8,
                 "notes": "per side, focus on lumbar control"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 8,
-                    "notes": "left"
-                  },
-                  {
-                    "reps": 8,
-                    "notes": "right"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 4
             }
           ]
@@ -200,12 +144,7 @@
             "distance_unit": "km",
             "notes": "Surface: outdoors or treadmill 1%, No sprint finish"
           },
-          "performed": {
-            "completed": true,
-            "distance": 1,
-            "distance_unit": "km",
-            "notes": "Record time and perceived effort"
-          }
+          "performed": null
         },
         {
           "block_code": "CD",
@@ -213,11 +152,7 @@
           "prescription": {
             "description": "Slow walk 5 min, stretch calves/hamstrings/hip flexors 2 min each"
           },
-          "performed": {
-            "completed": true,
-            "duration": 11,
-            "duration_unit": "min"
-          }
+          "performed": null
         }
       ]
     }

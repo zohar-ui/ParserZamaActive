@@ -13,9 +13,7 @@
           "prescription": {
             "description": "General warm up"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -23,9 +21,7 @@
               "prescription": {
                 "target_duration_min": 5
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -35,10 +31,7 @@
           "prescription": {
             "description": "3x5 Back Squat @ 100kg"
           },
-          "performed": {
-            "completed": true,
-            "notes": "Felt strong today"
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Back Squat",
@@ -48,25 +41,7 @@
                 "target_load": 100,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 100,
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 5,
-                    "load": 100,
-                    "rpe": 7
-                  },
-                  {
-                    "reps": 5,
-                    "load": 100,
-                    "rpe": 7
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -77,9 +52,7 @@
           "prescription": {
             "description": "10 min stretch"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

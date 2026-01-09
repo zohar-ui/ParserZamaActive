@@ -14,9 +14,7 @@
           "prescription": {
             "description": "5 min treadmill jog, then 2 rounds of activation"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -24,9 +22,7 @@
               "prescription": {
                 "target_duration_min": 5
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -35,9 +31,7 @@
                 "target_rounds": 2,
                 "target_reps": 8
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -47,9 +41,7 @@
                 "target_reps": 10,
                 "notes": "light"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -58,9 +50,7 @@
                 "target_rounds": 2,
                 "target_duration_sec": 30
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -69,9 +59,7 @@
                 "target_rounds": 2,
                 "target_duration_sec": 30
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -86,41 +74,7 @@
             "load_unit": "kg",
             "tempo": "3-1-1"
           },
-          "performed": {
-            "completed": true,
-            "sets": [
-              {
-                "reps": 10,
-                "load": 14,
-                "load_unit": "kg",
-                "notes": "left"
-              },
-              {
-                "reps": 10,
-                "load": 14,
-                "load_unit": "kg",
-                "notes": "right"
-              },
-              {
-                "reps": 10,
-                "load": 14,
-                "load_unit": "kg",
-                "notes": "left"
-              },
-              {
-                "reps": 10,
-                "load": 14,
-                "load_unit": "kg",
-                "notes": "right"
-              },
-              {
-                "reps": 10,
-                "load": 14,
-                "load_unit": "kg",
-                "notes": "left"
-              }
-            ]
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Single Arm DB Bench Press",
@@ -131,35 +85,7 @@
                 "load_unit": "kg",
                 "tempo": "3-1-1"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 10,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 10,
-                    "load": 14,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -175,9 +101,7 @@
             "load_unit": "kg",
             "tempo": "3-1-1"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Single Arm DB Row",
@@ -187,30 +111,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 14,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -226,10 +127,7 @@
             "load_unit": "kg",
             "tempo": "2-1-1"
           },
-          "performed": {
-            "completed": true,
-            "notes": "Difficult with 14kg, did with 10kg. Difficult to be straight"
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Z-Press",
@@ -239,30 +137,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 12,
-                    "load": 10,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 10,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 10,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 12,
-                    "load": 10,
-                    "load_unit": "kg"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -278,13 +153,7 @@
             "target_load": 14,
             "load_unit": "kg"
           },
-          "performed": {
-            "completed": true,
-            "rounds": 3,
-            "time": 12,
-            "time_unit": "min",
-            "notes": "Did with 10kg"
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Thrusters",
@@ -293,11 +162,7 @@
                 "target_load": 14,
                 "load_unit": "kg"
               },
-              "performed": {
-                "reps": 10,
-                "load": 10,
-                "load_unit": "kg"
-              },
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -305,9 +170,7 @@
               "prescription": {
                 "target_reps": 12
               },
-              "performed": {
-                "reps": 12
-              },
+              "performed": null,
               "item_sequence": 2
             },
             {
@@ -316,10 +179,7 @@
                 "target_distance": 200,
                 "distance_unit": "m"
               },
-              "performed": {
-                "distance": 200,
-                "distance_unit": "m"
-              },
+              "performed": null,
               "item_sequence": 3
             }
           ]
@@ -330,9 +190,7 @@
           "prescription": {
             "description": "Side Plank with Rotation: 3×10/side (light weight)"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

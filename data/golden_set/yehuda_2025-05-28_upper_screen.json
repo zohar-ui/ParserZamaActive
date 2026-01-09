@@ -27,10 +27,7 @@
                 "target_rounds": 3,
                 "notes": "Tall posture, nasal breathing"
               },
-              "performed": {
-                "actual_duration_min": 3,
-                "actual_rounds": 3
-              },
+              "performed": null,
               "exercise_name": "Walk"
             },
             {
@@ -68,9 +65,7 @@
           "prescription": {
             "target_sets": 1
           },
-          "performed": {
-            "actual_sets": 1
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -79,10 +74,7 @@
                 "target_duration_min": 1.5,
                 "notes": "Slow roll, exhale on extension, keep hips heavy"
               },
-              "performed": {
-                "actual_sets": 2,
-                "actual_duration_min": 1.5
-              },
+              "performed": null,
               "exercise_name": "T Spine Foam Roll"
             },
             {
@@ -92,10 +84,7 @@
                 "target_duration_sec": 12.5,
                 "notes": "Passive shoulder traction, relax neck"
               },
-              "performed": {
-                "actual_sets": 3,
-                "actual_duration_sec": 12.5
-              },
+              "performed": null,
               "exercise_name": "Dead Hang"
             }
           ]
@@ -107,9 +96,7 @@
           "prescription": {
             "target_sets": 1
           },
-          "performed": {
-            "actual_sets": 1
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -118,10 +105,7 @@
                 "target_reps": 12,
                 "notes": "Lock elbows, protract/retract scapula only"
               },
-              "performed": {
-                "actual_sets": 3,
-                "actual_reps": 12
-              },
+              "performed": null,
               "exercise_name": "Scapular Push Up"
             },
             {
@@ -131,10 +115,7 @@
                 "target_reps": 10,
                 "notes": "From dead-hang, depress & retract, pause 1s at top"
               },
-              "performed": {
-                "actual_sets": 3,
-                "actual_reps": 10
-              },
+              "performed": null,
               "exercise_name": "Scapular Pull Up"
             }
           ]
@@ -223,10 +204,7 @@
                 "target_duration_sec": 37.5,
                 "target_sets_per_side": 1
               },
-              "performed": {
-                "actual_duration_sec": 37.5,
-                "actual_sets_per_side": 1
-              },
+              "performed": null,
               "exercise_name": "Side Plank"
             },
             {
@@ -235,9 +213,7 @@
                 "target_duration_sec": 25,
                 "target_position": "tuck"
               },
-              "performed": {
-                "actual_duration_sec": 25
-              },
+              "performed": null,
               "exercise_name": "Hollow Body Hold"
             },
             {

@@ -28,9 +28,11 @@
                 "target_duration_min": 5,
                 "target_spm": "22-24",
                 "target_damper": "5-6",
-                "markers": ["**V"]
+                "markers": [
+                  "**V"
+                ]
               },
-              "performed": { "completed": true }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -39,7 +41,7 @@
                 "target_rounds": 3,
                 "target_reps": 10
               },
-              "performed": { "completed": true }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -49,7 +51,7 @@
                 "target_reps_per_side": 8,
                 "notes": "8 forward / 8 backward"
               },
-              "performed": { "completed": true }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -61,7 +63,7 @@
                 "load_unit": "kg",
                 "notes": "light"
               },
-              "performed": { "completed": true }
+              "performed": null
             }
           ]
         },
@@ -72,21 +74,27 @@
             "description": "Shoulder activations",
             "rest": "30s between exercises"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
               "exercise_name": "Isometric ER to wall",
-              "prescription": { "target_sets": 3, "target_duration_sec": 20, "per_side": true, "notes": "90°" },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_sets": 3,
+                "target_duration_sec": 20,
+                "per_side": true,
+                "notes": "90°"
+              },
+              "performed": null
             },
             {
               "item_sequence": 2,
               "exercise_name": "Banded Scapular Pulldown",
-              "prescription": { "target_sets": 3, "target_reps_per_side": 10 },
-              "performed": { "completed": true }
+              "prescription": {
+                "target_sets": 3,
+                "target_reps_per_side": 10
+              },
+              "performed": null
             }
           ]
         },
@@ -180,9 +188,7 @@
           "prescription": {
             "description": "Bike/Row: 10 min"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

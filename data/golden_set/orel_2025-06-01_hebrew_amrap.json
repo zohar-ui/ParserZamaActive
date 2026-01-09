@@ -28,9 +28,7 @@
                 "target_rounds": 3,
                 "target_reps": 50
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -39,9 +37,7 @@
                 "target_rounds": 3,
                 "target_reps": 20
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -50,9 +46,7 @@
                 "target_rounds": 3,
                 "target_reps": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -61,9 +55,7 @@
                 "target_rounds": 3,
                 "target_reps": "3-5"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -72,9 +64,7 @@
                 "target_rounds": 3,
                 "target_distance_m": 400
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -84,9 +74,7 @@
           "prescription": {
             "description": "Mobility foam rolling and smash"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -94,9 +82,7 @@
               "prescription": {
                 "notes": "per source text"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -104,9 +90,7 @@
               "prescription": {
                 "notes": "per source text"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -114,9 +98,7 @@
               "prescription": {
                 "notes": "per source text"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -126,9 +108,7 @@
           "prescription": {
             "description": "Band Pull over Hold 3x20sec, 1 Leg Double Ktb Step up 3x5/5"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Band Pull over Hold",
@@ -137,22 +117,7 @@
                 "target_duration": 20,
                 "duration_unit": "sec"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "duration": 20,
-                    "duration_unit": "sec"
-                  },
-                  {
-                    "duration": 20,
-                    "duration_unit": "sec"
-                  },
-                  {
-                    "duration": 20,
-                    "duration_unit": "sec"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -162,34 +127,7 @@
                 "target_reps": 5,
                 "notes": "per leg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 5,
-                    "notes": "left"
-                  },
-                  {
-                    "reps": 5,
-                    "notes": "right"
-                  },
-                  {
-                    "reps": 5,
-                    "notes": "left"
-                  },
-                  {
-                    "reps": 5,
-                    "notes": "right"
-                  },
-                  {
-                    "reps": 5,
-                    "notes": "left"
-                  },
-                  {
-                    "reps": 5,
-                    "notes": "right"
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 2
             }
           ]
@@ -219,9 +157,7 @@
               "prescription": {
                 "target_calories": 30
               },
-              "performed": {
-                "calories": 30
-              },
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -231,11 +167,7 @@
                 "target_load": 30,
                 "load_unit": "kg"
               },
-              "performed": {
-                "reps": 15,
-                "load": 30,
-                "load_unit": "kg"
-              },
+              "performed": null,
               "item_sequence": 2
             },
             {
@@ -244,10 +176,7 @@
                 "target_distance": 400,
                 "distance_unit": "m"
               },
-              "performed": {
-                "distance": 400,
-                "distance_unit": "m"
-              },
+              "performed": null,
               "item_sequence": 3
             },
             {
@@ -255,9 +184,7 @@
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {
-                "reps": 10
-              },
+              "performed": null,
               "item_sequence": 4
             },
             {
@@ -265,9 +192,7 @@
               "prescription": {
                 "target_reps": 35
               },
-              "performed": {
-                "reps": 35
-              },
+              "performed": null,
               "item_sequence": 5
             }
           ]

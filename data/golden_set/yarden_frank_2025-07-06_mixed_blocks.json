@@ -14,9 +14,7 @@
           "prescription": {
             "description": "Foam Rolling"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -25,9 +23,7 @@
                 "target_duration_sec": 60,
                 "per_side": true
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -36,9 +32,7 @@
                 "target_duration_sec": 60,
                 "per_side": true
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -46,9 +40,7 @@
               "prescription": {
                 "target_duration_sec": 60
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -59,9 +51,7 @@
             "description": "3 rounds warm up circuit",
             "target_rounds": 3
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -69,9 +59,7 @@
               "prescription": {
                 "target_distance_m": 200
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -79,9 +67,7 @@
               "prescription": {
                 "target_reps": "6/6"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -89,9 +75,7 @@
               "prescription": {
                 "target_reps": 8
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -99,9 +83,7 @@
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -109,9 +91,7 @@
               "prescription": {
                 "target_reps": 5
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 6,
@@ -119,9 +99,7 @@
               "prescription": {
                 "target_reps": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -131,10 +109,7 @@
           "prescription": {
             "description": "Back Squat: 2x3 @ 40-60%, 1x5 @ 65%, 5x5 @ 75% (T=2-1-X), Rest 120s. Then 3 Rounds: DB Reverse Lunge, DB Suitcase Deadlift"
           },
-          "performed": {
-            "completed": true,
-            "notes": "Set 1 - @40% = 40kg, 60% = 60kg. Set 2 - @65% = 65kg. Set 3 - @75% = 75kg"
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "Back Squat",
@@ -144,60 +119,7 @@
                 "target_percentage": 75,
                 "tempo": "2-1-X"
               },
-              "performed": {
-                "warmup_sets": [
-                  {
-                    "reps": 3,
-                    "load": 40,
-                    "load_unit": "kg",
-                    "percentage": 40
-                  },
-                  {
-                    "reps": 3,
-                    "load": 60,
-                    "load_unit": "kg",
-                    "percentage": 60
-                  },
-                  {
-                    "reps": 5,
-                    "load": 65,
-                    "load_unit": "kg",
-                    "percentage": 65
-                  }
-                ],
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 75,
-                    "load_unit": "kg",
-                    "percentage": 75
-                  },
-                  {
-                    "reps": 5,
-                    "load": 75,
-                    "load_unit": "kg",
-                    "percentage": 75
-                  },
-                  {
-                    "reps": 5,
-                    "load": 75,
-                    "load_unit": "kg",
-                    "percentage": 75
-                  },
-                  {
-                    "reps": 5,
-                    "load": 75,
-                    "load_unit": "kg",
-                    "percentage": 75
-                  },
-                  {
-                    "reps": 5,
-                    "load": 75,
-                    "load_unit": "kg",
-                    "percentage": 75
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -223,9 +145,7 @@
               "prescription": {
                 "target_reps": 6
               },
-              "performed": {
-                "reps": 6
-              },
+              "performed": null,
               "item_sequence": 1
             },
             {
@@ -235,11 +155,7 @@
                 "target_load": 7,
                 "load_unit": "kg"
               },
-              "performed": {
-                "reps": 6,
-                "load": 7,
-                "load_unit": "kg"
-              },
+              "performed": null,
               "item_sequence": 2
             }
           ]
@@ -250,9 +166,7 @@
           "prescription": {
             "description": "Core: 3x12 Frog Reverse Hyper"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "CD",
@@ -260,9 +174,7 @@
           "prescription": {
             "description": "Cooldown: 3x Couch Stretch 60s/side"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }

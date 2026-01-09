@@ -15,9 +15,7 @@
           "prescription": {
             "description": "Breathing, mobility, and easy row"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "item_sequence": 1,
@@ -25,9 +23,7 @@
               "prescription": {
                 "target_duration_min": 2
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 2,
@@ -37,9 +33,7 @@
                 "target_reps_per_side": 8,
                 "notes": "slow!"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 3,
@@ -48,9 +42,7 @@
                 "target_sets": 1,
                 "target_reps_per_side": 8
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 4,
@@ -59,9 +51,7 @@
                 "target_sets": 1,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 5,
@@ -70,9 +60,7 @@
                 "target_sets": 1,
                 "target_reps_per_side": 10
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 6,
@@ -81,9 +69,7 @@
                 "target_sets": 3,
                 "target_reps_per_side": 6
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             },
             {
               "item_sequence": 7,
@@ -93,9 +79,7 @@
                 "target_spm": "18-20",
                 "notes": "easy"
               },
-              "performed": {
-                "completed": true
-              }
+              "performed": null
             }
           ]
         },
@@ -113,9 +97,7 @@
             "rest": "2:00",
             "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DL Block Pull",
@@ -125,51 +107,7 @@
                 "target_load": 55,
                 "load_unit": "kg"
               },
-              "performed": {
-                "warmup_sets": [
-                  {
-                    "reps": 5,
-                    "load": 30,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 5,
-                    "load": 40,
-                    "load_unit": "kg"
-                  },
-                  {
-                    "reps": 3,
-                    "load": 50,
-                    "load_unit": "kg"
-                  }
-                ],
-                "sets": [
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 5
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 5,
-                    "load": 55,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -188,9 +126,7 @@
             "rest": "1:30",
             "notes": "Stop before lumbar flexion, long hamstrings"
           },
-          "performed": {
-            "completed": true
-          },
+          "performed": null,
           "items": [
             {
               "exercise_name": "DB Romanian Deadlift",
@@ -200,28 +136,7 @@
                 "target_load": 12,
                 "load_unit": "kg"
               },
-              "performed": {
-                "sets": [
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  },
-                  {
-                    "reps": 8,
-                    "load": 12,
-                    "load_unit": "kg",
-                    "rpe": 6
-                  }
-                ]
-              },
+              "performed": null,
               "item_sequence": 1
             }
           ]
@@ -235,9 +150,7 @@
             "rest": "1:30",
             "notes": "Chin tucked, ribs down, push through heels"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "ACC",
@@ -260,9 +173,7 @@
             "rest": "60s",
             "notes": "no trunk rotation"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "ACC",
@@ -272,9 +183,7 @@
             "rest": "60-90s",
             "notes": "Tall posture, shorten distance if left ankle feels unstable"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "SS",
@@ -282,9 +191,7 @@
           "prescription": {
             "description": "Row: 10 min @ 20-22 spm"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         },
         {
           "block_code": "CD",
@@ -293,9 +200,7 @@
             "description": "Left ankle rehab: Alphabet with foot, Eversion/Inversion with band 2x12/12, Eccentric Calf Raise 3x15/15 (3s down), Toe/Heel Walk 2x20m",
             "notes": "Can be done at home"
           },
-          "performed": {
-            "completed": true
-          }
+          "performed": null
         }
       ]
     }
