@@ -1,6 +1,6 @@
 # 📜 The Constitution: Canonical JSON Schema
 
-**Version:** 2.0.0  
+**Version:** 3.0.0  
 **Status:** 🔒 LOCKED - This is the ONLY allowed schema  
 **Last Updated:** January 10, 2026  
 
@@ -9,6 +9,39 @@
 ---
 
 ## 🎯 Core Principles
+
+### Principle #0: Identity Before Data (NEW in v3.0)
+**Field ordering matters for readability. Exercise identity comes BEFORE workout data.**
+
+```json
+// ✅ CORRECT - Identity → Instructions → Results
+{
+  "item_sequence": 1,
+  "exercise_name": "Bench Press",
+  "equipment_key": "barbell",
+  "prescription": { "target_sets": 5 },
+  "performed": { "actual_sets": 5 }
+}
+
+// ❌ WRONG - Results before instructions
+{
+  "item_sequence": 1,
+  "exercise_name": "Bench Press",
+  "equipment_key": "barbell",
+  "performed": { "actual_sets": 5 },
+  "prescription": { "target_sets": 5 }
+}
+```
+
+**Rule:** In ALL objects with prescription/performed, order MUST be:
+1. Identity fields first (`item_sequence`, `exercise_name`, `equipment_key`)
+2. **`prescription`** (instructions come first)
+3. **`performed`** (results come after instructions)
+4. Special structures (`circuit_config`, etc.)
+
+**Why this order:** You read instructions before you execute. Prescription defines what to do, performed records what happened.
+
+---
 
 ### Principle #1: The Great Divide
 **Every object MUST separate `prescription` (plan) from `performed` (actual execution).**
@@ -31,26 +64,32 @@
 
 ---
 
-### Principle #2: Atomic Types
-**Numbers are numbers. Strings are strings. No mixing.**
+### Principle #2: Atomic Types & Scalable Structures (UPDATED in v3.0)
+**Numbers are numbers. Strings are strings. Units are explicit.**
 
 ```json
-// ✅ CORRECT - Numeric types
+// ✅ CORRECT - Structured values with units (v3.0)
 {
-  "target_reps": 5,              // number
-  "target_weight_kg": 100.5,     // number (decimals allowed)
-  "target_duration_sec": 45      // number (always in seconds)
+  "target_reps": 5,                    // number
+  "target_weight": {                   // object with value + unit
+    "value": 100.5,
+    "unit": "kg"
+  },
+  "target_duration_sec": 45            // number (seconds)
 }
 
-// ❌ WRONG - String masquerading as number
+// ❌ WRONG - Hardcoded units in field names (v2.0 legacy)
 {
   "target_reps": "5",
-  "target_weight_kg": "100kg",
+  "target_weight_kg": "100kg",         // Unit in field name = not scalable
   "target_duration_sec": "45 seconds"
 }
 ```
 
-**Rule:** If the original text says "5", parse it to the number `5`, not the string `"5"`.
+**Rule:** 
+- If the original text says "5", parse it to the number `5`, not the string `"5"`.
+- Weight/load fields MUST use `{value, unit}` structure (v3.0+).
+- Supported units: `"kg"`, `"lbs"`, `"g"` (grams for resistance bands).
 
 ---
 
@@ -113,6 +152,224 @@
 ```
 
 **Rule:** If the text doesn't explicitly say what happened, set `performed: null`. Do not copy prescription into performed.
+
+---
+
+### Principle #6: Result Model - Hierarchical Performance Recording (NEW in v3.0)
+**Performance data can be recorded at THREE levels. Choose the most appropriate level based on available detail.**
+
+#### 🎯 The Three Levels:
+
+**Level 1: Block-Level Performance** (Aggregated)
+Use when ALL exercises in the block share the same outcome:
+```json
+{
+  "block_code": "STR",
+  "block_label": "A",
+  "prescription": {
+    "description": "Back Squat: 5x5 @ 100kg"
+  },
+  "performed": {
+    "completed": true,
+    "actual_sets": 5,
+    "actual_reps": 5,
+    "actual_weight": { "value": 100, "unit": "kg" }
+  },
+  "items": [...]  // Items have performed: null
+}
+```
+
+**Level 2: Item-Level Performance** (Simple Summary)
+Use when the text gives overall results per exercise, but not set-by-set:
+```json
+{
+  "item_sequence": 1,
+  "exercise_name": "Back Squat",
+  "equipment_key": "barbell",
+  "prescription": {
+    "target_sets": 5,
+    "target_reps": 5,
+    "target_weight": { "value": 100, "unit": "kg" }
+  },
+  "performed": {
+    "actual_sets": 5,
+    "actual_reps": 5,
+    "actual_weight": { "value": 100, "unit": "kg" },
+    "notes": "Felt strong today"
+  }
+}
+```
+
+**Level 3: Set-by-Set Performance** (Detailed Breakdown)
+Use when the text provides individual set results:
+```json
+{
+  "item_sequence": 1,
+  "exercise_name": "Back Squat",
+  "equipment_key": "barbell",
+  "prescription": {
+    "target_sets": 5,
+    "target_reps": 5,
+    "target_weight": { "value": 100, "unit": "kg" }
+  },
+  "performed": {
+    "sets": [
+      { "set_index": 1, "reps": 5, "load": { "value": 100, "unit": "kg" }, "rpe": 7 },
+      { "set_index": 2, "reps": 5, "load": { "value": 100, "unit": "kg" }, "rpe": 8 },
+      { "set_index": 3, "reps": 5, "load": { "value": 100, "unit": "kg" }, "rpe": 8 },
+      { "set_index": 4, "reps": 4, "load": { "value": 100, "unit": "kg" }, "rpe": 9, "notes": "Failed last rep" },
+      { "set_index": 5, "reps": 4, "load": { "value": 95, "unit": "kg" }, "rpe": 9, "notes": "Reduced weight" }
+    ]
+  }
+}
+```
+
+#### 📊 Decision Tree - Which Level to Use?
+
+```
+Does the text provide set-by-set details?
+│
+├─ YES → Use Level 3 (performed.sets[])
+│         Example: "Set 1: 5 @ 100kg RPE 7, Set 2: 5 @ 100kg RPE 8..."
+│
+└─ NO → Is there an overall result for the exercise?
+    │
+    ├─ YES → Use Level 2 (item.performed with simple fields)
+    │         Example: "Completed 5x5 @ 100kg, felt good"
+    │
+    └─ NO → Is there a block-level summary?
+        │
+        ├─ YES → Use Level 1 (block.performed)
+        │         Example: "Block A: All completed as prescribed"
+        │
+        └─ NO → Set performed: null
+                  Example: Only prescription exists, no execution data
+```
+
+#### ⚠️ Critical Rules:
+
+1. **Never Duplicate Data Across Levels**
+   ```json
+   // ❌ WRONG - Duplicating at block AND item level
+   {
+     "block_performed": { "actual_sets": 5 },
+     "items": [{
+       "performed": { "actual_sets": 5 }  // Redundant!
+     }]
+   }
+   
+   // ✅ CORRECT - Choose ONE level
+   {
+     "block_performed": { "actual_sets": 5 },
+     "items": [{
+       "performed": null  // Block-level only
+     }]
+   }
+   ```
+
+2. **Level 3 Takes Priority**
+   If set-by-set data exists, ALWAYS use `performed.sets[]`:
+   ```json
+   // ❌ WRONG - Mixing simple fields with sets array
+   {
+     "performed": {
+       "actual_sets": 3,
+       "actual_reps": 5,  // Don't do this!
+       "sets": [...]      // If you have sets[], don't use simple fields
+     }
+   }
+   
+   // ✅ CORRECT - Sets array only
+   {
+     "performed": {
+       "sets": [
+         { "set_index": 1, "reps": 5, ... },
+         { "set_index": 2, "reps": 5, ... },
+         { "set_index": 3, "reps": 4, ... }
+       ]
+     }
+   }
+   ```
+
+3. **Partial Data = Use Lower Level + Notes**
+   ```json
+   // Text: "Got 5 reps but forgot to track weight"
+   {
+     "performed": {
+       "actual_reps": 5,
+       "notes": "Weight not recorded"
+     }
+   }
+   ```
+
+#### 🔍 Real-World Examples:
+
+**Example A: Aggregate Block Result**
+```
+Text: "Strength Block: 3 rounds of 8-10 reps on all exercises, moderate weight"
+
+{
+  "block_performed": {
+    "completed": true,
+    "actual_rounds": 3,
+    "notes": "moderate weight used on all exercises"
+  },
+  "items": [
+    { "exercise_name": "...", "performed": null },
+    { "exercise_name": "...", "performed": null }
+  ]
+}
+```
+
+**Example B: Per-Exercise Summary**
+```
+Text: 
+"1. Bench Press: Completed 5x5 @ 80kg"
+"2. Row: Completed 5x5 @ 70kg"
+
+{
+  "items": [
+    {
+      "exercise_name": "Bench Press",
+      "performed": {
+        "actual_sets": 5,
+        "actual_reps": 5,
+        "actual_weight": { "value": 80, "unit": "kg" }
+      }
+    },
+    {
+      "exercise_name": "Row",
+      "performed": {
+        "actual_sets": 5,
+        "actual_reps": 5,
+        "actual_weight": { "value": 70, "unit": "kg" }
+      }
+    }
+  ]
+}
+```
+
+**Example C: Full Set-by-Set Detail**
+```
+Text:
+"Deadlift:
+Set 1: 5 @ 140kg RPE 6
+Set 2: 5 @ 140kg RPE 7
+Set 3: 3 @ 140kg RPE 9 - grip failed"
+
+{
+  "exercise_name": "Deadlift",
+  "performed": {
+    "sets": [
+      { "set_index": 1, "reps": 5, "load": { "value": 140, "unit": "kg" }, "rpe": 6 },
+      { "set_index": 2, "reps": 5, "load": { "value": 140, "unit": "kg" }, "rpe": 7 },
+      { "set_index": 3, "reps": 3, "load": { "value": 140, "unit": "kg" }, "rpe": 9, "notes": "grip failed" }
+    ]
+  }
+}
+```
+
+**Rule:** Match the level of detail in your JSON to the level of detail in the source text. Never invent granularity that doesn't exist.
 
 ---
 
@@ -256,6 +513,7 @@ interface BlockPerformed {
 interface BlockItem {
   item_sequence: number;          // 1, 2, 3... (order in block)
   exercise_name: string;          // Normalized exercise name
+  equipment_key?: string;         // Canonical equipment key (NEW in v3.0)
   
   prescription: ItemPrescription;   // What was PLANNED for this exercise
   performed: ItemPerformed | null;  // What ACTUALLY happened
@@ -270,8 +528,17 @@ interface BlockItem {
 **Field Rules:**
 - `item_sequence`: Starts at 1, increments sequentially.
 - `exercise_name`: MUST match exercise catalog (use normalization function).
+- `equipment_key`: MUST be from `lib_equipment_catalog` (e.g., "barbell", "dumbbell", "kettlebell", "bodyweight"). Added in v3.0.
 - EITHER `exercise_name` OR `exercise_options` OR `exercises` (for circuits).
 - `circuit_config`: Only present if this is a circuit/superset.
+
+**Field Ordering (MANDATORY in v3.0):**
+1. `item_sequence`
+2. `exercise_name` (or `exercise_options`/`exercises`)
+3. `equipment_key` (if applicable)
+4. `prescription`
+5. `performed`
+6. Other fields (`circuit_config`, etc.)
 
 ---
 
@@ -286,11 +553,19 @@ interface ItemPrescription {
   target_reps_max?: number;
   target_sets_per_side?: number;    // For unilateral
   
-  // Load
-  target_weight_kg?: number;
-  target_weight_kg_min?: number;    // For ranges
-  target_weight_kg_max?: number;
-  target_weight_lbs?: number;       // If specified in pounds (convert to kg)
+  // Load (v3.0 structure - value + unit)
+  target_weight?: {
+    value: number;
+    unit: "kg" | "lbs" | "g";       // Explicit unit
+  };
+  target_weight_min?: {              // For ranges
+    value: number;
+    unit: "kg" | "lbs" | "g";
+  };
+  target_weight_max?: {
+    value: number;
+    unit: "kg" | "lbs" | "g";
+  };
   target_percentage_1rm?: number;   // "@ 70%" = 0.70
   
   // Duration
@@ -348,7 +623,10 @@ interface ItemPerformed {
   // Simple execution
   actual_sets?: number;
   actual_reps?: number;
-  actual_weight_kg?: number;
+  actual_weight?: {                  // v3.0 structure - ALWAYS {value, unit}
+    value: number;
+    unit: "kg" | "lbs" | "g";
+  };
   actual_duration_sec?: number;
   actual_sets_per_side?: number;
   
@@ -364,6 +642,11 @@ interface ItemPerformed {
 }
 ```
 
+**Field Rules:**
+- `actual_weight`: MUST use `{value, unit}` structure. Never `actual_weight_kg` or `actual_weight_lbs`.
+- Duration: ALWAYS in seconds.
+- `sets`: Use for detailed set-by-set breakdown. Otherwise use aggregate fields.
+
 ---
 
 ### Set Result Object (Individual Set Performance)
@@ -372,16 +655,32 @@ interface ItemPerformed {
 interface SetResult {
   set_index: number;                // 1, 2, 3...
   reps?: number;
-  load_kg?: number;
+  load?: {                          // v3.0 structure
+    value: number;
+    unit: "kg" | "lbs" | "g";
+  };
   duration_sec?: number;
   rpe?: number;
   rir?: number;
+  set_technique?: SetTechnique;     // Advanced techniques (NEW in v3.0)
   notes?: string;                   // Set-specific notes (e.g., "Failed last rep")
 }
+
+type SetTechnique = 
+  | "standard"           // Regular set (default)
+  | "drop_set"           // Drop set (reduce weight mid-set)
+  | "rest_pause"         // Rest-pause (micro-rests within set)
+  | "cluster"            // Cluster set (rest between reps)
+  | "myo_reps"           // Myo-reps technique
+  | "amrap"              // As many reps as possible
+  | "tempo"              // Controlled tempo
+  | "isometric_hold";    // Static hold
 ```
 
 **Field Rules:**
 - `set_index`: Starts at 1, increments sequentially.
+- `set_technique`: Default is `"standard"`. Use specific technique only when explicitly stated in text.
+- For advanced techniques (drop sets, rest-pause, etc.), see "Advanced Set Techniques" section below.
 - Use this structure when each set has different performance (most common).
 
 ---
@@ -396,6 +695,307 @@ interface CircuitConfig {
   rest_between_exercises_sec?: number;
 }
 ```
+
+---
+
+## 🎯 Advanced Set Techniques (NEW in v3.0)
+
+### Overview
+Advanced training techniques require special handling. Use `set_technique` field in `SetResult` to identify the technique used.
+
+---
+
+### Technique 1: Drop Set
+**Definition:** Reduce weight mid-set to continue with more reps.
+
+**Text Example:**
+```
+Bench Press:
+Set 3: 8 @ 100kg → drop to 80kg for 6 more → drop to 60kg for 4 more
+```
+
+**JSON Structure:**
+```json
+{
+  "exercise_name": "Bench Press",
+  "performed": {
+    "sets": [
+      {
+        "set_index": 3,
+        "set_technique": "drop_set",
+        "notes": "Drop set: 8 @ 100kg → 6 @ 80kg → 4 @ 60kg",
+        "reps": 18,
+        "load": { "value": 100, "unit": "kg" }
+      }
+    ]
+  }
+}
+```
+
+**Alternative (Detailed Breakdown):**
+If you want to preserve each drop as separate mini-sets:
+```json
+{
+  "performed": {
+    "sets": [
+      {
+        "set_index": 3,
+        "set_technique": "drop_set",
+        "reps": 8,
+        "load": { "value": 100, "unit": "kg" },
+        "notes": "First drop"
+      },
+      {
+        "set_index": 3.1,
+        "set_technique": "drop_set",
+        "reps": 6,
+        "load": { "value": 80, "unit": "kg" },
+        "notes": "Second drop"
+      },
+      {
+        "set_index": 3.2,
+        "set_technique": "drop_set",
+        "reps": 4,
+        "load": { "value": 60, "unit": "kg" },
+        "notes": "Final drop"
+      }
+    ]
+  }
+}
+```
+
+---
+
+### Technique 2: Rest-Pause
+**Definition:** Take short breaks (10-20 seconds) within a single set.
+
+**Text Example:**
+```
+Squat: 
+Set 4: 5 reps @ 120kg, rest 15 sec, 3 more reps, rest 15 sec, 2 more reps
+```
+
+**JSON Structure:**
+```json
+{
+  "set_index": 4,
+  "set_technique": "rest_pause",
+  "reps": 10,
+  "load": { "value": 120, "unit": "kg" },
+  "notes": "5 + 3 + 2 reps with 15s rest-pause"
+}
+```
+
+---
+
+### Technique 3: Cluster Set
+**Definition:** Rest between individual reps or small clusters (e.g., 1 rep, rest 10s, repeat).
+
+**Text Example:**
+```
+Deadlift:
+Set 1: 5 singles @ 180kg with 20s rest between reps
+```
+
+**JSON Structure:**
+```json
+{
+  "set_index": 1,
+  "set_technique": "cluster",
+  "reps": 5,
+  "load": { "value": 180, "unit": "kg" },
+  "notes": "5 singles with 20s rest"
+}
+```
+
+---
+
+### Technique 4: Myo-Reps
+**Definition:** Activation set followed by mini-sets with short rest.
+
+**Text Example:**
+```
+Leg Press:
+Set 1: 15 @ 100kg (activation), then 5 mini-sets of 3-5 reps with 5s rest
+```
+
+**JSON Structure:**
+```json
+{
+  "set_index": 1,
+  "set_technique": "myo_reps",
+  "reps": 35,
+  "load": { "value": 100, "unit": "kg" },
+  "notes": "15 reps activation + 5 mini-sets (5,5,4,3,3)"
+}
+```
+
+---
+
+### Technique 5: Superset
+**Definition:** Two exercises performed back-to-back with no rest.
+
+**Text Example:**
+```
+Superset:
+A1. Bench Press: 3x8 @ 80kg
+A2. Barbell Row: 3x8 @ 70kg
+```
+
+**JSON Structure:**
+```json
+{
+  "block_label": "A",
+  "circuit_config": {
+    "rounds": 3,
+    "type": "for_quality",
+    "rest_between_exercises_sec": 0,
+    "rest_between_rounds_sec": 90
+  },
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Bench Press",
+      "equipment_key": "barbell",
+      "prescription": {
+        "target_sets": 3,
+        "target_reps": 8,
+        "target_weight": { "value": 80, "unit": "kg" }
+      },
+      "performed": null
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Barbell Row",
+      "equipment_key": "barbell",
+      "prescription": {
+        "target_sets": 3,
+        "target_reps": 8,
+        "target_weight": { "value": 70, "unit": "kg" }
+      },
+      "performed": null
+    }
+  ]
+}
+```
+
+---
+
+### Technique 6: Giant Set
+**Definition:** 4+ exercises performed consecutively with minimal rest.
+
+**Text Example:**
+```
+Giant Set (4 rounds):
+1. Push-ups: 15 reps
+2. Pull-ups: 10 reps
+3. Dips: 12 reps
+4. Inverted Rows: 15 reps
+Rest 2 min between rounds
+```
+
+**JSON Structure:**
+```json
+{
+  "block_code": "STR",
+  "block_label": "B",
+  "circuit_config": {
+    "rounds": 4,
+    "type": "for_quality",
+    "rest_between_exercises_sec": 0,
+    "rest_between_rounds_sec": 120
+  },
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Push-up",
+      "prescription": { "target_reps": 15 }
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Pull-up",
+      "prescription": { "target_reps": 10 }
+    },
+    {
+      "item_sequence": 3,
+      "exercise_name": "Dip",
+      "prescription": { "target_reps": 12 }
+    },
+    {
+      "item_sequence": 4,
+      "exercise_name": "Inverted Row",
+      "prescription": { "target_reps": 15 }
+    }
+  ]
+}
+```
+
+---
+
+### Technique 7: AMRAP Set
+**Definition:** As Many Reps As Possible (to failure or near-failure).
+
+**Text Example:**
+```
+Pull-ups:
+Set 3: AMRAP @ bodyweight → got 12 reps
+```
+
+**JSON Structure:**
+```json
+{
+  "set_index": 3,
+  "set_technique": "amrap",
+  "reps": 12,
+  "notes": "AMRAP @ bodyweight"
+}
+```
+
+---
+
+### Decision Tree - Which Structure to Use?
+
+```
+Is it multiple exercises done together?
+│
+├─ YES → Use circuit_config
+│   │
+│   ├─ 2 exercises → Superset
+│   ├─ 3 exercises → Tri-set
+│   └─ 4+ exercises → Giant Set
+│
+└─ NO → Is it a single exercise with special technique?
+    │
+    └─ YES → Use set_technique field
+        │
+        ├─ Weight changes within set → drop_set
+        ├─ Micro-rests within set → rest_pause
+        ├─ Rest between reps → cluster
+        ├─ Activation + mini-sets → myo_reps
+        ├─ Max reps → amrap
+        └─ Standard execution → standard (default)
+```
+
+---
+
+### Critical Rules for Advanced Techniques:
+
+1. **Always Document in Notes**
+   Even with `set_technique` field, add detailed notes explaining the execution.
+
+2. **Preserve Original Text Structure**
+   If text says "8 @ 100 → 6 @ 80", keep that format in notes.
+
+3. **Use Decimal set_index for Sub-Sets**
+   Drop set breakdowns: 3, 3.1, 3.2 (all part of "Set 3")
+
+4. **Circuit vs Set Technique**
+   - Multiple exercises = `circuit_config`
+   - Single exercise advanced technique = `set_technique`
+
+5. **Total Reps Calculation**
+   For drop/rest-pause/myo-reps: Sum all reps into single number.
+   Example: "5 + 3 + 2" = `reps: 10`
 
 ---
 
@@ -528,11 +1128,12 @@ type BlockCode =
 Back Squat: 5x5 @ 70%
 ```
 
-**Expected Output:**
+**Expected Output (v3.0):**
 ```json
 {
   "item_sequence": 1,
   "exercise_name": "Back Squat",
+  "equipment_key": "barbell",
   "prescription": {
     "target_sets": 5,
     "target_reps": 5,
@@ -554,21 +1155,25 @@ Set 2: 5 @ 100kg RPE 8
 Set 3: 4 @ 100kg RPE 9 (failed last rep)
 ```
 
-**Expected Output:**
+**Expected Output (v3.0):**
 ```json
 {
   "item_sequence": 1,
   "exercise_name": "Back Squat",
+  "equipment_key": "barbell",
   "prescription": {
     "target_sets": 5,
     "target_reps": 5,
-    "target_weight_kg": 100
+    "target_weight": {
+      "value": 100,
+      "unit": "kg"
+    }
   },
   "performed": {
     "sets": [
-      { "set_index": 1, "reps": 5, "load_kg": 100, "rpe": 7 },
-      { "set_index": 2, "reps": 5, "load_kg": 100, "rpe": 8 },
-      { "set_index": 3, "reps": 4, "load_kg": 100, "rpe": 9, "notes": "failed last rep" }
+      { "set_index": 1, "reps": 5, "load": { "value": 100, "unit": "kg" }, "rpe": 7 },
+      { "set_index": 2, "reps": 5, "load": { "value": 100, "unit": "kg" }, "rpe": 8 },
+      { "set_index": 3, "reps": 4, "load": { "value": 100, "unit": "kg" }, "rpe": 9, "notes": "failed last rep" }
     ]
   }
 }
@@ -583,16 +1188,16 @@ Set 3: 4 @ 100kg RPE 9 (failed last rep)
 DB Bench Press: 3x8-12 @ moderate weight
 ```
 
-**Expected Output:**
+**Expected Output (v3.0):**
 ```json
 {
   "item_sequence": 1,
   "exercise_name": "Dumbbell Bench Press",
+  "equipment_key": "dumbbell",
   "prescription": {
     "target_sets": 3,
     "target_reps_min": 8,
-    "target_reps_max": 12,
-    "equipment": "dumbbell"
+    "target_reps_max": 12
   },
   "performed": null
 }
@@ -777,6 +1382,12 @@ Result: 5 rounds + 15 reps
 
 ## 🔒 Schema Version History
 
+- **v3.0.0** (Jan 10, 2026): Field ordering standardization + scalable weight structure
+  - **Breaking Changes:**
+    - Field order MUST be: item_sequence → exercise_name → equipment_key → prescription → performed
+    - Weight fields MUST use `{value, unit}` structure (no more `*_kg` or `*_lbs` field names)
+    - Added mandatory `equipment_key` field to BlockItem
+  - **Migration:** All golden set files updated (19 files)
 - **v2.0.0** (Jan 10, 2026): The Constitution - Canonical schema locked
 - **v1.0.0** (Jan 7, 2026): Initial schema from golden set examples
 
