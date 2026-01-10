@@ -1,10 +1,41 @@
 # ParserZamaActive
 
-🏋️‍♂️ **ZAMM Workout Parser** - AI-SQL Agent Architecture
+🏋️‍♂️ **ZAMM Workout Parser** - AI-SQL Agent Architecture with Active Learning
 
 ## Project Overview
 
 מערכת פרסור חכמה הממירה טקסט חופשי (תוכנית אימון + תוצאות ביצוע) למבנה נתונים רלציוני מורכב, באמצעות AI Agents עם SQL Tools.
+
+**🆕 New in v1.2.0:** Active Learning Loop - Parser learns from validation corrections automatically!
+
+## Quick Start
+
+### Setup
+```bash
+# Install dependencies
+npm install
+
+# Check database connection
+npx supabase status
+```
+
+### Run Active Learning Loop
+```bash
+# Train parser from validation corrections
+npm run learn
+```
+
+### Test Scripts
+```bash
+# Test block type system
+npm run test:blocks
+
+# Test parser accuracy
+npm run test:parser
+
+# Validate golden set
+npm run validate:golden
+```
 
 ## Database Connection
 
@@ -36,8 +67,10 @@ supabase db reset
 
 ### Guides
 - 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
+- 🔄 [Active Learning System](./scripts/ACTIVE_LEARNING_README.md) - Parser training from corrections
 
 ### Reference
+- 📜 [Canonical JSON Schema](./docs/reference/CANONICAL_JSON_SCHEMA.md) - **THE CONSTITUTION** - Parser output rules
 - 📚 [Block Types Reference](./docs/reference/BLOCK_TYPES_REFERENCE.md) - 17 block types catalog
 - 📖 [Block Type System](./docs/reference/BLOCK_TYPE_SYSTEM_SUMMARY.md) - System overview
 

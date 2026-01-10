@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Post-commit hook - reminds to update docs after schema changes
+
+# Check if any schema-related files were changed
+SCHEMA_FILES_CHANGED=$(git diff --name-only HEAD~1 HEAD | grep -E '(golden_set/.*\.json|migrations/.*\.sql|STAGE2_PARSING|PARSER_AUDIT)' || true)
+
+if [ -n "$SCHEMA_FILES_CHANGED" ]; then
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════╗"
+    echo "║  ⚠️  SCHEMA CHANGE DETECTED                                   ║"
+    echo "╚════════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "Files changed:"
+    echo "$SCHEMA_FILES_CHANGED" | sed 's/^/  - /'
+    echo ""
+    echo "📝 Have you updated all related documentation?"
+    echo ""
+    echo "   Run checklist: ./scripts/schema_change_checklist.sh"
+    echo ""
+fi
+
+exit 0

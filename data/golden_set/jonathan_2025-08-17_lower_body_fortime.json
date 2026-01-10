@@ -19,6 +19,7 @@
             {
               "item_sequence": 1,
               "exercise_name": "Treadmill jog",
+              "equipment_key": "treadmill",
               "prescription": {
                 "target_duration_min": 5
               },
@@ -26,31 +27,36 @@
             },
             {
               "item_sequence": 2,
-              "exercise_name": "Air Squats",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10,
-                "tempo": "3s down"
+              "circuit_config": {
+                "rounds": 2,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Glute Bridges",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Plank",
-              "prescription": {
-                "target_rounds": 2,
-                "target_duration_sec": 30
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Air Squats",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10,
+                    "tempo": "3s down"
+                  }
+                },
+                {
+                  "exercise_name": "Glute Bridges",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Plank",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_sec": 30
+                  }
+                }
+              ]
             }
           ]
         },
@@ -69,6 +75,7 @@
           "items": [
             {
               "exercise_name": "Dumbbell Goblet Squat",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 5,
                 "target_reps": 12,
@@ -95,6 +102,7 @@
           "items": [
             {
               "exercise_name": "Bulgarian Split Squat",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 4,
                 "target_reps": 10,
@@ -121,6 +129,7 @@
           "items": [
             {
               "exercise_name": "Dumbbell Romanian Deadlift",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 4,
                 "target_reps": 12,
@@ -143,6 +152,7 @@
           "items": [
             {
               "exercise_name": "DB Reverse Walking Lunges",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_reps": 50,
                 "target_load": 14,
@@ -153,6 +163,7 @@
             },
             {
               "exercise_name": "Burpees",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_reps": 40
               },
@@ -161,6 +172,7 @@
             },
             {
               "exercise_name": "DB Deadlifts",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_reps": 30,
                 "target_load": 14,
@@ -172,6 +184,7 @@
             },
             {
               "exercise_name": "Push-ups",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_reps": 20
               },
@@ -180,6 +193,7 @@
             },
             {
               "exercise_name": "Run",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_distance": 400,
                 "distance_unit": "m"

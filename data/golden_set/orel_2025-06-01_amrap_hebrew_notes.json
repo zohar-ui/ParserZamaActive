@@ -12,8 +12,7 @@
           "block_code": "WU",
           "block_label": "A",
           "prescription": {
-            "description": "3 Rounds warm-up circuit",
-            "target_rounds": 3
+            "description": "3 Rounds warm-up circuit"
           },
           "performed": {
             "completed": true,
@@ -23,49 +22,45 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Single unders",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 50
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Air squat",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 20
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Push ups",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Pull ups",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps_min": 3,
-                "target_reps_max": 5
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "Run",
-              "prescription": {
-                "target_rounds": 3,
-                "target_distance_m": 400
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Single unders",
+                  "prescription": {
+                    "target_reps": 50
+                  }
+                },
+                {
+                  "exercise_name": "Air squat",
+                  "prescription": {
+                    "target_reps": 20
+                  }
+                },
+                {
+                  "exercise_name": "Push ups",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Pull ups",
+                  "prescription": {
+                    "target_reps_min": 3,
+                    "target_reps_max": 5
+                  }
+                },
+                {
+                  "exercise_name": "Run",
+                  "prescription": {
+                    "target_distance_m": 400
+                  }
+                }
+              ]
             }
           ]
         },

@@ -1,0 +1,28 @@
+{
+  "name": "parser-zama-active",
+  "version": "1.2.0",
+  "description": "Workout parser system with active learning",
+  "main": "scripts/update_parser_brain.js",
+  "scripts": {
+    "learn": "node scripts/update_parser_brain.js",
+    "test:blocks": "./scripts/test_block_types.sh",
+    "test:parser": "./scripts/test_parser_accuracy.sh",
+    "validate:golden": "./scripts/validate_golden_set.sh"
+  },
+  "keywords": [
+    "workout",
+    "parser",
+    "crossfit",
+    "fitness",
+    "ai"
+  ],
+  "author": "ZAMM Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

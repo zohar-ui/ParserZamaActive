@@ -17,10 +17,22 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_options": ["Walk", "Light Jog"],
-              "prescription": {
-                "target_duration_min": 5
-              },
+              "exercise_options": [
+                {
+                  "exercise_name": "Walk",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_min": 5
+                  }
+                },
+                {
+                  "exercise_name": "Light Jog",
+                  "equipment_key": "treadmill",
+                  "prescription": {
+                    "target_duration_min": 5
+                  }
+                }
+              ],
               "performed": null
             }
           ]
@@ -35,6 +47,7 @@
           "items": [
             {
               "exercise_name": "Back Squat",
+              "equipment_key": "barbell",
               "prescription": {
                 "target_sets": 3,
                 "target_reps": 5,

@@ -4,6 +4,8 @@
 
 This document defines how to work correctly on this specific project. Read this first before making changes.
 
+**⚖️ CRITICAL:** For ALL parsing outputs, strict adherence to [`docs/reference/CANONICAL_JSON_SCHEMA.md`](docs/reference/CANONICAL_JSON_SCHEMA.md) is **MANDATORY**. This is the constitution - the only allowed JSON structure.
+
 ---
 
 ## 🤖 AI AGENT ROLES & DIVISION OF LABOR
@@ -179,10 +181,10 @@ ORDER BY ordinal_position;
 * ✅ **Success:** Report `"System Connected: [X] athletes, [Y] workouts found. Ruleset: [version]. Schema: [table_count] tables verified. Ready to operate."` → Proceed immediately to task.
 * ❌ **Failure:** Report `"Connection failed. Error: [Details]. Please verify .env.local credentials or run: npx supabase link"` → HALT until resolved.
 
-### 5. **Total Time Budget**
-- **Full handshake: 5-10 seconds**
+### 7. **Total Time Budget**
+- **Full handshake: 10-15 seconds** (including learning loop)
 - Runs **once per session**
-- Prevents **hours of debugging**
+- Prevents **hours of debugging** and **repeated mistakes**
 
 ### 6. **Critical Environment Variable**
 **⚠️ BLOCKER:** Without this, NOTHING will work:
@@ -243,6 +245,24 @@ If a migration added/removed columns, the agent must know about it before writin
 ## 2. ⚙️ Operational Workflow (CLI)
 
 ### Database Operations
+
+**🚨 CRITICAL RULE: BEFORE ANY MIGRATION OR DATA INSERT**
+```bash
+# ALWAYS CHECK EXISTING STATE FIRST!
+# 1. Check if table exists
+echo "SELECT table_name FROM information_schema.tables WHERE table_schema='zamm' AND table_name='your_table';" | \
+  PGPASSWORD="xxx" psql -h db.xxx.supabase.co -U postgres -d postgres -t
+
+# 2. Check if data exists
+echo "SELECT COUNT(*) FROM zamm.your_table;" | \
+  PGPASSWORD="xxx" psql -h db.xxx.supabase.co -U postgres -d postgres -t
+
+# 3. Check structure
+echo "\d zamm.your_table" | \
+  PGPASSWORD="xxx" psql -h db.xxx.supabase.co -U postgres -d postgres
+```
+
+**Standard Operations:**
 ```bash
 # Check connection status
 supabase status
@@ -333,11 +353,25 @@ git push origin main
 
 ### Key Architectural Patterns
 
+#### 0. **Parser Output Contract** ⚖️ (CRITICAL!)
+**Before parsing ANYTHING, read:** [`docs/reference/CANONICAL_JSON_SCHEMA.md`](docs/reference/CANONICAL_JSON_SCHEMA.md)
+
+This document defines the ONLY allowed JSON structure. Do NOT guess or invent structure.
+
+**5 Core Principles:**
+1. Prescription vs Performed separation (ALWAYS separate)
+2. Atomic types (numbers are numbers, not strings)
+3. Ranges as min/max (never "8-12" strings)
+4. Strict normalization (exercise_key, block_code from catalogs)
+5. Null safety (unknown = null, never hallucinate)
+
 #### 1. **4-Stage Data Flow**
 ```
 Raw Text → Draft JSON → Normalized JSON → Relational Tables
    ↓           ↓              ↓                ↓
 imports   parse_drafts   validation      workout_*
+            ↑
+            └── MUST follow CANONICAL_JSON_SCHEMA.md
 ```
 
 #### 2. **Prescription vs Performance Separation** (CRITICAL!)
@@ -385,6 +419,14 @@ Production validation functions for parsed JSON:
 - `validate_prescription_performance_separation()` - Critical separation rule
 - `validate_parsed_workout()` - Master function (runs all checks)
 - `auto_validate_and_commit()` - Automated workflow
+
+#### 7. **Active Learning System (New!)** 🔄
+Closes feedback loop between corrections and training:
+- Corrections stored in `log_learning_examples` table
+- Script (`update_parser_brain.js`) fetches high-priority examples
+- Examples injected into `AI_PROMPTS.md` as few-shot learning
+- Parser learns from past mistakes automatically
+- Run with: `npm run learn`
 
 ---
 
@@ -442,11 +484,13 @@ Production validation functions for parsed JSON:
 ## 5. 🧠 Project Memory & Constraints
 
 ### Hard Constraints
-1. **NO TypeScript/JavaScript:** This is a SQL-only backend project
-2. **NO package.json:** We don't use Node.js or npm
-3. **NO local database:** Always work with linked Supabase remote
-4. **NO .env files:** Secrets managed by Supabase CLI
-5. **Schema is `zamm`:** Never use `public` schema
+1. **Core Backend is SQL-only:** This is primarily a SQL-based backend project
+   - **EXCEPTION:** Node.js is allowed ONLY for operational scripts in `/scripts/` folder (Active Learning, automation utilities)
+   - **ALLOWED:** `package.json`, `npm`, and `node_modules` for utility scripts
+   - **NOT ALLOWED:** TypeScript/JavaScript for core database logic or API endpoints
+2. **NO local database:** Always work with linked Supabase remote
+3. **NO .env files in git:** Secrets managed by Supabase CLI (`.env.local` exists but is gitignored)
+4. **Schema is `zamm`:** Never use `public` schema
 
 ### Critical Business Rules
 
@@ -599,14 +643,17 @@ supabase dashboard
 ```
 
 ### Most Important Files
-1. `ARCHITECTURE.md` - Understand system design
-2. `docs/guides/AI_PROMPTS.md` - Agent prompt templates
-3. `docs/guides/PARSER_WORKFLOW.md` - Complete parser workflow (4 stages)
-4. `docs/guides/PARSER_AUDIT_CHECKLIST.md` - Validation checklist
-5. `docs/VALIDATION_SYSTEM_SUMMARY.md` - Validation system quick reference
-6. `docs/reference/BLOCK_TYPES_REFERENCE.md` - Block types catalog
-7. `supabase/migrations/20260107150000_comprehensive_validation_functions.sql` - Validation functions
-8. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Commit function
+1. **`docs/reference/CANONICAL_JSON_SCHEMA.md`** ⚖️ - **THE CONSTITUTION** (parser output rules)
+2. `ARCHITECTURE.md` - Understand system design
+3. `docs/guides/AI_PROMPTS.md` - Agent prompt templates (auto-updated by learning loop)
+4. `docs/guides/PARSER_WORKFLOW.md` - Complete parser workflow (4 stages)
+5. `docs/guides/PARSER_AUDIT_CHECKLIST.md` - Validation checklist
+6. `docs/VALIDATION_SYSTEM_SUMMARY.md` - Validation system quick reference
+7. `docs/reference/BLOCK_TYPES_REFERENCE.md` - Block types catalog
+8. `scripts/update_parser_brain.js` - Active learning loop script
+9. `scripts/ACTIVE_LEARNING_README.md` - Learning system documentation
+10. `supabase/migrations/20260107150000_comprehensive_validation_functions.sql` - Validation functions
+11. `supabase/migrations/20260104120200_commit_full_workout_v3.sql` - Commit function
 
 ### Key Database Tables (32 total in zamm schema)
 * **Infrastructure:** `lib_athletes`, `lib_parser_rulesets`, `lib_coaches`
@@ -627,9 +674,9 @@ supabase dashboard
 
 ---
 
-## 7. 🎯 Project Status
-
-**Version:** 1.2.0  
+## 7. 🎯 ProActive Learning System Deployed (98/100)  
+**Date:** January 10, 2026  
+**Next Phase:** Capture corrections and train parser continuousl
 **Status:** Production validation system deployed (95/100)  
 **Date:** January 7, 2026  
 **Next Phase:** Data cleanup and production data entry
@@ -637,16 +684,19 @@ supabase dashboard
 ### What's Working
 ✅ Complete database schema (32 tables in zamm)  
 ✅ AI tools (5 functions)  
-✅ **Production validation system (6 functions)** 🆕  
-✅ **Automated workflow (auto_validate_and_commit)** 🆕  
-✅ **Stage 3 validation integrated** 🆕  
+✅ **Production validation system (6 functions)**  
+✅ **Automated workflow (auto_validate_and_commit)**  
+✅ **Stage 3 validation integrated**  
+✅ **Canonical JSON Schema (The Constitution)** ⚖️ 🆕  
+✅ **Active Learning System** 🔄 🆕  
+✅ **Parser Brain Auto-Update (npm run learn)** 🧠 🆕  
 ✅ Block type system (17 types, 60+ aliases)  
 ✅ Exercise catalog (14 seed exercises)  
 ✅ Atomic workout commit procedure  
-✅ Comprehensive documentation (600+ lines parser workflow, 900+ lines audit checklist)  
+✅ Comprehensive documentation (2000+ lines total, including learning system)  
 ✅ Schema synchronized (lib_* naming)  
 ✅ View for validation status dashboard
-
+Auto-capture learning examples during validation (currently manual)
 ### What's Missing
 ⏳ Frontend UI (review page for validation results)  
 ⏳ Batch data cleanup before production entry  
@@ -666,15 +716,18 @@ When working as an AI agent on this project:
 - [ ] Verify database connectivity
 - [ ] Confirm athlete count > 0
 - [ ] Validate active ruleset exists
-
-### Phase 1: Context Loading
-- [ ] Read this entire file (agents.md)
+docs/reference/CANONICAL_JSON_SCHEMA.md` ⚖️ **CRITICAL for parsing**
+- [ ] Read `ARCHITECTURE.md` for system design
+- [ ] Review `docs/guides/AI_PROMPTS.md` for AI agent templates (check for learning examples)
+- [ ] Check `CHANGELOG.md` for recent changes (v1.2.0 added Active Learning)
 - [ ] Read `ARCHITECTURE.md` for system design
 - [ ] Review `docs/guides/AI_PROMPTS.md` for AI agent templates
 - [ ] Check `CHANGELOG.md` for recent changes
 
 ### Phase 2: Environment Setup
 - [ ] Run `npx supabase status` to verify connection
+- [ ] Run `npm install` to install dependencies (for learning loop)
+- [ ] Run `npm run learn` to update parser with latest corrections
 - [ ] Check `.env.local` has correct credentials
 - [ ] Test with `scripts/test_block_types.sh`
 

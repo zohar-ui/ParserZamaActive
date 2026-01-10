@@ -46,7 +46,7 @@
               "prescription": {
                 "target_sets": 2,
                 "target_duration_sec": "20-30",
-                "per_side": true
+                "target_sets_per_side": 1
               },
               "performed": null
             },
@@ -77,39 +77,40 @@
           "block_label": "B",
           "prescription": {
             "description": "2 Rounds activation circuit",
-            "target_rounds": 2,
             "rest": "20-30 s between exercises"
           },
           "performed": null,
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Mini Band Lateral Walk",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps_per_side": 10,
-                "notes": "Shin band"
+              "circuit_config": {
+                "rounds": 2,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 25
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Banded Straight-Arm Pulldown",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps_min": 12,
-                "target_reps_max": 15
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Hard-Style Plank",
-              "prescription": {
-                "target_rounds": 2,
-                "target_duration_sec": "20-25"
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Mini Band Lateral Walk",
+                  "prescription": {
+                    "target_reps_per_side": 10,
+                    "notes": "Shin band"
+                  }
+                },
+                {
+                  "exercise_name": "Banded Straight-Arm Pulldown",
+                  "prescription": {
+                    "target_reps_min": 12,
+                    "target_reps_max": 15
+                  }
+                },
+                {
+                  "exercise_name": "Hard-Style Plank",
+                  "prescription": {
+                    "target_duration_sec": "20-25"
+                  }
+                }
+              ]
             }
           ]
         },

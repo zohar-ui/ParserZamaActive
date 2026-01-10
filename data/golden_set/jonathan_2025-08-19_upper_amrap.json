@@ -19,6 +19,7 @@
             {
               "item_sequence": 1,
               "exercise_name": "Treadmill jog",
+              "equipment_key": "treadmill",
               "prescription": {
                 "target_duration_min": 5
               },
@@ -26,40 +27,43 @@
             },
             {
               "item_sequence": 2,
-              "exercise_name": "Push-ups",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 8
+              "circuit_config": {
+                "rounds": 2,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "DB Reverse Flys",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10,
-                "notes": "light"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Side Plank Left",
-              "prescription": {
-                "target_rounds": 2,
-                "target_duration_sec": 30
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "Side Plank Right",
-              "prescription": {
-                "target_rounds": 2,
-                "target_duration_sec": 30
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Push-ups",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 8
+                  }
+                },
+                {
+                  "exercise_name": "DB Reverse Flys",
+                  "equipment_key": "dumbbell",
+                  "prescription": {
+                    "target_reps": 10,
+                    "notes": "light"
+                  }
+                },
+                {
+                  "exercise_name": "Side Plank Left",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_sec": 30
+                  }
+                },
+                {
+                  "exercise_name": "Side Plank Right",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_sec": 30
+                  }
+                }
+              ]
             }
           ]
         },
@@ -78,6 +82,7 @@
           "items": [
             {
               "exercise_name": "Single Arm DB Bench Press",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 5,
                 "target_reps": 10,
@@ -105,6 +110,7 @@
           "items": [
             {
               "exercise_name": "Single Arm DB Row",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 4,
                 "target_reps": 12,
@@ -131,6 +137,7 @@
           "items": [
             {
               "exercise_name": "DB Z-Press",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_sets": 4,
                 "target_reps": 12,
@@ -157,6 +164,7 @@
           "items": [
             {
               "exercise_name": "DB Thrusters",
+              "equipment_key": "dumbbell",
               "prescription": {
                 "target_reps": 10,
                 "target_load": 14,
@@ -167,6 +175,7 @@
             },
             {
               "exercise_name": "Burpees",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_reps": 12
               },
@@ -175,6 +184,7 @@
             },
             {
               "exercise_name": "Run",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_distance": 200,
                 "distance_unit": "m"

@@ -21,7 +21,34 @@ cld-db-status    # Quick DB check
 
 ## 📂 Available Scripts
 
-### ⭐ New (January 9, 2026)
+### ⭐ New (January 10, 2026)
+
+**`schema_change_checklist.sh`** - Interactive checklist for schema changes
+```bash
+./scripts/schema_change_checklist.sh
+```
+Shows which docs need updating after schema changes:
+- ✅ Files updated in last 5 minutes
+- ⏸️  Files that need review
+- ❌ Missing files
+
+**`validate_golden_set_schema_v2.sh`** - Validate Schema v2 compliance
+```bash
+./scripts/validate_golden_set_schema_v2.sh
+```
+Checks:
+- ✅ No `prescription_if_*` patterns
+- ✅ No `target_rounds` in item prescriptions
+- ✅ `exercise_options` are array of objects
+- ✅ `circuit_config` has required fields
+
+**Exit codes:**
+- `0` - All validations passed
+- `1` - Schema violations found
+
+---
+
+### 📅 January 9, 2026
 
 **`cleanup_test_data.sql`** - Remove test data before production
 ```bash

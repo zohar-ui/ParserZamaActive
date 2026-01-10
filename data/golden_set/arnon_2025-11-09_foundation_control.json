@@ -20,51 +20,66 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_options": ["Bike", "Row"],
-              "prescription": {
-                "target_duration_min": 5
-              },
-              "prescription_if_row": {
-                "target_stroke_rate_min": 22,
-                "target_stroke_rate_max": 24,
-                "target_damper_min": 5,
-                "target_damper_max": 6
-              },
+              "exercise_options": [
+                {
+                  "exercise_name": "Bike",
+                  "equipment_key": "bike",
+                  "prescription": {
+                    "target_duration_min": 5
+                  }
+                },
+                {
+                  "exercise_name": "Row",
+                  "equipment_key": "rowing_machine",
+                  "prescription": {
+                    "target_duration_min": 5,
+                    "target_stroke_rate_min": 22,
+                    "target_stroke_rate_max": 24,
+                    "target_damper_min": 5,
+                    "target_damper_max": 6
+                  }
+                }
+              ],
               "performed": null
             },
             {
               "item_sequence": 2,
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
               "performed": null,
-              "exercise_name": "Pvc Thoracic Rotation"
-            },
-            {
-              "item_sequence": 3,
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 16,
-                "target_reps_forward": 8,
-                "target_reps_backward": 8,
-                "notes": "8 forward / 8 backward"
-              },
-              "performed": null,
-              "exercise_name": "Scapular Cars"
-            },
-            {
-              "item_sequence": 4,
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 8,
-                "target_sets_per_side": 1,
-                "target_weight_kg_min": 4,
-                "target_weight_kg_max": 5,
-                "notes": "Light 4-5kg"
-              },
-              "performed": null,
-              "exercise_name": "Db Supine Serratus Punch"
+              "exercises": [
+                {
+                  "exercise_name": "Pvc Thoracic Rotation",
+                  "equipment_key": "pvc_pipe",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Scapular Cars",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 16,
+                    "target_reps_forward": 8,
+                    "target_reps_backward": 8,
+                    "notes": "8 forward / 8 backward"
+                  }
+                },
+                {
+                  "exercise_name": "Db Supine Serratus Punch",
+                  "equipment_key": "dumbbell",
+                  "prescription": {
+                    "target_reps": 8,
+                    "target_sets_per_side": 1,
+                    "target_weight_kg_min": 4,
+                    "target_weight_kg_max": 5,
+                    "notes": "Light 4-5kg"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -87,7 +102,8 @@
                 "notes": "90 degree angle"
               },
               "performed": null,
-              "exercise_name": "Isometric External Rotation"
+              "exercise_name": "Isometric External Rotation",
+              "equipment_key": "bodyweight"
             },
             {
               "item_sequence": 2,
@@ -97,7 +113,8 @@
                 "target_sets_per_side": 1
               },
               "performed": null,
-              "exercise_name": "Banded Scapular Pulldown"
+              "exercise_name": "Banded Scapular Pulldown",
+              "equipment_key": "resistance_band"
             }
           ]
         },
@@ -136,7 +153,8 @@
               "performed": {
                 "actual_weight_kg": 20
               },
-              "exercise_name": "Landmine Press"
+              "exercise_name": "Landmine Press",
+              "equipment_key": "barbell"
             }
           ]
         },
@@ -164,7 +182,8 @@
               "performed": {
                 "actual_weight_kg": 10
               },
-              "exercise_name": "Dumbbell Rdl"
+              "exercise_name": "Dumbbell Rdl",
+              "equipment_key": "dumbbell"
             }
           ]
         },
@@ -191,7 +210,8 @@
               "performed": {
                 "actual_weight_kg": 10
               },
-              "exercise_name": "One Arm Chest Supported Row"
+              "exercise_name": "One Arm Chest Supported Row",
+              "equipment_key": "dumbbell"
             }
           ]
         },
@@ -225,7 +245,8 @@
               "performed": {
                 "actual_weight_kg": 7.5
               },
-              "exercise_name": "Pallof Press"
+              "exercise_name": "Pallof Press",
+              "equipment_key": "cable_machine"
             }
           ]
         },
@@ -262,7 +283,8 @@
                   18
                 ]
               },
-              "exercise_name": "Suitcase Carry"
+              "exercise_name": "Suitcase Carry",
+              "equipment_key": "dumbbell"
             }
           ]
         },
@@ -289,7 +311,8 @@
                 "target_reps": 12
               },
               "performed": null,
-              "exercise_name": "Prone Low Trap Raise"
+              "exercise_name": "Prone Low Trap Raise",
+              "equipment_key": "bodyweight"
             }
           ]
         },
@@ -304,10 +327,22 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_options": ["Bike", "Row"],
-              "prescription": {
-                "target_duration_min": 10
-              },
+              "exercise_options": [
+                {
+                  "exercise_name": "Bike",
+                  "equipment_key": "bike",
+                  "prescription": {
+                    "target_duration_min": 10
+                  }
+                },
+                {
+                  "exercise_name": "Row",
+                  "equipment_key": "rowing_machine",
+                  "prescription": {
+                    "target_duration_min": 10
+                  }
+                }
+              ],
               "performed": null
             }
           ]

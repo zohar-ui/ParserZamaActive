@@ -19,6 +19,7 @@
             {
               "item_sequence": 1,
               "exercise_name": "Light row",
+              "equipment_key": "rowing_machine",
               "prescription": {
                 "target_duration_min": 3,
                 "notes": "to raise HR"
@@ -28,6 +29,7 @@
             {
               "item_sequence": 2,
               "exercise_name": "Row intervals",
+              "equipment_key": "rowing_machine",
               "prescription": {
                 "target_sets": 8,
                 "work_sec": 30,
@@ -44,38 +46,42 @@
           "block_code": "MOB",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds mobility circuit",
-            "target_rounds": 3
+            "description": "3 rounds mobility circuit"
           },
           "performed": null,
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Frog Stretch",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10,
-                "notes": "dynamic"
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Hip Airplanes",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Cat-Cow",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Frog Stretch",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10,
+                    "notes": "dynamic"
+                  }
+                },
+                {
+                  "exercise_name": "Hip Airplanes",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Cat-Cow",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                }
+              ]
             }
           ]
         },

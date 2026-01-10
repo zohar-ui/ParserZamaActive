@@ -20,8 +20,9 @@
               "item_sequence": 1,
               "exercise_name": "Calves smash",
               "prescription": {
+                "target_sets": 1,
                 "target_duration_sec": 60,
-                "per_side": true
+                "target_sets_per_side": 1
               },
               "performed": null
             },
@@ -29,8 +30,9 @@
               "item_sequence": 2,
               "exercise_name": "Glutes smash",
               "prescription": {
+                "target_sets": 1,
                 "target_duration_sec": 60,
-                "per_side": true
+                "target_sets_per_side": 1
               },
               "performed": null
             },
@@ -48,58 +50,56 @@
           "block_code": "WU",
           "block_label": "B",
           "prescription": {
-            "description": "3 rounds warm up circuit",
-            "target_rounds": 3
+            "description": "3 rounds warm up circuit"
           },
           "performed": null,
           "items": [
             {
               "item_sequence": 1,
-              "exercise_name": "Row",
-              "prescription": {
-                "target_distance_m": 200
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Cossack Squat",
-              "prescription": {
-                "target_reps": "6/6"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Mini-Band Glute Bridge",
-              "prescription": {
-                "target_reps": 8
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Banded Good Morning",
-              "prescription": {
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "Inchworm",
-              "prescription": {
-                "target_reps": 5
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 6,
-              "exercise_name": "Dead Bugs",
-              "prescription": {
-                "target_reps": 10
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Row",
+                  "prescription": {
+                    "target_distance_m": 200
+                  }
+                },
+                {
+                  "exercise_name": "Cossack Squat",
+                  "prescription": {
+                    "target_reps": "6/6"
+                  }
+                },
+                {
+                  "exercise_name": "Mini-Band Glute Bridge",
+                  "prescription": {
+                    "target_reps": 8
+                  }
+                },
+                {
+                  "exercise_name": "Banded Good Morning",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Inchworm",
+                  "prescription": {
+                    "target_reps": 5
+                  }
+                },
+                {
+                  "exercise_name": "Dead Bugs",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                }
+              ]
             }
           ]
         },
@@ -166,7 +166,18 @@
           "prescription": {
             "description": "Core: 3x12 Frog Reverse Hyper"
           },
-          "performed": null
+          "performed": null,
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Frog Reverse Hyper",
+              "prescription": {
+                "target_sets": 3,
+                "target_reps": 12
+              },
+              "performed": null
+            }
+          ]
         },
         {
           "block_code": "CD",
@@ -174,7 +185,19 @@
           "prescription": {
             "description": "Cooldown: 3x Couch Stretch 60s/side"
           },
-          "performed": null
+          "performed": null,
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Couch Stretch",
+              "prescription": {
+                "target_sets": 3,
+                "target_duration_sec": 60,
+                "target_sets_per_side": 1
+              },
+              "performed": null
+            }
+          ]
         }
       ]
     }

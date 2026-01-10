@@ -567,22 +567,52 @@ Title = בדיוק מה שכתוב
 ```
 כאשר יש "/" בשם תרגיל עם אפשרות בחירה:
 
+🔴 מבנה חדש (סקיילבילי) - החל מ-10/01/2026:
+
 Input:  "5 min Bike / Row @ 22-24 spm @ D 5-6"
 Output: {
-  "exercise_options": ["Bike", "Row"],
-  "prescription": { "target_duration_min": 5 },
-  "prescription_if_row": {
-    "target_spm_min": 22, "target_spm_max": 24,
-    "target_damper_min": 5, "target_damper_max": 6
-  }
+  "exercise_options": [
+    {
+      "exercise_name": "Bike",
+      "prescription": { "target_duration_min": 5 }
+    },
+    {
+      "exercise_name": "Row",
+      "prescription": {
+        "target_duration_min": 5,
+        "target_spm_min": 22,
+        "target_spm_max": 24,
+        "target_damper_min": 5,
+        "target_damper_max": 6
+      }
+    }
+  ]
 }
 
 Input:  "Walk / light Jog"
-Output: { "exercise_options": ["Walk", "Light Jog"] }
+Output: {
+  "exercise_options": [
+    {
+      "exercise_name": "Walk",
+      "prescription": { "target_duration_min": 5 }
+    },
+    {
+      "exercise_name": "Light Jog",
+      "prescription": { "target_duration_min": 5 }
+    }
+  ]
+}
+
+✅ יתרונות המבנה החדש:
+- סקיילבילי: אפשר להוסיף כמה תרגילים שרוצים
+- כל תרגיל עם prescription מלא משלו
+- אין צורך ב-prescription_if_X לכל תרגיל
+- ברור יותר למודל AI
 
 ⚠️ שים לב:
 - stroke_rate, damper, spm = רלוונטי רק ל-Row!
 - לא כל "/" זה אופציה: "90/90" זה שם תרגיל, לא אופציה
+- אם prescription זהה לכולם, עדיין חזור על זה בכל exercise
 ```
 
 ### דפוס 1: Sets × Reps
@@ -621,10 +651,43 @@ Input:  "3x20/20sec Isometric Hold"
 Output: { target_sets: 3, target_duration_sec: 20, target_sets_per_side: true }
 ```
 
-### דפוס 4: Rounds + Reps
+### דפוס 4: Circuits (Rounds + Multiple Exercises)
 ```
-Input:  "3 Quality Rounds: 10 Exercise A, 8 Exercise B"
-Output: { target_rounds: 3, items: [...] }
+🔴 מבנה חדש (סקיילבילי) - החל מ-10/01/2026:
+
+Input:  "3 Quality Rounds: 10 PVC Rotation, 16 Scapular CARs, 8 DB Punch"
+Output: {
+  "circuit_config": {
+    "rounds": 3,
+    "type": "for_quality",
+    "rest_between_rounds_sec": 0
+  },
+  "exercises": [
+    {
+      "exercise_name": "PVC Thoracic Rotation",
+      "prescription": { "target_reps": 10 }
+    },
+    {
+      "exercise_name": "Scapular CARs",
+      "prescription": { "target_reps": 16 }
+    },
+    {
+      "exercise_name": "DB Supine Serratus Punch",
+      "prescription": { "target_reps": 8 }
+    }
+  ]
+}
+
+✅ יתרונות המבנה החדש:
+- ברור מאוד שזה circuit (לא items נפרדים)
+- circuit_config מכיל metadata: rounds, type, rest
+- exercises array - כל תרגיל עם prescription משלו (בלי target_rounds!)
+- סקיילבילי: אפשר circuits מקוננים בעתיד
+
+⚠️ חשוב:
+- ❌ אין target_rounds בתוך prescription של exercise!
+- ✅ target_rounds רק ב-circuit_config
+- type יכול להיות: "for_quality", "for_time", "amrap"
 ```
 
 ### דפוס 5: RPE/Intensity

@@ -26,31 +26,33 @@
             },
             {
               "item_sequence": 2,
-              "exercise_name": "Air Squats",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10,
-                "tempo": "3s down"
+              "circuit_config": {
+                "rounds": 2,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Glute Bridges",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Plank",
-              "prescription": {
-                "target_rounds": 2,
-                "target_duration_sec": 30
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Air Squats",
+                  "prescription": {
+                    "target_reps": 10,
+                    "tempo": "3s down"
+                  }
+                },
+                {
+                  "exercise_name": "Glute Bridges",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Plank",
+                  "prescription": {
+                    "target_duration_sec": 30
+                  }
+                }
+              ]
             }
           ]
         },

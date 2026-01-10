@@ -23,54 +23,72 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_options": ["Bike", "Row"],
-              "prescription": {
-                "target_duration_min": 5,
-                "markers": [
-                  "**V"
-                ]
-              },
-              "prescription_if_row": {
-                "target_spm_min": 22,
-                "target_spm_max": 24,
-                "target_damper_min": 5,
-                "target_damper_max": 6
-              },
+              "exercise_options": [
+                {
+                  "exercise_name": "Bike",
+                  "equipment_key": "bike",
+                  "prescription": {
+                    "target_duration_min": 5,
+                    "markers": [
+                      "**V"
+                    ]
+                  }
+                },
+                {
+                  "exercise_name": "Row",
+                  "equipment_key": "rowing_machine",
+                  "prescription": {
+                    "target_duration_min": 5,
+                    "target_spm_min": 22,
+                    "target_spm_max": 24,
+                    "target_damper_min": 5,
+                    "target_damper_max": 6,
+                    "markers": [
+                      "**V"
+                    ]
+                  }
+                }
+              ],
               "performed": null
             },
             {
               "item_sequence": 2,
-              "exercise_name": "PVC Thoracic Rotation",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 10
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 30
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Scapular CARs",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps": 16,
-                "target_reps_forward": 8,
-                "target_reps_backward": 8,
-                "notes": "8 forward / 8 backward"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "DB Supine Serratus Punch",
-              "prescription": {
-                "target_rounds": 3,
-                "target_reps_per_side": 8,
-                "load_unit": "kg",
-                "notes": "light",
-                "target_load_min": 4,
-                "target_load_max": 5
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "PVC Thoracic Rotation",
+                  "equipment_key": "pvc_pipe",
+                  "prescription": {
+                    "target_reps": 10
+                  }
+                },
+                {
+                  "exercise_name": "Scapular CARs",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 16,
+                    "target_reps_forward": 8,
+                    "target_reps_backward": 8,
+                    "notes": "8 forward / 8 backward"
+                  }
+                },
+                {
+                  "exercise_name": "DB Supine Serratus Punch",
+                  "equipment_key": "dumbbell",
+                  "prescription": {
+                    "target_reps_per_side": 8,
+                    "load_unit": "kg",
+                    "notes": "light",
+                    "target_load_min": 4,
+                    "target_load_max": 5
+                  }
+                }
+              ]
             }
           ]
         },
@@ -86,10 +104,11 @@
             {
               "item_sequence": 1,
               "exercise_name": "Isometric ER to wall",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_sets": 3,
                 "target_duration_sec": 20,
-                "per_side": true,
+                "target_sets_per_side": 1,
                 "notes": "90°"
               },
               "performed": null
@@ -97,6 +116,7 @@
             {
               "item_sequence": 2,
               "exercise_name": "Banded Scapular Pulldown",
+              "equipment_key": "resistance_band",
               "prescription": {
                 "target_sets": 3,
                 "target_reps_per_side": 10

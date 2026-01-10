@@ -144,7 +144,7 @@
 {
   "structure": "amrap" | "fortime",  // ✅ REQUIRED
   "time_cap_seconds": 600,           // ✅ REQUIRED for AMRAP
-  "target_rounds": 5,                // ✅ REQUIRED for For Time
+  "target_rounds": 5,                // ✅ REQUIRED for For Time (ברמת BLOCK!)
   "steps": [                         // ✅ REQUIRED
     {
       "exercise_name": "Thrusters",
@@ -162,10 +162,16 @@
 **Checklist:**
 - [ ] `prescription.structure` הוא `"amrap"` או `"fortime"` או `"rounds"`
 - [ ] אם AMRAP: `time_cap_seconds` קיים (integer > 0)
-- [ ] אם For Time: `target_rounds` קיים (integer > 0)
+- [ ] אם For Time: `target_rounds` קיים ברמת BLOCK (integer > 0)
 - [ ] `prescription.steps` קיים והוא array
 - [ ] כל step מכיל `exercise_name`
 - [ ] כל step מכיל `target_reps` או `target_distance` או `target_calories`
+
+⚠️ **חשוב:** `target_rounds` חוקי רק ב-2 מקרים:
+1. ברמת **block prescription** (METCON: AMRAP/For Time/Rounds)
+2. בתוך **circuit_config** (warmup circuits)
+
+❌ **אסור:** `target_rounds` בתוך item prescription רגיל!
 
 #### 1.4.3 Intervals (INTV)
 

@@ -219,6 +219,24 @@ Always output JSON in English, but preserve original notes in their language.
 
 ---
 
+## 🧠 Dynamic Learning Examples
+
+**Purpose:** These examples are automatically generated from validation corrections.
+They teach the parser to avoid common mistakes.
+
+**Last Updated:** 2026-01-10
+
+**How This Works:**
+1. Human reviewers correct parsing mistakes during validation
+2. Corrections are stored in `log_learning_examples` table
+3. The script `scripts/update_parser_brain.js` fetches high-priority corrections
+4. Examples are injected here automatically
+5. Parser learns from these examples in future sessions
+
+**Current Status:** No examples yet. Run validation and corrections to populate this section.
+
+---
+
 ## Prompt - Validation Agent
 
 ```markdown

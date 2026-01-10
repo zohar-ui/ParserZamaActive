@@ -1,5 +1,231 @@
 # Changelog - ZAMM Workout Parser
 
+## [1.2.0] - January 10, 2026
+
+### 🔄 Active Learning System - Parser Brain Auto-Update
+
+**Mission:** Close the feedback loop between validation corrections and AI parser training.
+
+#### ✅ New Features
+
+**1. Canonical JSON Schema Document**
+- 📜 Created `docs/reference/CANONICAL_JSON_SCHEMA.md` - **The Constitution**
+- Defines ONLY allowed JSON structure for parser output
+- Enforces 5 core principles:
+  1. The Great Divide (prescription vs performed separation)
+  2. Atomic Types (numbers are numbers, not strings)
+  3. Ranges as Min/Max (never "8-12" strings)
+  4. Strict Normalization (exercise_key, block_code mandatory)
+  5. Null Safety (unknown = null, never guess)
+- Includes 5 test cases parser must pass
+- Lists common parser errors to avoid
+
+**2. Active Learning Loop Script**
+- 🤖 Created `scripts/update_parser_brain.js`
+- Fetches high-priority corrections from `log_learning_examples` table
+- Formats as few-shot prompt blocks
+- Auto-injects into `docs/guides/AI_PROMPTS.md`
+- Marks examples as trained in database
+- **Usage:** `npm run learn`
+
+**3. Learning Examples Table**
+- 💾 Already exists from migration `20260109160000_active_learning_system.sql`
+- Stores: original text, wrong JSON, corrected JSON, error details
+- Priority system (1-10) for training importance
+- Tag system for categorization
+- Tracks training status per example
+
+**4. Dynamic Learning Section in AI Prompts**
+- 📝 Updated `docs/guides/AI_PROMPTS.md`
+- Added `## 🧠 Dynamic Learning Examples` section
+- Auto-populated by learning loop script
+- Shows before/after corrections with explanations
+
+**5. Package.json & NPM Scripts**
+- 📦 Created `package.json` for project
+- Scripts:
+  - `npm run learn` - Run active learning loop
+  - `npm run test:blocks` - Test block type system
+  - `npm run test:parser` - Test parser accuracy
+  - `npm run validate:golden` - Validate golden set
+- Dependency: `@supabase/supabase-js`
+
+**6. Documentation**
+- 📚 Created `scripts/ACTIVE_LEARNING_README.md` - Complete guide
+- Updated main `README.md` with active learning info
+- Added canonical schema to documentation index
+
+#### 🔧 Configuration
+
+Learning Loop Settings:
+```javascript
+minPriority: 7,              // Only examples with priority >= 7
+maxExamples: 20,             // Keep total under 20 examples
+maxNewExamples: 5,           // Add max 5 per run
+```
+
+#### 📊 Workflow
+
+```
+Human Correction → DB Capture → Learning Loop → AI Prompts → Smarter Parser
+```
+
+1. Validator corrects parsing mistake
+2. Correction captured in `log_learning_examples`
+3. Run `npm run learn`
+4. Example injected into `AI_PROMPTS.md`
+5. Next parsing session uses updated prompts
+6. Parser avoids same mistake! 🎉
+
+#### 🎯 Impact
+
+- ✅ Parser learns from past mistakes
+- ✅ Knowledge retention across sessions
+- ✅ Automated training (no manual prompt updates)
+- ✅ Priority-based learning (focus on critical errors)
+- ✅ Scalable (handles unlimited examples)
+
+---
+
+## [2.0.0] - January 10, 2026
+
+### 🎯 Major Breaking Change: Schema v2 - Scalable Patterns
+
+#### ✅ Golden Set Schema Migration (12 files updated)
+
+**Motivation:** Previous schema patterns were not scalable and caused confusion.
+
+**1. Exercise Options - New Scalable Structure**
+
+**OLD (non-scalable):**
+```json
+{
+  "exercise_options": ["Bike", "Row"],
+  "prescription": { "target_duration_min": 5 },
+  "prescription_if_row": { "target_spm_min": 22 }
+}
+```
+
+**NEW (scalable):**
+```json
+{
+  "exercise_options": [
+    {
+      "exercise_name": "Bike",
+      "prescription": { "target_duration_min": 5 }
+    },
+    {
+      "exercise_name": "Row",
+      "prescription": {
+        "target_duration_min": 5,
+        "target_spm_min": 22
+      }
+    }
+  ]
+}
+```
+
+**Benefits:**
+- ✅ Each exercise has its own full prescription
+- ✅ No need for `prescription_if_X` for each exercise type
+- ✅ Can add unlimited exercise options
+- ✅ Clearer for AI models
+
+**Files Updated:**
+- `arnon_2025-11-09_foundation_control.json` (2 locations)
+- `arnon_2025-11-09_shoulder_rehab.json`
+- `bader_2025-09-07_running_intervals.json`
+- `simple_2025-09-08_recovery.json`
+
+**2. Circuits - New Clear Structure**
+
+**OLD (confusing):**
+```json
+{
+  "items": [
+    {
+      "exercise_name": "PVC Rotation",
+      "prescription": { "target_rounds": 3, "target_reps": 10 }
+    },
+    {
+      "exercise_name": "Scapular CARs",
+      "prescription": { "target_rounds": 3, "target_reps": 16 }
+    }
+  ]
+}
+```
+*Problem: Not clear this is a circuit! Looks like separate items.*
+
+**NEW (explicit):**
+```json
+{
+  "items": [
+    {
+      "circuit_config": {
+        "rounds": 3,
+        "type": "for_quality",
+        "rest_between_rounds_sec": 0
+      },
+      "exercises": [
+        {
+          "exercise_name": "PVC Rotation",
+          "prescription": { "target_reps": 10 }
+        },
+        {
+          "exercise_name": "Scapular CARs",
+          "prescription": { "target_reps": 16 }
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Benefits:**
+- ✅ **Very clear** this is a 3-round circuit
+- ✅ `circuit_config` contains metadata (rounds, type, rest)
+- ✅ `exercises` array - each exercise has clean prescription (no target_rounds!)
+- ✅ Scalable for future nested circuits
+
+**Files Updated:**
+- `arnon_2025-11-09_foundation_control.json`
+- `arnon_2025-11-09_shoulder_rehab.json`
+- `itamar_2025-06-21_rowing_skill.json`
+- `jonathan_2025-08-17_lower_body_fortime.json`
+- `jonathan_2025-08-17_lower_fortime.json`
+- `jonathan_2025-08-19_upper_amrap.json`
+- `jonathan_2025-08-24_lower_body_amrap.json`
+- `orel_2025-06-01_hebrew_amrap.json`
+- `orel_2025-06-01_amrap_hebrew_notes.json`
+- `yarden_2025-08-24_deadlift_strength.json`
+- `yarden_frank_2025-07-06_mixed_blocks.json`
+- `yehuda_2025-05-28_upper_screen.json`
+
+**3. Critical Rules Updated**
+
+**Rule #1: target_rounds is ONLY legal in 2 places:**
+1. ✅ Block-level prescription (METCON: AMRAP/For Time/Rounds)
+2. ✅ Inside `circuit_config`
+3. ❌ FORBIDDEN in item prescription
+
+**Rule #2: exercise_options must be Array of Objects**
+- ❌ FORBIDDEN: `["Bike", "Row"]`
+- ✅ REQUIRED: `[{exercise_name, prescription}, ...]`
+
+#### 📚 Documentation Updates
+
+**New Documents:**
+- `docs/guides/SCHEMA_UPDATES_2026-01-10.md` - Complete migration guide
+
+**Updated Documents:**
+- `docs/guides/STAGE2_PARSING_STRATEGY.md` - New patterns (דפוס 0, דפוס 4)
+- `docs/guides/PARSER_AUDIT_CHECKLIST.md` - Updated validation rules
+- `docs/INDEX.md` - Added schema v2 section
+
+**Total Files Changed:** 15 (12 golden set JSON + 3 documentation)
+
+---
+
 ## [1.2.0] - January 7, 2026
 
 ### 🎯 Major Feature: Production Validation System

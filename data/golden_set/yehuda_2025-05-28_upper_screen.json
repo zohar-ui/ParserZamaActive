@@ -22,30 +22,36 @@
           "items": [
             {
               "item_sequence": 1,
-              "prescription": {
-                "target_duration_min": 3,
-                "target_rounds": 3,
-                "notes": "Tall posture, nasal breathing"
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
               "performed": null,
-              "exercise_name": "Walk"
+              "exercises": [
+                {
+                  "exercise_name": "Walk",
+                  "prescription": {
+                    "target_duration_min": 3,
+                    "notes": "Tall posture, nasal breathing"
+                  }
+                },
+                {
+                  "exercise_name": "Run",
+                  "prescription": {
+                    "target_duration_min": 2,
+                    "target_speed_kph": 8.5
+                  },
+                  "performed": {
+                    "actual_duration_min": 2,
+                    "actual_rounds": 3,
+                    "notes": "Felt slight back muscle tightness but continued"
+                  }
+                }
+              ]
             },
             {
               "item_sequence": 2,
-              "prescription": {
-                "target_duration_min": 2,
-                "target_speed_kph": 8.5,
-                "target_rounds": 3
-              },
-              "performed": {
-                "actual_duration_min": 2,
-                "actual_rounds": 3,
-                "notes": "Felt slight back muscle tightness but continued"
-              },
-              "exercise_name": "Run"
-            },
-            {
-              "item_sequence": 3,
               "prescription": {
                 "target_duration_min": 3,
                 "target_intervals": "25s easy / 5s faster"
@@ -189,7 +195,6 @@
           "block_label": "F",
           "block_title": "Core Circuit",
           "prescription": {
-            "target_rounds": 3,
             "target_rest_sec": 30,
             "notes": "Rest 20-30s between exercises, 60s after each round (RPE ≤ 6)"
           },
@@ -200,50 +205,55 @@
           "items": [
             {
               "item_sequence": 1,
-              "prescription": {
-                "target_duration_sec": 37.5,
-                "target_sets_per_side": 1
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 60
               },
               "performed": null,
-              "exercise_name": "Side Plank"
-            },
-            {
-              "item_sequence": 2,
-              "prescription": {
-                "target_duration_sec": 25,
-                "target_position": "tuck"
-              },
-              "performed": null,
-              "exercise_name": "Hollow Body Hold"
-            },
-            {
-              "item_sequence": 3,
-              "prescription": {
-                "target_reps": 12,
-                "target_sets_per_side": 1,
-                "target_pause_sec": 2,
-                "equipment": "cable"
-              },
-              "performed": {
-                "actual_reps": 12,
-                "actual_sets_per_side": 1,
-                "notes": "Nice exercise, not sure felt it correctly"
-              },
-              "exercise_name": "Pallof Press"
-            },
-            {
-              "item_sequence": 4,
-              "prescription": {
-                "target_reps": 10,
-                "target_pause_sec": 2,
-                "equipment": "45_degree_roman_chair",
-                "notes": "2s squeeze at top"
-              },
-              "performed": {
-                "actual_reps": 10,
-                "notes": "Nice, felt lower back and hamstrings"
-              },
-              "exercise_name": "Back Extension"
+              "exercises": [
+                {
+                  "exercise_name": "Side Plank",
+                  "prescription": {
+                    "target_duration_sec": 37.5,
+                    "target_sets_per_side": 1
+                  }
+                },
+                {
+                  "exercise_name": "Hollow Body Hold",
+                  "prescription": {
+                    "target_duration_sec": 25,
+                    "target_position": "tuck"
+                  }
+                },
+                {
+                  "exercise_name": "Pallof Press",
+                  "prescription": {
+                    "target_reps": 12,
+                    "target_sets_per_side": 1,
+                    "target_pause_sec": 2,
+                    "equipment": "cable"
+                  },
+                  "performed": {
+                    "actual_reps": 12,
+                    "actual_sets_per_side": 1,
+                    "notes": "Nice exercise, not sure felt it correctly"
+                  }
+                },
+                {
+                  "exercise_name": "Back Extension",
+                  "prescription": {
+                    "target_reps": 10,
+                    "target_pause_sec": 2,
+                    "equipment": "45_degree_roman_chair",
+                    "notes": "2s squeeze at top"
+                  },
+                  "performed": {
+                    "actual_reps": 10,
+                    "notes": "Nice, felt lower back and hamstrings"
+                  }
+                }
+              ]
             }
           ]
         }

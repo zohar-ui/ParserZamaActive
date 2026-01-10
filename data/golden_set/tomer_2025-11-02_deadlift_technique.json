@@ -26,7 +26,7 @@
               "prescription": {
                 "target_sets": 1,
                 "target_duration_sec": 40,
-                "per_side": true
+                "target_sets_per_side": 1
               },
               "performed": null
             },
@@ -36,7 +36,7 @@
               "prescription": {
                 "target_sets": 1,
                 "target_duration_sec": 30,
-                "per_side": true
+                "target_sets_per_side": 1
               },
               "performed": null
             },

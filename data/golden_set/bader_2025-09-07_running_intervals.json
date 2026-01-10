@@ -21,48 +21,63 @@
           "items": [
             {
               "item_sequence": 1,
-              "exercise_options": ["Walk", "Light Jog"],
-              "prescription": {
-                "target_duration_min": 5
-              },
+              "exercise_options": [
+                {
+                  "exercise_name": "Walk",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_min": 5
+                  }
+                },
+                {
+                  "exercise_name": "Light Jog",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_duration_min": 5
+                  }
+                }
+              ],
               "performed": null
             },
             {
               "item_sequence": 2,
-              "exercise_name": "Ankle circles",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps_per_side": 10
+              "circuit_config": {
+                "rounds": 2,
+                "type": "for_quality",
+                "rest_between_rounds_sec": 0
               },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Hip openers 90/90",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Down Dog Calf Rocks",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "Cat cow",
-              "prescription": {
-                "target_rounds": 2,
-                "target_reps": 10,
-                "notes": "for lower back"
-              },
-              "performed": null
+              "performed": null,
+              "exercises": [
+                {
+                  "exercise_name": "Ankle circles",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps_per_side": 10
+                  }
+                },
+                {
+                  "exercise_name": "Hip openers 90/90",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps_per_side": 10
+                  }
+                },
+                {
+                  "exercise_name": "Down Dog Calf Rocks",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps_per_side": 10
+                  }
+                },
+                {
+                  "exercise_name": "Cat cow",
+                  "equipment_key": "bodyweight",
+                  "prescription": {
+                    "target_reps": 10,
+                    "notes": "for lower back"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -76,6 +91,7 @@
           "items": [
             {
               "exercise_name": "Single-leg calf raises",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_sets": 2,
                 "target_reps": 12,
@@ -87,6 +103,7 @@
             },
             {
               "exercise_name": "Toe walks",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_sets": 2,
                 "target_distance": 15,
@@ -98,6 +115,7 @@
             },
             {
               "exercise_name": "Glute bridge hold",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_sets": 2,
                 "target_duration": 30,
@@ -109,6 +127,7 @@
             },
             {
               "exercise_name": "Dead bug",
+              "equipment_key": "bodyweight",
               "prescription": {
                 "target_sets": 2,
                 "target_reps": 8,
