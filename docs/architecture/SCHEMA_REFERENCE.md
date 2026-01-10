@@ -65,7 +65,7 @@
 
 ### Option 1: Quick List
 ```bash
-./scripts/verify_schema.sh
+./scripts/ops/verify_schema.sh
 ```
 
 ### Option 2: SQL Query
@@ -78,7 +78,7 @@ ORDER BY table_name;
 
 ### Option 3: Check Specific Table
 ```bash
-./scripts/verify_schema.sh workout_main
+./scripts/ops/verify_schema.sh workout_main
 ```
 
 ---

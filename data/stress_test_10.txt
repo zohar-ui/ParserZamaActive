@@ -1,0 +1,141 @@
+=========================================
+🔥 STRESS TEST - THE NASTY 10
+=========================================
+Date: January 10, 2026
+Purpose: Edge case testing for parser resilience
+
+Test Case 1: Hebrew-English Salad
+----------------------------------
+Date: 2026-01-10
+Workout: Mixed Language Test
+
+Block A (STR):
+Back Squat 3x5 @ 100kg
+הרגשתי כבד מאוד היום
+Last set failed - got only 4 reps
+כאב קל בברך השמאלית
+
+---
+
+Test Case 2: Complex Range
+---------------------------
+Date: 2026-01-10
+Workout: Rowing Intervals
+
+Block A (INTV):
+Row - 5 intervals
+Target: 500m @ 22-24 spm
+Drag factor: 110-120
+Rest 2:00 between intervals
+
+---
+
+Test Case 3: Implicit Date (Week/Day Format)
+---------------------------------------------
+Day 3, Week 5 - Lower Body
+
+Block A (WU):
+Bike 5:00 easy
+
+Block B (STR):
+Back Squat 5x5 @ 80%
+Front Squat 3x8 @ 70%
+
+---
+
+Test Case 4: Superset Nightmare
+--------------------------------
+Date: 2026-01-10
+Workout: Complex Superset
+
+Block A (STR):
+A1) Bench Press 3x10 @ 60kg
+A2) Pull Ups 3xMax
+A3) Rest 90 seconds
+
+---
+
+Test Case 5: Ghost Athlete (No Name)
+-------------------------------------
+Date: 2026-01-10
+Workout: Anonymous Session
+
+Block A (METCON):
+AMRAP 12:00
+- 10 Burpees
+- 15 KB Swings @ 24kg
+- 20 Air Squats
+
+Completed 6 rounds + 10 burpees
+
+---
+
+Test Case 6: RPE Decimal
+-------------------------
+Date: 2026-01-10
+Athlete: Test Subject
+
+Block A (STR):
+Deadlift
+Single @ RPE 7.5-8.0
+Work up to heavy single
+
+Performed:
+140kg @ RPE 7.5
+150kg @ RPE 8.0
+155kg @ RPE 8.5 (too heavy)
+
+---
+
+Test Case 7: Typos & Aliases
+-----------------------------
+Date: 2026-01-10
+Athlete: Typo King
+
+Block A (STR):
+Bak Squot 5x5 @ 100kg
+Benchh Pres 5x5 @ 80kg
+Dedlift 3x5 @ 120kg
+
+---
+
+Test Case 8: Performance Only (No Prescription)
+------------------------------------------------
+Date: 2026-01-10
+Athlete: Spontaneous Steve
+
+Block A (METCON):
+Just did a 5k run in 20:15
+Felt pretty good
+HR averaged 165
+
+---
+
+Test Case 9: Metric Confusion
+------------------------------
+Date: 2026-01-10
+Athlete: Imperial User
+
+Block A (STR):
+Deadlift 5x5 @ 300 lbs
+Bench Press 3x8 @ 185 lbs
+Squat 5x3 @ 225 lbs
+
+---
+
+Test Case 10: Empty Shell (Rest Day)
+-------------------------------------
+Date: 2026-01-10
+Athlete: Recovery Dan
+
+Rest Day
+Active recovery walk - 30 minutes
+Mobility work - 15 minutes
+
+Block A (RECOVERY):
+Stretch & Breathwork
+No specific exercises logged
+
+=========================================
+END OF STRESS TEST FILE
+=========================================

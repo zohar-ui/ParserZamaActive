@@ -134,10 +134,10 @@ athlete_count | workout_count | active_ruleset
 #### Method 1: Use verification script (recommended)
 ```bash
 # List all tables
-./scripts/verify_schema.sh
+./scripts/ops/verify_schema.sh
 
 # Check specific table structure
-./scripts/verify_schema.sh workout_main
+./scripts/ops/verify_schema.sh workout_main
 ```
 
 #### Method 2: SQL query

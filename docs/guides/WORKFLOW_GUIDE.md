@@ -271,7 +271,7 @@ Claude reads this to know what to do next. Keep it updated.
 
 ### ❌ Don't: Assume Schema Without Verifying
 **Why:** Table names might have changed.  
-**Instead:** Always run `./scripts/verify_schema.sh` first.
+**Instead:** Always run `./scripts/ops/verify_schema.sh` first.
 
 ### ❌ Don't: Work Without TODO.md
 **Why:** Lose track of progress.  

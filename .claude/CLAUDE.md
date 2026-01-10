@@ -81,7 +81,7 @@ SELECT * FROM public.athletes;
 ### Standard Development Flow
 
 1. **Fetch Context**
-   - Read `agents.md` to restore project memory
+   - Read `docs/context/agents.md` to restore project memory
    - Run `/db-status` to check current state
    - Review relevant docs in `/docs/`
 
@@ -176,8 +176,8 @@ SELECT * FROM public.athletes;
 
 ### Critical Files (Read First)
 1. **`docs/reference/CANONICAL_JSON_SCHEMA.md`** ⚖️ - The Constitution (parser output rules)
-2. **`agents.md`** - AI agent instructions and project memory
-3. **`ARCHITECTURE.md`** - System design and patterns
+2. **`docs/context/agents.md`** - AI agent instructions and project memory
+3. **`docs/architecture/ARCHITECTURE.md`** - System design and patterns
 4. **`docs/guides/AI_PROMPTS.md`** - Parser prompt templates (auto-updated)
 
 ### Key Directories
@@ -318,8 +318,8 @@ git checkout -- <file>
 
 ## Related Documents
 
-- [agents.md](../agents.md) - Full AI agent instructions
-- [ARCHITECTURE.md](../ARCHITECTURE.md) - System architecture
+- [agents.md](../docs/context/agents.md) - Full AI agent instructions
+- [ARCHITECTURE.md](../docs/architecture/ARCHITECTURE.md) - System architecture
 - [CANONICAL_JSON_SCHEMA.md](../docs/reference/CANONICAL_JSON_SCHEMA.md) - Parser output spec
 - [VALIDATION_SYSTEM_SUMMARY.md](../docs/VALIDATION_SYSTEM_SUMMARY.md) - Validation rules
 - [BLOCK_TYPES_REFERENCE.md](../docs/reference/BLOCK_TYPES_REFERENCE.md) - Block type catalog
