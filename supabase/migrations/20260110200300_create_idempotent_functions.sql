@@ -42,7 +42,7 @@ BEGIN
     -- Check if already imported (global check)
     SELECT i.import_id, i.received_at
     INTO v_existing_import_id, v_existing_received_at
-    FROM zamm.stg_imports i
+    FROM zamm.imports i
     WHERE i.checksum_sha256 = v_checksum
       AND NOT ('duplicate_archived' = ANY(i.tags))  -- Ignore archived duplicates
     LIMIT 1;  -- Should only be one due to unique constraint
@@ -239,7 +239,7 @@ BEGIN
         i.received_at,
         i.athlete_id,
         i.source
-    FROM zamm.stg_imports i
+    FROM zamm.imports i
     WHERE i.checksum_sha256 = p_checksum
       AND NOT ('duplicate_archived' = ANY(i.tags))
     LIMIT 1;

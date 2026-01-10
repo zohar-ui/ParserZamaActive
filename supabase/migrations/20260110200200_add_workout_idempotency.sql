@@ -21,7 +21,7 @@ ADD COLUMN content_hash_ref TEXT;
 -- Populate content_hash_ref from linked imports
 UPDATE zamm.workout_main w
 SET content_hash_ref = i.checksum_sha256
-FROM zamm.stg_imports i
+FROM zamm.imports i
 WHERE w.import_id = i.import_id
   AND w.content_hash_ref IS NULL;
 
@@ -90,7 +90,7 @@ CHECK (
 -- ============================================
 
 COMMENT ON COLUMN zamm.workout_main.content_hash_ref IS
-'Reference to stg_imports.checksum_sha256. Prevents duplicate workouts from same source content. Combined with athlete_id + workout_date for uniqueness.';
+'Reference to imports.checksum_sha256. Prevents duplicate workouts from same source content. Combined with athlete_id + workout_date for uniqueness.';
 
 COMMENT ON INDEX zamm.workouts_athlete_date_hash_unique IS
 'Business logic deduplication: Prevents same athlete from having duplicate workouts (same date + same content hash).';

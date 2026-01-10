@@ -5,6 +5,7 @@
   "main": "scripts/active_learning/update_parser_brain.js",
   "scripts": {
     "learn": "node scripts/active_learning/update_parser_brain.js",
+    "create-athlete": "node scripts/ops/create_athlete.js",
     "test:blocks": "./scripts/tests/test_block_types.sh",
     "test:parser": "./scripts/tests/test_parser_accuracy.sh",
     "validate:golden": "./scripts/tests/validate_golden_set.sh",

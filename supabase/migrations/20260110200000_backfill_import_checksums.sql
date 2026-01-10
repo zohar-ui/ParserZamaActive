@@ -11,7 +11,7 @@
 -- ============================================
 
 -- Update imports that don't have checksums yet
-UPDATE zamm.stg_imports
+UPDATE zamm.imports
 SET checksum_sha256 = encode(digest(raw_text, 'sha256'), 'hex')
 WHERE checksum_sha256 IS NULL;
 
@@ -27,7 +27,7 @@ SELECT
     array_agg(import_id ORDER BY received_at) as import_ids,
     MIN(received_at) as first_received,
     MAX(received_at) as last_received
-FROM zamm.stg_imports
+FROM zamm.imports
 WHERE checksum_sha256 IS NOT NULL
 GROUP BY checksum_sha256
 HAVING COUNT(*) > 1;
@@ -52,7 +52,7 @@ END $$;
 -- ============================================
 
 -- Add 'duplicate_archived' tag to newer duplicates
-UPDATE zamm.stg_imports i
+UPDATE zamm.imports i
 SET tags = array_append(tags, 'duplicate_archived')
 WHERE i.import_id IN (
     SELECT unnest(import_ids[2:]) -- All except first (oldest)
@@ -66,7 +66,7 @@ DECLARE
     v_archived_count INTEGER;
 BEGIN
     SELECT COUNT(*) INTO v_archived_count
-    FROM zamm.stg_imports
+    FROM zamm.imports
     WHERE 'duplicate_archived' = ANY(tags);
 
     IF v_archived_count > 0 THEN
@@ -80,11 +80,11 @@ END $$;
 
 -- Index on checksum for fast duplicate detection
 CREATE INDEX IF NOT EXISTS idx_imports_checksum
-ON zamm.stg_imports(checksum_sha256);
+ON zamm.imports(checksum_sha256);
 
 -- Partial index for athlete-specific lookups
 CREATE INDEX IF NOT EXISTS idx_imports_athlete_checksum
-ON zamm.stg_imports(athlete_id, checksum_sha256)
+ON zamm.imports(athlete_id, checksum_sha256)
 WHERE athlete_id IS NOT NULL;
 
 -- ============================================
@@ -104,19 +104,19 @@ BEGIN
         SELECT 1
         FROM information_schema.tables
         WHERE table_schema = 'zamm'
-          AND table_name = 'stg_imports'
+          AND table_name = 'imports'
     ) INTO v_table_exists;
 
     IF v_table_exists THEN
         SELECT COUNT(*) INTO v_total_imports
-        FROM zamm.stg_imports;
+        FROM zamm.imports;
 
         SELECT COUNT(*) INTO v_with_checksum
-        FROM zamm.stg_imports
+        FROM zamm.imports
         WHERE checksum_sha256 IS NOT NULL;
 
         SELECT COUNT(*) INTO v_null_checksum
-        FROM zamm.stg_imports
+        FROM zamm.imports
         WHERE checksum_sha256 IS NULL;
 
         RAISE NOTICE '';
@@ -135,12 +135,12 @@ BEGIN
         RAISE NOTICE '═══════════════════════════════════════════════════';
         RAISE NOTICE '';
     ELSE
-        RAISE NOTICE '⚠  Table zamm.stg_imports does not exist yet - skipping verification';
+        RAISE NOTICE '⚠  Table zamm.imports does not exist yet - skipping verification';
     END IF;
 END $$;
 
 -- Add comments
-COMMENT ON COLUMN zamm.stg_imports.checksum_sha256 IS
+COMMENT ON COLUMN zamm.imports.checksum_sha256 IS
 'SHA-256 hash of raw_text. Used for duplicate detection and idempotency.';
 
 COMMENT ON INDEX zamm.idx_imports_checksum IS
