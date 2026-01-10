@@ -24,12 +24,18 @@ DECLARE
     v_block_id UUID;
     v_item_id UUID;
     v_workout_date DATE;
+    v_source_ref TEXT;
 BEGIN
-    -- Extract workout date from JSON
-    v_workout_date := (p_normalized_json->'sessions'->0->'sessionInfo'->>'date')::date;
+    -- Extract workout date from import source_ref (format: athlete_workout_YYYY-MM-DD)
+    SELECT source_ref INTO v_source_ref
+    FROM zamm.stg_imports
+    WHERE import_id = p_import_id;
+    
+    -- Parse date from source_ref (extract YYYY-MM-DD from end of string)
+    v_workout_date := (regexp_match(v_source_ref, '\d{4}-\d{2}-\d{2}'))[1]::date;
 
     -- 1. Create Workout Header
-    INSERT INTO zamm.workouts (
+    INSERT INTO zamm.workout_main (
         import_id, draft_id, ruleset_id, athlete_id, 
         workout_date, status, created_at, approved_at
     )
@@ -68,7 +74,8 @@ BEGIN
                 block_type text, 
                 name text, 
                 prescription jsonb, 
-                performed jsonb
+                performed jsonb,
+                items jsonb
             )
         LOOP
             -- Insert Block with prescription and performed data
@@ -106,7 +113,7 @@ BEGIN
 
             -- Insert Block Result if performed data exists
             IF v_blk_rec.performed IS NOT NULL AND v_blk_rec.performed != '{}'::jsonb THEN
-                INSERT INTO zamm.workout_block_results (
+                INSERT INTO zamm.res_blocks (
                     block_id,
                     did_complete,
                     total_time_sec,
@@ -131,69 +138,51 @@ BEGIN
             END IF;
 
             -- 4. Loop through Items (Exercises)
-            IF v_blk_rec.prescription ? 'steps' THEN
-                FOR v_item_rec IN 
-                    SELECT * FROM jsonb_to_recordset(v_blk_rec.prescription->'steps') 
-                    WITH ORDINALITY 
-                    AS z(
-                        exercise_name text,
-                        target_sets integer,
-                        target_reps integer,
-                        target_load jsonb,
-                        equipment_key text,
-                        tempo text,
-                        notes text,
-                        ordinality int
+            IF v_blk_rec.items IS NOT NULL THEN
+                DECLARE
+                    v_item_index INT := 0;
+                BEGIN
+                    FOR v_item_rec IN 
+                        SELECT * FROM jsonb_to_recordset(v_blk_rec.items) AS z(
+                            exercise_name text,
+                            equipment_key text,
+                            prescription jsonb,
+                            performed jsonb,
+                            notes jsonb
+                        )
+                    LOOP
+                        v_item_index := v_item_index + 1;
+                    -- Insert workout item with prescription and performed data
+                    INSERT INTO zamm.workout_items (
+                        block_id,
+                        item_order,
+                        exercise_name,
+                        equipment_key,
+                        tempo,
+                        notes,
+                        prescription_data,
+                        performed_data,
+                        created_at
                     )
-                LOOP
-                    -- Get corresponding performed data for this item
-                    DECLARE
-                        v_performed_item JSONB;
-                    BEGIN
-                        v_performed_item := COALESCE(
-                            v_blk_rec.performed->'steps'->(v_item_rec.ordinality - 1),
-                            '{}'::jsonb
-                        );
+                    VALUES (
+                        v_block_id,
+                        v_item_index,
+                        v_item_rec.exercise_name,
+                        v_item_rec.equipment_key,
+                        NULL,  -- tempo
+                        v_item_rec.notes,
+                        -- Store full prescription data
+                        COALESCE(v_item_rec.prescription, '{}'::jsonb),
+                        -- Store performed data (may be empty)
+                        COALESCE(v_item_rec.performed, '{}'::jsonb),
+                        NOW()
+                    )
+                    RETURNING item_id INTO v_item_id;
 
-                        -- Insert workout item with prescription and performed data
-                        INSERT INTO zamm.workout_items (
-                            block_id,
-                            item_order,
-                            exercise_name,
-                            equipment_key,
-                            tempo,
-                            notes,
-                            prescription_data,
-                            performed_data,
-                            created_at
-                        )
-                        VALUES (
-                            v_block_id,
-                            v_item_rec.ordinality,
-                            v_item_rec.exercise_name,
-                            v_item_rec.equipment_key,
-                            v_item_rec.tempo,
-                            v_item_rec.notes,
-                            -- Store full prescription data
-                            jsonb_build_object(
-                                'exercise_name', v_item_rec.exercise_name,
-                                'target_sets', v_item_rec.target_sets,
-                                'target_reps', v_item_rec.target_reps,
-                                'target_load', v_item_rec.target_load,
-                                'equipment_key', v_item_rec.equipment_key,
-                                'tempo', v_item_rec.tempo,
-                                'notes', v_item_rec.notes
-                            ),
-                            -- Store performed data (may be empty)
-                            v_performed_item,
-                            NOW()
-                        )
-                        RETURNING item_id INTO v_item_id;
-
-                        -- 5. Insert individual set results if performed data has sets
-                        IF v_performed_item ? 'sets' THEN
-                            FOR v_set_rec IN 
-                                SELECT * FROM jsonb_to_recordset(v_performed_item->'sets')
+                    -- 5. Insert individual set results if performed data has sets
+                    IF v_item_rec.performed ? 'sets' THEN
+                        FOR v_set_rec IN 
+                            SELECT * FROM jsonb_to_recordset(v_item_rec.performed->'sets')
                                 AS s(
                                     set_index integer,
                                     reps integer,
@@ -203,7 +192,7 @@ BEGIN
                                     notes text
                                 )
                             LOOP
-                                INSERT INTO zamm.item_set_results (
+                                INSERT INTO zamm.res_item_sets (
                                     block_id,
                                     item_id,
                                     set_index,
@@ -227,8 +216,8 @@ BEGIN
                                 );
                             END LOOP;
                         END IF;
-                    END;
                 END LOOP;
+                END;  -- End DECLARE block
             END IF;
         END LOOP;
     END LOOP;

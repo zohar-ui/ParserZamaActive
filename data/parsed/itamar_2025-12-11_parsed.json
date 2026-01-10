@@ -1,0 +1,167 @@
+{
+  "workout_date": "2025-12-11",
+  "athlete_id": "32a29c13-5a35-45a8-85d9-823a590d4b8d",
+  "title": "W26 Pre Comp",
+  "status": "completed",
+  "sessions": [
+    {
+      "session_code": null,
+      "blocks": [
+        {
+          "block_code": "MOB",
+          "block_label": "A",
+          "block_title": "Mobility",
+          "prescription": {},
+          "performed": null,
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Foam Roller Lat Sweep",
+              "equipment_key": "foam_roller",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration": {
+                  "value": 40,
+                  "unit": "sec"
+                },
+                "notes": "per side (right, then left)"
+              },
+              "performed": null
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Lacrosse Ball Pec Minor Smash",
+              "equipment_key": "lacrosse_ball",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration": {
+                  "value": 30,
+                  "unit": "sec"
+                },
+                "notes": "per side (right, then left)"
+              },
+              "performed": null
+            },
+            {
+              "item_sequence": 3,
+              "exercise_name": "Rest",
+              "equipment_key": "bodyweight",
+              "prescription": {
+                "target_duration": {
+                  "value": 15,
+                  "unit": "sec"
+                }
+              },
+              "performed": null
+            }
+          ]
+        },
+        {
+          "block_code": "INTV",
+          "block_label": "B",
+          "block_title": "Erobic",
+          "prescription": {},
+          "performed": null,
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Row",
+              "equipment_key": "rower",
+              "prescription": {
+                "target_duration": {
+                  "value": 5,
+                  "unit": "min"
+                },
+                "target_stroke_rate": 22,
+                "notes": "easy"
+              },
+              "performed": null
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "Row",
+              "equipment_key": "rower",
+              "circuit_config": {
+                "rounds": 3,
+                "type": "for_quality"
+              },
+              "exercises": [
+                {
+                  "item_sequence": 1,
+                  "exercise_name": "Row",
+                  "equipment_key": "rower",
+                  "prescription": {
+                    "target_duration": {
+                      "value": 120,
+                      "unit": "sec"
+                    },
+                    "target_stroke_rate_min": 22,
+                    "target_stroke_rate_max": 24
+                  },
+                  "performed": null
+                },
+                {
+                  "item_sequence": 2,
+                  "exercise_name": "Row",
+                  "equipment_key": "rower",
+                  "prescription": {
+                    "target_duration": {
+                      "value": 90,
+                      "unit": "sec"
+                    },
+                    "notes": "easy - active recovery"
+                  },
+                  "performed": null
+                }
+              ],
+              "prescription": {},
+              "performed": {
+                "notes": "דופק לא הגיוני לי זה עם השעון הרגשתי מעולה אבל. 277 strokes. קצב ממוצע 26 spm. כמעט 2400 מטר חתירה. דופק ממוצע 125. דופק מירבי 169"
+              }
+            }
+          ]
+        },
+        {
+          "block_code": "ACC",
+          "block_label": "C",
+          "block_title": "Accsesory",
+          "prescription": {},
+          "performed": null,
+          "items": [
+            {
+              "item_sequence": 1,
+              "exercise_name": "Side Plank Hold",
+              "equipment_key": "bodyweight",
+              "prescription": {
+                "target_sets": 2,
+                "target_duration": {
+                  "value": 20,
+                  "unit": "sec"
+                },
+                "target_duration_max": {
+                  "value": 25,
+                  "unit": "sec"
+                },
+                "notes": "per side"
+              },
+              "performed": null
+            },
+            {
+              "item_sequence": 2,
+              "exercise_name": "McGill Curl-Up",
+              "equipment_key": "bodyweight",
+              "prescription": {
+                "target_sets": 4,
+                "target_duration": {
+                  "value": 10,
+                  "unit": "sec"
+                }
+              },
+              "performed": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

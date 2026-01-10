@@ -173,45 +173,22 @@ BEGIN
         END IF;
     END IF;
 
-    -- No duplicate found - proceed with commit
-    -- Note: This calls the existing commit_full_workout_v3() function
-    -- which handles all the complex relational inserts
-
-    -- First, create the workout record with content_hash_ref
-    INSERT INTO zamm.workout_main (
-        import_id,
-        draft_id,
-        ruleset_id,
-        athlete_id,
-        workout_date,
-        session_title,
-        status,
-        content_hash_ref,
-        created_at
-    )
-    SELECT
+    -- No duplicate found - proceed with full commit
+    -- Call commit_full_workout_v3() which handles all relational inserts
+    v_new_workout_id := zamm.commit_full_workout_v3(
         v_import_id,
         p_draft_id,
         (SELECT ruleset_id FROM zamm.cfg_parser_rules WHERE is_active = true LIMIT 1),
         v_athlete_id,
-        v_workout_date,
-        v_session_title,
-        COALESCE((p_parsed_workout->>'status')::text, 'completed'),
-        v_content_hash,
-        now()
-    RETURNING workout_main.workout_id INTO v_new_workout_id;
-
-    -- TODO: Add full workout commit logic here
-    -- For now, returning the workout_id
-    -- In production, this would call the full commit logic
-    -- that inserts sessions, blocks, items, etc.
+        p_parsed_workout
+    );
 
     -- Return new workout
     RETURN QUERY
     SELECT
         v_new_workout_id,
         false,  -- is_duplicate
-        'New workout committed successfully.';
+        'New workout committed successfully with full relational structure.';
 
 END;
 $$ LANGUAGE plpgsql;
