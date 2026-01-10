@@ -10,7 +10,7 @@
 -- Step 1: Add content_hash_ref column
 -- ============================================
 
-ALTER TABLE zamm.workouts
+ALTER TABLE zamm.workout_main
 ADD COLUMN content_hash_ref TEXT;
 
 
@@ -19,9 +19,9 @@ ADD COLUMN content_hash_ref TEXT;
 -- ============================================
 
 -- Populate content_hash_ref from linked imports
-UPDATE zamm.workouts w
+UPDATE zamm.workout_main w
 SET content_hash_ref = i.checksum_sha256
-FROM zamm.imports i
+FROM zamm.stg_imports i
 WHERE w.import_id = i.import_id
   AND w.content_hash_ref IS NULL;
 
@@ -32,9 +32,9 @@ DECLARE
     v_with_hash INTEGER;
     v_null_hash INTEGER;
 BEGIN
-    SELECT COUNT(*) INTO v_total_workouts FROM zamm.workouts;
-    SELECT COUNT(*) INTO v_with_hash FROM zamm.workouts WHERE content_hash_ref IS NOT NULL;
-    SELECT COUNT(*) INTO v_null_hash FROM zamm.workouts WHERE content_hash_ref IS NULL;
+    SELECT COUNT(*) INTO v_total_workouts FROM zamm.workout_main;
+    SELECT COUNT(*) INTO v_with_hash FROM zamm.workout_main WHERE content_hash_ref IS NOT NULL;
+    SELECT COUNT(*) INTO v_null_hash FROM zamm.workout_main WHERE content_hash_ref IS NULL;
 
     RAISE NOTICE '✓ Backfilled % workouts with content hash', v_with_hash;
 
@@ -50,7 +50,7 @@ END $$;
 -- Prevent same athlete from having duplicate workouts on same date with same content
 -- Partial index: Only enforced when all components are present
 CREATE UNIQUE INDEX workouts_athlete_date_hash_unique
-ON zamm.workouts (athlete_id, workout_date, content_hash_ref)
+ON zamm.workout_main (athlete_id, workout_date, content_hash_ref)
 WHERE athlete_id IS NOT NULL
   AND workout_date IS NOT NULL
   AND content_hash_ref IS NOT NULL;
@@ -62,13 +62,13 @@ WHERE athlete_id IS NOT NULL
 
 -- Index for lookup by content hash
 CREATE INDEX IF NOT EXISTS idx_workouts_content_hash
-ON zamm.workouts(content_hash_ref)
+ON zamm.workout_main(content_hash_ref)
 WHERE content_hash_ref IS NOT NULL;
 
 
 -- Composite index for common query pattern (athlete + date)
 CREATE INDEX IF NOT EXISTS idx_workouts_athlete_date
-ON zamm.workouts(athlete_id, workout_date)
+ON zamm.workout_main(athlete_id, workout_date)
 WHERE athlete_id IS NOT NULL AND workout_date IS NOT NULL;
 
 
@@ -77,7 +77,7 @@ WHERE athlete_id IS NOT NULL AND workout_date IS NOT NULL;
 -- ============================================
 
 -- Ensure content_hash_ref matches SHA-256 format if present
-ALTER TABLE zamm.workouts
+ALTER TABLE zamm.workout_main
 ADD CONSTRAINT workouts_hash_format_check
 CHECK (
     content_hash_ref IS NULL OR
@@ -89,8 +89,8 @@ CHECK (
 -- Step 6: Update comments
 -- ============================================
 
-COMMENT ON COLUMN zamm.workouts.content_hash_ref IS
-'Reference to imports.checksum_sha256. Prevents duplicate workouts from same source content. Combined with athlete_id + workout_date for uniqueness.';
+COMMENT ON COLUMN zamm.workout_main.content_hash_ref IS
+'Reference to stg_imports.checksum_sha256. Prevents duplicate workouts from same source content. Combined with athlete_id + workout_date for uniqueness.';
 
 COMMENT ON INDEX zamm.workouts_athlete_date_hash_unique IS
 'Business logic deduplication: Prevents same athlete from having duplicate workouts (same date + same content hash).';
@@ -116,8 +116,8 @@ SELECT
     w2.session_title as title_2,
     w1.created_at as created_1,
     w2.created_at as created_2
-FROM zamm.workouts w1
-JOIN zamm.workouts w2
+FROM zamm.workout_main w1
+JOIN zamm.workout_main w2
     ON w1.athlete_id = w2.athlete_id
     AND w1.workout_date = w2.workout_date
     AND w1.content_hash_ref = w2.content_hash_ref

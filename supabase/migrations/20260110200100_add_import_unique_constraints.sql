@@ -18,7 +18,7 @@ DECLARE
 BEGIN
     -- Check for NULL checksums
     SELECT COUNT(*) INTO v_null_checksums
-    FROM zamm.imports
+    FROM zamm.stg_imports
     WHERE checksum_sha256 IS NULL;
 
     IF v_null_checksums > 0 THEN
@@ -29,7 +29,7 @@ BEGIN
     SELECT COUNT(*) INTO v_duplicates
     FROM (
         SELECT checksum_sha256
-        FROM zamm.imports
+        FROM zamm.stg_imports
         WHERE NOT ('duplicate_archived' = ANY(tags))
         GROUP BY checksum_sha256
         HAVING COUNT(*) > 1
@@ -46,7 +46,7 @@ END $$;
 -- Step 1: Make checksum_sha256 NOT NULL
 -- ============================================
 
-ALTER TABLE zamm.imports
+ALTER TABLE zamm.stg_imports
 ALTER COLUMN checksum_sha256 SET NOT NULL;
 
 -- ============================================
@@ -55,7 +55,7 @@ ALTER COLUMN checksum_sha256 SET NOT NULL;
 
 -- Global uniqueness: Same content cannot be imported twice
 -- Exception: Archived duplicates are excluded via WHERE clause
-ALTER TABLE zamm.imports
+ALTER TABLE zamm.stg_imports
 ADD CONSTRAINT imports_checksum_unique
 UNIQUE (checksum_sha256);
 
@@ -66,7 +66,7 @@ UNIQUE (checksum_sha256);
 -- This allows tracking who imported what
 -- Partial index: Only when athlete_id is not NULL
 CREATE UNIQUE INDEX imports_athlete_checksum_unique
-ON zamm.imports (athlete_id, checksum_sha256)
+ON zamm.stg_imports (athlete_id, checksum_sha256)
 WHERE athlete_id IS NOT NULL
   AND NOT ('duplicate_archived' = ANY(tags));
 
@@ -75,7 +75,7 @@ WHERE athlete_id IS NOT NULL
 -- ============================================
 
 -- Ensure checksum is valid SHA-256 hex (64 characters)
-ALTER TABLE zamm.imports
+ALTER TABLE zamm.stg_imports
 ADD CONSTRAINT imports_checksum_format_check
 CHECK (
     checksum_sha256 ~ '^[a-f0-9]{64}$'
@@ -85,10 +85,10 @@ CHECK (
 -- Step 5: Update comments
 -- ============================================
 
-COMMENT ON COLUMN zamm.imports.checksum_sha256 IS
+COMMENT ON COLUMN zamm.stg_imports.checksum_sha256 IS
 'SHA-256 hash of raw_text (64 hex chars). Enforced NOT NULL and UNIQUE to prevent duplicate imports. Use import_raw_text_idempotent() function for safe inserts.';
 
-COMMENT ON CONSTRAINT imports_checksum_unique ON zamm.imports IS
+COMMENT ON CONSTRAINT imports_checksum_unique ON zamm.stg_imports IS
 'Prevents importing the exact same raw_text twice. Archived duplicates excluded.';
 
 COMMENT ON INDEX zamm.imports_athlete_checksum_unique IS
@@ -108,7 +108,7 @@ BEGIN
         SELECT 1
         FROM pg_constraint
         WHERE conname = 'imports_checksum_unique'
-          AND conrelid = 'zamm.imports'::regclass
+          AND conrelid = 'zamm.stg_imports'::regclass
     ) INTO v_constraint_exists;
 
     -- Check partial unique index
