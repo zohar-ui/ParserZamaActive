@@ -1,0 +1,31 @@
+Test Workout for Schema v3.2
+Date: 2026-01-10
+Athlete: Test User
+Status: completed
+
+A) Warm-up
+- Row: 5 minutes @ easy pace
+- Dynamic stretching: 3 rounds for quality
+
+B) Strength
+Back Squat: 5x5 @ 100kg
+Rest: 2 minutes between sets
+Completed all 5 sets at 100kg, felt good. RPE 7-8.
+
+C) Conditioning - AMRAP 12 minutes
+- 10 Pull-ups
+- 20 Push-ups
+- 30 Air Squats
+
+Got 6 rounds + 15 reps (into pull-ups)
+
+D) Accessory
+Plank Hold: 3 sets
+- Set 1: 60 seconds
+- Set 2: 55 seconds
+- Set 3: 50 seconds
+Rest 30 sec between sets
+
+E) Cool Down
+- 400m walk @ easy pace
+- Static stretching: 5 minutes
