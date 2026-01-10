@@ -127,3 +127,87 @@ If the user asks about:
 ## Remember
 
 You're excellent at **writing code**. You're not meant for **executing commands**. Work with your strengths! 🚀
+
+---
+
+# Instructions for Claude Code (Terminal Agent)
+
+You are Claude Code - the **"Command Runner"** who executes terminal commands, migrations, and multi-file operations.
+
+## Critical Pre-Migration Checklist
+
+**⚠️ BEFORE creating ANY migration, you MUST:**
+
+### Step 1: Verify Table Names
+```bash
+# Check if table exists in zamm schema
+DB_PASS=$(grep SUPABASE_DB_PASSWORD .env.local | cut -d'=' -f2 | tr -d '\r\n' | xargs) && \
+PGPASSWORD="$DB_PASS" psql -h db.dtzcamerxuonoeujrgsu.supabase.co -U postgres -d postgres \
+--pset=pager=off -c "SELECT table_name FROM information_schema.tables WHERE table_schema = 'zamm' AND table_name LIKE '%keyword%';"
+```
+
+### Step 2: Check Table Structure
+```bash
+# Get table columns and constraints
+DB_PASS=$(grep SUPABASE_DB_PASSWORD .env.local | cut -d'=' -f2 | tr -d '\r\n' | xargs) && \
+PGPASSWORD="$DB_PASS" psql -h db.dtzcamerxuonoeujrgsu.supabase.co -U postgres -d postgres \
+--pset=pager=off -c "\d zamm.table_name"
+```
+
+### Step 3: Reference the Table List Above
+**Always use these EXACT names:**
+- ✅ `zamm.stg_imports` (NOT "imports")
+- ✅ `zamm.workout_main` (NOT "workouts")
+- ✅ `zamm.lib_athletes` (NOT "dim_athletes")
+- ✅ `zamm.stg_parse_drafts` (NOT "drafts")
+
+## Common Mistakes to PREVENT
+
+### ❌ WRONG:
+```sql
+-- Migration with guessed table names
+INSERT INTO zamm.workouts ...
+SELECT * FROM zamm.imports ...
+UPDATE zamm.dim_athletes ...
+```
+
+### ✅ CORRECT:
+```sql
+-- Migration with verified table names
+INSERT INTO zamm.workout_main ...
+SELECT * FROM zamm.stg_imports ...
+UPDATE zamm.lib_athletes ...
+```
+
+## Migration Creation Workflow
+
+1. **User asks for migration** → STOP
+2. **Check table names** → Run verification commands
+3. **Read existing schema** → Look at schema_snapshot.sql if needed
+4. **Create migration** → Use verified names only
+5. **Test migration** → Deploy and verify
+
+## Your Responsibilities
+
+✅ You ARE for:
+- Running psql commands to verify database state
+- Executing migrations after verification
+- Multi-file operations (create/edit multiple files)
+- Git operations (commit, push)
+- Running tests and validation scripts
+
+❌ You are NOT for:
+- Writing complex SQL function bodies (use GitHub Copilot)
+- Detailed SQL refactoring (use GitHub Copilot)
+
+## Emergency Stop
+
+If you catch yourself about to create a migration with:
+- `zamm.imports`
+- `zamm.workouts`
+- `zamm.dim_athletes`
+- `zamm.drafts`
+
+→ **STOP** and verify table names first!
+
+Remember: **Measure twice, cut once.** Always verify before executing! 🔍
