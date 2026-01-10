@@ -49,8 +49,6 @@ END $$;
 ALTER TABLE zamm.imports
 ALTER COLUMN checksum_sha256 SET NOT NULL;
 
-RAISE NOTICE '✓ checksum_sha256 is now NOT NULL';
-
 -- ============================================
 -- Step 2: Add unique constraint on checksum
 -- ============================================
@@ -60,8 +58,6 @@ RAISE NOTICE '✓ checksum_sha256 is now NOT NULL';
 ALTER TABLE zamm.imports
 ADD CONSTRAINT imports_checksum_unique
 UNIQUE (checksum_sha256);
-
-RAISE NOTICE '✓ Added unique constraint: imports_checksum_unique';
 
 -- ============================================
 -- Step 3: Add partial unique index (athlete-specific)
@@ -74,8 +70,6 @@ ON zamm.imports (athlete_id, checksum_sha256)
 WHERE athlete_id IS NOT NULL
   AND NOT ('duplicate_archived' = ANY(tags));
 
-RAISE NOTICE '✓ Added partial unique index: imports_athlete_checksum_unique';
-
 -- ============================================
 -- Step 4: Add check constraint for hash format
 -- ============================================
@@ -86,8 +80,6 @@ ADD CONSTRAINT imports_checksum_format_check
 CHECK (
     checksum_sha256 ~ '^[a-f0-9]{64}$'
 );
-
-RAISE NOTICE '✓ Added check constraint: imports_checksum_format_check';
 
 -- ============================================
 -- Step 5: Update comments

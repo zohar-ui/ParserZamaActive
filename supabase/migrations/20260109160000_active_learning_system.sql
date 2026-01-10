@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS zamm.log_learning_examples (
     example_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     
     -- Source tracking
-    draft_id UUID REFERENCES zamm.stg_parse_drafts(draft_id) ON DELETE SET NULL,
-    validation_report_id UUID REFERENCES zamm.log_validation_reports(report_id) ON DELETE SET NULL,
+    draft_id UUID REFERENCES zamm.parse_drafts(draft_id) ON DELETE SET NULL,
+    validation_report_id UUID REFERENCES zamm.validation_reports(report_id) ON DELETE SET NULL,
     
     -- Original context
     original_text TEXT NOT NULL,

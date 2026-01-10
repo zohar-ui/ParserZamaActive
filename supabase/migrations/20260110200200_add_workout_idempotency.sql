@@ -13,7 +13,6 @@
 ALTER TABLE zamm.workouts
 ADD COLUMN content_hash_ref TEXT;
 
-RAISE NOTICE '✓ Added column: content_hash_ref';
 
 -- ============================================
 -- Step 2: Backfill existing workouts
@@ -56,7 +55,6 @@ WHERE athlete_id IS NOT NULL
   AND workout_date IS NOT NULL
   AND content_hash_ref IS NOT NULL;
 
-RAISE NOTICE '✓ Added partial unique index: workouts_athlete_date_hash_unique';
 
 -- ============================================
 -- Step 4: Add performance indexes
@@ -67,14 +65,12 @@ CREATE INDEX IF NOT EXISTS idx_workouts_content_hash
 ON zamm.workouts(content_hash_ref)
 WHERE content_hash_ref IS NOT NULL;
 
-RAISE NOTICE '✓ Added index: idx_workouts_content_hash';
 
 -- Composite index for common query pattern (athlete + date)
 CREATE INDEX IF NOT EXISTS idx_workouts_athlete_date
 ON zamm.workouts(athlete_id, workout_date)
 WHERE athlete_id IS NOT NULL AND workout_date IS NOT NULL;
 
-RAISE NOTICE '✓ Added index: idx_workouts_athlete_date';
 
 -- ============================================
 -- Step 5: Add check constraint for hash format
@@ -88,7 +84,6 @@ CHECK (
     content_hash_ref ~ '^[a-f0-9]{64}$'
 );
 
-RAISE NOTICE '✓ Added check constraint: workouts_hash_format_check';
 
 -- ============================================
 -- Step 6: Update comments

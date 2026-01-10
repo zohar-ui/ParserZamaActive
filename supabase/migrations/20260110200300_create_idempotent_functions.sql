@@ -225,7 +225,7 @@ COMMENT ON FUNCTION zamm.commit_workout_idempotent IS
 CREATE OR REPLACE FUNCTION zamm.check_import_duplicate(
     p_checksum TEXT
 ) RETURNS TABLE (
-    exists BOOLEAN,
+    found BOOLEAN,
     import_id UUID,
     received_at TIMESTAMPTZ,
     athlete_id UUID,
@@ -263,7 +263,7 @@ CREATE OR REPLACE FUNCTION zamm.check_workout_duplicate(
     p_workout_date DATE,
     p_content_hash TEXT
 ) RETURNS TABLE (
-    exists BOOLEAN,
+    found BOOLEAN,
     workout_id UUID,
     created_at TIMESTAMPTZ,
     session_title TEXT
