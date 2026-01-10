@@ -78,6 +78,7 @@ supabase db reset
 - 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
 - 🔄 [Active Learning System](./scripts/active_learning/README.md) - Parser training from corrections
 - ✅ [Validation System](./docs/VALIDATION_SYSTEM_SUMMARY.md) - Stage 3 validation functions and workflow
+- 🔒 [Idempotency Guide](./docs/guides/IDEMPOTENCY_GUIDE.md) - Duplicate prevention system
 - 📋 [Versioning Strategy](./docs/guides/VERSIONING_STRATEGY.md) - Schema version compatibility checks
 - 🚀 [Workflow Guide](./docs/guides/WORKFLOW_GUIDE.md) - Development workflow
 - ⚙️ [Environment Setup](./docs/guides/ENVIRONMENT_SETUP.md) - Setup instructions
