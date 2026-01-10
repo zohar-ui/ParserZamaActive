@@ -42,7 +42,7 @@ BEGIN
     -- Check if already imported (global check)
     SELECT i.import_id, i.received_at
     INTO v_existing_import_id, v_existing_received_at
-    FROM zamm.imports i
+    FROM zamm.stg_imports i
     WHERE i.checksum_sha256 = v_checksum
       AND NOT ('duplicate_archived' = ANY(i.tags))  -- Ignore archived duplicates
     LIMIT 1;  -- Should only be one due to unique constraint
@@ -63,7 +63,7 @@ BEGIN
     END IF;
 
     -- Insert new import
-    INSERT INTO zamm.imports (
+    INSERT INTO zamm.stg_imports (
         athlete_id,
         raw_text,
         checksum_sha256,
@@ -79,7 +79,7 @@ BEGIN
         p_source_ref,
         p_tags,
         now()
-    ) RETURNING imports.import_id INTO v_existing_import_id;
+    ) RETURNING stg_imports.import_id INTO v_existing_import_id;
 
     -- Return new import
     RETURN QUERY
@@ -126,8 +126,8 @@ BEGIN
         v_import_id,
         v_content_hash,
         v_athlete_id
-    FROM zamm.parse_drafts pd
-    JOIN zamm.imports i ON pd.import_id = i.import_id
+    FROM zamm.stg_parse_drafts pd
+    JOIN zamm.stg_imports i ON pd.import_id = i.import_id
     WHERE pd.draft_id = p_draft_id;
 
     -- Validate draft exists
@@ -153,7 +153,7 @@ BEGIN
         INTO
             v_existing_workout_id,
             v_existing_created_at
-        FROM zamm.workouts w
+        FROM zamm.workout_main w
         WHERE w.athlete_id = v_athlete_id
           AND w.workout_date = v_workout_date
           AND w.content_hash_ref = v_content_hash
@@ -178,7 +178,7 @@ BEGIN
     -- which handles all the complex relational inserts
 
     -- First, create the workout record with content_hash_ref
-    INSERT INTO zamm.workouts (
+    INSERT INTO zamm.workout_main (
         import_id,
         draft_id,
         ruleset_id,
@@ -191,13 +191,13 @@ BEGIN
     SELECT
         v_import_id,
         p_draft_id,
-        (SELECT ruleset_id FROM zamm.parser_rulesets WHERE is_active = true LIMIT 1),
+        (SELECT ruleset_id FROM zamm.lib_parser_rulesets WHERE is_active = true LIMIT 1),
         v_athlete_id,
         v_workout_date,
         v_session_title,
         v_content_hash,
         now()
-    RETURNING workouts.workout_id INTO v_new_workout_id;
+    RETURNING workout_main.workout_id INTO v_new_workout_id;
 
     -- TODO: Add full workout commit logic here
     -- For now, returning the workout_id
@@ -239,7 +239,7 @@ BEGIN
         i.received_at,
         i.athlete_id,
         i.source
-    FROM zamm.imports i
+    FROM zamm.stg_imports i
     WHERE i.checksum_sha256 = p_checksum
       AND NOT ('duplicate_archived' = ANY(i.tags))
     LIMIT 1;
