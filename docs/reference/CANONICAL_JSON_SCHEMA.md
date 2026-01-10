@@ -1,6 +1,6 @@
 # 📜 The Constitution: Canonical JSON Schema
 
-**Version:** 3.0.0  
+**Version:** 3.1.0  
 **Status:** 🔒 LOCKED - This is the ONLY allowed schema  
 **Last Updated:** January 10, 2026  
 
@@ -465,6 +465,17 @@ interface BlockPrescription {
   // For Time specific
   target_fortime_rounds?: number;
   target_fortime_cap_sec?: number;
+  
+  // NEW v3.1: Buy-in/Buy-out structure
+  buy_in?: BlockItem[];           // Exercises before main work (e.g., "400m Run before AMRAP")
+  buy_out?: BlockItem[];          // Exercises after main work (e.g., "400m Run after AMRAP")
+  
+  // NEW v3.1: Team format
+  team_format?: {
+    type: "individual" | "partners" | "team_of_3" | "team_of_4" | "relay";
+    scoring: "team_total" | "individual_contribution" | "each_athlete";
+    notes?: string;               // Additional team format details
+  };
 }
 ```
 
@@ -473,6 +484,11 @@ interface BlockPrescription {
 - Duration fields: ALWAYS in seconds (convert minutes to seconds: 5min = 300sec).
 - Rest: Can be in seconds OR minutes (use the unit from original text).
 - Tempo: String format "eccentric-bottom pause-concentric-top pause" (e.g., "3-0-1-0").
+- **Buy-in/Buy-out:** Use when workout has exercises before/after main work. Can have buy_in only, buy_out only, or both.
+- **Team Format:** Use when workout involves partners/teams. `scoring` determines how to record individual athlete results:
+  - `"team_total"` = Record team's combined result (use only for team-wide tracking)
+  - `"individual_contribution"` = Record each athlete's contribution separately
+  - `"each_athlete"` = Each athlete performs full workout, results tracked individually
 
 ---
 
@@ -504,6 +520,7 @@ interface BlockPerformed {
 - `completed`: REQUIRED if performed object exists.
 - Duration: ALWAYS in seconds.
 - Block-level fields: Only use if ALL items in block share the same value.
+- **Team workouts:** If `team_format.scoring` is `"individual_contribution"`, record ONLY the athlete's personal performance, NOT the team total.
 
 ---
 
@@ -581,9 +598,10 @@ interface ItemPrescription {
   // Tempo
   target_tempo?: string;            // "3-0-2-0" format
   
-  // Equipment
+  // Equipment & Execution Pattern
   equipment?: string;               // "barbell", "dumbbell", "kettlebell", etc.
   position?: string;                // "half_kneeling", "single_leg", etc.
+  execution_pattern?: ExecutionPattern; // How limbs work (NEW in v3.0)
   
   // Rowing specific
   target_stroke_rate?: number;
@@ -606,6 +624,15 @@ interface ItemPrescription {
 }
 ```
 
+```
+
+```typescript
+type ExecutionPattern = 
+  | "bilateral"          // Both limbs together (default)
+  | "alternating"        // One limb then the other, same set
+  | "single_side";       // One limb only, separate sets per side
+```
+
 **Field Rules:**
 - Ranges: Use `_min` and `_max` suffixes, never string ranges.
 - Weight: Prefer kg. Convert lbs to kg if needed (1 lb = 0.453592 kg).
@@ -613,6 +640,8 @@ interface ItemPrescription {
 - RPE: 1-10 scale (can be decimal like 7.5).
 - RIR: Typically 0-5 (0 = failure, 5 = very easy).
 - Tempo: Always "eccentric-pause-concentric-pause" (e.g., "3-0-2-0", "4-1-X-1").
+- Equipment: See "Equipment Model" section below for full catalog and normalization rules.
+- Execution Pattern: See "Unilateral Patterns" section below for detailed usage.
 
 ---
 
@@ -1012,7 +1041,959 @@ interface ExerciseOption {
 
 ---
 
-## 🔴 Critical Validation Rules
+## �️ Equipment Model (NEW in v3.0)
+
+### Overview
+Equipment identification is CRITICAL for exercise differentiation. The same movement with different equipment = different exercise.
+
+### Two Equipment Fields
+
+**1. `equipment_key` (Block Item Level)** - Primary identifier
+- Location: `BlockItem.equipment_key`
+- Purpose: Part of exercise identity
+- Source: `lib_equipment_catalog` table
+- Mandatory: Should be present for all equipment-based exercises
+
+**2. `equipment` (Prescription Level)** - Additional context
+- Location: `ItemPrescription.equipment`
+- Purpose: Prescription-specific equipment details
+- Use Case: When prescription requires specific equipment variant
+- Example: "use competition barbell" vs "use training barbell"
+
+### Standard Equipment Catalog
+
+**Free Weights:**
+- `barbell` - Olympic barbell, powerlifting bar, EZ bar
+- `dumbbell` - Dumbbells (pair or single)
+- `kettlebell` - Kettlebells
+- `plate` - Weight plates (bumper, iron)
+- `medicine_ball` - Medicine ball, slam ball
+
+**Machines:**
+- `cable_machine` - Cable crossover, functional trainer
+- `smith_machine` - Smith machine
+- `leg_press` - Leg press machine
+- `lat_pulldown` - Lat pulldown machine
+- `leg_curl` - Leg curl machine
+- `leg_extension` - Leg extension machine
+
+**Cardio:**
+- `rower` - Concept2 rower, erg
+- `bike` - Assault bike, echo bike, stationary bike
+- `ski_erg` - Ski erg
+- `treadmill` - Treadmill
+
+**Bodyweight & Suspension:**
+- `bodyweight` - No equipment (push-ups, pull-ups)
+- `rings` - Gymnastic rings
+- `trx` - TRX, suspension trainer
+- `parallettes` - Parallettes, paralettes
+
+**Other:**
+- `bench` - Flat bench, incline bench
+- `box` - Plyo box, step box
+- `resistance_band` - Resistance bands, mini bands
+- `sled` - Prowler, sled
+- `sandbag` - Sandbag
+- `battle_rope` - Battle ropes
+- `pull_up_bar` - Pull-up bar, chin-up bar
+
+### Equipment Normalization Rules
+
+**Aliases (Common Abbreviations):**
+```
+"BB" → "barbell"
+"DB" → "dumbbell"
+"KB" → "kettlebell"
+"BW" → "bodyweight"
+"MB" → "medicine_ball"
+"RB" → "resistance_band"
+```
+
+**Context-Based Resolution:**
+```
+Text: "Bench Press"
+→ equipment_key: "barbell" (default for bench press)
+
+Text: "DB Bench Press"
+→ equipment_key: "dumbbell" (explicit)
+
+Text: "Machine Bench Press"
+→ equipment_key: "machine" (explicit)
+```
+
+### Multi-Equipment Exercises
+
+**Primary Equipment in equipment_key, Secondary in prescription.equipment:**
+
+```json
+// Example: Dumbbell bench press on bench
+{
+  "exercise_name": "Dumbbell Bench Press",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "equipment": "flat_bench",
+    "notes": "Use adjustable bench"
+  }
+}
+```
+
+**Alternative Equipment:**
+Use `exercise_options` when text offers choices:
+
+```json
+{
+  "exercise_options": [
+    {
+      "exercise_name": "Barbell Row",
+      "prescription": { "target_reps": 8 }
+    },
+    {
+      "exercise_name": "Dumbbell Row",
+      "prescription": { "target_reps": 8 }
+    }
+  ]
+}
+```
+
+### Equipment-Specific Fields
+
+**Rowing Equipment:**
+- `target_stroke_rate`, `target_damper`, `target_pace_per_500m`
+- Only valid when `equipment_key: "rower"`
+
+**Loaded Movements:**
+- `target_weight`, `target_percentage_1rm`
+- Valid for: barbell, dumbbell, kettlebell, machine, cable
+
+**Bodyweight:**
+- No `target_weight` field
+- May have `target_weight` for added weight (e.g., weighted pull-ups)
+
+### Decision Tree - Equipment Assignment
+
+```
+Is equipment explicitly stated in text?
+│
+├─ YES → Use exact equipment
+│   Example: "DB Curl" → equipment_key: "dumbbell"
+│
+└─ NO → Infer from exercise name
+    │
+    ├─ Exercise has standard equipment?
+    │   Example: "Back Squat" → "barbell" (default)
+    │
+    └─ Ambiguous?
+        → Check catalog for most common variant
+        → Set needs_review: true
+```
+
+---
+
+## 💪 Unilateral Patterns (NEW in v3.0)
+
+### Overview
+Unilateral (single-limb) exercises have THREE distinct execution patterns. Each affects volume calculation differently.
+
+### The Three Patterns
+
+#### Pattern 1: Bilateral (Default)
+**Both limbs work together, simultaneously.**
+
+**Text Examples:**
+- "Barbell Curl: 3x10"
+- "DB Bench Press: 4x8" (both arms at once)
+- "Leg Press: 3x12"
+
+**Characteristics:**
+- Both limbs move at the same time
+- Typically uses 2 dumbbells, 1 barbell, or machine
+- Sets = stated sets
+- Reps = stated reps
+
+**JSON Structure:**
+```json
+{
+  "exercise_name": "Dumbbell Bench Press",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 10,
+    "execution_pattern": "bilateral"
+  }
+}
+```
+
+**Volume Calculation:**
+- Sets: 3
+- Reps per set: 10
+- Total reps: 30 (3 × 10)
+
+---
+
+#### Pattern 2: Alternating
+**One limb, then the other, within the SAME set.**
+
+**Text Examples:**
+- "DB Curl alternating: 3x10"
+- "Single-arm KB Press alternating: 4x8"
+- "Alternating lunges: 3x16"
+
+**Characteristics:**
+- Right limb does rep, then left limb does rep
+- Usually 2 dumbbells/kettlebells, or bodyweight
+- Stated reps = TOTAL (both limbs combined)
+- No rest between sides within a set
+
+**JSON Structure:**
+```json
+{
+  "exercise_name": "Dumbbell Curl",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 10,
+    "execution_pattern": "alternating",
+    "notes": "10 reps = 5 per arm, alternating"
+  }
+}
+```
+
+**Volume Calculation:**
+- Sets: 3
+- Total reps per set: 10 (5 right + 5 left)
+- Total reps: 30 (3 × 10)
+- Per limb: 15 reps each side
+
+**Critical Rule:** If text says "3x10 alternating", the 10 includes BOTH sides.
+
+---
+
+#### Pattern 3: Single-Side
+**One limb only, separate sets for each side.**
+
+**Text Examples:**
+- "Single-arm DB Row: 3x8/side"
+- "Bulgarian Split Squat: 4x10/leg"
+- "Single-leg RDL: 3x6/side"
+
+**Characteristics:**
+- Complete ALL sets for one side, then switch
+- Usually 1 dumbbell/kettlebell, or bodyweight
+- The "/side" or "/leg" notation is KEY
+- Stated sets apply to EACH side
+
+**JSON Structure:**
+```json
+{
+  "exercise_name": "Single-arm Dumbbell Row",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 8,
+    "target_sets_per_side": 3,
+    "execution_pattern": "single_side",
+    "notes": "3 sets per arm = 6 total sets"
+  }
+}
+```
+
+**Volume Calculation:**
+- Sets per side: 3
+- Total sets: 6 (3 right + 3 left)
+- Reps per set: 8
+- Total reps: 48 (6 × 8)
+- Per limb: 24 reps each side
+
+**Critical Rule:** If text says "3x8/side", you do 3 sets on right, then 3 sets on left = 6 total sets.
+
+---
+
+### Pattern Comparison Table
+
+| Pattern | Text Example | Sets Total | Reps Total | Per Limb |
+|---------|-------------|------------|------------|-----------|
+| **Bilateral** | "DB Curl: 3x10" | 3 | 30 | N/A |
+| **Alternating** | "DB Curl alt: 3x10" | 3 | 30 | 15 each |
+| **Single-Side** | "DB Curl: 3x10/side" | 6 | 60 | 30 each |
+
+---
+
+### Decision Tree - Which Pattern?
+
+```
+Does text mention "/side", "/leg", "/arm", "per side", "each side"?
+│
+├─ YES → Pattern 3: single_side
+│   - Use target_sets_per_side
+│   - Total sets = target_sets × 2
+│
+└─ NO → Does text say "alternating", "alt", "hand-to-hand"?
+    │
+    ├─ YES → Pattern 2: alternating
+    │   - Stated reps include both sides
+    │   - Total sets = stated sets
+    │
+    └─ NO → Pattern 1: bilateral (default)
+        - Both limbs work together
+        - Standard set/rep counting
+```
+
+---
+
+### Real-World Examples
+
+**Example A: Bilateral (Standard)**
+```
+Text: "Dumbbell Bench Press: 4x8 @ 30kg"
+
+JSON:
+{
+  "exercise_name": "Dumbbell Bench Press",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 4,
+    "target_reps": 8,
+    "target_weight": { "value": 30, "unit": "kg" },
+    "execution_pattern": "bilateral"
+  }
+}
+
+Volume:
+- 4 sets × 8 reps = 32 total reps
+- Both arms work simultaneously
+```
+
+**Example B: Alternating**
+```
+Text: "KB Press alternating: 3x12 @ 16kg"
+
+JSON:
+{
+  "exercise_name": "Kettlebell Press",
+  "equipment_key": "kettlebell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 12,
+    "target_weight": { "value": 16, "unit": "kg" },
+    "execution_pattern": "alternating",
+    "notes": "12 reps = 6 per arm, alternating within set"
+  }
+}
+
+Volume:
+- 3 sets × 12 reps = 36 total reps
+- 18 reps per arm (6 per set × 3 sets)
+```
+
+**Example C: Single-Side**
+```
+Text: "Single-arm DB Row: 3x8/side @ 25kg"
+
+JSON:
+{
+  "exercise_name": "Single-arm Dumbbell Row",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 8,
+    "target_sets_per_side": 3,
+    "target_weight": { "value": 25, "unit": "kg" },
+    "execution_pattern": "single_side",
+    "notes": "3 sets per arm = 6 total sets"
+  }
+}
+
+Volume:
+- 6 total sets (3 per side)
+- 6 sets × 8 reps = 48 total reps
+- 24 reps per arm
+```
+
+---
+
+### Critical Rules for Unilateral Patterns
+
+1. **Notation is Key**
+   - "/side" = single_side pattern
+   - "alternating" or "alt" = alternating pattern
+   - No notation = bilateral (default)
+
+2. **Volume Calculations Differ**
+   - Bilateral: sets × reps = total
+   - Alternating: sets × reps = total (already includes both sides)
+   - Single-side: (sets × 2) × reps = total
+
+3. **Equipment Inference**
+   - 2 dumbbells usually = bilateral or alternating
+   - 1 dumbbell usually = single_side
+   - Context matters: "DB Curl alternating" uses 2 dumbbells
+
+4. **Always Document**
+   Use `notes` field to clarify execution:
+   ```json
+   "notes": "3 sets per side = 6 total sets, 48 total reps (24 per leg)"
+   ```
+
+5. **Performance Tracking**
+   For set-by-set results:
+   ```json
+   "performed": {
+     "sets": [
+       { "set_index": 1, "reps": 8, "notes": "Right arm" },
+       { "set_index": 2, "reps": 8, "notes": "Left arm" },
+       { "set_index": 3, "reps": 8, "notes": "Right arm" },
+       { "set_index": 4, "reps": 8, "notes": "Left arm" }
+     ]
+   }
+   ```
+
+---
+
+## 💪 Intensity Metrics: RPE vs RIR (NEW in v3.0)
+
+### Overview
+Two competing systems for measuring effort. **Use ONE, not both.**
+
+### The Two Systems
+
+#### System 1: RPE (Rate of Perceived Exertion)
+**Scale:** 1-10 (Borg CR10 Scale adapted for resistance training)
+
+**What it measures:** How hard the set FELT overall.
+
+**The Scale:**
+```
+1-2:  Very easy, could do 50+ more reps
+3-4:  Easy, could do 20+ more reps
+5-6:  Moderate effort, could do 10+ more reps
+7:    Hard, could do 5-7 more reps
+8:    Very hard, could do 3-4 more reps
+9:    Extremely hard, could do 1-2 more reps
+10:   Maximum effort, absolute failure
+```
+
+**When to use:**
+- Bodybuilding/hypertrophy training
+- General fitness programs
+- When coach prescribes RPE ranges ("@ RPE 7-8")
+
+**JSON Structure:**
+```json
+{
+  "prescription": {
+    "target_rpe": 8,
+    "target_rpe_min": 7,
+    "target_rpe_max": 8
+  },
+  "performed": {
+    "sets": [
+      { "set_index": 1, "reps": 5, "rpe": 7 },
+      { "set_index": 2, "reps": 5, "rpe": 8 },
+      { "set_index": 3, "reps": 4, "rpe": 9 }
+    ]
+  }
+}
+```
+
+---
+
+#### System 2: RIR (Reps in Reserve)
+**Scale:** 0-10+ (number of reps left in the tank)
+
+**What it measures:** How many MORE reps you could have done.
+
+**The Scale:**
+```
+0:    Absolute failure (couldn't do 1 more rep)
+1:    Could do 1 more rep
+2:    Could do 2 more reps
+3:    Could do 3 more reps
+4:    Could do 4 more reps
+5+:   Easy, 5 or more reps left
+```
+
+**When to use:**
+- Powerlifting/strength training
+- Autoregulation protocols (e.g., "3 @ 8" = 3 reps with 2 RIR)
+- When precision matters for programming
+
+**JSON Structure:**
+```json
+{
+  "prescription": {
+    "target_rir": 2,
+    "notes": "3 reps @ 2 RIR = stop when you could do 2 more"
+  },
+  "performed": {
+    "sets": [
+      { "set_index": 1, "reps": 3, "rir": 2 },
+      { "set_index": 2, "reps": 3, "rir": 1 },
+      { "set_index": 3, "reps": 3, "rir": 0 }
+    ]
+  }
+}
+```
+
+---
+
+### RPE ↔ RIR Conversion Table
+
+| RPE | RIR | Description |
+|-----|-----|-------------|
+| 10  | 0   | Absolute failure |
+| 9.5 | 0-1 | Could maybe do 1 more |
+| 9   | 1   | Could definitely do 1 more |
+| 8.5 | 1-2 | Between 1-2 reps left |
+| 8   | 2   | Could do 2 more |
+| 7.5 | 2-3 | Between 2-3 reps left |
+| 7   | 3   | Could do 3 more |
+| 6   | 4   | Could do 4 more |
+| 5   | 5+  | Easy, 5+ reps left |
+
+---
+
+### Critical Rules
+
+1. **Never Use Both**
+   ```json
+   // ❌ WRONG - Redundant and confusing
+   {
+     "rpe": 8,
+     "rir": 2
+   }
+   
+   // ✅ CORRECT - Pick one system
+   { "rpe": 8 }
+   // OR
+   { "rir": 2 }
+   ```
+
+2. **Match Source Text**
+   ```
+   Text: "@ RPE 7-8" → Use target_rpe_min/max
+   Text: "3 @ 8" (powerlifting notation) → Use target_rir: 2
+   ```
+
+3. **Validation Ranges**
+   - RPE: 1-10 (allow decimals like 7.5)
+   - RIR: 0-10 (integers only)
+
+4. **Default to RPE When Ambiguous**
+   If text says "hard" or "moderate" without specifying system, use RPE scale.
+
+5. **Omit If Not Stated**
+   ```json
+   // If text doesn't mention intensity:
+   {
+     "prescription": { "target_reps": 5 },
+     "performed": { "reps": 5 }
+     // No rpe or rir fields
+   }
+   ```
+
+---
+
+### Real-World Examples
+
+**Example A: RPE Prescription**
+```
+Text: "Back Squat: 3x5 @ RPE 7-8"
+
+JSON:
+{
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 5,
+    "target_rpe_min": 7,
+    "target_rpe_max": 8
+  }
+}
+```
+
+**Example B: RIR Prescription**
+```
+Text: "Bench Press: 5x3 @ 2 RIR"
+
+JSON:
+{
+  "prescription": {
+    "target_sets": 5,
+    "target_reps": 3,
+    "target_rir": 2,
+    "notes": "Stop when you could do 2 more reps"
+  }
+}
+```
+
+**Example C: Autoregulation (RIR-Based)**
+```
+Text: "Deadlift: Work up to heavy single @ 1 RIR, then 3x3 @ same weight"
+
+JSON:
+{
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Deadlift",
+      "prescription": {
+        "target_reps": 1,
+        "target_rir": 1,
+        "notes": "Work up to heavy single with 1 rep in reserve"
+      }
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Deadlift",
+      "prescription": {
+        "target_sets": 3,
+        "target_reps": 3,
+        "notes": "Use same weight as heavy single"
+      }
+    }
+  ]
+}
+```
+
+---
+
+## 🔄 Position Variants Catalog (NEW in v3.0)
+
+### Overview
+Position variants significantly change exercise biomechanics. Use `position` field in `ItemPrescription`.
+
+### Standard Positions by Category
+
+#### Stance Positions
+**Lower Body:**
+- `conventional` - Standard hip-width stance
+- `sumo` - Wide stance, toes out (deadlifts, squats)
+- `wide_stance` - Wider than shoulder-width
+- `narrow_stance` - Feet together or very close
+- `split_stance` - One foot forward, one back (not lunging)
+- `staggered_stance` - Slight offset, both feet mostly parallel
+- `single_leg` - Standing on one leg only
+
+**Upper Body:**
+- `half_kneeling` - One knee down, one foot planted
+- `tall_kneeling` - Both knees down, upright torso
+- `quadruped` - Hands and knees (all fours)
+
+#### Grip Positions
+**Width:**
+- `wide_grip` - Hands wider than shoulder-width
+- `narrow_grip` - Hands closer than shoulder-width
+- `close_grip` - Hands very close together
+- `standard_grip` - Shoulder-width or natural position
+
+**Orientation:**
+- `pronated` - Palms facing away (overhand)
+- `supinated` - Palms facing toward you (underhand)
+- `neutral` - Palms facing each other
+- `mixed_grip` - One pronated, one supinated
+
+#### Bar Position (Squats)
+- `high_bar` - Bar on traps (Olympic squat)
+- `low_bar` - Bar on rear delts (powerlifting squat)
+- `front_rack` - Bar on front shoulders (front squat)
+- `zercher` - Bar in elbow crooks
+
+#### Body Angles
+- `incline` - Upper body elevated (bench angles)
+- `decline` - Upper body lower than hips
+- `flat` - Body parallel to ground
+- `vertical` - Body upright (90° to ground)
+
+### Usage in JSON
+
+**Example 1: Grip Variant**
+```json
+{
+  "exercise_name": "Pull-up",
+  "equipment_key": "pull_up_bar",
+  "prescription": {
+    "target_reps": 10,
+    "position": "wide_grip"
+  }
+}
+```
+
+**Example 2: Stance Variant**
+```json
+{
+  "exercise_name": "Deadlift",
+  "equipment_key": "barbell",
+  "prescription": {
+    "target_sets": 5,
+    "target_reps": 3,
+    "position": "sumo",
+    "target_weight": { "value": 140, "unit": "kg" }
+  }
+}
+```
+
+**Example 3: Combined Positions**
+```json
+{
+  "exercise_name": "Dumbbell Press",
+  "equipment_key": "dumbbell",
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 8,
+    "position": "half_kneeling",
+    "notes": "Neutral grip, half-kneeling position"
+  }
+}
+```
+
+### Normalization Rules
+
+**Aliases:**
+```
+"OH" → "overhand" → "pronated"
+"UH" → "underhand" → "supinated"
+"close" → "close_grip"
+"wide" → "wide_grip"
+"HB" → "high_bar"
+"LB" → "low_bar"
+```
+
+**Context Inference:**
+```
+Text: "Wide-grip Pull-ups"
+→ position: "wide_grip"
+
+Text: "Sumo Deadlift"
+→ position: "sumo"
+
+Text: "Close-grip Bench Press"
+→ exercise_name: "Bench Press"
+→ position: "close_grip"
+```
+
+---
+
+## ⏱️ Tempo Components Guide (NEW in v3.0)
+
+### Overview
+Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentric-Pause2"**
+
+### The Four Components
+
+#### Component 1: Eccentric (Lowering)
+**First number** - Time in seconds to lower the weight
+
+```
+"3"-0-2-0  ← 3 seconds to lower
+```
+
+**What it is:**
+- The "negative" phase
+- Muscle lengthening under load
+- Usually the stronger phase
+
+**Examples:**
+- Squat: Going down
+- Bench Press: Lowering bar to chest
+- Pull-up: Lowering down from top
+- Deadlift: Lowering bar to ground
+
+#### Component 2: Bottom Pause
+**Second number** - Time in seconds to pause at the bottom
+
+```
+3-"1"-2-0  ← 1 second pause at bottom
+```
+
+**What it is:**
+- Pause at the stretched position
+- Removes stretch reflex
+- Increases difficulty significantly
+
+#### Component 3: Concentric (Lifting)
+**Third number** - Time in seconds to lift the weight
+
+```
+3-0-"2"-0  ← 2 seconds to lift
+```
+
+**Special notation:**
+- `X` or `0` = Explosive (as fast as possible)
+- `1` = Controlled speed
+- `2-4` = Slow, deliberate
+
+#### Component 4: Top Pause
+**Fourth number** - Time in seconds to pause at the top
+
+```
+3-0-2-"1"  ← 1 second pause at top
+```
+
+### Common Tempo Prescriptions
+
+| Tempo | Description | Use Case | TUT/Rep |
+|-------|-------------|----------|---------|
+| 3-0-1-0 | Controlled | General strength | 4 sec |
+| 4-0-X-0 | Eccentric focus | Hypertrophy | 4+ sec |
+| 3-1-3-1 | Max tension | Bodybuilding | 8 sec |
+| 2-0-2-0 | Standard | Default | 4 sec |
+| 5-2-X-0 | Extreme eccentric | Advanced | 7+ sec |
+
+### Parsing Rules
+
+**1. Always 4 numbers:**
+```
+✅ "3-0-2-0"
+✅ "4-1-X-1"
+❌ "3-2-1" (missing 4th)
+❌ "slow" (not numeric)
+```
+
+**2. X means explosive:**
+```
+"3-0-X-0" = 3 sec down, explode up
+```
+
+**3. Convert descriptive text:**
+```
+"Slow eccentric" → "3-0-1-0"
+"Pause at bottom" → "3-2-1-0"
+```
+
+**4. Default when not specified: omit field**
+
+---
+
+## 🏃 METCON Formats Guide (NEW in v3.0)
+
+### The 4 Primary Formats
+
+#### Format 1: AMRAP (As Many Rounds As Possible)
+**Structure:** Fixed time, maximize rounds
+
+**Key Fields:**
+- `target_amrap_duration_sec`: Time limit
+- `actual_rounds_completed`: Full rounds done
+- `actual_partial_reps`: Reps into incomplete round
+
+**Example:**
+```json
+{
+  "prescription": {
+    "target_amrap_duration_sec": 720
+  },
+  "performed": {
+    "actual_rounds_completed": 5,
+    "actual_partial_reps": 15
+  }
+}
+```
+
+#### Format 2: For Time (Race the Clock)
+**Structure:** Fixed work, minimize time
+
+**Key Fields:**
+- `target_fortime_rounds`: Rounds to complete
+- `target_fortime_cap_sec`: Time cap
+- `actual_time_sec`: Time taken
+
+**Example:**
+```json
+{
+  "prescription": {
+    "target_fortime_rounds": 5,
+    "target_fortime_cap_sec": 900
+  },
+  "performed": {
+    "actual_time_sec": 694
+  }
+}
+```
+
+#### Format 3: EMOM (Every Minute On the Minute)
+**Structure:** Start new work each minute
+
+**Key Fields:**
+- `circuit_config.type`: "emom"
+- `target_duration_sec`: 60 per station
+
+**Example:**
+```json
+{
+  "circuit_config": {
+    "rounds": 4,
+    "type": "emom"
+  }
+}
+```
+
+#### Format 4: Intervals (Work/Rest)
+**Structure:** Alternating work and rest
+
+**Key Fields:**
+- `target_duration_sec`: Work time
+- `target_rest_sec`: Rest time
+- `target_rounds`: Number of intervals
+
+**Common Ratios:**
+- Tabata: 20s / 10s
+- Classic: 30s / 30s
+- Long: 60s / 60s
+
+---
+
+## 📝 Notes Field Guidelines (NEW in v3.0)
+
+### When to Use Notes
+
+#### ✅ DO Include:
+
+1. **Execution details:** "Pause 2 seconds at bottom"
+2. **Equipment specifics:** "Use competition bar"
+3. **Performance context:** "Failed last rep", "Grip gave out"
+4. **Clarifications:** "3 sets per arm = 6 total"
+5. **Deviations:** "Reduced weight due to fatigue"
+
+#### ❌ DON'T Include:
+
+1. **Data with fields:** Use reps/rpe/load fields, not notes
+2. **Redundant info:** Don't repeat exercise name
+3. **Unstructured data:** Use target_tempo, not "tempo 3-0-2-0" in notes
+
+### Language Rules
+
+**Preserve original language:**
+```json
+"notes": "הרגשתי חזק היום"  // Hebrew
+"notes": "Felt strong today"  // English
+```
+
+### Length Guidelines
+
+- **Recommended:** 5-100 characters
+- **Maximum:** 500 characters
+- **Best:** Concise and actionable
+
+### Level-Specific Usage
+
+**Block-Level:** General instructions for entire block
+```json
+"notes": "Superset A1 and A2, rest 90s"
+```
+
+**Item-Level:** Exercise-specific instructions
+```json
+"notes": "Use neutral grip, pause at bottom"
+```
+
+**Set-Level:** Individual set context
+```json
+"notes": "Failed last rep"
+```
+
+---
+
+## �🔴 Critical Validation Rules
 
 ### Rule 1: No Hallucinated Data
 ❌ **NEVER:**
@@ -1296,6 +2277,205 @@ Result: 5 rounds + 15 reps
 
 ---
 
+### Test Case 6: Buy-in + AMRAP + Buy-out
+
+**Input Text:**
+```
+Buy-in: 400m Run
+
+AMRAP 10 minutes:
+- 5 Pull-ups
+- 10 Push-ups
+- 15 Air Squats
+
+Buy-out: 400m Run
+
+Result: Completed buy-in in 1:45, got 6 rounds + 10 reps, buy-out in 1:52
+```
+
+**Expected Output:**
+```json
+{
+  "block_code": "METCON",
+  "block_label": "A",
+  "prescription": {
+    "target_amrap_duration_sec": 600,
+    "buy_in": [
+      {
+        "item_sequence": 1,
+        "exercise_name": "Run",
+        "equipment_key": "bodyweight",
+        "prescription": { "target_meters": 400 },
+        "performed": null
+      }
+    ],
+    "buy_out": [
+      {
+        "item_sequence": 1,
+        "exercise_name": "Run",
+        "equipment_key": "bodyweight",
+        "prescription": { "target_meters": 400 },
+        "performed": null
+      }
+    ]
+  },
+  "performed": {
+    "completed": true,
+    "actual_rounds_completed": 6,
+    "actual_partial_reps": 10,
+    "notes": "Buy-in: 1:45, Buy-out: 1:52"
+  },
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Pull-up",
+      "equipment_key": "pullup_bar",
+      "prescription": { "target_reps": 5 },
+      "performed": null
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Push-up",
+      "equipment_key": "bodyweight",
+      "prescription": { "target_reps": 10 },
+      "performed": null
+    },
+    {
+      "item_sequence": 3,
+      "exercise_name": "Air Squat",
+      "equipment_key": "bodyweight",
+      "prescription": { "target_reps": 15 },
+      "performed": null
+    }
+  ]
+}
+```
+
+---
+
+### Test Case 7: Team Workout (Partners)
+
+**Input Text:**
+```
+Partners - 30min AMRAP:
+- 20 Thrusters (43kg)
+- 20 Pull-ups
+- 400m Run (together)
+
+Team result: 10 rounds
+My contribution: 5 rounds (did half)
+```
+
+**Expected Output:**
+```json
+{
+  "block_code": "METCON",
+  "block_label": "A",
+  "prescription": {
+    "target_amrap_duration_sec": 1800,
+    "team_format": {
+      "type": "partners",
+      "scoring": "individual_contribution",
+      "notes": "Partners split work, run together"
+    }
+  },
+  "performed": {
+    "completed": true,
+    "actual_rounds_completed": 5,
+    "notes": "Team total: 10 rounds, my contribution: 5 rounds"
+  },
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Thruster",
+      "equipment_key": "barbell",
+      "prescription": {
+        "target_reps": 20,
+        "target_weight": { "value": 43, "unit": "kg" }
+      },
+      "performed": null
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Pull-up",
+      "equipment_key": "pullup_bar",
+      "prescription": { "target_reps": 20 },
+      "performed": null
+    },
+    {
+      "item_sequence": 3,
+      "exercise_name": "Run",
+      "equipment_key": "bodyweight",
+      "prescription": {
+        "target_meters": 400,
+        "notes": "Together"
+      },
+      "performed": null
+    }
+  ]
+}
+```
+
+**CRITICAL:** Record `actual_rounds_completed: 5` (individual contribution), NOT 10 (team total)!
+
+---
+
+### Test Case 8: Buy-in Only
+
+**Input Text:**
+```
+Buy-in: 800m Run
+
+Then:
+5 Rounds for Time:
+- 10 Thrusters
+- 10 Pull-ups
+
+Time: 12:34
+```
+
+**Expected Output:**
+```json
+{
+  "block_code": "METCON",
+  "block_label": "A",
+  "prescription": {
+    "target_fortime_rounds": 5,
+    "buy_in": [
+      {
+        "item_sequence": 1,
+        "exercise_name": "Run",
+        "equipment_key": "bodyweight",
+        "prescription": { "target_meters": 800 },
+        "performed": null
+      }
+    ]
+  },
+  "performed": {
+    "completed": true,
+    "actual_time_sec": 754
+  },
+  "items": [
+    {
+      "item_sequence": 1,
+      "exercise_name": "Thruster",
+      "equipment_key": "barbell",
+      "prescription": { "target_reps": 10 },
+      "performed": null
+    },
+    {
+      "item_sequence": 2,
+      "exercise_name": "Pull-up",
+      "equipment_key": "pullup_bar",
+      "prescription": { "target_reps": 10 },
+      "performed": null
+    }
+  ]
+}
+```
+
+---
+
 ## 🚨 Parser Errors to Avoid
 
 ### Error 1: Mixing Prescription and Performance
@@ -1371,6 +2551,41 @@ Result: 5 rounds + 15 reps
 
 ---
 
+### Error 6: Recording Team Total Instead of Individual Contribution
+
+```json
+// ❌ WRONG - Recording team's combined result
+{
+  "prescription": {
+    "team_format": {
+      "type": "partners",
+      "scoring": "individual_contribution"
+    }
+  },
+  "performed": {
+    "actual_rounds_completed": 12  // This is the TEAM total, not athlete's personal!
+  }
+}
+
+// ✅ CORRECT - Recording athlete's personal contribution
+{
+  "prescription": {
+    "team_format": {
+      "type": "partners",
+      "scoring": "individual_contribution"
+    }
+  },
+  "performed": {
+    "actual_rounds_completed": 6,  // Athlete did 6 rounds personally
+    "notes": "Team total: 12 rounds"
+  }
+}
+```
+
+**CRITICAL:** When `scoring: "individual_contribution"`, NEVER record team totals in performed fields. Only record what THIS athlete did!
+
+---
+
 ## 📚 Related Documents
 
 - [BLOCK_TYPES_REFERENCE.md](./BLOCK_TYPES_REFERENCE.md) - Complete list of 17 block codes
@@ -1382,6 +2597,15 @@ Result: 5 rounds + 15 reps
 
 ## 🔒 Schema Version History
 
+- **v3.1.0** (Jan 10, 2026): Buy-in/Buy-out + Team format support
+  - **New Features:**
+    - `buy_in?: BlockItem[]` - Exercises before main work
+    - `buy_out?: BlockItem[]` - Exercises after main work
+    - `team_format` - Support for partner/team workouts with proper individual attribution
+  - **Critical Rules:**
+    - Can have buy_in only, buy_out only, or both
+    - Team workouts: MUST record individual contribution, NOT team total (when scoring is "individual_contribution")
+  - **Migration:** No breaking changes, backward compatible
 - **v3.0.0** (Jan 10, 2026): Field ordering standardization + scalable weight structure
   - **Breaking Changes:**
     - Field order MUST be: item_sequence → exercise_name → equipment_key → prescription → performed
