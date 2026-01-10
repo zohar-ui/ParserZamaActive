@@ -93,7 +93,10 @@
                             "circuit_config": {
                                 "rounds": 2,
                                 "type": "for_quality",
-                                "rest_between_rounds_sec": 25
+                                "rest_between_rounds": {
+                                    "value": 25,
+                                    "unit": "sec"
+                                }
                             },
                             "performed": null,
                             "exercises": [
