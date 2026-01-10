@@ -1,0 +1,93 @@
+{
+  "session": {
+    "defaultMode": "plan",
+    "autoAcceptEdits": false,
+    "contextFiles": [
+      "agents.md",
+      "ARCHITECTURE.md",
+      "docs/reference/CANONICAL_JSON_SCHEMA.md",
+      ".claude/CLAUDE.md"
+    ]
+  },
+  "permissions": {
+    "mode": "ask",
+    "allow": [
+      "Bash(./scripts/verify_schema.sh)",
+      "Bash(./scripts/test_parser_accuracy.sh)",
+      "Bash(./scripts/validate_golden_set.sh)",
+      "Bash(./scripts/test_block_types.sh)",
+      "Bash(./scripts/update_agents_md.sh)",
+      "Bash(./scripts/update_parser_brain.js)",
+      "Bash(npm run learn)",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(git add .)",
+      "Bash(git commit*)",
+      "Bash(git push)",
+      "Bash(npx supabase status)",
+      "Bash(npx supabase db diff)",
+      "Bash(npx supabase db push)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Bash(npx supabase db reset)",
+      "Bash(DROP TABLE*)",
+      "Bash(DELETE FROM zamm.*)"
+    ]
+  },
+  "verification": {
+    "autoRunOnEdit": false,
+    "requiredBeforeCommit": true,
+    "commands": [
+      "./scripts/verify_schema.sh",
+      "./scripts/validate_golden_set.sh",
+      "./scripts/test_block_types.sh"
+    ]
+  },
+  "agents": {
+    "db-architect": {
+      "triggers": ["sql", "migration", "schema", "supabase", "database"],
+      "context": [
+        "ARCHITECTURE.md",
+        "docs/SCHEMA_REFERENCE.md",
+        "supabase/migrations/"
+      ]
+    },
+    "parser-engineer": {
+      "triggers": ["parser", "regex", "golden set", "canonical", "validation"],
+      "context": [
+        "docs/reference/CANONICAL_JSON_SCHEMA.md",
+        "docs/guides/AI_PROMPTS.md",
+        "scripts/parser_patterns.js",
+        "data/golden_set/"
+      ]
+    },
+    "learning-specialist": {
+      "triggers": ["learning", "corrections", "training", "examples"],
+      "context": [
+        "scripts/ACTIVE_LEARNING_README.md",
+        "scripts/update_parser_brain.js"
+      ]
+    },
+    "golden-set-curator": {
+      "triggers": ["golden set", "test case", "validation", "coverage", "quality"],
+      "context": [
+        "data/golden_set/",
+        "docs/reference/CANONICAL_JSON_SCHEMA.md",
+        "scripts/validate_golden_set.sh"
+      ]
+    }
+  },
+  "shortcuts": {
+    "/verify": ".claude/commands/verify.md",
+    "/db-status": ".claude/commands/db-status.md",
+    "/fix-parser": ".claude/commands/fix-parser.md"
+  },
+  "git": {
+    "preCommitHook": {
+      "enabled": true,
+      "path": ".git/hooks/pre-commit",
+      "runVerify": true
+    }
+  }
+}

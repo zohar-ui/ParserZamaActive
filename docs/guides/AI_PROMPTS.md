@@ -235,6 +235,246 @@ They teach the parser to avoid common mistakes.
 
 **Current Status:** No examples yet. Run validation and corrections to populate this section.
 
+
+### Example: INCOMPLETE PRESCRIPTION PARSING (Priority 9) [rest_periods, rpe_ranges, incomplete_prescription, canonical_schema, unilateral_structure]
+
+**Original Text:**
+```
+Block C - Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min
+
+Performance Notes:
+Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg).
+```
+
+**Wrong Output (BEFORE):**
+```json
+{
+  "items": [
+    {
+      "performed": {
+        "actual_weight_kg": 20
+      },
+      "prescription": {
+        "target_reps": 8,
+        "target_sets": 3,
+        "target_tempo": "3-0-2-0"
+      },
+      "exercise_name": "Landmine Press"
+    }
+  ],
+  "performed": {
+    "notes": "Right shoulder hurt 5/10",
+    "actual_weight_kg": 20
+  },
+  "block_code": "STR",
+  "block_label": "C",
+  "block_title": "Landmine Press Half Kneeling",
+  "prescription": {
+    "target_reps": 8,
+    "target_sets": 3,
+    "target_tempo": "3-0-2-0"
+  }
+}
+```
+
+**Problem:** Parser missed critical prescription fields: RPE range, rest time, and sets_per_side structure
+**Location:** `block.prescription + items[].prescription`
+
+**Corrected Output (AFTER):**
+```json
+{
+  "items": [
+    {
+      "performed": {
+        "actual_weight_kg": 20
+      },
+      "prescription": {
+        "position": "half_kneeling",
+        "equipment": "barbell",
+        "target_reps": 8,
+        "target_sets": 3,
+        "target_tempo": "3-0-2-0",
+        "target_rpe_max": 6,
+        "target_rpe_min": 5.5,
+        "target_rest_sec": 90,
+        "target_sets_per_side": 1
+      },
+      "equipment_key": "barbell",
+      "exercise_name": "Landmine Press",
+      "item_sequence": 1
+    }
+  ],
+  "performed": {
+    "notes": "Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg).",
+    "actual_reps": 8,
+    "actual_sets": 3,
+    "actual_weight_kg": 20,
+    "actual_sets_per_side": 1
+  },
+  "block_code": "STR",
+  "block_label": "C",
+  "block_title": "Landmine Press Half Kneeling",
+  "prescription": {
+    "description": "Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min"
+  }
+}
+```
+
+**Why This Matters:** CRITICAL ERROR: Parser created incomplete prescription at both block and item levels.
+
+**The Complete Prescription Rule:**
+Every prescription field from the original text MUST be captured. Missing fields = lost information.
+
+**What went wrong:**
+1. Block level: Put parsed fields instead of keeping description string
+2. Item level: Missing target_rpe_min and target_rpe_max (text says "@ RPE 5.5-6")
+3. Item level: Missing target_rest_sec (text says "Rest 1.5 min" = 90 seconds)
+4. Item level: Missing target_sets_per_side clarification
+5. Ambiguous structure: "3×8/side" means 3 sets total, each set is unilateral (both sides)
+
+**The "/side" notation:**
+- "3×8/side" = 3 sets, 8 reps per side, meaning each set includes both sides
+- target_sets = 3 (total sets)
+- target_reps = 8 (per side)
+- target_sets_per_side = 1 (each set covers one side at a time, alternating)
+- Total volume = 3 sets × 8 reps × 2 sides = 48 reps
+
+**RPE Ranges (Principle #3):**
+- "@ RPE 5.5-6" must be: target_rpe_min: 5.5, target_rpe_max: 6
+- NEVER: target_rpe: "5.5-6" (string ranges forbidden!)
+
+**Rest Periods:**
+- "Rest 1.5 min" must be: target_rest_sec: 90
+- Always convert to seconds for consistency
+
+**Why this matters:**
+Incomplete prescriptions break analytics. We cannot track program adherence, intensity progression, or rest adequacy without ALL prescribed parameters. Every number in the original text must appear in the JSON.
+
+**Example ID:** `ad42fcf8-eeed-4689-9a9b-bbec38f4e640` _(for tracking)_
+
+
+### Example: INCOMPLETE PRESCRIPTION PARSING (Priority 9) [rest_periods, rpe_ranges, incomplete_prescription, canonical_schema, unilateral_structure]
+
+**Original Text:**
+```
+Block C - Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min
+
+Performance Notes:
+Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg).
+```
+
+**Wrong Output (BEFORE):**
+```json
+{
+  "items": [
+    {
+      "performed": {
+        "actual_weight_kg": 20
+      },
+      "prescription": {
+        "target_reps": 8,
+        "target_sets": 3,
+        "target_tempo": "3-0-2-0"
+      },
+      "exercise_name": "Landmine Press"
+    }
+  ],
+  "performed": {
+    "notes": "Right shoulder hurt 5/10",
+    "actual_weight_kg": 20
+  },
+  "block_code": "STR",
+  "block_label": "C",
+  "block_title": "Landmine Press Half Kneeling",
+  "prescription": {
+    "target_reps": 8,
+    "target_sets": 3,
+    "target_tempo": "3-0-2-0"
+  }
+}
+```
+
+**Problem:** Parser missed critical prescription fields: RPE range, rest time, and sets_per_side structure
+**Location:** `block.prescription + items[].prescription`
+
+**Corrected Output (AFTER):**
+```json
+{
+  "items": [
+    {
+      "performed": {
+        "actual_weight": {
+          "unit": "kg",
+          "value": 20
+        }
+      },
+      "prescription": {
+        "position": "half_kneeling",
+        "equipment": "barbell",
+        "target_reps": 8,
+        "target_sets": 3,
+        "target_tempo": "3-0-2-0",
+        "target_rpe_max": 6,
+        "target_rpe_min": 5.5,
+        "target_rest_sec": 90,
+        "target_sets_per_side": 1
+      },
+      "equipment_key": "barbell",
+      "exercise_name": "Landmine Press",
+      "item_sequence": 1
+    }
+  ],
+  "performed": {
+    "notes": "Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg).",
+    "actual_reps": 8,
+    "actual_sets": 3,
+    "actual_weight": {
+      "unit": "kg",
+      "value": 20
+    },
+    "actual_sets_per_side": 1
+  },
+  "block_code": "STR",
+  "block_label": "C",
+  "block_title": "Landmine Press Half Kneeling",
+  "prescription": {
+    "description": "Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min"
+  }
+}
+```
+
+**Why This Matters:** CRITICAL ERROR: Parser created incomplete prescription at both block and item levels.
+
+**The Complete Prescription Rule:**
+Every prescription field from the original text MUST be captured. Missing fields = lost information.
+
+**What went wrong:**
+1. Block level: Put parsed fields instead of keeping description string
+2. Item level: Missing target_rpe_min and target_rpe_max (text says "@ RPE 5.5-6")
+3. Item level: Missing target_rest_sec (text says "Rest 1.5 min" = 90 seconds)
+4. Item level: Missing target_sets_per_side clarification
+5. Ambiguous structure: "3×8/side" means 3 sets total, each set is unilateral (both sides)
+
+**The "/side" notation:**
+- "3×8/side" = 3 sets, 8 reps per side, meaning each set includes both sides
+- target_sets = 3 (total sets)
+- target_reps = 8 (per side)
+- target_sets_per_side = 1 (each set covers one side at a time, alternating)
+- Total volume = 3 sets × 8 reps × 2 sides = 48 reps
+
+**RPE Ranges (Principle #3):**
+- "@ RPE 5.5-6" must be: target_rpe_min: 5.5, target_rpe_max: 6
+- NEVER: target_rpe: "5.5-6" (string ranges forbidden!)
+
+**Rest Periods:**
+- "Rest 1.5 min" must be: target_rest_sec: 90
+- Always convert to seconds for consistency
+
+**Why this matters:**
+Incomplete prescriptions break analytics. We cannot track program adherence, intensity progression, or rest adequacy without ALL prescribed parameters. Every number in the original text must appear in the JSON.
+
+**Example ID:** `5b1df279-58f3-4b4f-9f8e-34463eedd21f` _(for tracking)_
+
 ---
 
 ## Prompt - Validation Agent

@@ -30,6 +30,8 @@ const path = require('path');
 
 // Try to load .env.local if it exists
 try {
+  const fs = require('fs');
+  const path = require('path');
   const envPath = path.join(__dirname, '../.env.local');
   if (fs.existsSync(envPath)) {
     const envContent = fs.readFileSync(envPath, 'utf-8');
@@ -68,11 +70,7 @@ const CONFIG = {
   learningEndMarker: '---\n\n## Prompt - Validation Agent',
 };
 
-// ============================================
-// Database Client Setup
-// ============================================
-
-let client;
+// =client;
 
 async function initDatabase() {
   if (!CONFIG.dbPassword) {
@@ -91,17 +89,10 @@ async function initDatabase() {
   });
   
   await client.connect();
-  console.log('✅ Database client initialized');
-}
-
-// ============================================
-// Step 1: Fetch Untrained Learning Examples
-// ============================================
-
-async function fetchUntrainedExamples() {
-  console.log('\n📥 Fetching untrained learning examples...');
-  
-  const query = `
+  console.log('✅ Dat
+  supabase = createClient(CONFIG.supabaseUrl, CONFIG.supabaseKey, {
+    db: { schema: 'zamm' }
+  });query = `
     SELECT *
     FROM zamm.log_learning_examples
     WHERE is_included_in_training = false
@@ -117,7 +108,18 @@ async function fetchUntrainedExamples() {
   } catch (error) {
     console.error('❌ Database query failed:', error.message);
     process.exit(1);
+  }arning_priority', { ascending: false })
+    .order('created_at', { ascending: false })
+    .limit(CONFIG.maxNewExamples);
+  
+  if (error) {
+    console.error('❌ Database query failed:', error.message);
+    process.exit(1);
   }
+  
+  console.log(`   Found ${data.length} examples (priority >= ${CONFIG.minPriority})`);
+  
+  return data;
 }
 
 // ============================================
@@ -261,17 +263,7 @@ They teach the parser to avoid common mistakes.
   fs.writeFileSync(CONFIG.promptsFile, newContent, 'utf-8');
   console.log(`   ✅ Added ${newExamples.length} new examples to AI_PROMPTS.md`);
 }
-
-// ============================================
-// Step 4: Mark Examples as Trained in DB
-// ============================================
-
-async function markExamplesAsTrained(examples) {
-  console.log('\n✅ Marking examples as trained...');
-  
-  const exampleIds = examples.map(ex => ex.example_id);
-  
-  const query = `
+query = `
     UPDATE zamm.log_learning_examples
     SET is_included_in_training = true,
         included_in_training_at = NOW()
@@ -285,19 +277,19 @@ async function markExamplesAsTrained(examples) {
     console.error('❌ Failed to update database:', error.message);
     process.exit(1);
   }
+      included_in_training_at: new Date().toISOString()
+    })
+    .in('example_id', exampleIds);
+  
+  if (error) {
+    console.error('❌ Failed to update database:', error.message);
+    process.exit(1);
+  }
+  
+  console.log(`   Updated ${exampleIds.length} records in database`);
 }
 
-// ============================================
-// Main Execution
-// ============================================
-
-async function main() {
-  console.log('🤖 ACTIVE LEARNING LOOP - Starting...\n');
-  console.log('=' .repeat(60));
-  
-  try {
-    // Step 0: Initialize
-    await initDatabase();
+// =await initDatabase();
     
     // Step 1: Fetch untrained examples
     const newExamples = await fetchUntrainedExamples();
@@ -334,7 +326,17 @@ async function main() {
   } catch (error) {
     console.error('\n❌ FATAL ERROR:', error.message);
     console.error(error.stack);
-    if (client) await client.end();
+    if (client) await client.end(xamples.length} new examples added to parser brain`);
+    console.log(`   📄 Updated: ${CONFIG.promptsFile}`);
+    console.log(`   💾 Database marked ${newExamples.length} examples as trained`);
+    console.log('\n💡 Next steps:');
+    console.log('   1. Review the updated AI_PROMPTS.md');
+    console.log('   2. Use the updated prompts in your next parsing session');
+    console.log('   3. The parser should now avoid these mistakes!\n');
+    
+  } catch (error) {
+    console.error('\n❌ FATAL ERROR:', error.message);
+    console.error(error.stack);
     process.exit(1);
   }
 }
