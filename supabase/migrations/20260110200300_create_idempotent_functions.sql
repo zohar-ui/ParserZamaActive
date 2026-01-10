@@ -117,11 +117,11 @@ DECLARE
     v_existing_created_at TIMESTAMPTZ;
     v_new_workout_id UUID;
 BEGIN
-    -- Extract metadata from draft
+    -- Extract metadata from draft and import
     SELECT
         pd.import_id,
         i.checksum_sha256,
-        pd.athlete_id
+        i.athlete_id
     INTO
         v_import_id,
         v_content_hash,
@@ -185,16 +185,18 @@ BEGIN
         athlete_id,
         workout_date,
         session_title,
+        status,
         content_hash_ref,
         created_at
     )
     SELECT
         v_import_id,
         p_draft_id,
-        (SELECT ruleset_id FROM zamm.lib_parser_rulesets WHERE is_active = true LIMIT 1),
+        (SELECT ruleset_id FROM zamm.cfg_parser_rules WHERE is_active = true LIMIT 1),
         v_athlete_id,
         v_workout_date,
         v_session_title,
+        COALESCE((p_parsed_workout->>'status')::text, 'completed'),
         v_content_hash,
         now()
     RETURNING workout_main.workout_id INTO v_new_workout_id;
