@@ -118,29 +118,29 @@ BEGIN
         SELECT COUNT(*) INTO v_null_checksum
         FROM zamm.stg_imports
         WHERE checksum_sha256 IS NULL;
-    SELECT COUNT(*) INTO v_total_imports FROM zamm.imports;
-    SELECT COUNT(*) INTO v_with_checksum FROM zamm.imports WHERE checksum_sha256 IS NOT NULL;
-    SELECT COUNT(*) INTO v_null_checksum FROM zamm.imports WHERE checksum_sha256 IS NULL;
 
-    RAISE NOTICE '';
-    RAISE NOTICE '═══════════════════════════════════════════════════';
-    RAISE NOTICE 'Import Checksum Backfill Complete';
-    RAISE NOTICE '═══════════════════════════════════════════════════';
-    RAISE NOTICE 'Total imports:        %', v_total_imports;
-    RAISE NOTICE 'With checksum:        %', v_with_checksum;
-    RAISE NOTICE 'NULL checksums:       %', v_null_checksum;
+        RAISE NOTICE '';
+        RAISE NOTICE '═══════════════════════════════════════════════════';
+        RAISE NOTICE 'Import Checksum Backfill Complete';
+        RAISE NOTICE '═══════════════════════════════════════════════════';
+        RAISE NOTICE 'Total imports:        %', v_total_imports;
+        RAISE NOTICE 'With checksum:        %', v_with_checksum;
+        RAISE NOTICE 'NULL checksums:       %', v_null_checksum;
 
-    IF v_null_checksum = 0 THEN
-        RAISE NOTICE '✓ All imports have checksums';
+        IF v_null_checksum = 0 THEN
+            RAISE NOTICE '✓ All imports have checksums';
+        ELSE
+            RAISE WARNING '⚠  Some imports still missing checksums';
+        END IF;
+        RAISE NOTICE '═══════════════════════════════════════════════════';
+        RAISE NOTICE '';
     ELSE
-        RAISE WARNING '⚠  Some imports still missing checksums';
+        RAISE NOTICE '⚠  Table zamm.stg_imports does not exist yet - skipping verification';
     END IF;
-    RAISE NOTICE '═══════════════════════════════════════════════════';
-    RAISE NOTICE '';
 END $$;
 
 -- Add comments
-COMMENT ON COLUMN zamm.imports.checksum_sha256 IS
+COMMENT ON COLUMN zamm.stg_imports.checksum_sha256 IS
 'SHA-256 hash of raw_text. Used for duplicate detection and idempotency.';
 
 COMMENT ON INDEX zamm.idx_imports_checksum IS
