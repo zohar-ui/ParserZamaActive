@@ -84,7 +84,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -92,7 +93,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -100,7 +102,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -122,7 +125,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "resistance_band"
                         },
                         {
                             "item_sequence": 2,
@@ -131,7 +135,8 @@
                                 "target_sets": 3,
                                 "target_reps_per_side": 5
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -159,7 +164,8 @@
                                 "target_calories": 30
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "rowing_machine"
                         },
                         {
                             "exercise_name": "Shoulder to Overhead",
@@ -170,7 +176,8 @@
                                 "notes": "45/30KG (male/female)"
                             },
                             "performed": null,
-                            "item_sequence": 2
+                            "item_sequence": 2,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Run",
@@ -181,7 +188,8 @@
                                 }
                             },
                             "performed": null,
-                            "item_sequence": 3
+                            "item_sequence": 3,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Burpee Over the bar",
@@ -189,7 +197,8 @@
                                 "target_reps": 10
                             },
                             "performed": null,
-                            "item_sequence": 4
+                            "item_sequence": 4,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Double Unders",
@@ -197,7 +206,8 @@
                                 "target_reps": 35
                             },
                             "performed": null,
-                            "item_sequence": 5
+                            "item_sequence": 5,
+                            "equipment_key": "jump_rope"
                         }
                     ]
                 }

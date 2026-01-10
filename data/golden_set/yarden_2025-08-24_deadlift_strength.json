@@ -32,7 +32,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "rowing_machine"
                         },
                         {
                             "item_sequence": 2,
@@ -41,7 +42,8 @@
                                 "target_sets": 2,
                                 "target_reps_per_side": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -55,7 +57,8 @@
                                 },
                                 "notes": "20-30 seconds per set"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 4,
@@ -65,7 +68,8 @@
                                 "target_reps_min": 8,
                                 "target_reps_max": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 5,
@@ -75,7 +79,8 @@
                                 "target_reps_min": 6,
                                 "target_reps_max": 8
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "pvc_pipe"
                         }
                     ]
                 },
@@ -202,7 +207,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -229,7 +235,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -291,7 +298,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -359,7 +367,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },

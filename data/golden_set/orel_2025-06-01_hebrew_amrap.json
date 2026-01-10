@@ -84,7 +84,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -92,7 +93,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -100,7 +102,8 @@
                             "prescription": {
                                 "notes": "per source text"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -120,7 +123,8 @@
                                 "duration_unit": "sec"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "resistance_band"
                         },
                         {
                             "exercise_name": "1 Leg Double KB Step up",
@@ -130,7 +134,8 @@
                                 "notes": "per leg"
                             },
                             "performed": null,
-                            "item_sequence": 2
+                            "item_sequence": 2,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -160,7 +165,8 @@
                                 "target_calories": 30
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "rowing_machine"
                         },
                         {
                             "exercise_name": "Shoulder to Overhead",
@@ -170,7 +176,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 2
+                            "item_sequence": 2,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Run",
@@ -181,7 +188,8 @@
                                 }
                             },
                             "performed": null,
-                            "item_sequence": 3
+                            "item_sequence": 3,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Burpee Over the bar",
@@ -189,7 +197,8 @@
                                 "target_reps": 10
                             },
                             "performed": null,
-                            "item_sequence": 4
+                            "item_sequence": 4,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Double Unders",
@@ -197,7 +206,8 @@
                                 "target_reps": 35
                             },
                             "performed": null,
-                            "item_sequence": 5
+                            "item_sequence": 5,
+                            "equipment_key": "jump_rope"
                         }
                     ]
                 }

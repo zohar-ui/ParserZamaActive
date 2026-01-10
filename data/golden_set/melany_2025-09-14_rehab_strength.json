@@ -26,7 +26,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -36,7 +37,8 @@
                                 "target_reps_per_side": 8,
                                 "notes": "slow!"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -45,7 +47,8 @@
                                 "target_sets": 1,
                                 "target_reps_per_side": 8
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 4,
@@ -54,7 +57,8 @@
                                 "target_sets": 1,
                                 "target_reps_per_side": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 5,
@@ -63,7 +67,8 @@
                                 "target_sets": 1,
                                 "target_reps_per_side": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 6,
@@ -72,7 +77,8 @@
                                 "target_sets": 3,
                                 "target_reps_per_side": 6
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 7,
@@ -86,7 +92,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "rowing_machine"
                         }
                     ]
                 },
@@ -116,7 +123,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -145,7 +153,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },

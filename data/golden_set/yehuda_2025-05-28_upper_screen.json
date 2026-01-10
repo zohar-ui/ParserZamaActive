@@ -72,7 +72,8 @@
                                 "actual_duration_min": 3,
                                 "notes": "Excellent, really felt legs working"
                             },
-                            "exercise_name": "Air Bike"
+                            "exercise_name": "Air Bike",
+                            "equipment_key": "assault_bike"
                         }
                     ]
                 },
@@ -96,7 +97,8 @@
                                 }
                             },
                             "performed": null,
-                            "exercise_name": "T Spine Foam Roll"
+                            "exercise_name": "T Spine Foam Roll",
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -109,7 +111,8 @@
                                 }
                             },
                             "performed": null,
-                            "exercise_name": "Dead Hang"
+                            "exercise_name": "Dead Hang",
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -130,7 +133,8 @@
                                 "notes": "Lock elbows, protract/retract scapula only"
                             },
                             "performed": null,
-                            "exercise_name": "Scapular Push Up"
+                            "exercise_name": "Scapular Push Up",
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -140,7 +144,8 @@
                                 "notes": "From dead-hang, depress & retract, pause 1s at top"
                             },
                             "performed": null,
-                            "exercise_name": "Scapular Pull Up"
+                            "exercise_name": "Scapular Pull Up",
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -181,7 +186,8 @@
                                 ],
                                 "notes": "Set 1: 10 reps, Set 2: 9 reps. Body felt heavy."
                             },
-                            "exercise_name": "Pull Up"
+                            "exercise_name": "Pull Up",
+                            "equipment_key": "pull_up_bar"
                         }
                     ]
                 },
@@ -222,7 +228,8 @@
                                 ],
                                 "notes": "Set 1: 26 reps, Set 2: 20 reps"
                             },
-                            "exercise_name": "Push Up"
+                            "exercise_name": "Push Up",
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },

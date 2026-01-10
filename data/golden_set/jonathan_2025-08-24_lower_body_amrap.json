@@ -25,7 +25,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "treadmill"
                         },
                         {
                             "item_sequence": 2,
@@ -87,7 +88,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },
@@ -113,7 +115,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -139,7 +142,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },
@@ -163,7 +167,8 @@
                                 "notes": "per arm"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         },
                         {
                             "exercise_name": "Burpees over DBs",
@@ -171,7 +176,8 @@
                                 "target_reps": 10
                             },
                             "performed": null,
-                            "item_sequence": 2
+                            "item_sequence": 2,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Run",
@@ -183,7 +189,8 @@
                                 }
                             },
                             "performed": null,
-                            "item_sequence": 3
+                            "item_sequence": 3,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },

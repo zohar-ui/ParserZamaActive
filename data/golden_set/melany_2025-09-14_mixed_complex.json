@@ -25,7 +25,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -35,7 +36,8 @@
                                 "target_reps": "8/8",
                                 "notes": "slow!"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -44,7 +46,8 @@
                                 "target_sets": 1,
                                 "target_reps": "8/8"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 4,
@@ -53,7 +56,8 @@
                                 "target_sets": 1,
                                 "target_reps": "10/10"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 5,
@@ -62,7 +66,8 @@
                                 "target_sets": 1,
                                 "target_reps": "10/10"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 6,
@@ -71,7 +76,8 @@
                                 "target_sets": 3,
                                 "target_reps": "6/6"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 7,
@@ -85,7 +91,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "rowing_machine"
                         }
                     ]
                 },
@@ -116,7 +123,8 @@
                                 "tempo": "3-1-1"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -145,7 +153,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },
@@ -175,7 +184,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -206,7 +216,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },

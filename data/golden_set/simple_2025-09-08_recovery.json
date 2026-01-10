@@ -29,7 +29,8 @@
                                             "value": 5,
                                             "unit": "min"
                                         }
-                                    }
+                                    },
+                                    "equipment_key": "bodyweight"
                                 },
                                 {
                                     "exercise_name": "Light Jog",
@@ -38,7 +39,8 @@
                                             "value": 5,
                                             "unit": "min"
                                         }
-                                    }
+                                    },
+                                    "equipment_key": "bodyweight"
                                 }
                             ],
                             "performed": null
@@ -100,7 +102,8 @@
                                 "target_reps_per_side": 12,
                                 "tempo": "2 sec up / 3 sec down"
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -113,7 +116,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 }

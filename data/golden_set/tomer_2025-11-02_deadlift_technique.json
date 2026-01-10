@@ -31,7 +31,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "foam_roller"
                         },
                         {
                             "item_sequence": 2,
@@ -44,7 +45,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "lacrosse_ball"
                         },
                         {
                             "item_sequence": 3,
@@ -56,7 +58,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -83,7 +86,8 @@
                                     "unit": "min"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "rowing_machine"
                         },
                         {
                             "item_sequence": 2,
@@ -92,7 +96,8 @@
                                 "target_sets": 2,
                                 "target_reps": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "pvc_pipe"
                         },
                         {
                             "item_sequence": 3,
@@ -101,7 +106,8 @@
                                 "target_sets": 2,
                                 "target_reps_per_side": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 4,
@@ -110,7 +116,8 @@
                                 "target_sets": 1,
                                 "target_reps_per_side": 10
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 5,
@@ -119,7 +126,8 @@
                                 "target_sets": 1,
                                 "target_reps_per_side": 8
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 6,
@@ -128,7 +136,8 @@
                                 "target_sets": 1,
                                 "target_reps": 8
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -154,7 +163,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -164,7 +174,8 @@
                                 "target_reps": 8,
                                 "rest_sec": 45
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -174,7 +185,8 @@
                                 "target_reps_per_side": 5,
                                 "rest_sec": 45
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 4,
@@ -185,7 +197,8 @@
                                 "notes": "light",
                                 "rest_sec": 45
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "cable_machine"
                         }
                     ]
                 },
@@ -209,7 +222,8 @@
                                 "target_rpe": 6
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "dumbbell"
                         }
                     ]
                 },
@@ -238,7 +252,8 @@
                                 "target_rpe_max": 7
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },

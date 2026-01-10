@@ -7,7 +7,10 @@
     "learn": "node scripts/active_learning/update_parser_brain.js",
     "test:blocks": "./scripts/tests/test_block_types.sh",
     "test:parser": "./scripts/tests/test_parser_accuracy.sh",
-    "validate:golden": "./scripts/tests/validate_golden_set.sh"
+    "validate:golden": "./scripts/tests/validate_golden_set.sh",
+    "verify:schema": "./scripts/verify_schema_version.sh",
+    "install:hooks": "./scripts/install_hooks.sh",
+    "postinstall": "npm run install:hooks"
   },
   "keywords": [
     "workout",

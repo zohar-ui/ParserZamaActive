@@ -1,8 +1,17 @@
+---
+version: "3.2.0"
+last_updated: "2026-01-10"
+status: "LOCKED"
+compatible_db_migration: "20260104120200"
+parser_ruleset_version: "v3.2"
+breaking_changes_from: "3.1.0"
+---
+
 # 📜 The Constitution: Canonical JSON Schema
 
 **Version:** 3.2.0
 **Status:** 🔒 LOCKED - This is the ONLY allowed schema
-**Last Updated:** January 10, 2026  
+**Last Updated:** January 10, 2026
 
 **Purpose:** Define the exact, immutable structure that the parser MUST produce. Any deviation is a parser bug.
 

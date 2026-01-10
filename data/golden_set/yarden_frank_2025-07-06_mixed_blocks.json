@@ -27,7 +27,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 2,
@@ -40,7 +41,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "item_sequence": 3,
@@ -51,7 +53,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -135,7 +138,8 @@
                                 "tempo": "2-1-X"
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "barbell"
                         }
                     ]
                 },
@@ -161,7 +165,8 @@
                                 "target_reps": 6
                             },
                             "performed": null,
-                            "item_sequence": 1
+                            "item_sequence": 1,
+                            "equipment_key": "bodyweight"
                         },
                         {
                             "exercise_name": "Wall Ball",
@@ -171,7 +176,8 @@
                                 "load_unit": "kg"
                             },
                             "performed": null,
-                            "item_sequence": 2
+                            "item_sequence": 2,
+                            "equipment_key": "wall_ball"
                         }
                     ]
                 },
@@ -190,7 +196,8 @@
                                 "target_sets": 3,
                                 "target_reps": 12
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 },
@@ -213,7 +220,8 @@
                                     "unit": "sec"
                                 }
                             },
-                            "performed": null
+                            "performed": null,
+                            "equipment_key": "bodyweight"
                         }
                     ]
                 }

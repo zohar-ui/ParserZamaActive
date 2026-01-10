@@ -291,14 +291,22 @@ chmod +x .git/hooks/pre-commit
 
 ## 📚 משימות תיעוד (עדיפות נמוכה)
 
-### 7️⃣ **README עדכון**
+### 7️⃣ **README עדכון** ✅
 
-- [ ] עדכן את `README.md` עם:
-  - גרסה 1.2.0
-  - קישור ל-VALIDATION_SYSTEM_SUMMARY.md
-  - הסבר קצר על Stage 3 Validation
+- [x] עדכן את `README.md` עם:
+  - גרסה 1.2.0 ✅
+  - קישור ל-VALIDATION_SYSTEM_SUMMARY.md ✅
+  - הסבר קצר על Stage 3 Validation ✅
+  - קישור ל-VERSIONING_STRATEGY.md ✅
+  - npm script: `verify:schema` ✅
 
-**זמן משוער:** 15 דקות
+**זמן משוער:** 15 דקות → **הושלם!**
+
+**נוסף:**
+- ✅ YAML frontmatter ב-CANONICAL_JSON_SCHEMA.md
+- ✅ סקריפט `verify_schema_version.sh`
+- ✅ מסמך מלא VERSIONING_STRATEGY.md
+- ✅ בדיקת תאימות אוטומטית (Doc ↔ DB)
 
 ---
 

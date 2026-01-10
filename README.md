@@ -12,12 +12,18 @@
 
 ### Setup
 ```bash
-# Install dependencies
+# Install dependencies (auto-installs git hooks)
 npm install
+
+# Or manually install git hooks
+npm run install:hooks
 
 # Check database connection
 npx supabase status
 ```
+
+**Git Hooks Installed:**
+- ✅ `pre-commit` - Verifies schema version compatibility before every commit
 
 ### Run Active Learning Loop
 ```bash
@@ -27,6 +33,9 @@ npm run learn
 
 ### Test Scripts
 ```bash
+# Verify schema version compatibility (Doc ↔ DB)
+npm run verify:schema
+
 # Test block type system
 npm run test:blocks
 
@@ -61,33 +70,45 @@ supabase db reset
 ## Documentation
 
 ### Core Documents
-- 🏗️ [Architecture Overview](./ARCHITECTURE.md) - System design and patterns
-- 📊 [Database Readiness](./DB_READINESS_REPORT.md) - מצב מוכנות המסד נתונים (85/100)
+- 🏗️ [Architecture Overview](./docs/architecture/ARCHITECTURE.md) - System design and patterns
+- 🤖 [AI Agent Instructions](./docs/context/agents.md) - Complete agent guide (600+ lines)
 - 📋 [Changelog](./CHANGELOG.md) - Version history and updates
 
 ### Guides
 - 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
-- 🔄 [Active Learning System](./scripts/ACTIVE_LEARNING_README.md) - Parser training from corrections
+- 🔄 [Active Learning System](./scripts/active_learning/README.md) - Parser training from corrections
+- ✅ [Validation System](./docs/VALIDATION_SYSTEM_SUMMARY.md) - Stage 3 validation functions and workflow
+- 📋 [Versioning Strategy](./docs/guides/VERSIONING_STRATEGY.md) - Schema version compatibility checks
+- 🚀 [Workflow Guide](./docs/guides/WORKFLOW_GUIDE.md) - Development workflow
+- ⚙️ [Environment Setup](./docs/guides/ENVIRONMENT_SETUP.md) - Setup instructions
 
 ### Reference
 - 📜 [Canonical JSON Schema](./docs/reference/CANONICAL_JSON_SCHEMA.md) - **THE CONSTITUTION** - Parser output rules
 - 📚 [Block Types Reference](./docs/reference/BLOCK_TYPES_REFERENCE.md) - 17 block types catalog
-- 📖 [Block Type System](./docs/reference/BLOCK_TYPE_SYSTEM_SUMMARY.md) - System overview
+- 🗄️ [Schema Reference](./docs/architecture/SCHEMA_REFERENCE.md) - Database schema documentation
 
 ### API & Testing
 - 🧪 [Test Queries](./docs/api/QUICK_TEST_QUERIES.sql) - Sample SQL queries
 - 📁 [Schema Migrations](./supabase/migrations/) - Database version history
 
-### Archive
-- 📦 [Historical Docs](./docs/archive/) - Implementation milestones
+### Reports
+- 📊 [v3.2 Upgrade Report](./docs/reports/SCHEMA_V3.2_UPGRADE_REPORT.md) - Schema v3.2 migration
+- 📊 [Parser Test Report](./docs/reports/PARSER_V3.2_TEST_REPORT.md) - Parser validation results
+- 📦 [All Reports](./docs/reports/) - Historical reports and summaries
 
 ## Architecture Highlights
 
 ### 4-Stage Workflow
 1. **Context & Ingestion** - קליטת טקסט + זיהוי אתלט
 2. **Parsing Agent** - הפרדת תכנון (prescription) מביצוע (performance)
-3. **Validation & Normalization** - בקרת איכות + תיקון שגיאות
-4. **Atomic Commit** - שמירה למסד נתונים בטרנזקציה אחת
+3. **Validation & Normalization** - 6 בדיקות SQL אוטומטיות:
+   - מבנה JSON תקין
+   - קודי block מהקטלוג (17 סוגים)
+   - טווחי ערכים הגיוניים (משקלים, זמנים, חזרות)
+   - תרגילים וציוד מהקטלוגים
+   - הפרדת prescription מ-performance
+   - דוח מפורט עם `is_valid: true/false`
+4. **Atomic Commit** - שמירה למסד נתונים בטרנזקציה אחת (רק אחרי validation מוצלח)
 
 ### Key Separation: Prescription vs Performance
 המערכת מפרידה בין:
