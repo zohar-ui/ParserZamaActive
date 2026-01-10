@@ -7,6 +7,7 @@
     "learn": "node scripts/active_learning/update_parser_brain.js",
     "create-athlete": "node scripts/ops/create_athlete.js",
     "create-athlete-users": "node scripts/ops/create_athlete_users.js",
+    "preflight": "./scripts/pre_flight_check.sh",
     "test:blocks": "./scripts/tests/test_block_types.sh",
     "test:parser": "./scripts/tests/test_parser_accuracy.sh",
     "validate:golden": "./scripts/tests/validate_golden_set.sh",
