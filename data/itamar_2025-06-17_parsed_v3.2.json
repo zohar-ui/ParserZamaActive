@@ -1,0 +1,182 @@
+{
+    "workout_date": "2025-06-17",
+    "athlete_id": null,
+    "title": "B0W1 - Day 3",
+    "status": "completed",
+    "sessions": [
+        {
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
+                {
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "Warm up",
+                        "target_rounds": 3
+                    },
+                    "performed": {
+                        "completed": true
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Air Squat",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Spider-Man Lunge",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "Plank Shoulder Tap",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 30,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "SKILL",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Skill",
+                        "target_sets": 3,
+                        "target_rest": {
+                            "value": 1,
+                            "unit": "min"
+                        },
+                        "notes": "rest 1 min btw rounds"
+                    },
+                    "performed": {
+                        "completed": true
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Burpee Broad Jump",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 5
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "METCON",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "Conditioning",
+                        "target_rounds": 4,
+                        "target_rest": {
+                            "value": 2,
+                            "unit": "min"
+                        },
+                        "notes": "Rest 2 min btw rounds"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "actual_rounds": 4,
+                        "notes": "המדידה שלי היתה שגויה זה היה על מייל ולא קילומטר 🤦🏻‍♂️ עשיתי 322 מטר כל סיבוב וגם אחרי האימון חיכיתי שירד הדופק ואז עוד סיבוב (My measurement was wrong, it was in miles not kilometers. Did 322 meters each round and also after the workout waited for heart rate to drop then another round)"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Run",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_distance": {
+                                    "value": 250,
+                                    "unit": "m"
+                                }
+                            },
+                            "performed": {
+                                "actual_distance": {
+                                    "value": 322,
+                                    "unit": "m"
+                                },
+                                "notes": "Actually ran 322m per round due to measurement error"
+                            }
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Reverse Lunge",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 30
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "Hand Release Push-up",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 15
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "Core - 4 min Tabata",
+                        "target_duration": {
+                            "value": 4,
+                            "unit": "min"
+                        },
+                        "target_rounds": 8,
+                        "notes": "20 sec Hollow Hold / 10 sec Rest × 8"
+                    },
+                    "performed": {
+                        "completed": false,
+                        "actual_rounds": 4,
+                        "notes": "הצלחתי 4 סבבים כבר נתפס לי הבטן אז עברתי לפעמיים בטן סטטית (Managed 4 rounds, abs were already tight so switched to twice static plank)"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Hollow Hold",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 20,
+                                    "unit": "sec"
+                                },
+                                "target_rounds": 8,
+                                "target_rest": {
+                                    "value": 10,
+                                    "unit": "sec"
+                                },
+                                "notes": "Tabata format"
+                            },
+                            "performed": {
+                                "actual_rounds": 4,
+                                "notes": "Only completed 4 rounds, then switched to static plank"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
