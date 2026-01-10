@@ -239,7 +239,7 @@ BEGIN
         i.received_at,
         i.athlete_id,
         i.source
-    FROM zamm.imports i
+    FROM zamm.stg_imports i
     WHERE i.checksum_sha256 = p_checksum
       AND NOT ('duplicate_archived' = ANY(i.tags))
     LIMIT 1;
@@ -275,7 +275,7 @@ BEGIN
         w.workout_id,
         w.created_at,
         w.session_title
-    FROM zamm.workouts w
+    FROM zamm.workout_main w
     WHERE w.athlete_id = p_athlete_id
       AND w.workout_date = p_workout_date
       AND w.content_hash_ref = p_content_hash
