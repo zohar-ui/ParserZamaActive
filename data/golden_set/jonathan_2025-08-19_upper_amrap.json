@@ -1,208 +1,219 @@
 {
-  "workout_date": "2025-08-19",
-  "athlete_id": null,
-  "title": "Upper Body Focus (Press + Pull)",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-08-19",
+    "athlete_id": null,
+    "title": "Upper Body Focus (Press + Pull)",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "5 min treadmill jog, then 2 rounds of activation"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Treadmill jog",
-              "equipment_key": "treadmill",
-              "prescription": {
-                "target_duration_min": 5
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 2,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Push-ups",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 8
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "5 min treadmill jog, then 2 rounds of activation"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Treadmill jog",
+                            "equipment_key": "treadmill",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 5,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 2,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Push-ups",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 8
+                                    }
+                                },
+                                {
+                                    "exercise_name": "DB Reverse Flys",
+                                    "equipment_key": "dumbbell",
+                                    "prescription": {
+                                        "target_reps": 10,
+                                        "notes": "light"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Side Plank Left",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 30,
+                                            "unit": "sec"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Side Plank Right",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 30,
+                                            "unit": "sec"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "DB Reverse Flys",
-                  "equipment_key": "dumbbell",
-                  "prescription": {
-                    "target_reps": 10,
-                    "notes": "light"
-                  }
+                    "block_code": "STR",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Single Arm DB Bench: 5×10/side @ 14kg",
+                        "target_sets": 5,
+                        "target_reps": 10,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "3-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Single Arm DB Bench Press",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 5,
+                                "target_reps": 10,
+                                "target_load": 14,
+                                "load_unit": "kg",
+                                "tempo": "3-1-1"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Side Plank Left",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_sec": 30
-                  }
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "Single Arm DB Row: 4×12/side @ 14kg",
+                        "target_sets": 4,
+                        "target_reps": 12,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "3-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Single Arm DB Row",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 4,
+                                "target_reps": 12,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Side Plank Right",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_sec": 30
-                  }
+                    "block_code": "STR",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "DB Z-Press: 4×12 @ 2×14kg",
+                        "target_sets": 4,
+                        "target_reps": 12,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "2-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DB Z-Press",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 4,
+                                "target_reps": 12,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "METCON",
+                    "block_label": "E",
+                    "block_type": "AMRAP",
+                    "prescription": {
+                        "description": "As Many Rounds As Possible in 12 min: 10 DB Thrusters, 12 Burpees, 200m Run",
+                        "time_cap": 12,
+                        "time_cap_unit": "min",
+                        "target_load": 14,
+                        "load_unit": "kg"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DB Thrusters",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_reps": 10,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        },
+                        {
+                            "exercise_name": "Burpees",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 12
+                            },
+                            "performed": null,
+                            "item_sequence": 2
+                        },
+                        {
+                            "exercise_name": "Run",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_distance": {
+                                    "value": 200,
+                                    "unit": "m"
+                                }
+                            },
+                            "performed": null,
+                            "item_sequence": 3
+                        }
+                    ]
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Side Plank with Rotation: 3×10/side (light weight)"
+                    },
+                    "performed": null
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "B",
-          "prescription": {
-            "description": "Single Arm DB Bench: 5×10/side @ 14kg",
-            "target_sets": 5,
-            "target_reps": 10,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "3-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Single Arm DB Bench Press",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 5,
-                "target_reps": 10,
-                "target_load": 14,
-                "load_unit": "kg",
-                "tempo": "3-1-1"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "prescription": {
-            "description": "Single Arm DB Row: 4×12/side @ 14kg",
-            "target_sets": 4,
-            "target_reps": 12,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "3-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Single Arm DB Row",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 4,
-                "target_reps": 12,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "D",
-          "prescription": {
-            "description": "DB Z-Press: 4×12 @ 2×14kg",
-            "target_sets": 4,
-            "target_reps": 12,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "2-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DB Z-Press",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 4,
-                "target_reps": 12,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "METCON",
-          "block_label": "E",
-          "block_type": "AMRAP",
-          "prescription": {
-            "description": "As Many Rounds As Possible in 12 min: 10 DB Thrusters, 12 Burpees, 200m Run",
-            "time_cap": 12,
-            "time_cap_unit": "min",
-            "target_load": 14,
-            "load_unit": "kg"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DB Thrusters",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_reps": 10,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            },
-            {
-              "exercise_name": "Burpees",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_reps": 12
-              },
-              "performed": null,
-              "item_sequence": 2
-            },
-            {
-              "exercise_name": "Run",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_distance": 200,
-                "distance_unit": "m"
-              },
-              "performed": null,
-              "item_sequence": 3
-            }
-          ]
-        },
-        {
-          "block_code": "CD",
-          "block_label": "F",
-          "prescription": {
-            "description": "Side Plank with Rotation: 3×10/side (light weight)"
-          },
-          "performed": null
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

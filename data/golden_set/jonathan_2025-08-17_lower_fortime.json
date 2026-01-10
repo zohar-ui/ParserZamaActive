@@ -1,219 +1,227 @@
 {
-  "workout_date": "2025-08-17",
-  "athlete_id": null,
-  "title": "Lower Body Focus",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-08-17",
+    "athlete_id": null,
+    "title": "Lower Body Focus",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "5 min treadmill jog, then 2 rounds of activation"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Treadmill jog",
-              "equipment_key": "treadmill",
-              "prescription": {
-                "target_duration_min": 5
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 2,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Air Squats",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 10,
-                    "tempo": "3s down"
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "5 min treadmill jog, then 2 rounds of activation"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Treadmill jog",
+                            "equipment_key": "treadmill",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 5,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 2,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Air Squats",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 10,
+                                        "tempo": "3s down"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Glute Bridges",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Plank",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 30,
+                                            "unit": "sec"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Glute Bridges",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 10
-                  }
+                    "block_code": "STR",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Dumbbell Goblet Squat: 5×12 @ 14kg",
+                        "target_sets": 5,
+                        "target_reps": 12,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "3-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Dumbbell Goblet Squat",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 5,
+                                "target_reps": 12,
+                                "target_load": 14,
+                                "load_unit": "kg",
+                                "tempo": "3-1-1"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Plank",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_sec": 30
-                  }
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "BSS: 4×10/leg @ 2×14kg DBs",
+                        "target_sets": 4,
+                        "target_reps": 10,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "2-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Bulgarian Split Squat",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 4,
+                                "target_reps": 10,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "Dumbbell Romanian Deadlift: 4×12 @ 2×14kg",
+                        "target_sets": 4,
+                        "target_reps": 12,
+                        "target_load": 14,
+                        "load_unit": "kg",
+                        "tempo": "3-1-1"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Dumbbell Romanian Deadlift",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 4,
+                                "target_reps": 12,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "METCON",
+                    "block_label": "E",
+                    "block_type": "For Time",
+                    "prescription": {
+                        "description": "For Time: 50 DB Reverse Walking Lunges, 40 Burpees, 30 DB Deadlifts, 20 Push-ups, 400m Run",
+                        "target_load": 14,
+                        "load_unit": "kg"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DB Reverse Walking Lunges",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_reps": 50,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        },
+                        {
+                            "exercise_name": "Burpees",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 40
+                            },
+                            "performed": null,
+                            "item_sequence": 2
+                        },
+                        {
+                            "exercise_name": "DB Deadlifts",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_reps": 30,
+                                "target_load": 14,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 3
+                        },
+                        {
+                            "exercise_name": "Push-ups",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_reps": 20
+                            },
+                            "performed": null,
+                            "item_sequence": 4
+                        },
+                        {
+                            "exercise_name": "Run",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_distance": {
+                                    "value": 400,
+                                    "unit": "m"
+                                }
+                            },
+                            "performed": null,
+                            "item_sequence": 5
+                        }
+                    ]
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Plank Hold: 3×1:00 with breathing control"
+                    },
+                    "performed": null
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "B",
-          "prescription": {
-            "description": "Dumbbell Goblet Squat: 5×12 @ 14kg",
-            "target_sets": 5,
-            "target_reps": 12,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "3-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Dumbbell Goblet Squat",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 5,
-                "target_reps": 12,
-                "target_load": 14,
-                "load_unit": "kg",
-                "tempo": "3-1-1"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "prescription": {
-            "description": "BSS: 4×10/leg @ 2×14kg DBs",
-            "target_sets": 4,
-            "target_reps": 10,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "2-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Bulgarian Split Squat",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 4,
-                "target_reps": 10,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "D",
-          "prescription": {
-            "description": "Dumbbell Romanian Deadlift: 4×12 @ 2×14kg",
-            "target_sets": 4,
-            "target_reps": 12,
-            "target_load": 14,
-            "load_unit": "kg",
-            "tempo": "3-1-1"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Dumbbell Romanian Deadlift",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 4,
-                "target_reps": 12,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "METCON",
-          "block_label": "E",
-          "block_type": "For Time",
-          "prescription": {
-            "description": "For Time: 50 DB Reverse Walking Lunges, 40 Burpees, 30 DB Deadlifts, 20 Push-ups, 400m Run",
-            "target_load": 14,
-            "load_unit": "kg"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DB Reverse Walking Lunges",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_reps": 50,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            },
-            {
-              "exercise_name": "Burpees",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_reps": 40
-              },
-              "performed": null,
-              "item_sequence": 2
-            },
-            {
-              "exercise_name": "DB Deadlifts",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_reps": 30,
-                "target_load": 14,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 3
-            },
-            {
-              "exercise_name": "Push-ups",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_reps": 20
-              },
-              "performed": null,
-              "item_sequence": 4
-            },
-            {
-              "exercise_name": "Run",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_distance": 400,
-                "distance_unit": "m"
-              },
-              "performed": null,
-              "item_sequence": 5
-            }
-          ]
-        },
-        {
-          "block_code": "CD",
-          "block_label": "F",
-          "prescription": {
-            "description": "Plank Hold: 3×1:00 with breathing control"
-          },
-          "performed": null
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

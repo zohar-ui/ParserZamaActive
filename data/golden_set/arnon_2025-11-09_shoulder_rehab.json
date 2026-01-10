@@ -1,225 +1,234 @@
 {
-  "workout_date": "2025-11-09",
-  "athlete_id": null,
-  "title": "W1 T1",
-  "status": "completed",
-  "warmup_objective": "Foundation & Control",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-11-09",
+    "athlete_id": null,
+    "title": "W1 T1",
+    "status": "completed",
+    "warmup_objective": "Foundation & Control",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds",
-            "rest": "30s between exercises"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "רק שאני אזכור גם איך התחלנו…."
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Bike",
-                  "equipment_key": "bike",
-                  "prescription": {
-                    "target_duration_min": 5,
-                    "markers": [
-                      "**V"
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "5 min Bike/Row @ 22-24 spm @ D 5-6, then 3 Quality Rounds",
+                        "rest": "30s between exercises"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "רק שאני אזכור גם איך התחלנו…."
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Bike",
+                                    "equipment_key": "bike",
+                                    "prescription": {
+                                        "markers": [
+                                            "**V"
+                                        ],
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Row",
+                                    "equipment_key": "rowing_machine",
+                                    "prescription": {
+                                        "target_spm_min": 22,
+                                        "target_spm_max": 24,
+                                        "target_damper_min": 5,
+                                        "target_damper_max": 6,
+                                        "markers": [
+                                            "**V"
+                                        ],
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 3,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 30
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "PVC Thoracic Rotation",
+                                    "equipment_key": "pvc_pipe",
+                                    "prescription": {
+                                        "target_reps": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Scapular CARs",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 16,
+                                        "target_reps_forward": 8,
+                                        "target_reps_backward": 8,
+                                        "notes": "8 forward / 8 backward"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "DB Supine Serratus Punch",
+                                    "equipment_key": "dumbbell",
+                                    "prescription": {
+                                        "target_reps_per_side": 8,
+                                        "load_unit": "kg",
+                                        "notes": "light",
+                                        "target_load_min": 4,
+                                        "target_load_max": 5
+                                    }
+                                }
+                            ]
+                        }
                     ]
-                  }
                 },
                 {
-                  "exercise_name": "Row",
-                  "equipment_key": "rowing_machine",
-                  "prescription": {
-                    "target_duration_min": 5,
-                    "target_spm_min": 22,
-                    "target_spm_max": 24,
-                    "target_damper_min": 5,
-                    "target_damper_max": 6,
-                    "markers": [
-                      "**V"
+                    "block_code": "ACT",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Shoulder activations",
+                        "rest": "30s between exercises"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Isometric ER to wall",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_sets_per_side": 1,
+                                "notes": "90°",
+                                "target_duration": {
+                                    "value": 20,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Banded Scapular Pulldown",
+                            "equipment_key": "resistance_band",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps_per_side": 10
+                            },
+                            "performed": null
+                        }
                     ]
-                  }
-                }
-              ],
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 3,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 30
-              },
-              "performed": null,
-              "exercises": [
-                {
-                  "exercise_name": "PVC Thoracic Rotation",
-                  "equipment_key": "pvc_pipe",
-                  "prescription": {
-                    "target_reps": 10
-                  }
                 },
                 {
-                  "exercise_name": "Scapular CARs",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 16,
-                    "target_reps_forward": 8,
-                    "target_reps_backward": 8,
-                    "notes": "8 forward / 8 backward"
-                  }
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "Landmine Press Half Kneeling: 3x8/8",
+                        "target_sets": 3,
+                        "target_reps": 8,
+                        "tempo": "3-0-2",
+                        "rest": "1:30",
+                        "target_rpe_min": 5.5,
+                        "target_rpe_max": 6
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "כתף ימין (!?) כואבת בסט הראשון 5/10. יד ימין הסתדר. כתפיים בסדר. כאב ביד אחורית כתף שמאל בזמן הורדה. ואל דאגה, בסט השלישי הבנתי שאני לא סופר ותיקנתי. מוט ריק"
+                    }
                 },
                 {
-                  "exercise_name": "DB Supine Serratus Punch",
-                  "equipment_key": "dumbbell",
-                  "prescription": {
-                    "target_reps_per_side": 8,
-                    "load_unit": "kg",
-                    "notes": "light",
-                    "target_load_min": 4,
-                    "target_load_max": 5
-                  }
+                    "block_code": "STR",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "Dumbbell Romanian Deadlift: 3x8",
+                        "target_sets": 3,
+                        "target_reps": 8,
+                        "rest": "1:30",
+                        "target_rpe_min": 5.5,
+                        "target_rpe_max": 6
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "10 ק"
+                    }
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "E",
+                    "prescription": {
+                        "description": "One arm chest supported row: 3x10",
+                        "target_sets": 3,
+                        "target_reps": 10,
+                        "target_rpe": 6,
+                        "rest": "1:30"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "10 ק"
+                    }
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Tall Kneeling Cable Pallof Press: 3x10/10",
+                        "rest": "1:00"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "7.5 תנועה מוזרההה"
+                    }
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "G",
+                    "prescription": {
+                        "description": "DB Suitcase Carry: 3x20m/20m",
+                        "rest": "1:00",
+                        "notes": "start with left hand"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "התחלתי מ 12 ועברתי ל 18 בסט האחרון"
+                    }
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "H",
+                    "prescription": {
+                        "description": "Prone Low Trap Raise: 2x12",
+                        "rest": "1:00",
+                        "notes": "נא למצוא את המרחב בין הכתפיים שלא מייצר כאב"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "נתפס לי כמו שאתה רואה מתחת לשכמה שמאל תוך כדי הסט הראשון"
+                    }
+                },
+                {
+                    "block_code": "SS",
+                    "block_label": "I",
+                    "prescription": {
+                        "description": "Bike/Row: 10 min"
+                    },
+                    "performed": null
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "B",
-          "prescription": {
-            "description": "Shoulder activations",
-            "rest": "30s between exercises"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Isometric ER to wall",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 3,
-                "target_duration_sec": 20,
-                "target_sets_per_side": 1,
-                "notes": "90°"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Banded Scapular Pulldown",
-              "equipment_key": "resistance_band",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "prescription": {
-            "description": "Landmine Press Half Kneeling: 3x8/8",
-            "target_sets": 3,
-            "target_reps": 8,
-            "tempo": "3-0-2",
-            "rest": "1:30",
-            "target_rpe_min": 5.5,
-            "target_rpe_max": 6
-          },
-          "performed": {
-            "completed": true,
-            "notes": "כתף ימין (!?) כואבת בסט הראשון 5/10. יד ימין הסתדר. כתפיים בסדר. כאב ביד אחורית כתף שמאל בזמן הורדה. ואל דאגה, בסט השלישי הבנתי שאני לא סופר ותיקנתי. מוט ריק"
-          }
-        },
-        {
-          "block_code": "STR",
-          "block_label": "D",
-          "prescription": {
-            "description": "Dumbbell Romanian Deadlift: 3x8",
-            "target_sets": 3,
-            "target_reps": 8,
-            "rest": "1:30",
-            "target_rpe_min": 5.5,
-            "target_rpe_max": 6
-          },
-          "performed": {
-            "completed": true,
-            "notes": "10 ק"
-          }
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "E",
-          "prescription": {
-            "description": "One arm chest supported row: 3x10",
-            "target_sets": 3,
-            "target_reps": 10,
-            "target_rpe": 6,
-            "rest": "1:30"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "10 ק"
-          }
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "F",
-          "prescription": {
-            "description": "Tall Kneeling Cable Pallof Press: 3x10/10",
-            "rest": "1:00"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "7.5 תנועה מוזרההה"
-          }
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "G",
-          "prescription": {
-            "description": "DB Suitcase Carry: 3x20m/20m",
-            "rest": "1:00",
-            "notes": "start with left hand"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "התחלתי מ 12 ועברתי ל 18 בסט האחרון"
-          }
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "H",
-          "prescription": {
-            "description": "Prone Low Trap Raise: 2x12",
-            "rest": "1:00",
-            "notes": "נא למצוא את המרחב בין הכתפיים שלא מייצר כאב"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "נתפס לי כמו שאתה רואה מתחת לשכמה שמאל תוך כדי הסט הראשון"
-          }
-        },
-        {
-          "block_code": "SS",
-          "block_label": "I",
-          "prescription": {
-            "description": "Bike/Row: 10 min"
-          },
-          "performed": null
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

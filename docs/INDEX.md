@@ -33,6 +33,25 @@ Welcome to the ZAMM Workout Parser documentation. Start here to navigate all ava
   - 5 common parser errors to avoid
   - **Status:** 🔒 LOCKED - This is the law
 
+### Quality Assurance & Testing 🧪 🆕
+- **[QA_STRESS_TEST_REPORT.md](../QA_STRESS_TEST_REPORT.md)** 🆕 (350+ lines)
+  - Full system stress test results
+  - Golden set validation (19 files, 94.7% pass rate)
+  - "Nasty 10" edge case scenarios
+  - Production readiness assessment
+  - **Status:** ⚠️ 95% Production Ready
+  
+- **[STRESS_TEST_GUIDE.md](./reference/STRESS_TEST_GUIDE.md)** 🆕 (400+ lines)
+  - Step-by-step execution guide for stress tests
+  - Expected outputs for all 10 edge cases
+  - Validation commands and success criteria
+  - Common pitfalls to avoid
+  
+- **[validate_golden_sets.py](../scripts/validate_golden_sets.py)** 🆕
+  - Automated validation script (Python)
+  - Checks: JSON structure, type safety, block codes, equipment keys
+  - Run with: `python3 scripts/validate_golden_sets.py`
+
 ### Active Learning System 🔄 🆕
 - **[ACTIVE_LEARNING_README.md](../scripts/ACTIVE_LEARNING_README.md)** (500+ lines)
   - Complete active learning system documentation

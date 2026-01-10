@@ -1,253 +1,268 @@
 {
-  "workout_date": "2025-11-02",
-  "athlete_id": null,
-  "title": "W1 T1",
-  "status": "completed",
-  "warmup_objective": "Neutral spine, brace 360 degrees, hinge from hips and stand tall",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-11-02",
+    "athlete_id": null,
+    "title": "W1 T1",
+    "status": "completed",
+    "warmup_objective": "Neutral spine, brace 360 degrees, hinge from hips and stand tall",
+    "sessions": [
         {
-          "block_code": "MOB",
-          "block_label": "A",
-          "prescription": {
-            "description": "Rolling and Release"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "האם אפשר לעשות את הquad smash עם רולר?"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Foam roll calves",
-              "prescription": {
-                "target_sets": 1,
-                "target_duration_sec": 40,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Lacrosse ball plantar and hips",
-              "prescription": {
-                "target_sets": 1,
-                "target_duration_sec": 30,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Quad smash",
-              "prescription": {
-                "target_sets": 1,
-                "target_duration_sec": 30
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "WU",
-          "block_label": "B",
-          "prescription": {
-            "description": "Row and mobility drills"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "wall ankle הרגשתי שאני לא מוצא פוזציה נכונה והרגשתי עומס על הקרסול. בsquat to stand התקשתי לשמור על הערב על הרצפה"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "C2 Row",
-              "prescription": {
-                "target_duration_min": 5,
-                "notes": "easy",
-                "target_spm_min": 18,
-                "target_spm_max": 20
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "PVC Dowel Hinge",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "Wall Ankle Dorsiflexion",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Hamstring Floss",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "BW Groiner with Reach",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 8
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 6,
-              "exercise_name": "BW Squat to Stand",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps": 8
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "C",
-          "prescription": {
-            "description": "Activation exercises"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "במ‏acgill כמה שניות למעלה? בcable שמתי 27.5"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "BW Glute Bridge hold",
-              "prescription": {
-                "target_sets": 2,
-                "target_duration_sec": 30,
-                "rest_sec": 30
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "BW McGill Curl Up",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 8,
-                "rest_sec": 45
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "BW Supported Hip Airplane",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps_per_side": 5,
-                "rest_sec": 45
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Cable Straight Arm Pulldown",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 12,
-                "notes": "light",
-                "rest_sec": 45
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "D",
-          "prescription": {
-            "description": "DB Romanian Deadlift: 3x6 RPE 6",
-            "target_sets": 3,
-            "target_reps": 6,
-            "target_rpe": 6,
-            "rest": "1.5 min"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DB Romanian Deadlift",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 6,
-                "target_rpe": 6
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "E",
-          "prescription": {
-            "description": "BB Elevated Deadlift from rack: 1x8 Empty bar, 1x5 Light, 1x3 Moderate. Then 3x5 RPE 6-7",
-            "target_sets": 3,
-            "target_reps": 5,
-            "rest": "1.5 min",
-            "target_rpe_min": 6,
-            "target_rpe_max": 7
-          },
-          "performed": {
-            "completed": true,
-            "notes": "הרגשתי שחישבתי פה לא נכון את המשקלים, הורדתי חלק בסוף"
-          },
-          "items": [
-            {
-              "exercise_name": "BB Elevated Deadlift",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 5,
-                "target_rpe_min": 6,
-                "target_rpe_max": 7
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "F",
-          "prescription": {
-            "description": "Standing Cable Pallof Press: 3x10/10",
-            "rest": "45 sec"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "האם הכוונה ב10/10 היא למשוך יד יד? להיכן? מרכז מסה? להוסיף התמגדות?"
-          }
-        },
-        {
-          "block_code": "SKILL",
-          "block_label": "G",
-          "prescription": {
-            "description": "C2 ROW: 6x200m SPM 20-22 (Rest 60s). Practice Technique. 4 MIN C2 Row pick drill"
-          },
-          "performed": null
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
+                {
+                    "block_code": "MOB",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "Rolling and Release"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "האם אפשר לעשות את הquad smash עם רולר?"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Foam roll calves",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_sets_per_side": 1,
+                                "target_duration": {
+                                    "value": 40,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Lacrosse ball plantar and hips",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_sets_per_side": 1,
+                                "target_duration": {
+                                    "value": 30,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "Quad smash",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_duration": {
+                                    "value": 30,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "WU",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Row and mobility drills"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "wall ankle הרגשתי שאני לא מוצא פוזציה נכונה והרגשתי עומס על הקרסול. בsquat to stand התקשתי לשמור על הערב על הרצפה"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "C2 Row",
+                            "prescription": {
+                                "notes": "easy",
+                                "target_spm_min": 18,
+                                "target_spm_max": 20,
+                                "target_duration": {
+                                    "value": 5,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "PVC Dowel Hinge",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "Wall Ankle Dorsiflexion",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps_per_side": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 4,
+                            "exercise_name": "Hamstring Floss",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 5,
+                            "exercise_name": "BW Groiner with Reach",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 8
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 6,
+                            "exercise_name": "BW Squat to Stand",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps": 8
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACT",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "Activation exercises"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "במ‏acgill כמה שניות למעלה? בcable שמתי 27.5"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "BW Glute Bridge hold",
+                            "prescription": {
+                                "target_sets": 2,
+                                "rest_sec": 30,
+                                "target_duration": {
+                                    "value": 30,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "BW McGill Curl Up",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 8,
+                                "rest_sec": 45
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "BW Supported Hip Airplane",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps_per_side": 5,
+                                "rest_sec": 45
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 4,
+                            "exercise_name": "Cable Straight Arm Pulldown",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 12,
+                                "notes": "light",
+                                "rest_sec": 45
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "DB Romanian Deadlift: 3x6 RPE 6",
+                        "target_sets": 3,
+                        "target_reps": 6,
+                        "target_rpe": 6,
+                        "rest": "1.5 min"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DB Romanian Deadlift",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 6,
+                                "target_rpe": 6
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "E",
+                    "prescription": {
+                        "description": "BB Elevated Deadlift from rack: 1x8 Empty bar, 1x5 Light, 1x3 Moderate. Then 3x5 RPE 6-7",
+                        "target_sets": 3,
+                        "target_reps": 5,
+                        "rest": "1.5 min",
+                        "target_rpe_min": 6,
+                        "target_rpe_max": 7
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "הרגשתי שחישבתי פה לא נכון את המשקלים, הורדתי חלק בסוף"
+                    },
+                    "items": [
+                        {
+                            "exercise_name": "BB Elevated Deadlift",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 5,
+                                "target_rpe_min": 6,
+                                "target_rpe_max": 7
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Standing Cable Pallof Press: 3x10/10",
+                        "rest": "45 sec"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "האם הכוונה ב10/10 היא למשוך יד יד? להיכן? מרכז מסה? להוסיף התמגדות?"
+                    }
+                },
+                {
+                    "block_code": "SKILL",
+                    "block_label": "G",
+                    "prescription": {
+                        "description": "C2 ROW: 6x200m SPM 20-22 (Rest 60s). Practice Technique. 4 MIN C2 Row pick drill"
+                    },
+                    "performed": null
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

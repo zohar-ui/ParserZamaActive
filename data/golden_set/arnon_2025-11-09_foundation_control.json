@@ -1,365 +1,392 @@
 {
-  "workout_date": "2025-11-09",
-  "athlete_id": null,
-  "title": "W1 T1",
-  "warmup_objective": "Foundation & Control",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "blocks": [
+    "workout_date": "2025-11-09",
+    "athlete_id": null,
+    "title": "W1 T1",
+    "warmup_objective": "Foundation & Control",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "block_title": "Warm Up",
-          "prescription": {
-            "target_sets": 1,
-            "notes": "5 min cardio + 3 rounds quality movements"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
+            "session_code": null,
+            "blocks": [
                 {
-                  "exercise_name": "Bike",
-                  "equipment_key": "bike",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
-                },
-                {
-                  "exercise_name": "Row",
-                  "equipment_key": "rowing_machine",
-                  "prescription": {
-                    "target_duration_min": 5,
-                    "target_stroke_rate_min": 22,
-                    "target_stroke_rate_max": 24,
-                    "target_damper_min": 5,
-                    "target_damper_max": 6
-                  }
-                }
-              ],
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 3,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
-                {
-                  "exercise_name": "Pvc Thoracic Rotation",
-                  "equipment_key": "pvc_pipe",
-                  "prescription": {
-                    "target_reps": 10
-                  }
-                },
-                {
-                  "exercise_name": "Scapular Cars",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 16,
-                    "target_reps_forward": 8,
-                    "target_reps_backward": 8,
-                    "notes": "8 forward / 8 backward"
-                  }
-                },
-                {
-                  "exercise_name": "Db Supine Serratus Punch",
-                  "equipment_key": "dumbbell",
-                  "prescription": {
-                    "target_reps": 8,
-                    "target_sets_per_side": 1,
-                    "target_weight": {
-                      "value_min": 4,
-                      "value_max": 5,
-                      "unit": "kg"
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "block_title": "Warm Up",
+                    "prescription": {
+                        "target_sets": 1,
+                        "notes": "5 min cardio + 3 rounds quality movements"
                     },
-                    "notes": "Light 4-5kg"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "B",
-          "block_title": "Activations",
-          "prescription": {
-            "target_rest_sec": 30
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Isometric External Rotation",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 3,
-                "target_duration_sec": 20,
-                "target_sets_per_side": 1,
-                "equipment": "wall",
-                "notes": "90 degree angle"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Banded Scapular Pulldown",
-              "equipment_key": "resistance_band",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 10,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "block_title": "Landmine Press Half Kneeling",
-          "prescription": {
-            "description": "Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min"
-          },
-          "performed": {
-            "actual_sets": 3,
-            "actual_reps": 8,
-            "actual_sets_per_side": 1,
-            "actual_weight": {
-              "value": 20,
-              "unit": "kg"
-            },
-            "notes": "Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg)."
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Landmine Press",
-              "equipment_key": "barbell",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 8,
-                "target_sets_per_side": 1,
-                "target_tempo": "3-0-2-0",
-                "equipment": "barbell",
-                "position": "half_kneeling"
-              },
-              "performed": {
-                "actual_weight": {
-                  "value": 20,
-                  "unit": "kg"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "D",
-          "block_title": "Dumbbell Romanian Deadlift",
-          "prescription": {
-            "description": "Dumbbell Romanian Deadlift: 3×8 @ RPE 5.5-6, Rest 1.5 min"
-          },
-          "performed": {
-            "actual_weight": {
-              "value": 10,
-              "unit": "kg"
-            }
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Dumbbell Rdl",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 8
-              },
-              "performed": {
-                "actual_weight": {
-                  "value": 10,
-                  "unit": "kg"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "E",
-          "block_title": "One arm chest supported row",
-          "prescription": {
-            "description": "One arm chest supported row: 3×10 @ RPE 6, Rest 1.5 min"
-          },
-          "performed": {
-            "actual_weight": {
-              "value": 10,
-              "unit": "kg"
-            }
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "One Arm Chest Supported Row",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 10
-              },
-              "performed": {
-                "actual_weight": {
-                  "value": 10,
-                  "unit": "kg"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "F",
-          "block_title": "Tall Kneeling Cable Pallof Press",
-          "prescription": {
-            "description": "Tall Kneeling Cable Pallof Press: 3×10/side, Rest 1 min"
-          },
-          "performed": {
-            "actual_sets": 3,
-            "actual_reps": 10,
-            "actual_sets_per_side": 1,
-            "actual_weight": {
-              "value": 7.5,
-              "unit": "kg"
-            },
-            "notes": "Strange movement"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Pallof Press",
-              "equipment_key": "cable_machine",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 10,
-                "target_sets_per_side": 1,
-                "equipment": "cable",
-                "position": "tall_kneeling"
-              },
-              "performed": {
-                "actual_weight": {
-                  "value": 7.5,
-                  "unit": "kg"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "G",
-          "block_title": "DB Suitcase Carry",
-          "prescription": {
-            "description": "DB Suitcase Carry: 3×20m/side, Rest 1 min. Start with left hand"
-          },
-          "performed": {
-            "actual_sets": 3,
-            "actual_distance_m": 20,
-            "actual_sets_per_side": 1,
-            "notes": "Started at 12kg, progressed to 18kg in last set"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Suitcase Carry",
-              "equipment_key": "dumbbell",
-              "prescription": {
-                "target_sets": 3,
-                "target_distance_m": 20,
-                "target_sets_per_side": 1,
-                "equipment": "dumbbell"
-              },
-              "performed": {
-                "actual_weight": [
-                  {
-                    "value": 12,
-                    "unit": "kg"
-                  },
-                  {
-                    "value": 12,
-                    "unit": "kg"
-                  },
-                  {
-                    "value": 18,
-                    "unit": "kg"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "H",
-          "block_title": "Prone Low Trap Raise",
-          "prescription": {
-            "description": "Prone Low Trap Raise: 2×12, Rest 1 min. Find space between shoulder blades that doesn't create pain"
-          },
-          "performed": {
-            "actual_sets": 2,
-            "actual_reps": 12,
-            "notes": "Caught beneath left scapula during first set"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Prone Low Trap Raise",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 12
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "CD",
-          "block_label": "I",
-          "block_title": "Cool Down",
-          "prescription": {
-            "target_duration_min": 10
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
-                {
-                  "exercise_name": "Bike",
-                  "equipment_key": "bike",
-                  "prescription": {
-                    "target_duration_min": 10
-                  }
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Bike",
+                                    "equipment_key": "bike",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Row",
+                                    "equipment_key": "rowing_machine",
+                                    "prescription": {
+                                        "target_stroke_rate_min": 22,
+                                        "target_stroke_rate_max": 24,
+                                        "target_damper_min": 5,
+                                        "target_damper_max": 6,
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 3,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Pvc Thoracic Rotation",
+                                    "equipment_key": "pvc_pipe",
+                                    "prescription": {
+                                        "target_reps": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Scapular Cars",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 16,
+                                        "target_reps_forward": 8,
+                                        "target_reps_backward": 8,
+                                        "notes": "8 forward / 8 backward"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Db Supine Serratus Punch",
+                                    "equipment_key": "dumbbell",
+                                    "prescription": {
+                                        "target_reps": 8,
+                                        "target_sets_per_side": 1,
+                                        "target_weight": {
+                                            "value_min": 4,
+                                            "value_max": 5,
+                                            "unit": "kg"
+                                        },
+                                        "notes": "Light 4-5kg"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Row",
-                  "equipment_key": "rowing_machine",
-                  "prescription": {
-                    "target_duration_min": 10
-                  }
+                    "block_code": "ACT",
+                    "block_label": "B",
+                    "block_title": "Activations",
+                    "prescription": {
+                        "target_rest": {
+                            "value": 30,
+                            "unit": "sec"
+                        }
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Isometric External Rotation",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_sets_per_side": 1,
+                                "equipment": "wall",
+                                "notes": "90 degree angle",
+                                "target_duration": {
+                                    "value": 20,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Banded Scapular Pulldown",
+                            "equipment_key": "resistance_band",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 10,
+                                "target_sets_per_side": 1
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "block_title": "Landmine Press Half Kneeling",
+                    "prescription": {
+                        "description": "Landmine Press Half Kneeling: 3×8/side @ RPE 5.5-6, Tempo 3-0-2-0, Rest 1.5 min"
+                    },
+                    "performed": {
+                        "actual_sets": 3,
+                        "actual_reps": 8,
+                        "actual_sets_per_side": 1,
+                        "actual_weight": {
+                            "value": 20,
+                            "unit": "kg"
+                        },
+                        "notes": "Right shoulder hurt 5/10 in set 1. Left rear shoulder pain on lowering. Bar only (20kg)."
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Landmine Press",
+                            "equipment_key": "barbell",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 8,
+                                "target_sets_per_side": 1,
+                                "target_tempo": "3-0-2-0",
+                                "equipment": "barbell",
+                                "position": "half_kneeling"
+                            },
+                            "performed": {
+                                "actual_weight": {
+                                    "value": 20,
+                                    "unit": "kg"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "D",
+                    "block_title": "Dumbbell Romanian Deadlift",
+                    "prescription": {
+                        "description": "Dumbbell Romanian Deadlift: 3×8 @ RPE 5.5-6, Rest 1.5 min"
+                    },
+                    "performed": {
+                        "actual_weight": {
+                            "value": 10,
+                            "unit": "kg"
+                        }
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Dumbbell Rdl",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 8
+                            },
+                            "performed": {
+                                "actual_weight": {
+                                    "value": 10,
+                                    "unit": "kg"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "E",
+                    "block_title": "One arm chest supported row",
+                    "prescription": {
+                        "description": "One arm chest supported row: 3×10 @ RPE 6, Rest 1.5 min"
+                    },
+                    "performed": {
+                        "actual_weight": {
+                            "value": 10,
+                            "unit": "kg"
+                        }
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "One Arm Chest Supported Row",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 10
+                            },
+                            "performed": {
+                                "actual_weight": {
+                                    "value": 10,
+                                    "unit": "kg"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "F",
+                    "block_title": "Tall Kneeling Cable Pallof Press",
+                    "prescription": {
+                        "description": "Tall Kneeling Cable Pallof Press: 3×10/side, Rest 1 min"
+                    },
+                    "performed": {
+                        "actual_sets": 3,
+                        "actual_reps": 10,
+                        "actual_sets_per_side": 1,
+                        "actual_weight": {
+                            "value": 7.5,
+                            "unit": "kg"
+                        },
+                        "notes": "Strange movement"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Pallof Press",
+                            "equipment_key": "cable_machine",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 10,
+                                "target_sets_per_side": 1,
+                                "equipment": "cable",
+                                "position": "tall_kneeling"
+                            },
+                            "performed": {
+                                "actual_weight": {
+                                    "value": 7.5,
+                                    "unit": "kg"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "G",
+                    "block_title": "DB Suitcase Carry",
+                    "prescription": {
+                        "description": "DB Suitcase Carry: 3×20m/side, Rest 1 min. Start with left hand"
+                    },
+                    "performed": {
+                        "actual_sets": 3,
+                        "actual_sets_per_side": 1,
+                        "notes": "Started at 12kg, progressed to 18kg in last set",
+                        "actual_distance": {
+                            "value": 20,
+                            "unit": "m"
+                        }
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Suitcase Carry",
+                            "equipment_key": "dumbbell",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_sets_per_side": 1,
+                                "equipment": "dumbbell",
+                                "target_distance": {
+                                    "value": 20,
+                                    "unit": "m"
+                                }
+                            },
+                            "performed": {
+                                "actual_weight": [
+                                    {
+                                        "value": 12,
+                                        "unit": "kg"
+                                    },
+                                    {
+                                        "value": 12,
+                                        "unit": "kg"
+                                    },
+                                    {
+                                        "value": 18,
+                                        "unit": "kg"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "H",
+                    "block_title": "Prone Low Trap Raise",
+                    "prescription": {
+                        "description": "Prone Low Trap Raise: 2×12, Rest 1 min. Find space between shoulder blades that doesn't create pain"
+                    },
+                    "performed": {
+                        "actual_sets": 2,
+                        "actual_reps": 12,
+                        "notes": "Caught beneath left scapula during first set"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Prone Low Trap Raise",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 12
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "I",
+                    "block_title": "Cool Down",
+                    "prescription": {
+                        "target_duration": {
+                            "value": 10,
+                            "unit": "min"
+                        }
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Bike",
+                                    "equipment_key": "bike",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 10,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Row",
+                                    "equipment_key": "rowing_machine",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 10,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        }
+                    ]
                 }
-              ],
-              "performed": null
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

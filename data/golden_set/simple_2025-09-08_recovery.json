@@ -1,112 +1,121 @@
 {
-  "workout_date": "2025-09-09",
-  "athlete_id": null,
-  "title": "W1 T2",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-09-09",
+    "athlete_id": null,
+    "title": "W1 T2",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "תקין"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Walk",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "תקין"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Walk",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Light Jog",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 2,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Ankle circles",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Hip openers 90/90",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Down Dog Calf Rocks",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Cat cow",
+                                    "prescription": {
+                                        "target_reps": 10,
+                                        "notes": "for lower back"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Light Jog",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "ACT",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Rehab Activations"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Single-leg calf raises",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps_per_side": 12,
+                                "tempo": "2 sec up / 3 sec down"
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Glute bridge hold",
+                            "prescription": {
+                                "target_sets": 2,
+                                "equipment": "mini band",
+                                "target_duration": {
+                                    "value": 12,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
                 }
-              ],
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 2,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
-                {
-                  "exercise_name": "Ankle circles",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Hip openers 90/90",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Down Dog Calf Rocks",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Cat cow",
-                  "prescription": {
-                    "target_reps": 10,
-                    "notes": "for lower back"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "B",
-          "prescription": {
-            "description": "Rehab Activations"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Single-leg calf raises",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps_per_side": 12,
-                "tempo": "2 sec up / 3 sec down"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Glute bridge hold",
-              "prescription": {
-                "target_sets": 2,
-                "target_duration_sec": 12,
-                "equipment": "mini band"
-              },
-              "performed": null
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ],
-  "_audit_note": "CORRECTED: Original JSON parsed REST DAY (Sept 8) with fabricated content. This now reflects actual workout from Sept 9 per source text."
+    ],
+    "_audit_note": "CORRECTED: Original JSON parsed REST DAY (Sept 8) with fabricated content. This now reflects actual workout from Sept 9 per source text."
 }

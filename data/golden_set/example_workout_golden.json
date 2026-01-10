@@ -1,73 +1,79 @@
 {
-  "workout_date": "2025-09-07",
-  "athlete_id": null,
-  "title": "W1 T1 - Test Workout",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-09-07",
+    "athlete_id": null,
+    "title": "W1 T1 - Test Workout",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "General warm up"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Walk",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "General warm up"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Walk",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Light Jog",
+                                    "equipment_key": "treadmill",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Light Jog",
-                  "equipment_key": "treadmill",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "STR",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "3x5 Back Squat @ 100kg"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Back Squat",
+                            "equipment_key": "barbell",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 5,
+                                "target_load": 100,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "10 min stretch"
+                    },
+                    "performed": null
                 }
-              ],
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "B",
-          "prescription": {
-            "description": "3x5 Back Squat @ 100kg"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Back Squat",
-              "equipment_key": "barbell",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 5,
-                "target_load": 100,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "CD",
-          "block_label": "C",
-          "prescription": {
-            "description": "10 min stretch"
-          },
-          "performed": null
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

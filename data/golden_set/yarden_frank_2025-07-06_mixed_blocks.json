@@ -1,205 +1,220 @@
 {
-  "workout_date": "2025-07-06",
-  "athlete_id": null,
-  "title": "W1",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-07-06",
+    "athlete_id": null,
+    "title": "W1",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "MOB",
-          "block_label": "A",
-          "prescription": {
-            "description": "Foam Rolling"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Calves smash",
-              "prescription": {
-                "target_sets": 1,
-                "target_duration_sec": 60,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "Glutes smash",
-              "prescription": {
-                "target_sets": 1,
-                "target_duration_sec": 60,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "T-Spine sausage roll",
-              "prescription": {
-                "target_duration_sec": 60
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "WU",
-          "block_label": "B",
-          "prescription": {
-            "description": "3 rounds warm up circuit"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "circuit_config": {
-                "rounds": 3,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Row",
-                  "prescription": {
-                    "target_distance_m": 200
-                  }
+                    "block_code": "MOB",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "Foam Rolling"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Calves smash",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_sets_per_side": 1,
+                                "target_duration": {
+                                    "value": 60,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "Glutes smash",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_sets_per_side": 1,
+                                "target_duration": {
+                                    "value": 60,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "T-Spine sausage roll",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 60,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Cossack Squat",
-                  "prescription": {
-                    "target_reps": "6/6"
-                  }
+                    "block_code": "WU",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "3 rounds warm up circuit"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "circuit_config": {
+                                "rounds": 3,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Row",
+                                    "prescription": {
+                                        "target_distance": {
+                                            "value": 200,
+                                            "unit": "m"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Cossack Squat",
+                                    "prescription": {
+                                        "target_reps": "6/6"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Mini-Band Glute Bridge",
+                                    "prescription": {
+                                        "target_reps": 8
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Banded Good Morning",
+                                    "prescription": {
+                                        "target_reps": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Inchworm",
+                                    "prescription": {
+                                        "target_reps": 5
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Dead Bugs",
+                                    "prescription": {
+                                        "target_reps": 10
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Mini-Band Glute Bridge",
-                  "prescription": {
-                    "target_reps": 8
-                  }
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "Back Squat: 2x3 @ 40-60%, 1x5 @ 65%, 5x5 @ 75% (T=2-1-X), Rest 120s. Then 3 Rounds: DB Reverse Lunge, DB Suitcase Deadlift"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Back Squat",
+                            "prescription": {
+                                "target_sets": 5,
+                                "target_reps": 5,
+                                "target_percentage": 75,
+                                "tempo": "2-1-X"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Banded Good Morning",
-                  "prescription": {
-                    "target_reps": 10
-                  }
+                    "block_code": "METCON",
+                    "block_label": "D",
+                    "format": "EMOM",
+                    "prescription": {
+                        "description": "EMOM 8 min: 6 Burpee Over Bar, 6 Wall Ball 7kg",
+                        "time_cap": 8,
+                        "time_cap_unit": "min",
+                        "goal": "under 35 sec"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "rounds": 8,
+                        "notes": "כל הסבבים מתחת ל35, הרוב 32-33. כל הברפיז קפיצה ב2 רגליים"
+                    },
+                    "items": [
+                        {
+                            "exercise_name": "Burpee Over Bar",
+                            "prescription": {
+                                "target_reps": 6
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        },
+                        {
+                            "exercise_name": "Wall Ball",
+                            "prescription": {
+                                "target_reps": 6,
+                                "target_load": 7,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 2
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Inchworm",
-                  "prescription": {
-                    "target_reps": 5
-                  }
+                    "block_code": "ACC",
+                    "block_label": "E",
+                    "prescription": {
+                        "description": "Core: 3x12 Frog Reverse Hyper"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Frog Reverse Hyper",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 12
+                            },
+                            "performed": null
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Dead Bugs",
-                  "prescription": {
-                    "target_reps": 10
-                  }
+                    "block_code": "CD",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Cooldown: 3x Couch Stretch 60s/side"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "Couch Stretch",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_sets_per_side": 1,
+                                "target_duration": {
+                                    "value": 60,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "prescription": {
-            "description": "Back Squat: 2x3 @ 40-60%, 1x5 @ 65%, 5x5 @ 75% (T=2-1-X), Rest 120s. Then 3 Rounds: DB Reverse Lunge, DB Suitcase Deadlift"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Back Squat",
-              "prescription": {
-                "target_sets": 5,
-                "target_reps": 5,
-                "target_percentage": 75,
-                "tempo": "2-1-X"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "METCON",
-          "block_label": "D",
-          "format": "EMOM",
-          "prescription": {
-            "description": "EMOM 8 min: 6 Burpee Over Bar, 6 Wall Ball 7kg",
-            "time_cap": 8,
-            "time_cap_unit": "min",
-            "goal": "under 35 sec"
-          },
-          "performed": {
-            "completed": true,
-            "rounds": 8,
-            "notes": "כל הסבבים מתחת ל35, הרוב 32-33. כל הברפיז קפיצה ב2 רגליים"
-          },
-          "items": [
-            {
-              "exercise_name": "Burpee Over Bar",
-              "prescription": {
-                "target_reps": 6
-              },
-              "performed": null,
-              "item_sequence": 1
-            },
-            {
-              "exercise_name": "Wall Ball",
-              "prescription": {
-                "target_reps": 6,
-                "target_load": 7,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 2
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "E",
-          "prescription": {
-            "description": "Core: 3x12 Frog Reverse Hyper"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Frog Reverse Hyper",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 12
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "CD",
-          "block_label": "F",
-          "prescription": {
-            "description": "Cooldown: 3x Couch Stretch 60s/side"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "Couch Stretch",
-              "prescription": {
-                "target_sets": 3,
-                "target_duration_sec": 60,
-                "target_sets_per_side": 1
-              },
-              "performed": null
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

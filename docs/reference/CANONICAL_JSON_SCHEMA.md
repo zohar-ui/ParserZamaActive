@@ -1,7 +1,7 @@
 # 📜 The Constitution: Canonical JSON Schema
 
-**Version:** 3.1.0  
-**Status:** 🔒 LOCKED - This is the ONLY allowed schema  
+**Version:** 3.2.0
+**Status:** 🔒 LOCKED - This is the ONLY allowed schema
 **Last Updated:** January 10, 2026  
 
 **Purpose:** Define the exact, immutable structure that the parser MUST produce. Any deviation is a parser bug.
@@ -64,32 +64,42 @@
 
 ---
 
-### Principle #2: Atomic Types & Scalable Structures (UPDATED in v3.0)
+### Principle #2: Atomic Types & Scalable Structures (UPDATED in v3.2)
 **Numbers are numbers. Strings are strings. Units are explicit.**
 
 ```json
-// ✅ CORRECT - Structured values with units (v3.0)
+// ✅ CORRECT - Structured values with units (v3.2)
 {
-  "target_reps": 5,                    // number
+  "target_reps": 5,                    // number (unitless)
   "target_weight": {                   // object with value + unit
     "value": 100.5,
     "unit": "kg"
   },
-  "target_duration_sec": 45            // number (seconds)
+  "target_duration": {                 // object with value + unit (v3.2)
+    "value": 45,
+    "unit": "sec"
+  },
+  "target_distance": {                 // object with value + unit (v3.2)
+    "value": 500,
+    "unit": "m"
+  }
 }
 
-// ❌ WRONG - Hardcoded units in field names (v2.0 legacy)
+// ❌ WRONG - Hardcoded units in field names (v3.0 legacy)
 {
   "target_reps": "5",
   "target_weight_kg": "100kg",         // Unit in field name = not scalable
-  "target_duration_sec": "45 seconds"
+  "target_duration_sec": 45,           // Plain number (v3.0 - deprecated)
+  "target_meters": 500                 // Plain number (v3.0 - deprecated)
 }
 ```
 
-**Rule:** 
+**Rule:**
 - If the original text says "5", parse it to the number `5`, not the string `"5"`.
-- Weight/load fields MUST use `{value, unit}` structure (v3.0+).
-- Supported units: `"kg"`, `"lbs"`, `"g"` (grams for resistance bands).
+- ALL measurement fields MUST use `{value, unit}` structure (v3.2+):
+  - **Weight/load:** `"kg"`, `"lbs"`, `"g"` (grams for resistance bands)
+  - **Duration:** `"sec"`, `"min"`, `"hours"`
+  - **Distance:** `"m"`, `"km"`, `"yards"`, `"miles"`
 
 ---
 
@@ -453,18 +463,29 @@ interface BlockPrescription {
   description?: string;           // Free text description
   target_sets?: number;           // How many sets total
   target_rounds?: number;         // For circuits/metcons
-  target_duration_sec?: number;   // Total time for the block (in seconds)
-  target_rest_sec?: number;       // Rest between sets (in seconds)
-  target_rest_min?: number;       // Rest between sets (in minutes)
+  target_duration?: {             // Total time for the block (v3.2)
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
+  target_rest?: {                 // Rest between sets (v3.2)
+    value: number;
+    unit: "sec" | "min";
+  };
   target_tempo?: string;          // "3-0-2-0" format (eccentric-pause-concentric-pause)
   notes?: string;                 // Any additional prescription notes
-  
+
   // AMRAP specific
-  target_amrap_duration_sec?: number;
-  
+  target_amrap_duration?: {       // AMRAP time limit (v3.2)
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
+
   // For Time specific
   target_fortime_rounds?: number;
-  target_fortime_cap_sec?: number;
+  target_fortime_cap?: {          // Time cap (v3.2)
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
   
   // NEW v3.1: Buy-in/Buy-out structure
   buy_in?: BlockItem[];           // Exercises before main work (e.g., "400m Run before AMRAP")
@@ -481,8 +502,8 @@ interface BlockPrescription {
 
 **Field Rules:**
 - All fields are optional (some blocks have minimal prescription).
-- Duration fields: ALWAYS in seconds (convert minutes to seconds: 5min = 300sec).
-- Rest: Can be in seconds OR minutes (use the unit from original text).
+- Duration fields: Use `{value, unit}` structure (v3.2). Preserve original units from text.
+- Rest: Use `{value, unit}` structure (v3.2). Can be "sec" or "min".
 - Tempo: String format "eccentric-bottom pause-concentric-top pause" (e.g., "3-0-1-0").
 - **Buy-in/Buy-out:** Use when workout has exercises before/after main work. Can have buy_in only, buy_out only, or both.
 - **Team Format:** Use when workout involves partners/teams. `scoring` determines how to record individual athlete results:
@@ -499,26 +520,35 @@ interface BlockPerformed {
   completed: boolean;             // Did they finish the block?
   did_complete?: boolean;         // Alias for 'completed' (legacy)
   notes?: string;                 // Free text notes about performance
-  
+
   actual_sets?: number;           // How many sets done
   actual_rounds?: number;         // For circuits
-  actual_duration_sec?: number;   // Total time taken (in seconds)
-  actual_weight_kg?: number;      // If the whole block used same weight
+  actual_duration?: {             // Total time taken (v3.2)
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
+  actual_weight?: {               // If the whole block used same weight (v3.0)
+    value: number;
+    unit: "kg" | "lbs" | "g";
+  };
   actual_reps?: number;           // If the whole block used same reps
   actual_sets_per_side?: number;  // For unilateral movements
-  
+
   // For AMRAP
   actual_rounds_completed?: number;
   actual_partial_reps?: number;   // Reps into incomplete round
-  
+
   // For Time
-  actual_time_sec?: number;       // Time to complete
+  actual_time?: {                 // Time to complete (v3.2)
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
 }
 ```
 
 **Field Rules:**
 - `completed`: REQUIRED if performed object exists.
-- Duration: ALWAYS in seconds.
+- Duration: Use `{value, unit}` structure (v3.2).
 - Block-level fields: Only use if ALL items in block share the same value.
 - **Team workouts:** If `team_format.scoring` is `"individual_contribution"`, record ONLY the athlete's personal performance, NOT the team total.
 
@@ -584,10 +614,12 @@ interface ItemPrescription {
     unit: "kg" | "lbs" | "g";
   };
   target_percentage_1rm?: number;   // "@ 70%" = 0.70
-  
-  // Duration
-  target_duration_sec?: number;
-  target_duration_min?: number;     // Minutes (if text uses minutes explicitly)
+
+  // Duration (v3.2 - unified structure)
+  target_duration?: {
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
   
   // Intensity
   target_rpe?: number;              // 1-10 scale
@@ -613,7 +645,10 @@ interface ItemPrescription {
   target_pace_per_500m?: string;    // "2:00" format
   target_watts?: number;
   target_calories?: number;
-  target_meters?: number;
+  target_distance?: {               // Distance target (v3.2)
+    value: number;
+    unit: "m" | "km" | "yards" | "miles";
+  };
   
   // Reps with breakdown
   target_reps_forward?: number;     // "8 forward, 8 backward"
@@ -656,7 +691,14 @@ interface ItemPerformed {
     value: number;
     unit: "kg" | "lbs" | "g";
   };
-  actual_duration_sec?: number;
+  actual_duration?: {                // v3.2 structure
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
+  actual_distance?: {                // v3.2 structure
+    value: number;
+    unit: "m" | "km" | "yards" | "miles";
+  };
   actual_sets_per_side?: number;
   
   // Intensity
@@ -673,7 +715,8 @@ interface ItemPerformed {
 
 **Field Rules:**
 - `actual_weight`: MUST use `{value, unit}` structure. Never `actual_weight_kg` or `actual_weight_lbs`.
-- Duration: ALWAYS in seconds.
+- `actual_duration`: MUST use `{value, unit}` structure (v3.2). Never plain number.
+- `actual_distance`: MUST use `{value, unit}` structure (v3.2). Never plain number.
 - `sets`: Use for detailed set-by-set breakdown. Otherwise use aggregate fields.
 
 ---
@@ -688,7 +731,14 @@ interface SetResult {
     value: number;
     unit: "kg" | "lbs" | "g";
   };
-  duration_sec?: number;
+  duration?: {                      // v3.2 structure
+    value: number;
+    unit: "sec" | "min" | "hours";
+  };
+  distance?: {                      // v3.2 structure
+    value: number;
+    unit: "m" | "km" | "yards" | "miles";
+  };
   rpe?: number;
   rir?: number;
   set_technique?: SetTechnique;     // Advanced techniques (NEW in v3.0)
@@ -1872,7 +1922,7 @@ Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentr
 **Structure:** Fixed time, maximize rounds
 
 **Key Fields:**
-- `target_amrap_duration_sec`: Time limit
+- `target_amrap_duration`: Time limit (v3.2)
 - `actual_rounds_completed`: Full rounds done
 - `actual_partial_reps`: Reps into incomplete round
 
@@ -1880,7 +1930,10 @@ Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentr
 ```json
 {
   "prescription": {
-    "target_amrap_duration_sec": 720
+    "target_amrap_duration": {
+      "value": 12,
+      "unit": "min"
+    }
   },
   "performed": {
     "actual_rounds_completed": 5,
@@ -1894,18 +1947,24 @@ Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentr
 
 **Key Fields:**
 - `target_fortime_rounds`: Rounds to complete
-- `target_fortime_cap_sec`: Time cap
-- `actual_time_sec`: Time taken
+- `target_fortime_cap`: Time cap (v3.2)
+- `actual_time`: Time taken (v3.2)
 
 **Example:**
 ```json
 {
   "prescription": {
     "target_fortime_rounds": 5,
-    "target_fortime_cap_sec": 900
+    "target_fortime_cap": {
+      "value": 15,
+      "unit": "min"
+    }
   },
   "performed": {
-    "actual_time_sec": 694
+    "actual_time": {
+      "value": 694,
+      "unit": "sec"
+    }
   }
 }
 ```
@@ -1915,7 +1974,7 @@ Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentr
 
 **Key Fields:**
 - `circuit_config.type`: "emom"
-- `target_duration_sec`: 60 per station
+- `target_duration`: 60 seconds per station (v3.2)
 
 **Example:**
 ```json
@@ -1931,8 +1990,8 @@ Tempo controls the speed of each rep phase. Format: **"Eccentric-Pause1-Concentr
 **Structure:** Alternating work and rest
 
 **Key Fields:**
-- `target_duration_sec`: Work time
-- `target_rest_sec`: Rest time
+- `target_duration`: Work time (v3.2)
+- `target_rest`: Rest time (v3.2)
 - `target_rounds`: Number of intervals
 
 **Common Ratios:**
@@ -2204,7 +2263,10 @@ Result: 5 rounds + 15 reps
   "block_code": "METCON",
   "block_label": "A",
   "prescription": {
-    "target_amrap_duration_sec": 720,
+    "target_amrap_duration": {
+      "value": 12,
+      "unit": "min"
+    },
     "target_rounds": null
   },
   "performed": {
@@ -2257,13 +2319,19 @@ Result: 5 rounds + 15 reps
     {
       "exercise_name": "Bike",
       "prescription": {
-        "target_duration_sec": 300
+        "target_duration": {
+          "value": 5,
+          "unit": "min"
+        }
       }
     },
     {
       "exercise_name": "Row",
       "prescription": {
-        "target_duration_sec": 300,
+        "target_duration": {
+          "value": 5,
+          "unit": "min"
+        },
         "target_stroke_rate_min": 22,
         "target_stroke_rate_max": 24,
         "target_damper_min": 5,
@@ -2299,13 +2367,21 @@ Result: Completed buy-in in 1:45, got 6 rounds + 10 reps, buy-out in 1:52
   "block_code": "METCON",
   "block_label": "A",
   "prescription": {
-    "target_amrap_duration_sec": 600,
+    "target_amrap_duration": {
+      "value": 10,
+      "unit": "min"
+    },
     "buy_in": [
       {
         "item_sequence": 1,
         "exercise_name": "Run",
         "equipment_key": "bodyweight",
-        "prescription": { "target_meters": 400 },
+        "prescription": {
+          "target_distance": {
+            "value": 400,
+            "unit": "m"
+          }
+        },
         "performed": null
       }
     ],
@@ -2314,7 +2390,12 @@ Result: Completed buy-in in 1:45, got 6 rounds + 10 reps, buy-out in 1:52
         "item_sequence": 1,
         "exercise_name": "Run",
         "equipment_key": "bodyweight",
-        "prescription": { "target_meters": 400 },
+        "prescription": {
+          "target_distance": {
+            "value": 400,
+            "unit": "m"
+          }
+        },
         "performed": null
       }
     ]
@@ -2372,7 +2453,10 @@ My contribution: 5 rounds (did half)
   "block_code": "METCON",
   "block_label": "A",
   "prescription": {
-    "target_amrap_duration_sec": 1800,
+    "target_amrap_duration": {
+      "value": 30,
+      "unit": "min"
+    },
     "team_format": {
       "type": "partners",
       "scoring": "individual_contribution",
@@ -2407,7 +2491,10 @@ My contribution: 5 rounds (did half)
       "exercise_name": "Run",
       "equipment_key": "bodyweight",
       "prescription": {
-        "target_meters": 400,
+        "target_distance": {
+          "value": 400,
+          "unit": "m"
+        },
         "notes": "Together"
       },
       "performed": null
@@ -2446,14 +2533,22 @@ Time: 12:34
         "item_sequence": 1,
         "exercise_name": "Run",
         "equipment_key": "bodyweight",
-        "prescription": { "target_meters": 800 },
+        "prescription": {
+          "target_distance": {
+            "value": 800,
+            "unit": "m"
+          }
+        },
         "performed": null
       }
     ]
   },
   "performed": {
     "completed": true,
-    "actual_time_sec": 754
+    "actual_time": {
+      "value": 754,
+      "unit": "sec"
+    }
   },
   "items": [
     {
@@ -2597,6 +2692,21 @@ Time: 12:34
 
 ## 🔒 Schema Version History
 
+- **v3.2.0** (Jan 10, 2026): Unified measurement structure - Duration and Distance
+  - **Breaking Changes:**
+    - Duration fields MUST use `{value, unit}` structure:
+      - `target_duration_sec` → `target_duration: {value, unit: "sec"}`
+      - `target_duration_min` → `target_duration: {value, unit: "min"}`
+      - `target_amrap_duration_sec` → `target_amrap_duration: {value, unit}`
+      - `target_fortime_cap_sec` → `target_fortime_cap: {value, unit}`
+      - `actual_duration_sec` → `actual_duration: {value, unit}`
+      - `actual_time_sec` → `actual_time: {value, unit}`
+    - Distance fields MUST use `{value, unit}` structure:
+      - `target_meters` → `target_distance: {value, unit: "m"}`
+      - `actual_meters` → `actual_distance: {value, unit: "m"}`
+    - Supported units: Duration: `"sec"`, `"min"`, `"hours"` | Distance: `"m"`, `"km"`, `"yards"`, `"miles"`
+  - **Rationale:** Achieve consistency across ALL measurement types (weight, duration, distance)
+  - **Migration:** All golden set files updated (19 files)
 - **v3.1.0** (Jan 10, 2026): Buy-in/Buy-out + Team format support
   - **New Features:**
     - `buy_in?: BlockItem[]` - Exercises before main work

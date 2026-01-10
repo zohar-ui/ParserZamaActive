@@ -1,263 +1,305 @@
 {
-  "workout_date": "2025-05-28",
-  "athlete_id": null,
-  "title": "B0W0 Upper-Body Screen",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "blocks": [
+    "workout_date": "2025-05-28",
+    "athlete_id": null,
+    "title": "B0W0 Upper-Body Screen",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "block_title": "Warm up",
-          "prescription": {
-            "target_sets": 1,
-            "notes": "A1) 3 rounds walk/run + A2) 3 min air bike intervals"
-          },
-          "performed": {
-            "actual_sets": 1,
-            "notes": "Walk + run felt good, minimal back tightness. Air bike intervals excellent."
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "circuit_config": {
-                "rounds": 3,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
+            "session_code": null,
+            "blocks": [
                 {
-                  "exercise_name": "Walk",
-                  "prescription": {
-                    "target_duration_min": 3,
-                    "notes": "Tall posture, nasal breathing"
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "block_title": "Warm up",
+                    "prescription": {
+                        "target_sets": 1,
+                        "notes": "A1) 3 rounds walk/run + A2) 3 min air bike intervals"
+                    },
+                    "performed": {
+                        "actual_sets": 1,
+                        "notes": "Walk + run felt good, minimal back tightness. Air bike intervals excellent."
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "circuit_config": {
+                                "rounds": 3,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Walk",
+                                    "prescription": {
+                                        "notes": "Tall posture, nasal breathing",
+                                        "target_duration": {
+                                            "value": 3,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Run",
+                                    "prescription": {
+                                        "target_speed_kph": 8.5,
+                                        "target_duration": {
+                                            "value": 2,
+                                            "unit": "min"
+                                        }
+                                    },
+                                    "performed": {
+                                        "actual_duration_min": 2,
+                                        "actual_rounds": 3,
+                                        "notes": "Felt slight back muscle tightness but continued"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "item_sequence": 2,
+                            "prescription": {
+                                "target_intervals": "25s easy / 5s faster",
+                                "target_duration": {
+                                    "value": 3,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": {
+                                "actual_duration_min": 3,
+                                "notes": "Excellent, really felt legs working"
+                            },
+                            "exercise_name": "Air Bike"
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Run",
-                  "prescription": {
-                    "target_duration_min": 2,
-                    "target_speed_kph": 8.5
-                  },
-                  "performed": {
-                    "actual_duration_min": 2,
-                    "actual_rounds": 3,
-                    "notes": "Felt slight back muscle tightness but continued"
-                  }
+                    "block_code": "MOB",
+                    "block_label": "B",
+                    "block_title": "Mobility",
+                    "prescription": {
+                        "target_sets": 1
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "prescription": {
+                                "target_sets": 2,
+                                "notes": "Slow roll, exhale on extension, keep hips heavy",
+                                "target_duration": {
+                                    "value": 1.5,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null,
+                            "exercise_name": "T Spine Foam Roll"
+                        },
+                        {
+                            "item_sequence": 2,
+                            "prescription": {
+                                "target_sets": 3,
+                                "notes": "Passive shoulder traction, relax neck",
+                                "target_duration": {
+                                    "value": 12.5,
+                                    "unit": "sec"
+                                }
+                            },
+                            "performed": null,
+                            "exercise_name": "Dead Hang"
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACT",
+                    "block_label": "C",
+                    "block_title": "Activations",
+                    "prescription": {
+                        "target_sets": 1
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 12,
+                                "notes": "Lock elbows, protract/retract scapula only"
+                            },
+                            "performed": null,
+                            "exercise_name": "Scapular Push Up"
+                        },
+                        {
+                            "item_sequence": 2,
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 10,
+                                "notes": "From dead-hang, depress & retract, pause 1s at top"
+                            },
+                            "performed": null,
+                            "exercise_name": "Scapular Pull Up"
+                        }
+                    ]
+                },
+                {
+                    "block_code": "SKILL",
+                    "block_label": "D",
+                    "block_title": "Main - Max Pull up Test",
+                    "prescription": {
+                        "target_sets": 2,
+                        "notes": "1 min AMRAP, first set unbroken. Full hang, chin above bar, no kipping",
+                        "target_duration": {
+                            "value": 1,
+                            "unit": "min"
+                        },
+                        "target_rest": {
+                            "value": 4,
+                            "unit": "min"
+                        }
+                    },
+                    "performed": {
+                        "actual_sets": 2,
+                        "notes": "Felt heavy, back bothered slightly"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "prescription": {
+                                "target_reps": "max",
+                                "target_duration": {
+                                    "value": 1,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": {
+                                "actual_reps": [
+                                    10,
+                                    9
+                                ],
+                                "notes": "Set 1: 10 reps, Set 2: 9 reps. Body felt heavy."
+                            },
+                            "exercise_name": "Pull Up"
+                        }
+                    ]
+                },
+                {
+                    "block_code": "SKILL",
+                    "block_label": "E",
+                    "block_title": "Main - Push ups Test",
+                    "prescription": {
+                        "target_sets": 2,
+                        "notes": "1 min AMRAP, first set unbroken. Straight line, chest touches floor, full elbow lock",
+                        "target_duration": {
+                            "value": 1,
+                            "unit": "min"
+                        },
+                        "target_rest": {
+                            "value": 4,
+                            "unit": "min"
+                        }
+                    },
+                    "performed": {
+                        "actual_sets": 2,
+                        "notes": "Expected more, surprised to struggle"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "prescription": {
+                                "target_reps": "max",
+                                "target_duration": {
+                                    "value": 1,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": {
+                                "actual_reps": [
+                                    26,
+                                    20
+                                ],
+                                "notes": "Set 1: 26 reps, Set 2: 20 reps"
+                            },
+                            "exercise_name": "Push Up"
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "F",
+                    "block_title": "Core Circuit",
+                    "prescription": {
+                        "notes": "Rest 20-30s between exercises, 60s after each round (RPE ≤ 6)",
+                        "target_rest": {
+                            "value": 30,
+                            "unit": "sec"
+                        }
+                    },
+                    "performed": {
+                        "actual_rounds": 3,
+                        "notes": "Surprised at core weakness. Static exercises produced trembling. Cable press felt good. Back extension hit lower back and hamstrings."
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "circuit_config": {
+                                "rounds": 3,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 60
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Side Plank",
+                                    "prescription": {
+                                        "target_sets_per_side": 1,
+                                        "target_duration": {
+                                            "value": 37.5,
+                                            "unit": "sec"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Hollow Body Hold",
+                                    "prescription": {
+                                        "target_position": "tuck",
+                                        "target_duration": {
+                                            "value": 25,
+                                            "unit": "sec"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Pallof Press",
+                                    "prescription": {
+                                        "target_reps": 12,
+                                        "target_sets_per_side": 1,
+                                        "target_pause_sec": 2,
+                                        "equipment": "cable"
+                                    },
+                                    "performed": {
+                                        "actual_reps": 12,
+                                        "actual_sets_per_side": 1,
+                                        "notes": "Nice exercise, not sure felt it correctly"
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Back Extension",
+                                    "prescription": {
+                                        "target_reps": 10,
+                                        "target_pause_sec": 2,
+                                        "equipment": "45_degree_roman_chair",
+                                        "notes": "2s squeeze at top"
+                                    },
+                                    "performed": {
+                                        "actual_reps": 10,
+                                        "notes": "Nice, felt lower back and hamstrings"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "item_sequence": 2,
-              "prescription": {
-                "target_duration_min": 3,
-                "target_intervals": "25s easy / 5s faster"
-              },
-              "performed": {
-                "actual_duration_min": 3,
-                "notes": "Excellent, really felt legs working"
-              },
-              "exercise_name": "Air Bike"
-            }
-          ]
-        },
-        {
-          "block_code": "MOB",
-          "block_label": "B",
-          "block_title": "Mobility",
-          "prescription": {
-            "target_sets": 1
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "prescription": {
-                "target_sets": 2,
-                "target_duration_min": 1.5,
-                "notes": "Slow roll, exhale on extension, keep hips heavy"
-              },
-              "performed": null,
-              "exercise_name": "T Spine Foam Roll"
-            },
-            {
-              "item_sequence": 2,
-              "prescription": {
-                "target_sets": 3,
-                "target_duration_sec": 12.5,
-                "notes": "Passive shoulder traction, relax neck"
-              },
-              "performed": null,
-              "exercise_name": "Dead Hang"
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "C",
-          "block_title": "Activations",
-          "prescription": {
-            "target_sets": 1
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 12,
-                "notes": "Lock elbows, protract/retract scapula only"
-              },
-              "performed": null,
-              "exercise_name": "Scapular Push Up"
-            },
-            {
-              "item_sequence": 2,
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 10,
-                "notes": "From dead-hang, depress & retract, pause 1s at top"
-              },
-              "performed": null,
-              "exercise_name": "Scapular Pull Up"
-            }
-          ]
-        },
-        {
-          "block_code": "SKILL",
-          "block_label": "D",
-          "block_title": "Main - Max Pull up Test",
-          "prescription": {
-            "target_sets": 2,
-            "target_duration_min": 1,
-            "target_rest_min": 4,
-            "notes": "1 min AMRAP, first set unbroken. Full hang, chin above bar, no kipping"
-          },
-          "performed": {
-            "actual_sets": 2,
-            "notes": "Felt heavy, back bothered slightly"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "prescription": {
-                "target_reps": "max",
-                "target_duration_min": 1
-              },
-              "performed": {
-                "actual_reps": [
-                  10,
-                  9
-                ],
-                "notes": "Set 1: 10 reps, Set 2: 9 reps. Body felt heavy."
-              },
-              "exercise_name": "Pull Up"
-            }
-          ]
-        },
-        {
-          "block_code": "SKILL",
-          "block_label": "E",
-          "block_title": "Main - Push ups Test",
-          "prescription": {
-            "target_sets": 2,
-            "target_duration_min": 1,
-            "target_rest_min": 4,
-            "notes": "1 min AMRAP, first set unbroken. Straight line, chest touches floor, full elbow lock"
-          },
-          "performed": {
-            "actual_sets": 2,
-            "notes": "Expected more, surprised to struggle"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "prescription": {
-                "target_reps": "max",
-                "target_duration_min": 1
-              },
-              "performed": {
-                "actual_reps": [
-                  26,
-                  20
-                ],
-                "notes": "Set 1: 26 reps, Set 2: 20 reps"
-              },
-              "exercise_name": "Push Up"
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "F",
-          "block_title": "Core Circuit",
-          "prescription": {
-            "target_rest_sec": 30,
-            "notes": "Rest 20-30s between exercises, 60s after each round (RPE ≤ 6)"
-          },
-          "performed": {
-            "actual_rounds": 3,
-            "notes": "Surprised at core weakness. Static exercises produced trembling. Cable press felt good. Back extension hit lower back and hamstrings."
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "circuit_config": {
-                "rounds": 3,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 60
-              },
-              "performed": null,
-              "exercises": [
-                {
-                  "exercise_name": "Side Plank",
-                  "prescription": {
-                    "target_duration_sec": 37.5,
-                    "target_sets_per_side": 1
-                  }
-                },
-                {
-                  "exercise_name": "Hollow Body Hold",
-                  "prescription": {
-                    "target_duration_sec": 25,
-                    "target_position": "tuck"
-                  }
-                },
-                {
-                  "exercise_name": "Pallof Press",
-                  "prescription": {
-                    "target_reps": 12,
-                    "target_sets_per_side": 1,
-                    "target_pause_sec": 2,
-                    "equipment": "cable"
-                  },
-                  "performed": {
-                    "actual_reps": 12,
-                    "actual_sets_per_side": 1,
-                    "notes": "Nice exercise, not sure felt it correctly"
-                  }
-                },
-                {
-                  "exercise_name": "Back Extension",
-                  "prescription": {
-                    "target_reps": 10,
-                    "target_pause_sec": 2,
-                    "equipment": "45_degree_roman_chair",
-                    "notes": "2s squeeze at top"
-                  },
-                  "performed": {
-                    "actual_reps": 10,
-                    "notes": "Nice, felt lower back and hamstrings"
-                  }
-                }
-              ]
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

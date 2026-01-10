@@ -1,210 +1,216 @@
 {
-  "workout_date": "2025-09-14",
-  "athlete_id": null,
-  "title": "Workout",
-  "status": "completed",
-  "warmup_objective": "Rebuild posterior chain strength and trunk control without provoking symptoms",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-09-14",
+    "athlete_id": null,
+    "title": "Workout",
+    "status": "completed",
+    "warmup_objective": "Rebuild posterior chain strength and trunk control without provoking symptoms",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "Breathing, mobility, and easy row"
-          },
-          "performed": null,
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_name": "90/90 Diaphragmatic Breathing",
-              "prescription": {
-                "target_duration_min": 2
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "exercise_name": "T-Spine Open Books",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 8,
-                "notes": "slow!"
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 3,
-              "exercise_name": "90/90 Hips Switch",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 8
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 4,
-              "exercise_name": "Ankle circles",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 5,
-              "exercise_name": "Knee to wall",
-              "prescription": {
-                "target_sets": 1,
-                "target_reps_per_side": 10
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 6,
-              "exercise_name": "Dead Bug",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps_per_side": 6
-              },
-              "performed": null
-            },
-            {
-              "item_sequence": 7,
-              "exercise_name": "Row",
-              "prescription": {
-                "target_duration_min": 4,
-                "notes": "easy",
-                "target_spm_min": 18,
-                "target_spm_max": 20
-              },
-              "performed": null
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "B",
-          "prescription": {
-            "description": "DL Block Pull (below knee): Warm-ups, then 4x5 @ 55kg @ RPE 5-6",
-            "target_sets": 4,
-            "target_reps": 5,
-            "target_load": 55,
-            "load_unit": "kg",
-            "tempo": "3-1-1",
-            "rest": "2:00",
-            "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension",
-            "target_rpe_min": 5,
-            "target_rpe_max": 6
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DL Block Pull",
-              "prescription": {
-                "target_sets": 4,
-                "target_reps": 5,
-                "target_load": 55,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "STR",
-          "block_label": "C",
-          "prescription": {
-            "description": "DB Romanian Deadlift: Warm-up 2x8 @ 8kg, then 3x8 @ 2x12kg @ RPE 6",
-            "target_sets": 3,
-            "target_reps": 8,
-            "target_load": 12,
-            "load_unit": "kg",
-            "target_rpe": 6,
-            "tempo": "2-1-2",
-            "rest": "1:30",
-            "notes": "Stop before lumbar flexion, long hamstrings"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "DB Romanian Deadlift",
-              "prescription": {
-                "target_sets": 3,
-                "target_reps": 8,
-                "target_load": 12,
-                "load_unit": "kg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            }
-          ]
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "D",
-          "prescription": {
-            "description": "BB Hip Thrust: 3x10 @ 40kg @ RPE 6-7",
-            "tempo": "2-0-2",
-            "rest": "1:30",
-            "notes": "Chin tucked, ribs down, push through heels"
-          },
-          "performed": null
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "E",
-          "prescription": {
-            "description": "One arm chest supported row: 3x12/12 @ 16kg @ RPE 6",
-            "rest": "60-90s",
-            "notes": "Elbow to hip"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "נראה לי המשקל היה קצת מוגזם כי היה לי מאאאאוד קשה"
-          }
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "F",
-          "prescription": {
-            "description": "Band Pallof Press: 3x10/10 (2s hold at full extension)",
-            "rest": "60s",
-            "notes": "no trunk rotation"
-          },
-          "performed": null
-        },
-        {
-          "block_code": "ACC",
-          "block_label": "G",
-          "prescription": {
-            "description": "Suitcase Carry: 3x30/30m @ 18-20kg @ RPE 6",
-            "rest": "60-90s",
-            "notes": "Tall posture, shorten distance if left ankle feels unstable"
-          },
-          "performed": null
-        },
-        {
-          "block_code": "SS",
-          "block_label": "H",
-          "prescription": {
-            "description": "Row: 10 min @ 20-22 spm"
-          },
-          "performed": null
-        },
-        {
-          "block_code": "CD",
-          "block_label": "I",
-          "prescription": {
-            "description": "Left ankle rehab: Alphabet with foot, Eversion/Inversion with band 2x12/12, Eccentric Calf Raise 3x15/15 (3s down), Toe/Heel Walk 2x20m",
-            "notes": "Can be done at home"
-          },
-          "performed": null
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
+                {
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "Breathing, mobility, and easy row"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_name": "90/90 Diaphragmatic Breathing",
+                            "prescription": {
+                                "target_duration": {
+                                    "value": 2,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "exercise_name": "T-Spine Open Books",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 8,
+                                "notes": "slow!"
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 3,
+                            "exercise_name": "90/90 Hips Switch",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 8
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 4,
+                            "exercise_name": "Ankle circles",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 5,
+                            "exercise_name": "Knee to wall",
+                            "prescription": {
+                                "target_sets": 1,
+                                "target_reps_per_side": 10
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 6,
+                            "exercise_name": "Dead Bug",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps_per_side": 6
+                            },
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 7,
+                            "exercise_name": "Row",
+                            "prescription": {
+                                "notes": "easy",
+                                "target_spm_min": 18,
+                                "target_spm_max": 20,
+                                "target_duration": {
+                                    "value": 4,
+                                    "unit": "min"
+                                }
+                            },
+                            "performed": null
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "DL Block Pull (below knee): Warm-ups, then 4x5 @ 55kg @ RPE 5-6",
+                        "target_sets": 4,
+                        "target_reps": 5,
+                        "target_load": 55,
+                        "load_unit": "kg",
+                        "tempo": "3-1-1",
+                        "rest": "2:00",
+                        "notes": "Lats on, brace first, shoulders over bar, no lumbar over-extension",
+                        "target_rpe_min": 5,
+                        "target_rpe_max": 6
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DL Block Pull",
+                            "prescription": {
+                                "target_sets": 4,
+                                "target_reps": 5,
+                                "target_load": 55,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "STR",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "DB Romanian Deadlift: Warm-up 2x8 @ 8kg, then 3x8 @ 2x12kg @ RPE 6",
+                        "target_sets": 3,
+                        "target_reps": 8,
+                        "target_load": 12,
+                        "load_unit": "kg",
+                        "target_rpe": 6,
+                        "tempo": "2-1-2",
+                        "rest": "1:30",
+                        "notes": "Stop before lumbar flexion, long hamstrings"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "DB Romanian Deadlift",
+                            "prescription": {
+                                "target_sets": 3,
+                                "target_reps": 8,
+                                "target_load": 12,
+                                "load_unit": "kg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "BB Hip Thrust: 3x10 @ 40kg @ RPE 6-7",
+                        "tempo": "2-0-2",
+                        "rest": "1:30",
+                        "notes": "Chin tucked, ribs down, push through heels"
+                    },
+                    "performed": null
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "E",
+                    "prescription": {
+                        "description": "One arm chest supported row: 3x12/12 @ 16kg @ RPE 6",
+                        "rest": "60-90s",
+                        "notes": "Elbow to hip"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "נראה לי המשקל היה קצת מוגזם כי היה לי מאאאאוד קשה"
+                    }
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "F",
+                    "prescription": {
+                        "description": "Band Pallof Press: 3x10/10 (2s hold at full extension)",
+                        "rest": "60s",
+                        "notes": "no trunk rotation"
+                    },
+                    "performed": null
+                },
+                {
+                    "block_code": "ACC",
+                    "block_label": "G",
+                    "prescription": {
+                        "description": "Suitcase Carry: 3x30/30m @ 18-20kg @ RPE 6",
+                        "rest": "60-90s",
+                        "notes": "Tall posture, shorten distance if left ankle feels unstable"
+                    },
+                    "performed": null
+                },
+                {
+                    "block_code": "SS",
+                    "block_label": "H",
+                    "prescription": {
+                        "description": "Row: 10 min @ 20-22 spm"
+                    },
+                    "performed": null
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "I",
+                    "prescription": {
+                        "description": "Left ankle rehab: Alphabet with foot, Eversion/Inversion with band 2x12/12, Eccentric Calf Raise 3x15/15 (3s down), Toe/Heel Walk 2x20m",
+                        "notes": "Can be done at home"
+                    },
+                    "performed": null
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

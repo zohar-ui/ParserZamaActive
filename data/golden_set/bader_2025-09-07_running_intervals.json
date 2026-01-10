@@ -1,180 +1,190 @@
 {
-  "workout_date": "2025-09-07",
-  "athlete_id": null,
-  "title": "W1 T1",
-  "status": "completed",
-  "sessions": [
-    {
-      "session_code": null,
-      "session_time": null,
-      "blocks": [
+    "workout_date": "2025-09-07",
+    "athlete_id": null,
+    "title": "W1 T1",
+    "status": "completed",
+    "sessions": [
         {
-          "block_code": "WU",
-          "block_label": "A",
-          "prescription": {
-            "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
-          },
-          "performed": {
-            "completed": true,
-            "notes": "אין מגבוליות"
-          },
-          "items": [
-            {
-              "item_sequence": 1,
-              "exercise_options": [
+            "session_code": null,
+            "session_time": null,
+            "blocks": [
                 {
-                  "exercise_name": "Walk",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "WU",
+                    "block_label": "A",
+                    "prescription": {
+                        "description": "5 min Walk / light Jog, then 2 Rounds of mobility"
+                    },
+                    "performed": {
+                        "completed": true,
+                        "notes": "אין מגבוליות"
+                    },
+                    "items": [
+                        {
+                            "item_sequence": 1,
+                            "exercise_options": [
+                                {
+                                    "exercise_name": "Walk",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Light Jog",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_duration": {
+                                            "value": 5,
+                                            "unit": "min"
+                                        }
+                                    }
+                                }
+                            ],
+                            "performed": null
+                        },
+                        {
+                            "item_sequence": 2,
+                            "circuit_config": {
+                                "rounds": 2,
+                                "type": "for_quality",
+                                "rest_between_rounds_sec": 0
+                            },
+                            "performed": null,
+                            "exercises": [
+                                {
+                                    "exercise_name": "Ankle circles",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Hip openers 90/90",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Down Dog Calf Rocks",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps_per_side": 10
+                                    }
+                                },
+                                {
+                                    "exercise_name": "Cat cow",
+                                    "equipment_key": "bodyweight",
+                                    "prescription": {
+                                        "target_reps": 10,
+                                        "notes": "for lower back"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "exercise_name": "Light Jog",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_duration_min": 5
-                  }
+                    "block_code": "ACT",
+                    "block_label": "B",
+                    "prescription": {
+                        "description": "Rehab Activations: calf raises, toe walks, glute bridge, dead bug"
+                    },
+                    "performed": null,
+                    "items": [
+                        {
+                            "exercise_name": "Single-leg calf raises",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 12,
+                                "tempo": "2 sec up / 3 sec down",
+                                "notes": "per leg"
+                            },
+                            "performed": null,
+                            "item_sequence": 1
+                        },
+                        {
+                            "exercise_name": "Toe walks",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 2,
+                                "notes": "light pressure on forefoot",
+                                "target_distance": {
+                                    "value": 15,
+                                    "unit": "m"
+                                }
+                            },
+                            "performed": null,
+                            "item_sequence": 2
+                        },
+                        {
+                            "exercise_name": "Glute bridge hold",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_duration": 30,
+                                "duration_unit": "sec",
+                                "notes": "squeeze glutes, keep ribs down"
+                            },
+                            "performed": null,
+                            "item_sequence": 3
+                        },
+                        {
+                            "exercise_name": "Dead bug",
+                            "equipment_key": "bodyweight",
+                            "prescription": {
+                                "target_sets": 2,
+                                "target_reps": 8,
+                                "notes": "per side, focus on lumbar control"
+                            },
+                            "performed": null,
+                            "item_sequence": 4
+                        }
+                    ]
+                },
+                {
+                    "block_code": "INTV",
+                    "block_label": "C",
+                    "prescription": {
+                        "description": "5 x (400m easy run + 100m Walk)",
+                        "target_rounds": 5,
+                        "pace": "6:20 to 6:40 per km",
+                        "breathing_cue": "3 steps inhale + 4 steps exhale",
+                        "target_rpe_min": 4,
+                        "target_rpe_max": 5
+                    },
+                    "performed": {
+                        "completed": true,
+                        "rounds": 5,
+                        "notes": "הריצה הייתה בקצב טוב, אין כאבים ברגלים, בעיה בנשימה כבדה בסיבוב השלישי התאזנה קצת"
+                    }
+                },
+                {
+                    "block_code": "SKILL",
+                    "block_label": "D",
+                    "prescription": {
+                        "description": "Weekly 1 km: Run 1 km continuous at easy steady pace",
+                        "notes": "Surface: outdoors or treadmill 1%, No sprint finish",
+                        "target_distance": {
+                            "value": 1,
+                            "unit": "km"
+                        }
+                    },
+                    "performed": null
+                },
+                {
+                    "block_code": "CD",
+                    "block_label": "E",
+                    "prescription": {
+                        "description": "Slow walk 5 min, stretch calves/hamstrings/hip flexors 2 min each"
+                    },
+                    "performed": null
                 }
-              ],
-              "performed": null
-            },
-            {
-              "item_sequence": 2,
-              "circuit_config": {
-                "rounds": 2,
-                "type": "for_quality",
-                "rest_between_rounds_sec": 0
-              },
-              "performed": null,
-              "exercises": [
-                {
-                  "exercise_name": "Ankle circles",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Hip openers 90/90",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Down Dog Calf Rocks",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps_per_side": 10
-                  }
-                },
-                {
-                  "exercise_name": "Cat cow",
-                  "equipment_key": "bodyweight",
-                  "prescription": {
-                    "target_reps": 10,
-                    "notes": "for lower back"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "block_code": "ACT",
-          "block_label": "B",
-          "prescription": {
-            "description": "Rehab Activations: calf raises, toe walks, glute bridge, dead bug"
-          },
-          "performed": null,
-          "items": [
-            {
-              "exercise_name": "Single-leg calf raises",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 12,
-                "tempo": "2 sec up / 3 sec down",
-                "notes": "per leg"
-              },
-              "performed": null,
-              "item_sequence": 1
-            },
-            {
-              "exercise_name": "Toe walks",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 2,
-                "target_distance": 15,
-                "distance_unit": "m",
-                "notes": "light pressure on forefoot"
-              },
-              "performed": null,
-              "item_sequence": 2
-            },
-            {
-              "exercise_name": "Glute bridge hold",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 2,
-                "target_duration": 30,
-                "duration_unit": "sec",
-                "notes": "squeeze glutes, keep ribs down"
-              },
-              "performed": null,
-              "item_sequence": 3
-            },
-            {
-              "exercise_name": "Dead bug",
-              "equipment_key": "bodyweight",
-              "prescription": {
-                "target_sets": 2,
-                "target_reps": 8,
-                "notes": "per side, focus on lumbar control"
-              },
-              "performed": null,
-              "item_sequence": 4
-            }
-          ]
-        },
-        {
-          "block_code": "INTV",
-          "block_label": "C",
-          "prescription": {
-            "description": "5 x (400m easy run + 100m Walk)",
-            "target_rounds": 5,
-            "pace": "6:20 to 6:40 per km",
-            "breathing_cue": "3 steps inhale + 4 steps exhale",
-            "target_rpe_min": 4,
-            "target_rpe_max": 5
-          },
-          "performed": {
-            "completed": true,
-            "rounds": 5,
-            "notes": "הריצה הייתה בקצב טוב, אין כאבים ברגלים, בעיה בנשימה כבדה בסיבוב השלישי התאזנה קצת"
-          }
-        },
-        {
-          "block_code": "SKILL",
-          "block_label": "D",
-          "prescription": {
-            "description": "Weekly 1 km: Run 1 km continuous at easy steady pace",
-            "target_distance": 1,
-            "distance_unit": "km",
-            "notes": "Surface: outdoors or treadmill 1%, No sprint finish"
-          },
-          "performed": null
-        },
-        {
-          "block_code": "CD",
-          "block_label": "E",
-          "prescription": {
-            "description": "Slow walk 5 min, stretch calves/hamstrings/hip flexors 2 min each"
-          },
-          "performed": null
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
