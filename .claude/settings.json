@@ -7,7 +7,10 @@
         "@supabase/mcp-server-supabase@latest",
         "--project-ref",
         "dtzcamerxuonoeujrgsu"
-      ]
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
+      }
     }
   },
   "session": {
