@@ -154,6 +154,7 @@ SELECT * FROM public.athletes;
 ### Slash Commands
 - `/verify` - Run full test suite (all three checks above)
 - `/db-status` - Check database connection and table counts
+- `/inspect-table <table_name>` - **CRITICAL**: Show complete table structure including ALL constraints (CHECK, FK, UNIQUE, ENUMs). Use BEFORE every INSERT/UPDATE!
 - `/fix` - Auto-repair common issues (if available)
 
 ---
@@ -222,6 +223,107 @@ npm run install:hooks
 
 ---
 
+## 🛑 MIGRATION PROTOCOL
+
+**BEFORE creating, replacing, or modifying ANY database function or stored procedure:**
+
+### Step 1: Check if Function Exists
+```sql
+SELECT
+    proname as function_name,
+    pg_get_function_identity_arguments(oid) as arguments,
+    pg_get_functiondef(oid) as definition
+FROM pg_proc
+WHERE proname = 'your_function_name'
+  AND pronamespace = 'zamm'::regnamespace;
+```
+
+### Step 2: If Function Exists with Different Arguments
+**YOU MUST DROP IT FIRST:**
+```sql
+-- Drop with exact signature
+DROP FUNCTION IF EXISTS zamm.function_name(UUID, UUID, JSONB);
+
+-- Only then create new version
+CREATE OR REPLACE FUNCTION zamm.function_name(...)
+```
+
+### Step 3: Version Functions Instead of Breaking Changes
+**Preferred Approach:**
+- Keep old version: `commit_full_workout_v3`
+- Create new version: `commit_full_workout_v4`
+- Update alias: `commit_full_workout_latest` → points to v4
+
+**Why:** Backward compatibility + easy rollback
+
+### Step 4: Test Before Committing
+```sql
+-- Test function compiles
+SELECT zamm.your_function_name(test_params);
+
+-- Verify it returns expected type
+\df zamm.your_function_name
+```
+
+---
+
+## 🔍 CONSTRAINT INSPECTION PROTOCOL
+
+**CRITICAL:** PostgreSQL enforces constraints that are often invisible in documentation. Violating them causes cryptic errors.
+
+### Rule: ALWAYS Run `/inspect-table` Before INSERT/UPDATE
+
+**Example Failures Prevented:**
+- ❌ `status = 'pending_review'` → Constraint only allows `['draft', 'completed', ...]`
+- ❌ `checksum = 'abc123'` → Constraint requires exactly 64 hex characters (SHA-256)
+- ❌ `approved_at = NULL` → Column has NOT NULL constraint
+- ❌ `athlete_id = 'random-uuid'` → Foreign key requires existing record in `lib_athletes`
+
+### Workflow for Writing INSERT/UPDATE:
+
+```bash
+# Step 1: Inspect target table (MANDATORY)
+/inspect-table workout_main
+
+# Step 2: Read output carefully
+# - Check constraints (status values, format rules)
+# - NOT NULL columns (must provide value)
+# - Foreign keys (must reference existing records)
+# - Unique constraints (cannot duplicate)
+# - Enum types (only specific values allowed)
+
+# Step 3: ONLY THEN write SQL using verified constraints
+INSERT INTO zamm.workout_main (
+    status,           -- ✅ Use value from CHECK constraint list
+    approved_at,      -- ✅ NOT NULL - must provide timestamp
+    athlete_id        -- ✅ Must exist in lib_athletes
+) VALUES (
+    'draft',          -- ✅ Valid per constraint
+    NOW(),            -- ✅ Satisfies NOT NULL
+    '<existing-uuid>' -- ✅ Verified via FK
+);
+```
+
+### Why This Matters
+
+**Before `/inspect-table` protocol:**
+```
+Try 1: INSERT with status='pending_review' → ❌ Constraint violation
+Try 2: INSERT with status='draft', approved_at=NULL → ❌ NOT NULL violation
+Try 3: INSERT with status='draft', approved_at=NOW() → ✅ Finally works
+Result: 3 attempts, wasted time, frustration
+```
+
+**After `/inspect-table` protocol:**
+```
+Step 1: /inspect-table workout_main
+Step 2: See constraints: status must be 'draft'|'completed'|..., approved_at NOT NULL
+Step 3: INSERT with correct values → ✅ Works first time
+Result: 1 attempt, no errors, efficient
+```
+
+---
+
 ## Common Pitfalls
 
 ### ❌ FORBIDDEN (These Will Cause Failures)
@@ -242,13 +344,15 @@ npm run install:hooks
 
 ### ✅ MANDATORY (Follow These Exactly)
 1. **ALWAYS verify schema first** - Run `./scripts/utils/inspect_db.sh <table_name>` BEFORE any SQL
-2. **ALWAYS use catalog lookups** - `check_exercise_exists`, `check_athlete_exists`
-3. **ALWAYS normalize block types** - Via `normalize_block_code` function
-4. **ALWAYS comment heavily** - SQL can be cryptic, explain complex logic
-5. **ALWAYS verify docs against database** - Documentation may be outdated
-6. **ALWAYS test with real data** - Use files from `/data/` directory
-7. **ALWAYS preserve audit trail** - Never delete from `stg_*` tables
-8. **ALWAYS use verified table names** - From inspection tool output only
+2. **ALWAYS inspect constraints** - Run `/inspect-table <table_name>` BEFORE any INSERT/UPDATE
+3. **ALWAYS check function signatures** - Before DROP/CREATE OR REPLACE, verify existing definition
+4. **ALWAYS use catalog lookups** - `check_exercise_exists`, `check_athlete_exists`
+5. **ALWAYS normalize block types** - Via `normalize_block_code` function
+6. **ALWAYS comment heavily** - SQL can be cryptic, explain complex logic
+7. **ALWAYS verify docs against database** - Documentation may be outdated
+8. **ALWAYS test with real data** - Use files from `/data/` directory
+9. **ALWAYS preserve audit trail** - Never delete from `stg_*` tables
+10. **ALWAYS use verified table names** - From inspection tool output only
 
 ---
 
@@ -644,5 +748,82 @@ git checkout -- <file>
 
 ---
 
+---
+
+## 📋 Task Breakdown Strategy
+
+**Problem:** Complex requests attempted in one shot lead to errors, debugging cycles, and frustration.
+
+**Solution:** Break every non-trivial task into atomic, verifiable steps.
+
+### Example: Database Refactoring
+
+**❌ WRONG - Single Mega-Prompt:**
+```
+"Refactor the database ingestion layer to handle v3.2 JSON,
+add quality gates, create new stored procedure, test it, and
+update documentation."
+```
+**Result:**
+- Function signature conflicts
+- Constraint violations
+- Multiple retry cycles
+- 2+ hours of debugging
+
+**✅ CORRECT - Atomic Steps:**
+
+**Prompt 1 (Schema):**
+```
+"Analyze the gap between JSON v3.2 and current database schema.
+Propose ONLY the ALTER TABLE statements needed.
+Do not write functions yet."
+```
+→ Review output → Apply if correct → Verify with `/inspect-table`
+
+**Prompt 2 (Helper Functions):**
+```
+"Create the extract_measurement_value() helper function.
+Test it with sample inputs before proceeding."
+```
+→ Test function → Verify compilation → Confirm it works
+
+**Prompt 3 (Quality Check):**
+```
+"Create check_workout_quality() function.
+Before writing, inspect stg_parse_drafts table constraints."
+```
+→ Use `/inspect-table stg_parse_drafts` → Write function → Test
+
+**Prompt 4 (Main Procedure):**
+```
+"Create commit_full_workout_v4.
+Before creating, check if commit_full_workout_latest exists and needs dropping."
+```
+→ Check existing functions → DROP if needed → CREATE new version
+
+**Prompt 5 (Testing):**
+```
+"Create test data for v4.
+First inspect workout_main constraints, then create valid test records."
+```
+→ Use `/inspect-table` → Write INSERT with valid values → Test commit
+
+**Result:**
+- Each step succeeds on first try
+- Easy to debug (know exactly which step failed)
+- Can pause/resume at any point
+- Total time: Less than "one-shot" approach
+
+### General Principle
+
+**Before:** "Do everything" → ❌ Fails at step 3 of 7 → Redo all 7 steps
+
+**After:** "Do step 1" → ✅ → "Do step 2" → ✅ → ... → All steps succeed
+
+**Time Savings:** 60-80% reduction in debugging cycles
+
+---
+
 **Last Updated:** January 11, 2026
+**Version:** 2.2.0 - Added Migration Protocol, Constraint Inspection, Task Breakdown Strategy
 **Maintained By:** AI Development Team

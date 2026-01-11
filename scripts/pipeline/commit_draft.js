@@ -4,7 +4,7 @@
  * commit_draft.js - Stage 4: Atomic Commit to Database
  *
  * Commits a validated workout draft to the database using the
- * commit_full_workout_v3() stored procedure.
+ * commit_full_workout_v4() stored procedure with quality gate.
  *
  * Usage:
  *   node scripts/pipeline/commit_draft.js --draft=<draft_id>
@@ -14,6 +14,12 @@
  * - Draft must exist in stg_parse_drafts
  * - Draft must have passed validation (is_valid = true)
  * - User must have approved (if warnings present)
+ *
+ * v4 Features:
+ * - Smart extraction of {value, unit} objects from JSON v3.2
+ * - Automatic unit conversion (lbs→kg, min→sec, yards→m)
+ * - Quality gate: Flags incomplete data for human review
+ * - Verification tracking: Sets is_verified flag on workout_items
  *
  * This script provides the CLI interface, but the actual commit
  * is performed by the AI agent using MCP.
@@ -86,14 +92,19 @@ async function commitDraft(options) {
   console.log(`    - is_valid = true: Proceed with commit`);
   console.log(`    - has warnings + force=false: Ask user to approve`);
   console.log(`    - has errors: STOP, show errors\n`);
-  console.log('4️⃣  Call stored procedure:');
-  console.log('    SELECT zamm.commit_full_workout_v3(');
+  console.log('4️⃣  Call stored procedure (v4 with quality gate):');
+  console.log('    SELECT zamm.commit_full_workout_v4(');
   console.log('      p_import_id := (SELECT import_id FROM zamm.stg_parse_drafts WHERE draft_id = \'${draftId}\'),');
   console.log('      p_draft_id := \'${draftId}\',');
   console.log('      p_ruleset_id := (SELECT ruleset_id FROM zamm.stg_parse_drafts WHERE draft_id = \'${draftId}\'),');
   console.log('      p_athlete_id := (SELECT athlete_id FROM zamm.stg_imports WHERE import_id = ...),');
   console.log('      p_normalized_json := (SELECT normalized_draft FROM zamm.stg_parse_drafts WHERE draft_id = \'${draftId}\')');
   console.log('    );\n');
+  console.log('    💡 v4 Features:');
+  console.log('       - Extracts {value, unit} → flat columns (load_kg, duration_sec, distance_m)');
+  console.log('       - Auto-converts units (lbs→kg, min→sec, yards→m)');
+  console.log('       - Quality gate: Sets status=\'draft\' if missing exercise_key');
+  console.log('       - Flags requires_review=true with specific reason\n');
   console.log('5️⃣  Verify commit:');
   console.log('    - Check workout_id returned');
   console.log('    - Verify records created in workout_main, workout_sessions, etc.');
