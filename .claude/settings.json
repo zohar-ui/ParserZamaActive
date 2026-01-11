@@ -1,18 +1,4 @@
 {
-  "mcpServers": {
-    "supabase": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--project-ref",
-        "dtzcamerxuonoeujrgsu"
-      ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
-      }
-    }
-  },
   "session": {
     "defaultMode": "plan",
     "autoAcceptEdits": false,

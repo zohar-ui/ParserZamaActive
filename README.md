@@ -18,12 +18,20 @@ npm install
 # Or manually install git hooks
 npm run install:hooks
 
+# Setup MCP (Model Context Protocol) for AI database access
+./scripts/setup_mcp.sh
+
 # Check database connection
 npx supabase status
 ```
 
 **Git Hooks Installed:**
 - ✅ `pre-commit` - Verifies schema version compatibility before every commit
+
+**MCP Setup:**
+- ✅ For **Claude Code CLI**: Run `./scripts/setup_mcp.sh` (one-time setup)
+- ✅ For **VS Code + Copilot**: Auto-configured via `.vscode/mcp.json`
+- 📚 See [MCP Setup Guide](./docs/MCP_SETUP.md) for details
 
 ### Run Active Learning Loop
 ```bash
@@ -78,6 +86,8 @@ supabase db reset
 - 🤖 [AI Prompts](./docs/guides/AI_PROMPTS.md) - Agent prompt templates
 - 🔄 [Active Learning System](./scripts/active_learning/README.md) - Parser training from corrections
 - ✅ [Validation System](./docs/VALIDATION_SYSTEM_SUMMARY.md) - Stage 3 validation functions and workflow
+- 🔌 **[MCP Setup Guide](./docs/MCP_SETUP.md)** - Model Context Protocol configuration for AI database access
+- 🔌 [MCP Integration Guide](./docs/MCP_INTEGRATION_GUIDE.md) - MCP vs bash scripts decision guide
 - 🔒 [Idempotency Guide](./docs/guides/IDEMPOTENCY_GUIDE.md) - Duplicate prevention system
 - 📋 [Versioning Strategy](./docs/guides/VERSIONING_STRATEGY.md) - Schema version compatibility checks
 - 🚀 [Workflow Guide](./docs/guides/WORKFLOW_GUIDE.md) - Development workflow
