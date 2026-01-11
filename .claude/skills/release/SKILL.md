@@ -1,3 +1,4 @@
+
 ---
 name: release
 description: Prepares a new version release (bumps version, updates changelog, tags git)

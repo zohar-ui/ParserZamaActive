@@ -9,10 +9,12 @@
 ## Identity
 
 You are the parser logic expert for ParserZamaActive. You understand:
-- The Canonical JSON Schema (v3.0) - the constitution
+- The Canonical JSON Schema (v3.2.0) - the constitution
 - Zero Inference principle (never hallucinate data)
 - Prescription vs Performance separation (the great divide)
+- Unified Measurement Structure (v3.2: all measurements use `{value, unit}`)
 - Multi-language support (Hebrew, English, mixed)
+- Quality Gate validation (Stage 3: `requires_review` flags)
 - Active Learning feedback loop
 
 ---
@@ -75,7 +77,7 @@ const BLOCK_HEADER_PATTERNS = [
 ## Critical Rules
 
 ### Rule 1: Follow Canonical Schema
-**The Canonical JSON Schema (v3.0) is IMMUTABLE.**
+**The Canonical JSON Schema (v3.2.0) is IMMUTABLE.**
 
 Read before every parsing task:
 - `docs/reference/CANONICAL_JSON_SCHEMA.md`
@@ -83,9 +85,10 @@ Read before every parsing task:
 Key principles:
 1. **Identity Before Data** - Field order: `item_sequence` → `exercise_name` → `equipment_key` → `prescription` → `performed`
 2. **Atomic Types** - Numbers are numbers, not strings
-3. **Ranges as Min/Max** - Never string ranges like "8-12"
-4. **Strict Normalization** - Use catalog keys, not free text
-5. **Null Safety** - Unknown = null
+3. **Unified Measurements (v3.2)** - ALL measurements use `{value, unit}` structure
+4. **Ranges as Min/Max** - Never string ranges like "8-12"
+5. **Strict Normalization** - Use catalog keys, not free text
+6. **Null Safety** - Unknown = null
 
 ### Rule 2: Separate Prescription from Performance
 **ALWAYS keep plan and execution separate**
@@ -120,7 +123,70 @@ item.exercise_name = normalizedName;
 item.exercise_name = "bench";  // Will cause data inconsistency!
 ```
 
-### Rule 4: Validate Output
+### Rule 4: Use Unified Measurement Structure (v3.2)
+**ALL weight, duration, and distance fields MUST use `{value, unit}` objects**
+
+✅ **CORRECT (v3.2):**
+```json
+{
+  "prescription": {
+    "target_weight": { "value": 100, "unit": "kg" },
+    "target_duration": { "value": 45, "unit": "sec" },
+    "target_distance": { "value": 500, "unit": "m" }
+  },
+  "performed": {
+    "actual_weight": { "value": 100, "unit": "kg" },
+    "actual_duration": { "value": 43, "unit": "sec" }
+  }
+}
+```
+
+❌ **WRONG (v3.0 legacy - DEPRECATED):**
+```json
+{
+  "prescription": {
+    "target_weight_kg": 100,           // ← Old format
+    "target_duration_sec": 45,         // ← Old format
+    "target_meters": 500               // ← Old format
+  }
+}
+```
+
+**Supported units:**
+- **Weight:** `"kg"`, `"lbs"`, `"g"` (grams for bands)
+- **Duration:** `"sec"`, `"min"`, `"hours"`
+- **Distance:** `"m"`, `"km"`, `"yards"`, `"miles"`
+
+**Rule:** Preserve original units from text. Don't convert unless explicitly requested.
+
+### Rule 5: Quality Gate Awareness (v4)
+**Parser output feeds into quality validation (Stage 3)**
+
+When data is incomplete or uncertain:
+1. **Set fields to null** - Don't guess or hallucinate
+2. **Use notes field** - Preserve ambiguous text
+3. **System will flag for review** - `requires_review` column in database
+
+**Example:**
+```json
+// Text: "3x5 @ moderate weight"
+{
+  "prescription": {
+    "target_sets": 3,
+    "target_reps": 5,
+    "notes": "moderate weight"  // ← Preserves ambiguity
+  }
+}
+// → Database will set requires_review=true, review_reason="Missing target_weight"
+```
+
+**Quality signals you should be aware of:**
+- Missing `exercise_key` → needs review
+- Missing load/weight data → needs review
+- Incomplete set results → needs review
+- Ambiguous exercise names → needs review
+
+### Rule 6: Validate Output
 **Every parsed JSON must pass validation**
 
 ```bash

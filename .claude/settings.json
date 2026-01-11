@@ -12,13 +12,13 @@
   "permissions": {
     "mode": "ask",
     "allow": [
-      "Bash(./scripts/verify_schema.sh)",
-      "Bash(./scripts/test_parser_accuracy.sh)",
-      "Bash(./scripts/validate_golden_set.sh)",
-      "Bash(./scripts/test_block_types.sh)",
-      "Bash(./scripts/update_agents_md.sh)",
-      "Bash(./scripts/update_parser_brain.js)",
+      "Bash(./scripts/verify_schema_version.sh)",
+      "Bash(./scripts/tests/test_parser_accuracy.sh)",
+      "Bash(./scripts/tests/validate_golden_set.sh)",
+      "Bash(./scripts/tests/test_block_types.sh)",
       "Bash(npm run learn)",
+      "Bash(npm run update-docs)",
+      "Bash(npm run post-migration)",
       "Bash(git status)",
       "Bash(git diff)",
       "Bash(git add .)",
@@ -39,9 +39,9 @@
     "autoRunOnEdit": false,
     "requiredBeforeCommit": true,
     "commands": [
-      "./scripts/verify_schema.sh",
-      "./scripts/validate_golden_set.sh",
-      "./scripts/test_block_types.sh"
+      "./scripts/verify_schema_version.sh",
+      "./scripts/tests/validate_golden_set.sh",
+      "./scripts/tests/test_block_types.sh"
     ]
   },
   "agents": {
@@ -58,15 +58,16 @@
       "context": [
         "docs/reference/CANONICAL_JSON_SCHEMA.md",
         "docs/guides/AI_PROMPTS.md",
-        "scripts/parser_patterns.js",
+        "scripts/tests/parser_patterns.js",
         "data/golden_set/"
       ]
     },
     "learning-specialist": {
       "triggers": ["learning", "corrections", "training", "examples"],
       "context": [
-        "scripts/ACTIVE_LEARNING_README.md",
-        "scripts/update_parser_brain.js"
+        "scripts/active_learning/ACTIVE_LEARNING_README.md",
+        "scripts/active_learning/update_parser_brain.js",
+        "docs/reference/CANONICAL_JSON_SCHEMA.md"
       ]
     },
     "golden-set-curator": {

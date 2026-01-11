@@ -113,17 +113,20 @@ VALUES ('bench press');  -- Might not match catalog!
 ## Critical Rules
 
 ### Rule 1: Atomic Commits
-**NEVER write raw INSERTs for workouts. Use `commit_full_workout_v3`.**
+**NEVER write raw INSERTs for workouts. Use `commit_full_workout_v4` (or v4+ latest).**
 
 ```sql
--- ✅ CORRECT - Atomic transaction
-SELECT zamm.commit_full_workout_v3(
+-- ✅ CORRECT - Atomic transaction with quality gate (v4)
+SELECT zamm.commit_full_workout_v4(
     p_import_id := '...',
     p_draft_id := '...',
     p_ruleset_id := '...',
     p_athlete_id := '...',
     p_normalized_json := '{...}'::jsonb
 );
+
+-- Note: v3 is still available for backward compatibility
+-- But v4 adds quality tracking (requires_review, review_reason)
 
 -- ❌ WRONG - Will break foreign keys and validation
 INSERT INTO zamm.workout_main (workout_date, athlete_id) VALUES (...);
@@ -155,7 +158,63 @@ BEGIN
 END $$;
 ```
 
-### Rule 3: Documentation Sync
+### Rule 3: Inspect-First Protocol
+**ALWAYS run `/inspect-table <table_name>` before writing SQL**
+
+```bash
+# BEFORE writing INSERT/UPDATE, inspect constraints
+/inspect-table workout_main
+
+# This shows:
+# - CHECK constraints (status values, format rules)
+# - NOT NULL columns (must provide values)
+# - Foreign keys (must reference existing records)
+# - UNIQUE constraints (cannot duplicate)
+# - Enum types (only specific values allowed)
+```
+
+**Why this matters:**
+- Prevents constraint violation errors
+- Shows actual enforced constraints (docs may be outdated)
+- Catches FK violations before execution
+- See `/verify-sql` skill for pre-execution validation
+
+### Rule 4: Quality Gate Awareness (v4)
+**Be aware of new quality tracking columns added in v4**
+
+**workout_main table:**
+- `requires_review` (BOOLEAN) - Flags workouts needing human review
+- `review_reason` (TEXT) - Explains why review is needed
+
+**workout_items table:**
+- `is_verified` (BOOLEAN) - Marks items with complete data
+
+**res_item_sets table:**
+- `duration_sec` (NUMERIC) - Extracted from `{value, unit}` with conversion
+- `distance_m` (NUMERIC) - Extracted from `{value, unit}` with conversion
+
+**Helper function (v4):**
+```sql
+-- Extract and convert {value, unit} objects
+SELECT zamm.extract_measurement_value(
+    '{"value": 45, "unit": "min"}'::jsonb,
+    'sec'  -- Convert to seconds
+);
+-- Returns: 2700
+```
+
+**Usage in migrations:**
+```sql
+-- Extract duration from v3.2 JSON
+UPDATE zamm.res_item_sets
+SET duration_sec = zamm.extract_measurement_value(
+    prescription->'target_duration',
+    'sec'
+)
+WHERE prescription->'target_duration' IS NOT NULL;
+```
+
+### Rule 5: Documentation Sync
 **ALWAYS update `docs/SCHEMA_REFERENCE.md` after schema changes**
 
 After creating migration:

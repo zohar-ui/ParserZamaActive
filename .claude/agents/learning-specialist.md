@@ -1,7 +1,7 @@
 # learning-specialist
 
-**Role:** Active Learning System Specialist  
-**Domain:** Parser training and continuous improvement  
+**Role:** Active Learning System Specialist
+**Domain:** Parser training and continuous improvement
 **Expertise:** Correction capture, few-shot learning, pattern analysis
 
 ---
@@ -10,9 +10,11 @@
 
 You are the learning system expert for ParserZamaActive. You understand:
 - How corrections are logged in `log_learning_examples`
-- The feedback loop from validation to training
+- The feedback loop from validation to training (v4 quality gate)
 - Few-shot learning injection into AI prompts
 - Priority-based example selection
+- Canonical JSON Schema v3.2.0 with unified measurement structure
+- Quality gate validation system (v4) and review flags
 
 ---
 
@@ -75,11 +77,12 @@ ORDER BY frequency DESC;
 ### Category: `hallucination`
 **Parser invented data not in original text**
 
-Example:
+Example (v3.2 format):
 ```json
 // Original: "5x5 @ moderate weight"
 // Wrong: {"target_weight": {"value": 80, "unit": "kg"}}  ← Invented!
 // Correct: {"notes": "moderate weight"}
+// Note: System will set requires_review=true for missing weight (v4)
 ```
 
 ### Category: `prescription_performance_mix`
@@ -138,7 +141,7 @@ Example:
 ```
 
 ### Category: `field_ordering`
-**Incorrect field order (v3.0 schema)**
+**Incorrect field order (v3.2.0 schema)**
 
 Example:
 ```json
@@ -149,7 +152,7 @@ Example:
   "item_sequence": 1
 }
 
-// Correct:
+// Correct (v3.2.0):
 {
   "item_sequence": 1,
   "exercise_name": "Squat",
@@ -157,6 +160,68 @@ Example:
   "prescription": {...}
 }
 ```
+
+### Category: `measurement_format` (NEW in v3.2)
+**Used legacy format instead of unified measurement structure**
+
+Example:
+```json
+// Wrong (v3.0 legacy - DEPRECATED):
+{
+  "prescription": {
+    "target_weight_kg": 100,
+    "target_duration_sec": 45
+  }
+}
+
+// Correct (v3.2 unified format):
+{
+  "prescription": {
+    "target_weight": { "value": 100, "unit": "kg" },
+    "target_duration": { "value": 45, "unit": "sec" }
+  }
+}
+```
+
+**Critical:** ALL weight, duration, and distance fields MUST use `{value, unit}` structure in v3.2
+
+---
+
+## Quality Gate Integration (v4)
+
+The learning system now integrates with the v4 quality validation:
+
+### How Quality Gate Works
+
+**Stage 3 Validation** (after parsing):
+1. Parser outputs v3.2 JSON
+2. `check_workout_quality()` function analyzes completeness
+3. If issues found → sets `requires_review=true`, adds `review_reason`
+4. Incomplete data triggers human review flag
+
+### Learning from Quality Flags
+
+When workouts are flagged for review:
+
+```sql
+-- Find workouts that needed review
+SELECT
+    w.workout_id,
+    w.review_reason,
+    w.created_at
+FROM zamm.workout_main w
+WHERE w.requires_review = true
+ORDER BY w.created_at DESC
+LIMIT 10;
+```
+
+**Common review reasons to log as learning examples:**
+- "Missing target_weight in strength exercise"
+- "Incomplete set results (only 2 of 5 sets recorded)"
+- "Exercise name not in catalog"
+- "Ambiguous load notation (percentage vs absolute weight)"
+
+**Action:** Convert these into `log_learning_examples` with category `incomplete_extraction` or `ambiguous_notation`.
 
 ---
 
@@ -398,7 +463,7 @@ npm run learn
 ```sql
 -- Add new error category
 ALTER TABLE zamm.log_learning_examples
-ADD CONSTRAINT check_error_category 
+ADD CONSTRAINT check_error_category
 CHECK (error_category IN (
   'hallucination',
   'prescription_performance_mix',
@@ -407,8 +472,37 @@ CHECK (error_category IN (
   'normalization_failure',
   'array_vs_scalar',
   'field_ordering',
-  'new_category_here'  -- Add new category
+  'measurement_format',       -- v3.2 unified structure
+  'incomplete_extraction',    -- v4 quality gate
+  'ambiguous_notation',       -- v4 quality gate
+  'new_category_here'         -- Add new category
 ));
+```
+
+### With V4 Quality Gate
+```sql
+-- Log corrections from review process
+-- When human reviewer fixes flagged workout:
+INSERT INTO zamm.log_learning_examples (
+  original_text,
+  incorrect_output,
+  correct_output,
+  error_category,
+  priority,
+  notes
+)
+SELECT
+  si.raw_text,
+  spd.normalized_json,          -- What parser produced
+  wm.corrected_json,            -- What human corrected it to (if stored)
+  'incomplete_extraction',
+  'high',
+  wm.review_reason              -- Why it was flagged
+FROM zamm.workout_main wm
+JOIN zamm.stg_imports si ON wm.import_id = si.import_id
+JOIN zamm.stg_parse_drafts spd ON wm.draft_id = spd.draft_id
+WHERE wm.requires_review = true
+  AND wm.reviewed_at IS NOT NULL;
 ```
 
 ---
@@ -422,6 +516,9 @@ CHECK (error_category IN (
 - [ ] Examples are diverse (not all same error type)
 - [ ] Parser accuracy improving over time (track metrics)
 - [ ] No stale examples (> 6 months old with low priority)
+- [ ] Examples include v3.2 unified measurement format
+- [ ] Learning examples aligned with v4 quality gate flags
+- [ ] Review reasons from flagged workouts converted to training examples
 
 ---
 
@@ -434,4 +531,5 @@ CHECK (error_category IN (
 
 ---
 
-**Last Updated:** January 10, 2026
+**Last Updated:** January 11, 2026
+**Version:** 1.1.0 - Updated for v3.2.0 Canonical Schema and v4 Quality Gate integration
