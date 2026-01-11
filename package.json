@@ -12,6 +12,8 @@
     "test:parser": "./scripts/tests/test_parser_accuracy.sh",
     "validate:golden": "./scripts/tests/validate_golden_set.sh",
     "verify:schema": "./scripts/verify_schema_version.sh",
+    "update-docs": "node scripts/docs/update_schema_docs.js",
+    "post-migration": "npm run update-docs",
     "install:hooks": "./scripts/install_hooks.sh",
     "postinstall": "npm run install:hooks"
   },

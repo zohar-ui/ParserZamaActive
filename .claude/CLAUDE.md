@@ -1,8 +1,23 @@
 # CLAUDE.md
 
-**Version:** 1.0.0  
-**Purpose:** Core principles and workflow for AI agents working on ParserZamaActive  
-**Last Updated:** January 10, 2026
+**Version:** 2.1.0
+**Purpose:** STRICT PROTOCOL (not recommendations) for AI agents working on ParserZamaActive
+**Last Updated:** January 11, 2026
+**Breaking Changes:** Automatic documentation system now in place - docs auto-update after migrations
+
+---
+
+## 🚨 CRITICAL: This is Not a Suggestion Document
+
+**This document contains MANDATORY PROTOCOLS, not recommendations.**
+
+Failure to follow these protocols will result in:
+- Writing code that references non-existent tables
+- Documentation with incorrect schema information
+- SQL queries that fail in production
+- Data integrity violations
+
+**When this document says "NEVER" or "ALWAYS" → it means exactly that.**
 
 ---
 
@@ -100,20 +115,32 @@ SELECT * FROM public.athletes;
    - Check all three test suites pass
    - Review diffs carefully
 
-5. **Commit**
+5. **Update Documentation** (Automatic)
+   - After applying migrations: `npm run post-migration`
+   - Or manually: `npm run update-docs`
+   - Post-merge hook auto-updates docs when pulling migrations
+   - Verify docs match database: check `VERIFIED_TABLE_NAMES.md`
+
+6. **Commit**
    - Only after all tests pass
    - Write descriptive commit messages
    - Update `CHANGELOG.md` for user-facing changes
+   - Commit auto-generated doc updates if present
 
 ---
 
 ## Verification Commands
 
-### Quick Checks
-```bash
-# Database connectivity and table count
-./scripts/verify_schema.sh
+**🎯 Note:** For database operations, prefer using **Supabase MCP tools** over bash scripts when available. Scripts are maintained for CI/CD and fallback scenarios.
 
+### Quick Checks
+
+**Database Verification:**
+- **With MCP (Preferred):** Ask AI to inspect schema and verify table names
+- **With Scripts (Fallback):** `./scripts/verify_schema.sh`
+
+**Parser Validation:**
+```bash
 # Parser logic against golden set
 ./scripts/validate_golden_set.sh
 
@@ -128,6 +155,51 @@ SELECT * FROM public.athletes;
 - `/verify` - Run full test suite (all three checks above)
 - `/db-status` - Check database connection and table counts
 - `/fix` - Auto-repair common issues (if available)
+
+---
+
+## Automatic Documentation System
+
+**Purpose:** Keep schema documentation synchronized with the database automatically.
+
+### How It Works
+
+1. **After Migrations:** Post-merge git hook detects migration changes and auto-updates docs
+2. **Manual Trigger:** Run `npm run update-docs` or `npm run post-migration`
+3. **Verification:** Always check `docs/reference/VERIFIED_TABLE_NAMES.md` for actual table names
+
+### Commands
+
+```bash
+# Update documentation manually
+npm run update-docs
+
+# Run after applying migrations
+npm run post-migration
+
+# Or use the wrapper script
+./scripts/docs/update_docs_after_migration.sh
+```
+
+### Git Hooks (Installed Automatically)
+
+- **post-merge:** Auto-updates docs after pulling migrations
+- **pre-commit:** Verifies schema version before commits
+
+Install/reinstall hooks:
+```bash
+npm run install:hooks
+# or
+./scripts/install_hooks.sh
+```
+
+### ⚠️ Important Notes
+
+1. **ALWAYS verify table names** using `inspect_db.sh` before writing SQL
+2. **NEVER trust outdated docs** - use the verification tool as single source of truth
+3. **Auto-update runs automatically** after `git pull` if migrations changed
+4. **Commit doc changes** when they appear after running updater
+5. **Database must be accessible** for auto-updates to work (requires `SUPABASE_DB_URL`)
 
 ---
 
@@ -152,23 +224,31 @@ SELECT * FROM public.athletes;
 
 ## Common Pitfalls
 
-### ❌ DON'T
-1. **Use `public` schema** - Always use `zamm`
-2. **Assume `session_code`** - Only use `"AM"`, `"PM"`, or `null` (never guess)
-3. **Hardcode UUIDs** - Use catalog lookup functions
-4. **Mix prescription/performance** - Keep them strictly separated
-5. **Edit old migrations** - Create new ones instead
-6. **Skip validation** - Always run `/verify` before committing
-7. **Insert workouts manually** - Use `commit_full_workout_v3` procedure
+### ❌ FORBIDDEN (These Will Cause Failures)
+1. **NEVER trust documentation for table names** - Always verify with `inspect_db.sh`
+2. **NEVER write SQL without verification** - Run inspection tool FIRST
+3. **NEVER use `public` schema** - Always use `zamm`
+4. **NEVER assume table names:**
+   - Not `workout_main` → actual is `workouts`
+   - Not `res_blocks` → actual is `workout_block_results`
+   - Not `res_item_sets` → actual is `item_set_results`
+   - Not `lib_block_types` → actual is `block_type_catalog`
+5. **NEVER assume `session_code`** - Only use `"AM"`, `"PM"`, or `null`
+6. **NEVER hardcode UUIDs** - Use catalog lookup functions
+7. **NEVER mix prescription/performance** - Keep them strictly separated
+8. **NEVER edit old migrations** - Create new ones instead
+9. **NEVER skip validation** - Always run `/verify` before committing
+10. **NEVER insert workouts manually** - Use `commit_full_workout_v3` procedure
 
-### ✅ DO
-1. **Check schema first** - Run `verify_schema.sh` before SQL changes
-2. **Use catalog lookups** - `check_exercise_exists`, `check_athlete_exists`
-3. **Normalize block types** - Via `normalize_block_code` function
-4. **Comment heavily** - SQL can be cryptic, explain complex logic
-5. **Update docs** - Keep `SCHEMA_REFERENCE.md` in sync with migrations
-6. **Test with real data** - Use files from `/data/` directory
-7. **Preserve audit trail** - Never delete from `stg_*` tables
+### ✅ MANDATORY (Follow These Exactly)
+1. **ALWAYS verify schema first** - Run `./scripts/utils/inspect_db.sh <table_name>` BEFORE any SQL
+2. **ALWAYS use catalog lookups** - `check_exercise_exists`, `check_athlete_exists`
+3. **ALWAYS normalize block types** - Via `normalize_block_code` function
+4. **ALWAYS comment heavily** - SQL can be cryptic, explain complex logic
+5. **ALWAYS verify docs against database** - Documentation may be outdated
+6. **ALWAYS test with real data** - Use files from `/data/` directory
+7. **ALWAYS preserve audit trail** - Never delete from `stg_*` tables
+8. **ALWAYS use verified table names** - From inspection tool output only
 
 ---
 
@@ -197,69 +277,300 @@ SELECT * FROM public.athletes;
 
 ---
 
-## Database Quick Reference
+## ⛔ FORBIDDEN: Documentation Trust
 
-### 32 Tables in `zamm` Schema
+**CRITICAL WARNING:** Documentation files like `ARCHITECTURE.md`, `SCHEMA_REFERENCE.md`, and even `BLOCK_TYPES_REFERENCE.md` MAY BE OUTDATED OR INCORRECT.
 
-**Infrastructure (6)**
-- `lib_athletes`, `lib_coaches`, `lib_parser_rulesets`
-- `lib_equipment_catalog`, `lib_equipment_aliases`
-- `lib_block_types`, `lib_block_type_aliases`
+### Rules (Strict Enforcement)
 
-**Exercise Catalog (2)**
-- `lib_exercise_catalog`, `lib_exercise_aliases`
+1. **NEVER assume table names from documentation**
+   - Documentation says `workout_main`? → Might actually be `workouts`
+   - Documentation says `res_blocks`? → Might actually be `workout_block_results`
+   - Documentation says `lib_block_types`? → Might actually be `block_type_catalog`
 
-**Staging (3)**
-- `stg_imports`, `stg_parse_drafts`, `stg_draft_edits`
+2. **NEVER write SQL without verification**
+   - Do NOT trust migration files older than current date
+   - Do NOT trust inline documentation comments
+   - Do NOT trust README files or architecture docs
 
-**Validation (1)**
-- `log_validation_reports`
+3. **ALWAYS verify against live database**
+   - **Preferred:** Use Supabase MCP tools to inspect schema
+   - **Fallback:** Use `scripts/utils/inspect_db.sh <table_name>` if MCP unavailable
+   - If verification returns "table does NOT exist" → find actual table name
+   - Only use table/column names confirmed by verification (MCP or script)
 
-**Workout Core (5)**
-- `workout_main`, `workout_sessions`, `workout_blocks`
-- `workout_items`, `workout_item_set_results`
+---
 
-**Results (3)**
-- `res_blocks`, `res_intervals`, `res_item_sets`
+## ✅ MANDATORY: Database Verification Protocol
 
-**Events (1)**
-- `evt_athlete_personal_records`
+**BEFORE writing ANY SQL code, documentation, or migration:**
 
-**Learning System (1)**
-- `log_learning_examples`
+### Method A: Using MCP (PREFERRED when available)
 
-### 17 Block Types (Memorize These)
-**PREPARATION:** `WU`, `ACT`, `MOB`  
-**STRENGTH:** `STR`, `ACC`, `HYP`  
-**POWER:** `PWR`, `WL`  
-**SKILL:** `SKILL`, `GYM`  
-**CONDITIONING:** `METCON`, `INTV`, `SS`, `HYROX`  
+**Step 1: Verify Table Exists**
+- Use Supabase MCP tool to inspect table schema
+- Ask: "Show me the structure of the <table_name> table in zamm schema"
+- Verify columns, data types, and constraints
+
+**Step 2: Verify Column Names**
+- Use MCP query to check specific columns
+- Ask: "Does the workout_blocks table have a ui_hint column?"
+- Confirm column exists before using in SQL
+
+**Step 3: List All Available Tables**
+- Use MCP to list all tables in zamm schema
+- Ask: "List all tables in the zamm schema"
+- Find actual table name if documentation is unclear
+
+**Step 4: Write Code with Verified Names**
+- Only use table/column names confirmed by MCP
+- Never trust documentation without verification
+
+### Method B: Using Bash Scripts (FALLBACK when MCP unavailable)
+
+**Step 1: Verify Table Exists**
+```bash
+./scripts/utils/inspect_db.sh <table_name>
+```
+**Required Output:** Column list with data types
+**If fails:** Table does not exist → search for actual name
+
+**Step 2: Verify Column Names**
+```bash
+# Example: Check if workout_blocks has 'ui_hint' column
+./scripts/utils/inspect_db.sh workout_blocks | grep ui_hint
+```
+**Required Output:** Column must appear in list
+**If fails:** Column does not exist → check migration status
+
+**Step 3: List All Available Tables**
+```bash
+psql "$SUPABASE_DB_URL" -c "
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'zamm'
+ORDER BY table_name;
+"
+```
+**Use this when:** You need to find the actual table name
+
+**Step 4: Only Then Write Code**
+
+### Example Workflow
+
+```bash
+# ❌ WRONG - Trust documentation or guess
+echo "SELECT * FROM zamm.workouts" > query.sql  # This table doesn't exist!
+
+# ✅ CORRECT - Verify first (Method A: MCP)
+# Ask AI: "Show me the structure of workout_main table"
+# Confirm table exists and has expected columns
+echo "SELECT * FROM zamm.workout_main" > query.sql
+
+# ✅ CORRECT - Verify first (Method B: Bash fallback)
+./scripts/utils/inspect_db.sh workout_main  # Check if 'workout_main' exists
+# If success (shows columns):
+echo "SELECT * FROM zamm.workout_main" > query.sql
+```
+
+### Step 5: Update Documentation (Automatic)
+
+After applying migrations or making schema changes:
+```bash
+# Automatic (runs via git hook after pull)
+git pull  # Automatically updates docs if migrations changed
+
+# Manual (run after applying migrations)
+npm run post-migration
+
+# Or if you just want to refresh docs
+npm run update-docs
+```
+
+**Note:** The documentation at `docs/reference/VERIFIED_TABLE_NAMES.md` is automatically maintained, but verification via **MCP (preferred)** or `inspect_db.sh` (fallback) remains the single source of truth. Always verify against live database before writing SQL.
+
+---
+
+## Database Structure (✅ VERIFIED 2026-01-11)
+
+**Source:** Direct query to remote Supabase database
+**Full List:** See `docs/reference/VERIFIED_TABLE_NAMES.md`
+**Total:** 33 tables in `zamm` schema
+
+### Core Workout Tables
+- `workout_main` ✅ (NOT `workouts`)
+- `workout_sessions` ✅
+- `workout_blocks` ✅
+- `workout_items` ✅
+- `workout_item_set_results` ✅ (NOT `item_set_results`)
+
+### Result Tables
+- `res_blocks` ✅ (NOT `workout_block_results`)
+- `res_intervals` ✅
+- `res_item_sets` ✅
+
+### Block Type System
+- `lib_block_types` ✅ (NOT `block_type_catalog`)
+- `lib_block_aliases` ✅ (NOT `block_code_aliases`)
+
+### Exercise & Equipment Catalog
+- `lib_exercise_catalog` ✅
+- `lib_exercise_aliases` ✅
+- `lib_equipment_catalog` ✅
+- `lib_equipment_aliases` ✅
+- `lib_equipment_config_templates` ✅
+
+### Infrastructure
+- `lib_athletes` ✅
+- `lib_coaches` ✅
+- `lib_parser_rulesets` ✅
+- `cfg_parser_rules` ✅
+
+### Staging/Import
+- `stg_imports` ✅
+- `stg_parse_drafts` ✅
+- `stg_draft_edits` ✅
+
+### Validation & Learning
+- `log_validation_reports` ✅
+- `log_learning_examples` ✅
+
+### ❌ COMMON MISTAKES (Tables That DON'T Exist!)
+
+| WRONG Name | CORRECT Name |
+|------------|--------------|
+| `workouts` | `workout_main` |
+| `block_type_catalog` | `lib_block_types` |
+| `block_code_aliases` | `lib_block_aliases` |
+| `workout_block_results` | `res_blocks` |
+| `item_set_results` | `res_item_sets` |
+
+### 17 Block Types (Fixed Constants - Safe to Use)
+**PREPARATION:** `WU`, `ACT`, `MOB`
+**STRENGTH:** `STR`, `ACC`, `HYP`
+**POWER:** `PWR`, `WL`
+**SKILL:** `SKILL`, `GYM`
+**CONDITIONING:** `METCON`, `INTV`, `SS`, `HYROX`
 **RECOVERY:** `CD`, `STRETCH`, `BREATH`
 
 ---
 
 ## AI Agent Protocols
 
-### Protocol Zero: Session Handshake (MANDATORY)
-Before executing ANY task:
+### MCP (Model Context Protocol) - PRIMARY METHOD
 
-```bash
-# 1. Verify database connectivity
-npx supabase status
+**Supabase MCP Server:** Configured in `.vscode/mcp.json`
 
-# 2. Run handshake query
-# Should return athlete_count > 0, workout_count > 0
-echo "SELECT 
-    (SELECT COUNT(*) FROM zamm.lib_athletes) as athlete_count,
-    (SELECT COUNT(*) FROM zamm.workout_main) as workout_count,
-    (SELECT version FROM zamm.lib_parser_rulesets WHERE is_active = true LIMIT 1) as active_ruleset;" | \
-  PGPASSWORD="..." psql -h db.dtzcamerxuonoeujrgsu.supabase.co -U postgres -d postgres
+**🎯 PREFERRED METHOD:** When MCP is available, use it INSTEAD of bash scripts for database operations.
 
-# 3. Verify schema awareness
-./scripts/verify_schema.sh
+#### MCP Capabilities (Use These First)
+
+The Supabase MCP provides built-in tools:
+- **Schema Inspection** - View table structures, columns, data types
+- **Direct Queries** - Execute SQL directly without psql
+- **Data Verification** - Check actual database content
+- **Real-time Access** - No environment setup required
+
+#### When to Use MCP vs Scripts
+
+| Task | MCP (Preferred) | Bash Scripts (Fallback) |
+|------|-----------------|-------------------------|
+| **Inspect table schema** | ✅ Use MCP tools | ⚠️ Use if MCP unavailable |
+| **Query database** | ✅ Use MCP tools | ⚠️ Use in CI/CD only |
+| **Verify table exists** | ✅ Use MCP tools | ⚠️ Use if MCP unavailable |
+| **List all tables** | ✅ Use MCP tools | ⚠️ Use if MCP unavailable |
+| **CI/CD pipelines** | ❌ Not available | ✅ Always use scripts |
+| **Automated tests** | ❌ Not available | ✅ Always use scripts |
+
+See `.vscode/README.md` for MCP usage examples.
+
+#### Decision Logic: MCP vs Bash Scripts
+
+```
+Is MCP available in current environment?
+├─ YES → Use MCP for ALL database operations
+│         (schema inspection, queries, verification)
+│
+└─ NO → Check why:
+    ├─ In CI/CD pipeline → Use bash scripts
+    ├─ In automated tests → Use bash scripts
+    ├─ MCP not configured → Configure `.vscode/mcp.json` OR use scripts
+    └─ Database offline → Cannot proceed (both methods need DB access)
 ```
 
-**Only proceed after successful handshake.**
+**AI Agent Rule:** ALWAYS attempt MCP first. Only fall back to bash scripts if MCP tools are not available or the task explicitly requires scripts (CI/CD, testing).
+
+### Protocol Zero: Session Handshake (MANDATORY)
+
+Before executing ANY task involving database, choose your method:
+
+#### Option A: With MCP (PREFERRED)
+
+**Step 1: Verify MCP Connection**
+- Check if Supabase MCP is available (configured in `.vscode/mcp.json`)
+- Test by asking: "List all tables in the zamm schema"
+- If successful, proceed with MCP for all database operations
+
+**Step 2: Verify Actual Table Names (CRITICAL)**
+- Use MCP to inspect key tables:
+  - "Show structure of lib_athletes table"
+  - "Show structure of workout_main table" (NOT workouts!)
+  - "Show structure of workout_blocks table"
+- DO NOT TRUST DOCUMENTATION - Always verify via MCP
+
+**Step 3: Run Handshake Query**
+- Use MCP to verify database state:
+  - "Count records in zamm.lib_athletes"
+  - "Count records in zamm.workout_main"
+  - "Show active ruleset version from zamm.lib_parser_rulesets"
+
+**Step 4: Reference Available Tables**
+- Use MCP: "List all 33 tables in zamm schema with their counts"
+- Store table names for reference during session
+
+#### Option B: With Bash Scripts (FALLBACK when MCP unavailable)
+
+**Step 0: Load Environment**
+```bash
+# Load database connection string
+source .env.local  # or wherever SUPABASE_DB_URL is defined
+```
+
+**Step 1: Verify Database Connectivity**
+```bash
+npx supabase status
+```
+
+**Step 2: Verify Actual Table Names (CRITICAL)**
+```bash
+# DO NOT TRUST DOCUMENTATION - Verify actual tables exist:
+./scripts/utils/inspect_db.sh lib_athletes
+./scripts/utils/inspect_db.sh workout_main  # NOT workouts!
+./scripts/utils/inspect_db.sh workout_blocks
+```
+
+**Step 3: Run Handshake Query (Use Verified Names)**
+```bash
+# ⚠️  ONLY use table names verified in Step 2
+psql "$SUPABASE_DB_URL" -c "
+SELECT
+    (SELECT COUNT(*) FROM zamm.lib_athletes) as athlete_count,
+    (SELECT COUNT(*) FROM zamm.workout_main) as workout_count,
+    (SELECT version FROM zamm.lib_parser_rulesets WHERE is_active = true LIMIT 1) as active_ruleset;
+"
+```
+
+**Step 4: List All Tables for Reference**
+```bash
+psql "$SUPABASE_DB_URL" -c "
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'zamm'
+ORDER BY table_name;
+"
+```
+
+**CRITICAL:** Only proceed after ALL steps succeed. If Step 2 fails, do NOT guess table names - find the actual names using Step 4.
 
 ---
 
@@ -279,6 +590,13 @@ The parser improves automatically from corrections:
 ## Emergency Commands
 
 ### Database Issues
+
+**With MCP (Preferred):**
+- Ask: "Count all records in each table in zamm schema"
+- Ask: "Show me the last 5 migrations that were applied"
+- Ask: "Verify database connection and list all tables"
+
+**With Bash Scripts (Fallback):**
 ```bash
 # Check connection
 npx supabase status
@@ -326,5 +644,5 @@ git checkout -- <file>
 
 ---
 
-**Last Updated:** January 10, 2026  
+**Last Updated:** January 11, 2026
 **Maintained By:** AI Development Team

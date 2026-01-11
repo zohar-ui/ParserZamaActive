@@ -19,6 +19,21 @@ This directory contains git hooks that are committed to the repository.
 - ❌ **Fail** → Commit blocked with fix instructions
 - ⚠️ **DB Offline** → Commit allowed with warning
 
+### `post-merge`
+
+**Purpose:** Automatically update schema documentation after pulling migrations
+
+**What it does:**
+1. 🔍 Detects if migration files changed in the merge
+2. 📝 Runs `npm run update-docs` to refresh VERIFIED_TABLE_NAMES.md
+3. 📊 Reports any schema changes detected
+4. 💡 Suggests committing the updated documentation
+
+**Behavior:**
+- ✅ **Migrations detected** → Updates docs automatically
+- ℹ️ **No migrations** → Skips update
+- ⚠️ **DB Offline** → Skips with warning
+
 ---
 
 ## 🚀 Installation
@@ -60,10 +75,12 @@ git commit -m "test commit"
 
 ### Source (committed to repo)
 - `.git-hooks/pre-commit` - Pre-commit hook source
+- `.git-hooks/post-merge` - Post-merge hook source
 - `.git-hooks/README.md` - This file
 
 ### Active (not committed)
 - `.git/hooks/pre-commit` - Copied from source by install script
+- `.git/hooks/post-merge` - Copied from source by install script
 - `.git/hooks/` - Git's hooks directory (in .gitignore)
 
 ---
@@ -146,4 +163,4 @@ This ensures you have the latest hooks installed.
 
 ---
 
-**Last Updated:** 2026-01-10
+**Last Updated:** 2026-01-11

@@ -39,6 +39,16 @@ else
     echo -e "${YELLOW}⚠  Warning: .git-hooks/pre-commit not found${NC}"
 fi
 
+# Copy post-merge hook
+if [ -f ".git-hooks/post-merge" ]; then
+    cp .git-hooks/post-merge .git/hooks/post-merge
+    chmod +x .git/hooks/post-merge
+    echo -e "${GREEN}✓${NC} Installed: post-merge hook"
+    echo -e "  ${BLUE}→ Auto-updates schema docs after pulling migrations${NC}"
+else
+    echo -e "${YELLOW}⚠  Warning: .git-hooks/post-merge not found${NC}"
+fi
+
 echo ""
 echo -e "${GREEN}═══════════════════════════════════════════════════════════${NC}"
 echo -e "${GREEN}✓ Git hooks installed successfully${NC}"
@@ -47,7 +57,8 @@ echo ""
 echo -e "${BLUE}What happens now:${NC}"
 echo -e "  • Before every commit, schema version will be verified"
 echo -e "  • If mismatch detected, commit will be blocked"
-echo -e "  • You'll get clear instructions on how to fix it"
+echo -e "  • After pulling migrations, docs auto-update"
+echo -e "  • You'll get clear instructions on how to fix issues"
 echo ""
 echo -e "${YELLOW}Test it:${NC}"
 echo -e "  ${BLUE}git add .${NC}"
