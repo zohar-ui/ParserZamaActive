@@ -15,7 +15,11 @@
     "update-docs": "node scripts/docs/update_schema_docs.js",
     "post-migration": "npm run update-docs",
     "install:hooks": "./scripts/install_hooks.sh",
-    "postinstall": "npm run install:hooks"
+    "postinstall": "npm run install:hooks",
+    "pipeline": "node scripts/pipeline/parse_workout.js",
+    "commit-draft": "node scripts/pipeline/commit_draft.js",
+    "git-track": "node scripts/pipeline/git_helper.js",
+    "visual-diff": "node scripts/pipeline/visual_diff.js"
   },
   "keywords": [
     "workout",

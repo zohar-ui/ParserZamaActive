@@ -81,7 +81,8 @@
   "shortcuts": {
     "/verify": ".claude/commands/verify.md",
     "/db-status": ".claude/commands/db-status.md",
-    "/fix-parser": ".claude/commands/fix-parser.md"
+    "/fix-parser": ".claude/commands/fix-parser.md",
+    "/process-workout": ".claude/commands/process-workout.md"
   },
   "git": {
     "preCommitHook": {
