@@ -1,6 +1,6 @@
 ---
 name: debug-parse
-description: Test parser logic on specific text snippet without full pipeline or database commit
+description: Isolate and test parser behavior on specific text snippets to debug pattern matching, validate regex patterns against edge cases, understand which extraction rules triggered, and test parser changes before full deployment without running the complete pipeline or database commit. Use this skill when: (1) Debugging why parser misinterpreted a specific line or exercise description, (2) Testing new regex patterns against edge cases before adding to parser, (3) Validating parser changes on isolated examples without full workflow, (4) Understanding which parsing rule triggered for specific input text, or (5) Developing and testing new extraction patterns in isolation
 ---
 
 # Debug Parse Skill

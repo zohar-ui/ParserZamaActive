@@ -1,6 +1,6 @@
 ---
 name: inspect-table
-description: Shows COMPLETE table structure including columns, types, nullability, defaults, and ALL constraints (CHECK, FK, UNIQUE, ENUM values)
+description: Shows COMPLETE table structure including columns, types, nullability, defaults, and ALL constraints (CHECK, FK, UNIQUE, ENUM values). CRITICAL - Use this skill BEFORE writing ANY SQL INSERT/UPDATE statements or creating database functions. Use when you need to: (1) Verify actual table/column names because documentation may be outdated, (2) Check valid enum/constraint values to prevent constraint violations, (3) See foreign key requirements to prevent FK errors, (4) Identify NOT NULL columns to prevent null violations, or (5) Understand complete table schema before any database operation
 ---
 
 # Inspect Table Skill
@@ -38,83 +38,14 @@ Parse the table name from the user's command (after `/inspect-table `).
 
 ### Step 2: Run Full Inspection Query
 
-Use Supabase MCP or psql to execute this query:
+Use Supabase MCP or psql to execute the inspection queries. See [SQL_QUERIES.md](references/SQL_QUERIES.md) for the complete SQL inspection query.
 
-```sql
--- Part 1: Column Details
-SELECT
-    c.column_name,
-    c.data_type,
-    c.udt_name,  -- For enums, shows the enum type name
-    c.is_nullable,
-    c.column_default,
-    pgd.description as column_description
-FROM information_schema.columns c
-LEFT JOIN pg_catalog.pg_statio_all_tables st ON c.table_schema = st.schemaname AND c.table_name = st.relname
-LEFT JOIN pg_catalog.pg_description pgd ON pgd.objoid = st.relid AND pgd.objsubid = c.ordinal_position
-WHERE c.table_schema = 'zamm'
-  AND c.table_name = '<TABLE_NAME>'
-ORDER BY c.ordinal_position;
-
--- Part 2: Check Constraints
-SELECT
-    con.conname as constraint_name,
-    pg_get_constraintdef(con.oid) as constraint_definition
-FROM pg_constraint con
-JOIN pg_class rel ON rel.oid = con.conrelid
-JOIN pg_namespace nsp ON nsp.oid = rel.relnamespace
-WHERE nsp.nspname = 'zamm'
-  AND rel.relname = '<TABLE_NAME>'
-  AND con.contype = 'c'  -- Check constraints only
-ORDER BY con.conname;
-
--- Part 3: Foreign Keys
-SELECT
-    con.conname as fk_name,
-    att.attname as column_name,
-    cl.relname as referenced_table,
-    att2.attname as referenced_column
-FROM pg_constraint con
-JOIN pg_class rel ON rel.oid = con.conrelid
-JOIN pg_namespace nsp ON nsp.oid = rel.relnamespace
-JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = ANY(con.conkey)
-JOIN pg_class cl ON cl.oid = con.confrelid
-JOIN pg_attribute att2 ON att2.attrelid = con.confrelid AND att2.attnum = ANY(con.confkey)
-WHERE nsp.nspname = 'zamm'
-  AND rel.relname = '<TABLE_NAME>'
-  AND con.contype = 'f'  -- Foreign keys only
-ORDER BY con.conname;
-
--- Part 4: Unique Constraints
-SELECT
-    con.conname as constraint_name,
-    array_agg(att.attname ORDER BY u.attposition) as columns
-FROM pg_constraint con
-JOIN pg_class rel ON rel.oid = con.conrelid
-JOIN pg_namespace nsp ON nsp.oid = rel.relnamespace
-JOIN LATERAL unnest(con.conkey) WITH ORDINALITY AS u(attnum, attposition) ON true
-JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = u.attnum
-WHERE nsp.nspname = 'zamm'
-  AND rel.relname = '<TABLE_NAME>'
-  AND con.contype = 'u'  -- Unique constraints only
-GROUP BY con.conname
-ORDER BY con.conname;
-
--- Part 5: Enum Values (if any columns use enums)
-SELECT
-    t.typname as enum_name,
-    array_agg(e.enumlabel ORDER BY e.enumsortorder) as valid_values
-FROM pg_type t
-JOIN pg_enum e ON t.oid = e.enumtypid
-WHERE t.typname IN (
-    SELECT udt_name
-    FROM information_schema.columns
-    WHERE table_schema = 'zamm'
-      AND table_name = '<TABLE_NAME>'
-      AND data_type = 'USER-DEFINED'
-)
-GROUP BY t.typname;
-```
+The query retrieves:
+1. Column details (name, type, nullable, default)
+2. Check constraints (with SQL definitions)
+3. Foreign keys (column → referenced table.column)
+4. Unique constraints (which columns must be unique)
+5. Enum values (valid values for enum types)
 
 ### Step 3: Present Results
 

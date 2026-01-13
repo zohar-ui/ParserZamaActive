@@ -1,6 +1,6 @@
 ---
 name: add-entity
-description: Adds a new exercise or equipment to the catalogs safely (checks duplicates, adds aliases)
+description: Adds a new exercise or equipment to the system catalogs safely with automatic duplicate checking, proper normalization (lowercase keys, proper formatting), alias creation, and referential integrity maintenance. Use this skill when: (1) Parser fails to find an exercise or equipment in catalogs, (2) Adding new training movements before processing workouts, (3) Expanding exercise/equipment vocabulary for parser recognition, (4) Creating canonical entries with proper categorization and metadata, or (5) Normalizing training terminology across the system with common aliases and abbreviations
 ---
 
 # Add Entity Skill

@@ -1,6 +1,6 @@
 ---
 name: sync-docs
-description: Updates schema documentation based on latest migrations and live database state
+description: Updates schema documentation to synchronize with live database state after migrations or schema changes, preventing documentation drift by querying actual table structures, column definitions, and constraints to update VERIFIED_TABLE_NAMES.md and schema reference files. Use this skill when: (1) After applying database migrations to sync docs with new schema, (2) After pulling migrations from git to update local documentation, (3) When documentation seems outdated or incorrect, (4) Before writing SQL to verify current table names and structure, or (5) To ensure single source of truth between database and documentation
 ---
 
 # Sync Docs Skill
