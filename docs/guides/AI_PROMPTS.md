@@ -27,10 +27,23 @@ Parse workout text and **separate** what was PLANNED (prescription) from what wa
    - Examples: "got only 4 reps", "finished in 8:45", "used 95kg instead"
    - Store in: performed_data field
 
-3. **Default Logic**
-   - If text shows ONLY a plan → prescription_data ONLY, performed_data = null
-   - If text shows "I did X" → BOTH prescription AND performed
+3. **Session Status** = Overall session completion state (EXTRACT FROM DATA ONLY)
+   - "completed" - Session fully executed as written
+   - "planned" - Only the plan, not yet executed
+   - "partial" - Some blocks done, others skipped
+   - "skipped" - Session was planned but not done
+   - **CRITICAL**: Extract ONLY from explicit text indicators:
+     - "Status: completed", "Status: planned", "Status: partial"
+     - "Workout completed", "Session finished", "Did not complete"
+     - "Skipped due to...", "Partially completed"
+   - **If status not explicitly mentioned in text → leave as null**
+   - Do NOT infer status from presence/absence of performance data
+
+4. **Default Logic**
+   - If text shows ONLY a plan → prescription_data ONLY, performed_data = null, status = null (unless explicitly stated)
+   - If text shows "I did X" → BOTH prescription AND performed, status = null (unless explicitly stated)
    - If unclear → put in prescription_data, set flag: needs_review = true
+   - **Status must ALWAYS be extracted from explicit text**, never inferred
 
 ### STRUCTURED OUTPUT FORMAT (v3.2)
 
@@ -45,7 +58,8 @@ Parse workout text and **separate** what was PLANNED (prescription) from what wa
     {
       "sessionInfo": {
         "date": "YYYY-MM-DD",
-        "title": "Session name"
+        "title": "Session name",
+        "status": "completed|planned|partial|skipped"
       },
       "blocks": [
         {
@@ -264,6 +278,55 @@ Output:
       ]
     }]
   }
+}
+```
+
+#### Example 7: Session Status Extraction (v3.2)
+Input: "Status: completed
+
+Back Squat: 5x5 @ 100kg
+Completed all sets as prescribed."
+
+Output:
+```json
+{
+  "sessionInfo": {
+    "date": "2025-01-14",
+    "status": "completed"
+  },
+  "prescription": {
+    "steps": [{
+      "exercise_name": "Back Squat",
+      "target_sets": 5,
+      "target_reps": 5,
+      "target_weight": {"value": 100, "unit": "kg"}
+    }]
+  },
+  "performed": {
+    "did_complete": true
+  }
+}
+```
+
+#### Example 8: No Status (Leave as null)
+Input: "Back Squat: 5x5 @ 100kg"
+
+Output:
+```json
+{
+  "sessionInfo": {
+    "date": "2025-01-14",
+    "status": null
+  },
+  "prescription": {
+    "steps": [{
+      "exercise_name": "Back Squat",
+      "target_sets": 5,
+      "target_reps": 5,
+      "target_weight": {"value": 100, "unit": "kg"}
+    }]
+  },
+  "performed": null
 }
 ```
 
